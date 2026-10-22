@@ -30,9 +30,11 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
 - Không đăng nhập, không có ô mật khẩu. Đủ tính năng như bản chính, chỉ khoá:
   - Video: chỉ mở buổi 1 (`OPEN_VIDEOS`), các buổi khác bị XOÁ ID video.
   - Đề thi: chỉ mở Đề 1–2 (`OPEN_EXAMS`), các đề khác bị XOÁ toàn bộ câu hỏi; ảnh chỉ đề khoá dùng bị xoá khỏi EXIMG.
+  - Flashcard: chỉ giữ từ vựng Chương 1 (`OPEN_VOCAB_CH`), XOÁ từ vựng Chương 2–3 khỏi V/TOPIC; chip Chương 2–3 hiện 🔒.
+  - Thiết bị: mở 10/20 mỗi nhóm (`EQ_OPEN_PER_GROUP`), 20 thiết bị còn lại giữ tên nhưng XOÁ ảnh + cách dùng; trắc nghiệm ảnh chỉ dùng thiết bị mở.
   - Thẻ khoá vẫn hiện tên + 🔒 "Thuộc khoá học đầy đủ" + nút nhắn Facebook.
 - Dải "Bản trải nghiệm" cố định trên cùng + nút nổi Facebook/TikTok góc dưới, hiện ở mọi màn (cả màn thi CBT, điện thoại).
-- Trang chủ có bảng giá: Zoom lớp 5–7 người 10.000 yên · Tự học app + video 7.000 yên; nút "Đăng ký khoá học" (`REGISTER_URL`, hiện trỏ Facebook).
+- Trang chủ có bảng giá (nhãn "✓ Cam kết học tới khi đậu"): Zoom lớp 5–7 người 10.000 yên · Tự học app + video 7.000 yên; nút "Đăng ký khoá học" (`REGISTER_URL`, hiện trỏ Facebook).
 - Tiêu đề "Bản trải nghiệm · Vệ sinh toà nhà · Anh Trọng Dạy Gino", thẻ noindex; phản hồi có `Cache-Control: no-cache`, `X-Robots-Tag: noindex`.
 - Sửa danh sách mở/khoá, giá, link: biến ở đầu `src/build_demo.py` → chạy `python3 src/build_demo.py` → commit `public/trial/`.
 - build_demo.py tự kiểm tra và DỪNG nếu còn ID video khoá, câu hỏi/giải thích của đề khoá hoặc ảnh của đề khoá trong file xuất ra.
