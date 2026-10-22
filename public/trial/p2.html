@@ -1,3 +1,4 @@
+        <div class="line note"><span class="ava n">※</span><div class="ltxt"><div class="lname">●</div><div class="ljp jp">無断[むだん]で欠勤[けっきん]、遅刻[ちこく]をすると仲間[なかま]やお客様[きゃくさま]に迷惑[めいわく]をかけることになります</div><div class="lvn">Tự ý nghỉ hay đi muộn không báo sẽ gây phiền cho đồng nghiệp và khách hàng</div></div></div>
         <div class="line note"><span class="ava n">※</span><div class="ltxt"><div class="lname">●</div><div class="ljp jp">体調管理[たいちょうかんり]やスケジュールの管理[かんり]を心[こころ]がけよう</div><div class="lvn">Hãy chú ý giữ gìn sức khỏe và quản lý lịch làm việc</div></div></div>
       </div>
       <div class="block">
@@ -1225,6 +1226,7 @@ $('#vgrid').addEventListener('click', e => {
   const c = e.target.closest('[data-vid]'); if (!c) return;
   const th = c.querySelector('.vthumb');
   if (th.querySelector('iframe')) return;
+  c.classList.add('playing');
   th.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${c.dataset.vid}?autoplay=1&rel=0" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen title="Video bài giảng"></iframe>`;
 });
 
