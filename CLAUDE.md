@@ -32,6 +32,7 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
   - Đề thi: chỉ mở Đề 1–2 (`OPEN_EXAMS`), các đề khác bị XOÁ toàn bộ câu hỏi; ảnh chỉ đề khoá dùng bị xoá khỏi EXIMG.
   - Flashcard: chỉ giữ từ vựng Chương 1 (`OPEN_VOCAB_CH`), XOÁ từ vựng Chương 2–3 khỏi V/TOPIC; chip Chương 2–3 hiện 🔒.
   - Thiết bị: mở 10/20 mỗi nhóm (`EQ_OPEN_PER_GROUP`), 20 thiết bị còn lại giữ tên nhưng XOÁ ảnh + cách dùng; trắc nghiệm ảnh chỉ dùng thiết bị mở.
+  - Tài liệu: chỉ mở Chương 1 (`OPEN_DOCS`), XOÁ hẳn nội dung Chương 2–3 (`<script id="src-ch2/ch3">`); thẻ chương + lá sơ đồ tư duy hiện 🔒, bấm vào hiện hộp "Thuộc khoá học đầy đủ". Bản dùng thử luôn ghi p1+p2.
   - Thẻ khoá vẫn hiện tên + 🔒 "Thuộc khoá học đầy đủ" + nút nhắn Facebook.
 - Dải "Bản trải nghiệm" cố định trên cùng + nút nổi Facebook/TikTok góc dưới, hiện ở mọi màn (cả màn thi CBT, điện thoại).
 - Trang chủ có bảng giá (nhãn "🔥 Cam kết học tới khi đậu"): Zoom lớp 5–7 người 10.000 yên · Tự học app + video 7.000 yên · Combo tự học VSTN + Khách sạn 9.000 yên · Học theo nhóm từ 2 người 7.000 yên/người; nút "Đăng ký khoá học" (`REGISTER_URL`, hiện trỏ Facebook).
