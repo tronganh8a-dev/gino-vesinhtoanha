@@ -140,7 +140,7 @@ def main():
         f'<div class="tp-card{" hot" if hot else ""}">{"<span class=tp-hot>Khuyên dùng</span>" if hot else ""}'
         f'<h4>{t}</h4><p>{d}</p><div class="tp-price"><b>{p}</b><span>yên</span><small>({note})</small></div></div>'
         for t, d, p, note, hot in PRICES)
-    PRICE = (f'\n\n  <div class="jx-card tprice" id="tprice"><div class="tp-h"><b>Học phí khoá đầy đủ</b><span class="jpt">受講料</span><span class="tp-pledge">✓ Cam kết học tới khi đậu</span>'
+    PRICE = (f'\n\n  <div class="jx-card tprice" id="tprice"><div class="tp-h"><b>Học phí khoá đầy đủ</b><span class="jpt">受講料</span><span class="tp-pledge"><i class="fl">🔥</i>Cam kết học tới khi đậu<i class="fl r">🔥</i></span>'
              f'</div>'
              f'<div class="tp-grid">{cards}</div>'
              f'<a class="tp-reg" href="{REGISTER_URL}" target="_blank" rel="noopener">Đăng ký khoá học →</a></div>')
@@ -179,7 +179,13 @@ body{padding-top:var(--tbh)!important}
 .ei.tlock{cursor:default}.ei.tlock .lockph{display:grid;place-items:center;font-size:30px;background:#f3f5f7;width:100%;height:110px;border-radius:10px}.lockfb.sm{display:inline-block;margin-top:6px;font-size:11.5px!important;padding:5px 8px!important;border-radius:8px!important}
 .tprice{border-top:4px solid #c42f66}
 .tprice .tp-h b{font-size:20px}.tprice .tp-h .jpt{margin-left:8px;color:#8794a0}
-.tp-pledge{display:inline-block;margin-left:10px;vertical-align:middle;background:#1f7a4d;color:#fff;font-weight:800;font-size:12.5px;border-radius:999px;padding:4px 11px;box-shadow:0 4px 12px rgba(31,122,77,.25)}
+.tp-pledge{position:relative;display:inline-flex;align-items:center;gap:5px;margin-left:10px;vertical-align:middle;color:#fff;font-weight:900;font-size:13px;letter-spacing:.01em;border-radius:999px;padding:5px 12px;background:linear-gradient(90deg,#ff3d00,#ff9100,#ffd600,#ff9100,#ff3d00);background-size:300% 100%;text-shadow:0 1px 2px rgba(120,20,0,.55);animation:tpFire 2.4s linear infinite,tpGlow 1.2s ease-in-out infinite alternate}
+.tp-pledge .fl{font-style:normal;display:inline-block;animation:tpFlick .45s ease-in-out infinite alternate;transform-origin:50% 90%}
+.tp-pledge .fl.r{animation-delay:.22s}
+@keyframes tpFire{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+@keyframes tpGlow{0%{box-shadow:0 0 6px rgba(255,90,0,.45),0 0 0 0 rgba(255,145,0,.0)}100%{box-shadow:0 0 16px rgba(255,90,0,.85),0 0 28px 4px rgba(255,170,0,.35)}}
+@keyframes tpFlick{0%{transform:scale(1) rotate(-6deg)}100%{transform:scale(1.25) rotate(6deg)}}
+@media (prefers-reduced-motion:reduce){.tp-pledge,.tp-pledge .fl{animation:none}}
 .tprice .tp-h{margin-bottom:14px}
 .tprice .tp-h p{margin:6px 0 14px;color:#4a5b68}
 .tp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -190,7 +196,7 @@ body{padding-top:var(--tbh)!important}
 .tp-price b{font-size:32px;color:#0d5a8c;letter-spacing:-.01em}.tp-price span{margin-left:4px;font-weight:700}.tp-price small{margin-left:6px;color:#8794a0}
 .tp-reg{display:inline-block;margin-top:16px;background:#c42f66;color:#fff;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:12px}
 @media (max-width:880px){.trialfab{right:10px;gap:8px}.trialfab a{width:40px;height:40px}.trialfab a svg{width:18px;height:18px}.trialbar .tb-s{display:none}.jx-side{top:auto!important;height:auto!important}.tp-grid{grid-template-columns:1fr}.trialfab{bottom:calc(84px + env(safe-area-inset-bottom))}}
-@media (max-width:640px){.jx-mtop{top:var(--tbh)!important}.tprice{padding:14px 12px!important}.tprice .tp-h{margin-bottom:12px}.tprice .tp-h b{font-size:17px}.tprice .tp-h .jpt{font-size:12px}.tp-pledge{margin:6px 0 0;font-size:11.5px;padding:3px 9px}.tp-grid{grid-template-columns:1fr 1fr!important;gap:8px}.tp-card{padding:13px 10px 10px;border-radius:12px}.tp-card h4{font-size:14px}.tp-card p{font-size:11.5px;margin-bottom:6px;line-height:1.4}.tp-price b{font-size:23px}.tp-price span{font-size:12px}.tp-price small{display:block;margin-left:0;font-size:11px}.tp-hot{font-size:10.5px;top:-9px;right:8px;padding:2px 7px}.tp-reg{display:block;text-align:center;margin-top:10px;padding:10px 14px;font-size:14.5px}}
+@media (max-width:640px){.jx-mtop{top:var(--tbh)!important}.tprice{padding:14px 12px!important}.tprice .tp-h{margin-bottom:12px}.tprice .tp-h b{font-size:17px}.tprice .tp-h .jpt{font-size:12px}.tp-pledge{margin:6px 0 0;font-size:12px;padding:4px 10px}.tp-grid{grid-template-columns:1fr 1fr!important;gap:8px}.tp-card{padding:13px 10px 10px;border-radius:12px}.tp-card h4{font-size:14px}.tp-card p{font-size:11.5px;margin-bottom:6px;line-height:1.4}.tp-price b{font-size:23px}.tp-price span{font-size:12px}.tp-price small{display:block;margin-left:0;font-size:11px}.tp-hot{font-size:10.5px;top:-9px;right:8px;padding:2px 7px}.tp-reg{display:block;text-align:center;margin-top:10px;padding:10px 14px;font-size:14.5px}}
 </style>'''
     i = s.index('</head>'); s = s[:i] + CSS + s[i:]   # </head> đầu tiên = trang chính
     s = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + BAR, s, count=1)
