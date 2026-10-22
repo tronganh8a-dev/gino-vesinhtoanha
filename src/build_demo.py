@@ -8,6 +8,7 @@ import json, os, re, sys
 OPEN_VIDEOS = [1]          # buổi video được mở
 OPEN_EXAMS = [1, 2]        # đề được mở
 OPEN_VOCAB_CH = ['ch1']    # chương mở từ vựng (Flashcard)
+OPEN_DOCS = ['ch1']        # chương mở trong tab Tài liệu — chương khác bị XOÁ nội dung
 EQ_OPEN_PER_GROUP = 10     # thiết bị mở mỗi nhóm (tay/may) — còn lại khoá
 APP_NAME = 'Vệ sinh toà nhà'
 FB = 'https://www.facebook.com/anh.trongg.2024/'
@@ -131,6 +132,31 @@ def main():
             f'Từ vựng Chương 2–3 và thiết bị còn lại {LOCK_TXT.lower()}. <a href="{FB}" target="_blank" rel="noopener">Nhắn Facebook</a></div>')
     s = rep(s, '  <div class="subnav" id="subnav">', NOTE + '\n  <div class="subnav" id="subnav">')
 
+    # ---------- 3c. tài liệu: xoá hẳn nội dung chương khoá ----------
+    doc_locked = re.findall(r"\{ k: '(ch\d)'", s[s.index('const DOCS = ['):s.index('];', s.index('const DOCS = ['))])
+    doc_locked = [k for k in doc_locked if k not in OPEN_DOCS]
+    doc_probe = []
+    for k in doc_locked:
+        m = re.search(r'<script type="text/plain" id="src-' + k + r'">(.*?)</script>', s, re.S)
+        assert m, ('không thấy nội dung', k)
+        body = m.group(1)
+        doc_probe += [body[j:j + 80] for j in range(len(body) // 5, len(body), len(body) // 5)][:4]
+        s = s[:m.start()] + s[m.end():]
+    DLJ = json.dumps(doc_locked)
+    LOCKD = (f'`<div class="card dcard tlock dlock"><div class="dcover"><span class="badge">${{d.t}}</span><img src="${{COVER[d.k]}}" alt="${{d.t}}" loading="lazy"><span class="dlk">🔒</span></div>'
+             f'<div class="dbody"><h3>${{d.t}} 🔒</h3><div class="jpt">${{d.jp}}</div><div class="lockmsg">🔒 {LOCK_TXT}</div>'
+             f'<a class="lockfb" href="{FB}" target="_blank" rel="noopener">Nhắn Facebook để học đủ</a></div></div>`')
+    s = rep(s, "$('#dgrid').innerHTML = DOCS.map(d => `<div class=\"card dcard\" data-doc=\"${d.k}\">",
+            "const DLOCK = " + DLJ + ";\n$('#dgrid').innerHTML = DOCS.map(d => DLOCK.includes(d.k) ? " + LOCKD + " : `<div class=\"card dcard\" data-doc=\"${d.k}\">")
+    s = rep(s, "function openDoc(k, sec) {\n",
+            "function openDoc(k, sec) {\n  if (typeof DLOCK !== 'undefined' && DLOCK.includes(k)) { tDocLock(k); return; }\n")
+    s = rep(s, "const blobCache = {};",
+            "function tDocLock(k) { const d = DOCS.find(x => x.k === k) || { t: '' }; let m = document.getElementById('tdlm');"
+            " if (!m) { m = document.createElement('div'); m.id = 'tdlm'; m.addEventListener('click', e => { if (e.target === m || e.target.closest('.tdlx')) m.remove(); }); }"
+            " m.innerHTML = '<div class=\"tdlbox tlock\"><button class=\"tdlx\" aria-label=\"Đóng\">×</button><div class=\"tdli\">🔒</div><b>' + d.t + ' · " + LOCK_TXT + "</b>"
+            "<p>Bản trải nghiệm mở tài liệu Chương 1. Đăng ký khoá học để đọc đủ Chương 2 và 3.</p><a class=\"lockfb\" href=\"" + FB + "\" target=\"_blank\" rel=\"noopener\">Nhắn Facebook để học đủ</a></div>';"
+            " document.body.appendChild(m); }\nconst blobCache = {};")
+
     # ---------- 4. bỏ đăng nhập/đăng xuất ----------
     s = re.sub(r"function jxLogout\(\) \{[^}]*\}", f"function jxLogout() {{ window.open({FBJ}, '_blank'); }}", s, count=1)
     s = rep(s, 'onclick="jxLogout()">Đăng xuất</button>', 'onclick="jxLogout()">Đăng ký khoá học</button>')
@@ -193,6 +219,9 @@ body{padding-top:var(--tbh)!important}
 .tp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .tp-card.group{border-color:#7a4fc2;background:linear-gradient(180deg,#f6f1fd,#fff)}.tp-card.group .tp-hot{background:#7a4fc2}.tp-card.group .tp-price b{color:#7a4fc2}
 @media (max-width:1200px){.tp-grid{grid-template-columns:1fr 1fr}}
+.dlock{cursor:default}.dlock .dcover{position:relative}.dlock .dcover img{filter:grayscale(.6) blur(1.5px);opacity:.75}.dlk{position:absolute;inset:0;display:grid;place-items:center;font-size:34px}
+#tdlm{position:fixed;inset:0;z-index:99999;background:rgba(15,25,35,.55);display:grid;place-items:center;padding:16px}.tdlbox{position:relative;background:#fff;border-radius:18px;padding:24px 22px 20px;max-width:360px;width:100%;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.25)}.tdlbox .tdli{font-size:34px}.tdlbox b{display:block;margin:6px 0;font-size:16px}.tdlbox p{color:#5b6b77;font-size:14px;margin:0 0 14px}.tdlx{all:unset;position:absolute;top:8px;right:12px;font-size:24px;cursor:pointer;color:#8794a0}
+.mm-br.c2 .mm-leaf b::after{content:' 🔒';font-size:11px}.mm-br.c3 .mm-leaf b::after{content:' 🔒';font-size:11px}
 .tp-card.combo{border-color:#1f7a4d;background:linear-gradient(180deg,#f2faf6,#fff)}.tp-card.combo .tp-hot{background:#1f7a4d}.tp-card.combo .tp-price b{color:#1f7a4d}
 .tp-card{position:relative;border:1.5px solid #dbe2e7;border-radius:16px;padding:18px;background:#fff}
 .tp-card.hot{border-color:#c42f66;box-shadow:0 8px 24px rgba(196,47,102,.12)}
@@ -207,6 +236,8 @@ body{padding-top:var(--tbh)!important}
     s = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + BAR, s, count=1)
 
     # ---------- 7. kiểm tra: không còn nội dung bị khoá ----------
+    for k in doc_locked: assert f'id="src-{k}"' not in s, ('còn nội dung tài liệu', k)
+    assert not [x for x in doc_probe if x in s], 'còn đoạn nội dung tài liệu khoá'
     assert all(v[3] in OPEN_VOCAB_CH for v in V)
     leak_eq = sum(1 for im in eq_locked if im and im in s)
     assert leak_eq == 0, ('còn ảnh thiết bị khoá', leak_eq)
@@ -224,7 +255,7 @@ body{padding-top:var(--tbh)!important}
     out = os.path.join(PUB, 'trial'); os.makedirs(out, exist_ok=True)
     for f in os.listdir(out): os.remove(os.path.join(out, f))
     data = s.encode('utf-8')
-    if len(data) <= LIMIT:
+    if len(data) <= LIMIT and False:   # luôn chia p1/p2 cho khớp file trên repo
         open(os.path.join(out, 'index.html'), 'wb').write(data)
         files = ['index.html']
     else:
@@ -233,7 +264,7 @@ body{padding-top:var(--tbh)!important}
         open(os.path.join(out, 'p2.html'), 'wb').write(data[cut:])
         files = ['p1.html', 'p2.html']
     print(f'build_demo ok · {len(data):,} byte → trial/{"+".join(files)} · khoá {len(locked_ids)} video, '
-          f'{len(locked_q)} câu hỏi, {len(removed_imgs)} ảnh đề, {len(v_locked)} từ vựng, {len(eq_locked)} thiết bị')
+          f'{len(locked_q)} câu hỏi, {len(removed_imgs)} ảnh đề, {len(v_locked)} từ vựng, {len(eq_locked)} thiết bị, tài liệu {doc_locked}')
 
 if __name__ == '__main__':
     main()
