@@ -1155,6 +1155,24 @@ body{background:#f2f5f7}
  #dgrid .dbody .jpt{font-size:12.5px!important}
  #dgrid .dbody p{display:none!important}
  #dgrid .dmeta{margin-top:6px!important;font-size:11.5px!important;gap:6px!important}
+ /* Video: thẻ nằm ngang, ảnh nhỏ bên trái; bấm phát thì thẻ mở rộng hết bề ngang */
+ #vgrid{gap:10px!important}
+ #vgrid .vcard{display:grid!important;grid-template-columns:128px 1fr;align-items:center;gap:0;padding:8px!important;border-radius:14px!important}
+ #vgrid .vthumb{width:128px;aspect-ratio:16/9;border-radius:10px}
+ #vgrid .vplay i{width:34px!important;height:34px!important}
+ #vgrid .vplay svg{width:14px!important;height:14px!important;margin-left:2px}
+ #vgrid .vbody{padding:0 2px 0 12px!important;min-width:0}
+ #vgrid .vbody .no{font-size:10.5px!important}
+ #vgrid .vbody h3{font-size:14px!important;line-height:1.35;margin:2px 0 0!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+ #vgrid .vbody .jpt{display:none!important}
+ #vgrid .vbody .tags{margin-top:6px!important;gap:5px!important}
+ #vgrid .vbody .tags .tg:not(.link){display:none!important}
+ #vgrid .vbody .tags .tg{font-size:11.5px!important;padding:3px 9px!important}
+ #vgrid .vcard.playing{grid-template-columns:1fr}
+ #vgrid .vcard.playing .vthumb{width:100%}
+ #vgrid .vcard.playing .vbody{padding:10px 4px 2px!important}
+ #vgrid .lockmsg{margin:5px 0 5px!important;padding:4px 8px!important;font-size:12px!important}
+ #vgrid .lockfb{padding:6px 10px!important;font-size:12.5px!important}
  /* Flashcard: menu và bộ lọc thành 1 hàng vuốt ngang */
  .subnav{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;max-width:100%;margin-bottom:10px!important}
  .subnav::-webkit-scrollbar,.filters::-webkit-scrollbar{display:none}
