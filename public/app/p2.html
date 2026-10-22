@@ -2778,11 +2778,12 @@ function chapterURL(k) {
   if (blobCache[k]) return blobCache[k];
   let raw = document.getElementById('src-' + k).textContent.replace(/<\\\/script/g, '</script');
   if (typeof FONTCSS === 'string') raw = raw.replace('</head>', '<style>' + FONTCSS + '</style></head>');
+  { const j = raw.lastIndexOf('</body>'); const js = '<scr' + 'ipt>(function(){var m=location.hash.match(/^#s(\\d+)$/);if(m&&typeof go===\'function\')go(+m[1]);})();</scr' + 'ipt>'; raw = j > 0 ? raw.slice(0, j) + js + raw.slice(j) : raw + js; }
   const url = URL.createObjectURL(new Blob([raw], { type: 'text/html;charset=utf-8' }));
   blobCache[k] = url; return url;
 }
 let curDoc = null;
-function openDoc(k) {
+function openDoc(k, sec) {
   const d = DOCS.find(x => x.k === k); if (!d) return;
   curDoc = k;
   $('#rTitle').textContent = d.t; $('#rJp').textContent = d.jp;
@@ -2791,7 +2792,7 @@ function openDoc(k) {
   setTimeout(() => {
     const f = $('#rFrame');
     f.onload = () => { $('#rLoad').classList.add('hidden'); f.classList.remove('hidden'); };
-    f.src = chapterURL(k);
+    f.src = chapterURL(k) + (sec != null ? '#s' + sec : '');
   }, 40);
 }
 $('#rClose').onclick = () => {
