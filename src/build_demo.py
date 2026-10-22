@@ -17,6 +17,7 @@ PRICES = [
     ('Học qua Zoom', 'Lớp tập trung 5–7 người, thầy kèm trực tiếp', '10.000', '1 man', True),
     ('Tự học qua app + video', 'Toàn bộ app, video bài giảng, 16 đề thi thử', '7.000', '7 sen', False),
     ('Combo tự học: Vệ sinh toà nhà + Khách sạn', 'Tự học qua app + video của cả 2 ngành', '9.000', '9 sen', 'combo'),
+    ('Học theo nhóm', 'Đăng ký từ 2 người trở lên, mỗi người được giá ưu đãi', '7.000', '7 sen/người', 'group'),
 ]
 # ===============================================================
 
@@ -138,8 +139,8 @@ def main():
 
     # ---------- 5. bảng giá trên trang chủ ----------
     cards = ''.join(
-        f'<div class="tp-card{" hot" if hot is True else ""}{" combo" if hot == "combo" else ""}">{"<span class=tp-hot>Khuyên dùng</span>" if hot is True else ""}{"<span class=tp-hot>Combo 2 ngành</span>" if hot == "combo" else ""}'
-        f'<h4>{t}</h4><p>{d}</p><div class="tp-price"><b>{p}</b><span>yên</span><small>({note})</small></div></div>'
+        f'<div class="tp-card{" hot" if hot is True else ""}{" combo" if hot == "combo" else ""}{" group" if hot == "group" else ""}">{"<span class=tp-hot>Khuyên dùng</span>" if hot is True else ""}{"<span class=tp-hot>Combo 2 ngành</span>" if hot == "combo" else ""}{"<span class=tp-hot>Nhóm từ 2 người</span>" if hot == "group" else ""}'
+        f'<h4>{t}</h4><p>{d}</p><div class="tp-price"><b>{p}</b><span>{"yên/người" if hot == "group" else "yên"}</span><small>({note})</small></div></div>'
         for t, d, p, note, hot in PRICES)
     PRICE = (f'\n\n  <div class="jx-card tprice" id="tprice"><div class="tp-h"><b>Học phí khoá đầy đủ</b><span class="jpt">受講料</span><span class="tp-pledge"><i class="fl">🔥</i>Cam kết học tới khi đậu<i class="fl r">🔥</i></span>'
              f'</div>'
@@ -189,7 +190,9 @@ body{padding-top:var(--tbh)!important}
 @media (prefers-reduced-motion:reduce){.tp-pledge,.tp-pledge .fl{animation:none}}
 .tprice .tp-h{margin-bottom:14px}
 .tprice .tp-h p{margin:6px 0 14px;color:#4a5b68}
-.tp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tp-card.group{border-color:#7a4fc2;background:linear-gradient(180deg,#f6f1fd,#fff)}.tp-card.group .tp-hot{background:#7a4fc2}.tp-card.group .tp-price b{color:#7a4fc2}
+@media (max-width:1200px){.tp-grid{grid-template-columns:1fr 1fr}}
 .tp-card.combo{border-color:#1f7a4d;background:linear-gradient(180deg,#f2faf6,#fff)}.tp-card.combo .tp-hot{background:#1f7a4d}.tp-card.combo .tp-price b{color:#1f7a4d}
 .tp-card{position:relative;border:1.5px solid #dbe2e7;border-radius:16px;padding:18px;background:#fff}
 .tp-card.hot{border-color:#c42f66;box-shadow:0 8px 24px rgba(196,47,102,.12)}
@@ -198,7 +201,7 @@ body{padding-top:var(--tbh)!important}
 .tp-price b{font-size:32px;color:#0d5a8c;letter-spacing:-.01em}.tp-price span{margin-left:4px;font-weight:700}.tp-price small{margin-left:6px;color:#8794a0}
 .tp-reg{display:inline-block;margin-top:16px;background:#c42f66;color:#fff;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:12px}
 @media (max-width:880px){.trialfab{right:10px;gap:8px}.trialfab a{width:40px;height:40px}.trialfab a svg{width:18px;height:18px}.trialbar .tb-s{display:none}.jx-side{top:auto!important;height:auto!important}.tp-grid{grid-template-columns:1fr}.trialfab{bottom:calc(84px + env(safe-area-inset-bottom))}}
-@media (max-width:640px){.jx-mtop{top:var(--tbh)!important}.tprice{padding:14px 12px!important}.tprice .tp-h{margin-bottom:12px}.tprice .tp-h b{font-size:17px}.tprice .tp-h .jpt{font-size:12px}.tp-pledge{margin:6px 0 0;font-size:12px;padding:4px 10px}.tp-grid{grid-template-columns:1fr 1fr!important;gap:8px}.tp-card.combo{grid-column:1 / -1}.tp-card.combo .tp-price small{display:inline;margin-left:6px}.tp-card{padding:13px 10px 10px;border-radius:12px}.tp-card h4{font-size:14px}.tp-card p{font-size:11.5px;margin-bottom:6px;line-height:1.4}.tp-price b{font-size:23px}.tp-price span{font-size:12px}.tp-price small{display:block;margin-left:0;font-size:11px}.tp-hot{font-size:10.5px;top:-9px;right:8px;padding:2px 7px}.tp-reg{display:block;text-align:center;margin-top:10px;padding:10px 14px;font-size:14.5px}}
+@media (max-width:640px){.jx-mtop{top:var(--tbh)!important}.tprice{padding:14px 12px!important}.tprice .tp-h{margin-bottom:12px}.tprice .tp-h b{font-size:17px}.tprice .tp-h .jpt{font-size:12px}.tp-pledge{margin:6px 0 0;font-size:12px;padding:4px 10px}.tp-grid{grid-template-columns:1fr 1fr!important;gap:8px}.tp-card{padding:13px 10px 10px;border-radius:12px}.tp-card h4{font-size:14px}.tp-card p{font-size:11.5px;margin-bottom:6px;line-height:1.4}.tp-price b{font-size:23px}.tp-price span{font-size:12px}.tp-price small{display:block;margin-left:0;font-size:11px}.tp-hot{font-size:10.5px;top:-9px;right:8px;padding:2px 7px}.tp-reg{display:block;text-align:center;margin-top:10px;padding:10px 14px;font-size:14.5px}}
 </style>'''
     i = s.index('</head>'); s = s[:i] + CSS + s[i:]   # </head> đầu tiên = trang chính
     s = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + BAR, s, count=1)
