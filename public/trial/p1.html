@@ -1140,6 +1140,35 @@ body{background:#f2f5f7}
  .pick.on::after{top:11px;right:11px}.pick.on::before{top:16px;right:16px}
 }
 
+@media (max-width:640px){
+ .sec-hd h2{font-size:22px!important}
+ .sec-hd p{display:none!important}
+ #p-docs > .card{display:none!important}
+ /* Tài liệu: thẻ chương nằm ngang, ảnh nhỏ bên trái */
+ #dgrid{gap:10px!important}
+ #dgrid .dcard{display:grid!important;grid-template-columns:92px 1fr;align-items:center;padding:8px!important;border-radius:14px!important}
+ #dgrid .dcover{width:92px!important;height:92px!important;min-height:0!important;aspect-ratio:auto!important;border-radius:10px;overflow:hidden;margin:0!important;padding:0!important}
+ #dgrid .dcover img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:10px}
+ #dgrid .dcover .badge{display:none!important}
+ #dgrid .dbody{padding:2px 4px 2px 12px!important}
+ #dgrid .dbody h3{font-size:15.5px!important}
+ #dgrid .dbody .jpt{font-size:12.5px!important}
+ #dgrid .dbody p{display:none!important}
+ #dgrid .dmeta{margin-top:6px!important;font-size:11.5px!important;gap:6px!important}
+ /* Flashcard: menu và bộ lọc thành 1 hàng vuốt ngang */
+ .subnav{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;max-width:100%;margin-bottom:10px!important}
+ .subnav::-webkit-scrollbar,.filters::-webkit-scrollbar{display:none}
+ .snb{flex:none;white-space:nowrap;padding:6px 12px!important;font-size:13px!important}
+ .filters{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;padding:8px 10px!important;gap:6px!important;margin-bottom:10px!important}
+ .filters .lb,.filters > span[style]{display:none!important}
+ .filters .fchip{flex:none;white-space:nowrap;padding:5px 10px!important;font-size:12.5px!important}
+ .filters select{flex:none;max-width:140px;padding:5px 8px!important;font-size:12.5px!important}
+ #fcShuffle{margin-left:0!important}
+ .fcbar{gap:8px!important;font-size:12px!important}
+ .flip{height:220px!important}
+ .fcact{gap:6px!important}.fcact .ab{padding:8px 10px!important;font-size:13px!important}
+}
+
 </style>
 <style id="trial-css">
 :root{--tbh:38px}
