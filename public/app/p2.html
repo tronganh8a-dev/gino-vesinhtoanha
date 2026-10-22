@@ -2758,6 +2758,7 @@ $('#vgrid').addEventListener('click', e => {
   const c = e.target.closest('[data-vid]'); if (!c) return;
   const th = c.querySelector('.vthumb');
   if (th.querySelector('iframe')) return;
+  c.classList.add('playing');
   th.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${c.dataset.vid}?autoplay=1&rel=0" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen title="Video bài giảng"></iframe>`;
 });
 
