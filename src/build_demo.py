@@ -141,7 +141,7 @@ def main():
         f'<h4>{t}</h4><p>{d}</p><div class="tp-price"><b>{p}</b><span>yên</span><small>({note})</small></div></div>'
         for t, d, p, note, hot in PRICES)
     PRICE = (f'\n\n  <div class="jx-card tprice" id="tprice"><div class="tp-h"><b>Học phí khoá đầy đủ</b><span class="jpt">受講料</span><span class="tp-pledge">✓ Cam kết học tới khi đậu</span>'
-             f'<p>Bạn đang dùng bản trải nghiệm: mở video buổi 1 và 2 đề đầu tiên. Đăng ký để mở toàn bộ video, 16 đề và các cập nhật mới.</p></div>'
+             f'</div>'
              f'<div class="tp-grid">{cards}</div>'
              f'<a class="tp-reg" href="{REGISTER_URL}" target="_blank" rel="noopener">Đăng ký khoá học →</a></div>')
     s = rep(s, '\n\n  <div class="jx-card jx-sched">', PRICE + '\n\n  <div class="jx-card jx-sched">')
@@ -180,6 +180,7 @@ body{padding-top:var(--tbh)!important}
 .tprice{border-top:4px solid #c42f66}
 .tprice .tp-h b{font-size:20px}.tprice .tp-h .jpt{margin-left:8px;color:#8794a0}
 .tp-pledge{display:inline-block;margin-left:10px;vertical-align:middle;background:#1f7a4d;color:#fff;font-weight:800;font-size:12.5px;border-radius:999px;padding:4px 11px;box-shadow:0 4px 12px rgba(31,122,77,.25)}
+.tprice .tp-h{margin-bottom:14px}
 .tprice .tp-h p{margin:6px 0 14px;color:#4a5b68}
 .tp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .tp-card{position:relative;border:1.5px solid #dbe2e7;border-radius:16px;padding:18px;background:#fff}
@@ -189,6 +190,7 @@ body{padding-top:var(--tbh)!important}
 .tp-price b{font-size:32px;color:#0d5a8c;letter-spacing:-.01em}.tp-price span{margin-left:4px;font-weight:700}.tp-price small{margin-left:6px;color:#8794a0}
 .tp-reg{display:inline-block;margin-top:16px;background:#c42f66;color:#fff;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:12px}
 @media (max-width:880px){.trialfab{right:10px;gap:8px}.trialfab a{width:40px;height:40px}.trialfab a svg{width:18px;height:18px}.trialbar .tb-s{display:none}.jx-side{top:auto!important;height:auto!important}.tp-grid{grid-template-columns:1fr}.trialfab{bottom:calc(84px + env(safe-area-inset-bottom))}}
+@media (max-width:640px){.jx-mtop{top:var(--tbh)!important}.tprice{padding:14px 12px!important}.tprice .tp-h{margin-bottom:12px}.tprice .tp-h b{font-size:17px}.tprice .tp-h .jpt{font-size:12px}.tp-pledge{margin:6px 0 0;font-size:11.5px;padding:3px 9px}.tp-grid{grid-template-columns:1fr 1fr!important;gap:8px}.tp-card{padding:13px 10px 10px;border-radius:12px}.tp-card h4{font-size:14px}.tp-card p{font-size:11.5px;margin-bottom:6px;line-height:1.4}.tp-price b{font-size:23px}.tp-price span{font-size:12px}.tp-price small{display:block;margin-left:0;font-size:11px}.tp-hot{font-size:10.5px;top:-9px;right:8px;padding:2px 7px}.tp-reg{display:block;text-align:center;margin-top:10px;padding:10px 14px;font-size:14.5px}}
 </style>'''
     i = s.index('</head>'); s = s[:i] + CSS + s[i:]   # </head> đầu tiên = trang chính
     s = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + BAR, s, count=1)
