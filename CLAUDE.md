@@ -11,7 +11,7 @@
 
 ## 2. Cấu trúc
 ```
-auth.js              đăng nhập (cookie gino_s ký HMAC, 30 ngày; tải lại / = đăng nhập lại) + định tuyến bản dùng thử
+auth.js              đăng nhập (cookie gino_s ký HMAC, 30 ngày; tick "Lưu đăng nhập" = cookie gino_keep giữ đăng nhập 30 ngày, không tick thì tải lại / phải đăng nhập lại) + định tuyến bản dùng thử
 worker.js            lối vào, import auth.js — DÙNG CHUNG cho cả 2 worker
 wrangler.jsonc       worker bản chính (main: worker.js, assets: ./public)
 demo/wrangler.jsonc  worker bản dùng thử (main: ../worker.js, assets: ../public) — cùng code, cùng public
