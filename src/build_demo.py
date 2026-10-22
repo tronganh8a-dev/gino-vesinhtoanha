@@ -145,7 +145,7 @@ body{padding-top:var(--tbh)!important}
 .tp-card h4{margin:0 0 4px;font-size:17px}.tp-card p{margin:0 0 12px;color:#5b6b77;font-size:14px}
 .tp-price b{font-size:32px;color:#0d5a8c;letter-spacing:-.01em}.tp-price span{margin-left:4px;font-weight:700}.tp-price small{margin-left:6px;color:#8794a0}
 .tp-reg{display:inline-block;margin-top:16px;background:#c42f66;color:#fff;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:12px}
-@media (max-width:880px){.trialbar .tb-s{display:none}.jx-side{top:auto!important;height:auto!important}.tp-grid{grid-template-columns:1fr}.trialfab{bottom:calc(84px + env(safe-area-inset-bottom))}}
+@media (max-width:880px){.trialfab{right:10px;gap:8px}.trialfab a{width:40px;height:40px}.trialfab a svg{width:18px;height:18px}.trialbar .tb-s{display:none}.jx-side{top:auto!important;height:auto!important}.tp-grid{grid-template-columns:1fr}.trialfab{bottom:calc(84px + env(safe-area-inset-bottom))}}
 </style>'''
     i = s.index('</head>'); s = s[:i] + CSS + s[i:]   # </head> đầu tiên = trang chính
     s = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + BAR, s, count=1)
