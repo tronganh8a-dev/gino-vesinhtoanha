@@ -157,6 +157,14 @@ def main():
             "<p>Bản trải nghiệm mở tài liệu Chương 1. Đăng ký khoá học để đọc đủ Chương 2 và 3.</p><a class=\"lockfb\" href=\"" + FB + "\" target=\"_blank\" rel=\"noopener\">Nhắn Facebook để học đủ</a></div>';"
             " document.body.appendChild(m); }\nconst blobCache = {};")
 
+    # ---------- 3d. tài liệu: khoá link "Tải Slide bài giảng" (xoá hẳn link) ----------
+    m = re.search(r'<!--SLIDE-START-->(.*?)<!--SLIDE-END-->', s, re.S)
+    assert m, 'không thấy link slide'
+    slide_url = re.search(r'href="([^"]+)"', m.group(1)).group(1)
+    LOCKS = ('<a class="jx-pbtn dslide tslock" href="' + FB + '" target="_blank" rel="noopener" style="text-decoration:none">'
+             '<span style="font-size:20px;flex:none">🔒</span><span><b>Tải Slide bài giảng</b><small>' + LOCK_TXT + ' · nhắn Facebook</small></span><i>↗</i></a>')
+    s = s[:m.start()] + LOCKS + s[m.end():]
+
     # ---------- 4. bỏ đăng nhập/đăng xuất ----------
     s = re.sub(r"function jxLogout\(\) \{[^}]*\}", f"function jxLogout() {{ window.open({FBJ}, '_blank'); }}", s, count=1)
     s = rep(s, 'onclick="jxLogout()">Đăng xuất</button>', 'onclick="jxLogout()">Đăng ký khoá học</button>')
@@ -219,6 +227,7 @@ body{padding-top:var(--tbh)!important}
 .tp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .tp-card.group{border-color:#7a4fc2;background:linear-gradient(180deg,#f6f1fd,#fff)}.tp-card.group .tp-hot{background:#7a4fc2}.tp-card.group .tp-price b{color:#7a4fc2}
 @media (max-width:1200px){.tp-grid{grid-template-columns:1fr 1fr}}
+.jx-pbtn.tslock{background:#eef1f4;color:#5b6b77;box-shadow:none;border:1.5px dashed #c5cfd8}.jx-pbtn.tslock small{color:#8a5a12;opacity:1}
 .dlock{cursor:default}.dlock .dcover{position:relative}.dlock .dcover img{filter:grayscale(.6) blur(1.5px);opacity:.75}.dlk{position:absolute;inset:0;display:grid;place-items:center;font-size:34px}
 #tdlm{position:fixed;inset:0;z-index:99999;background:rgba(15,25,35,.55);display:grid;place-items:center;padding:16px}.tdlbox{position:relative;background:#fff;border-radius:18px;padding:24px 22px 20px;max-width:360px;width:100%;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.25)}.tdlbox .tdli{font-size:34px}.tdlbox b{display:block;margin:6px 0;font-size:16px}.tdlbox p{color:#5b6b77;font-size:14px;margin:0 0 14px}.tdlx{all:unset;position:absolute;top:8px;right:12px;font-size:24px;cursor:pointer;color:#8794a0}
 .mm-br.c2 .mm-leaf b::after{content:' 🔒';font-size:11px}.mm-br.c3 .mm-leaf b::after{content:' 🔒';font-size:11px}
@@ -236,6 +245,7 @@ body{padding-top:var(--tbh)!important}
     s = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + BAR, s, count=1)
 
     # ---------- 7. kiểm tra: không còn nội dung bị khoá ----------
+    assert slide_url not in s and '1RO-eu7-JmugTLkHC4dZ26KxrmVhV723o' not in s, 'còn link slide'
     for k in doc_locked: assert f'id="src-{k}"' not in s, ('còn nội dung tài liệu', k)
     assert not [x for x in doc_probe if x in s], 'còn đoạn nội dung tài liệu khoá'
     assert all(v[3] in OPEN_VOCAB_CH for v in V)
