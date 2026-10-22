@@ -24,7 +24,8 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
 
 ## 3. Đăng nhập
 - Biến Cloudflare (không nằm trong repo): `ACCOUNTS` = `user:matkhau:Tên hiển thị;…` (mật khẩu không phân biệt hoa thường), `SECRET`.
-- Khoá học viên: xoá khỏi ACCOUNTS → Deploy.
+- Thêm tài khoản không cần nhập lại ACCOUNTS: Add variable → Secret, Name `TK_tendangnhap` (chữ/số/_), Value `matkhau` hoặc `matkhau:Tên hiển thị` → Deploy. ACCOUNTS và các biến TK_ dùng song song.
+- Khoá học viên: xoá khỏi ACCOUNTS (hoặc xoá biến TK_ của bạn đó) → Deploy.
 
 ## 4. Bản dùng thử
 - Không đăng nhập, không có ô mật khẩu. Đủ tính năng như bản chính, chỉ khoá:
