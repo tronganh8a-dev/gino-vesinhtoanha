@@ -7,6 +7,8 @@ import json, os, re, sys
 # ===================== CÀI ĐẶT (sửa ở đây) =====================
 OPEN_VIDEOS = [1]          # buổi video được mở
 OPEN_EXAMS = [1, 2]        # đề được mở
+OPEN_VOCAB_CH = ['ch1']    # chương mở từ vựng (Flashcard)
+EQ_OPEN_PER_GROUP = 10     # thiết bị mở mỗi nhóm (tay/may) — còn lại khoá
 APP_NAME = 'Vệ sinh toà nhà'
 FB = 'https://www.facebook.com/anh.trongg.2024/'
 TIKTOK = 'https://www.tiktok.com/@anhtrong.daygino'
@@ -90,6 +92,43 @@ def main():
     # số câu trên trang chủ: đề khoá vẫn tính số câu gốc
     s = rep(s, "nQ += (EXAMS[k].questions || []).length;", "nQ += EXAMS[k].lock ? (EXAMS[k].n || 0) : (EXAMS[k].questions || []).length;")
 
+
+    # ---------- 3b. từ vựng: chỉ giữ chương mở; thiết bị: mở 1 nửa ----------
+    key = 'const V = '
+    a = s.index(key) + len(key)
+    V, end = json.JSONDecoder().raw_decode(s[a:])
+    v_locked = [v for v in V if v[3] not in OPEN_VOCAB_CH]
+    V = [v for v in V if v[3] in OPEN_VOCAB_CH]
+    s = s[:a] + json.dumps(V, ensure_ascii=False, separators=(',', ':')) + s[a + end:]
+    key = 'const TOPIC = '
+    a = s.index(key) + len(key)
+    TP, end = json.JSONDecoder().raw_decode(s[a:])
+    TP = {k: v for k, v in TP.items() if k.split(':')[0] in OPEN_VOCAB_CH}
+    s = s[:a] + json.dumps(TP, ensure_ascii=False, separators=(',', ':')) + s[a + end:]
+    for ch, nm in (('ch2', 'Chương 2'), ('ch3', 'Chương 3')):
+        if ch not in OPEN_VOCAB_CH:
+            s = rep(s, f'<button class="fchip" data-ch="{ch}">{nm}</button>',
+                    f'<a class="fchip lockchip" href="{FB}" target="_blank" rel="noopener" title="{LOCK_TXT}">🔒 {nm}</a>')
+    key = 'const EQ = '
+    a = s.index(key) + len(key)
+    EQ, end = json.JSONDecoder().raw_decode(s[a:])
+    seen = {}; eq_locked = []
+    for e in EQ:
+        seen[e[3]] = seen.get(e[3], 0) + 1
+        if seen[e[3]] > EQ_OPEN_PER_GROUP:
+            eq_locked.append(e[5]); e[4] = ''; e[5] = ''; e.append(1)   # giữ tên, xoá ảnh + cách dùng
+    s = s[:a] + json.dumps(EQ, ensure_ascii=False, separators=(',', ':')) + s[a + end:]
+    LOCKEQ = (f'`<div class="ei tlock"><div class="ph lockph">🔒</div><div class="n">${{furi(e[0])}}</div><div class="v">${{esc(e[2])}}</div>'
+              f'<a class="lockfb sm" href="{FB}" target="_blank" rel="noopener">{LOCK_TXT}</a></div>`')
+    s = rep(s, "$('#egrid').innerHTML = list.map(([e, i]) => `<div class=\"ei\" data-e=\"${i}\">",
+            "$('#egrid').innerHTML = list.map(([e, i]) => e[6] ? " + LOCKEQ + " : `<div class=\"ei\" data-e=\"${i}\">")
+    s = rep(s, "  const pool = shuffle(EQ).slice(0, 15);", "  const EQO = EQ.filter(e => !e[6]);\n  const pool = shuffle(EQO).slice(0, 15);")
+    s = rep(s, "    const same = EQ.filter(x => x[3] === e[3] && x !== e);", "    const same = EQO.filter(x => x[3] === e[3] && x !== e);")
+    n_open_eq = sum(1 for e in EQ if len(e) < 7)
+    NOTE = (f'<div class="tlockbar">🔒 Bản trải nghiệm: mở từ vựng Chương 1 ({len(V)} từ) và {n_open_eq}/{len(EQ)} thiết bị. '
+            f'Từ vựng Chương 2–3 và thiết bị còn lại {LOCK_TXT.lower()}. <a href="{FB}" target="_blank" rel="noopener">Nhắn Facebook</a></div>')
+    s = rep(s, '  <div class="subnav" id="subnav">', NOTE + '\n  <div class="subnav" id="subnav">')
+
     # ---------- 4. bỏ đăng nhập/đăng xuất ----------
     s = re.sub(r"function jxLogout\(\) \{[^}]*\}", f"function jxLogout() {{ window.open({FBJ}, '_blank'); }}", s, count=1)
     s = rep(s, 'onclick="jxLogout()">Đăng xuất</button>', 'onclick="jxLogout()">Đăng ký khoá học</button>')
@@ -101,7 +140,7 @@ def main():
         f'<div class="tp-card{" hot" if hot else ""}">{"<span class=tp-hot>Khuyên dùng</span>" if hot else ""}'
         f'<h4>{t}</h4><p>{d}</p><div class="tp-price"><b>{p}</b><span>yên</span><small>({note})</small></div></div>'
         for t, d, p, note, hot in PRICES)
-    PRICE = (f'\n\n  <div class="jx-card tprice" id="tprice"><div class="tp-h"><b>Học phí khoá đầy đủ</b><span class="jpt">受講料</span>'
+    PRICE = (f'\n\n  <div class="jx-card tprice" id="tprice"><div class="tp-h"><b>Học phí khoá đầy đủ</b><span class="jpt">受講料</span><span class="tp-pledge">✓ Cam kết học tới khi đậu</span>'
              f'<p>Bạn đang dùng bản trải nghiệm: mở video buổi 1 và 2 đề đầu tiên. Đăng ký để mở toàn bộ video, 16 đề và các cập nhật mới.</p></div>'
              f'<div class="tp-grid">{cards}</div>'
              f'<a class="tp-reg" href="{REGISTER_URL}" target="_blank" rel="noopener">Đăng ký khoá học →</a></div>')
@@ -135,8 +174,12 @@ body{padding-top:var(--tbh)!important}
 .tlock .lockmsg{margin:10px 0 8px;font-weight:700;color:#8a5a12;background:#fdf6e7;border:1px solid #f0d9a8;border-radius:10px;padding:7px 10px;font-size:13.5px}
 .tlock .lockfb{display:inline-block;background:#1877f2;color:#fff!important;text-decoration:none;font-weight:700;border-radius:10px;padding:9px 14px;font-size:14px}
 .vlock.tlock .vplay i{font-size:26px;font-style:normal}
+.tlockbar{margin:0 0 12px;padding:9px 12px;border-radius:12px;background:#fdf6e7;border:1px solid #f0d9a8;color:#6b4a10;font-size:13.5px;font-weight:600}.tlockbar a{color:#1877f2;font-weight:800;margin-left:4px}
+.lockchip{text-decoration:none;color:#8a5a12!important;background:#fdf6e7!important;border-color:#f0d9a8!important}
+.ei.tlock{cursor:default}.ei.tlock .lockph{display:grid;place-items:center;font-size:30px;background:#f3f5f7;width:100%;height:110px;border-radius:10px}.lockfb.sm{display:inline-block;margin-top:6px;font-size:11.5px!important;padding:5px 8px!important;border-radius:8px!important}
 .tprice{border-top:4px solid #c42f66}
 .tprice .tp-h b{font-size:20px}.tprice .tp-h .jpt{margin-left:8px;color:#8794a0}
+.tp-pledge{display:inline-block;margin-left:10px;vertical-align:middle;background:#1f7a4d;color:#fff;font-weight:800;font-size:12.5px;border-radius:999px;padding:4px 11px;box-shadow:0 4px 12px rgba(31,122,77,.25)}
 .tprice .tp-h p{margin:6px 0 14px;color:#4a5b68}
 .tp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .tp-card{position:relative;border:1.5px solid #dbe2e7;border-radius:16px;padding:18px;background:#fff}
@@ -151,6 +194,9 @@ body{padding-top:var(--tbh)!important}
     s = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + BAR, s, count=1)
 
     # ---------- 7. kiểm tra: không còn nội dung bị khoá ----------
+    assert all(v[3] in OPEN_VOCAB_CH for v in V)
+    leak_eq = sum(1 for im in eq_locked if im and im in s)
+    assert leak_eq == 0, ('còn ảnh thiết bị khoá', leak_eq)
     bad = [v for v in locked_ids if v in s]
     assert not bad, ('còn ID video khoá', bad)
     open_txt = {q.get(f) for e in exd['exams'].values() for q in e['questions'] for f in ('evi', 'jp', 'ejp')}
@@ -174,7 +220,7 @@ body{padding-top:var(--tbh)!important}
         open(os.path.join(out, 'p2.html'), 'wb').write(data[cut:])
         files = ['p1.html', 'p2.html']
     print(f'build_demo ok · {len(data):,} byte → trial/{"+".join(files)} · khoá {len(locked_ids)} video, '
-          f'{len(locked_q)} câu hỏi, {len(removed_imgs)} ảnh')
+          f'{len(locked_q)} câu hỏi, {len(removed_imgs)} ảnh đề, {len(v_locked)} từ vựng, {len(eq_locked)} thiết bị')
 
 if __name__ == '__main__':
     main()
