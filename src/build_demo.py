@@ -165,6 +165,14 @@ def main():
              '<span style="font-size:20px;flex:none">🔒</span><span><b>Tải Slide bài giảng</b><small>' + LOCK_TXT + ' · nhắn Facebook</small></span><i>↗</i></a>')
     s = s[:m.start()] + LOCKS + s[m.end():]
 
+    # ---------- 3e. slide tổng ôn: gỡ hẳn trình xem + đáp án, thay bằng thẻ khoá ----------
+    m = re.search(r'<!--TONGON-START-->.*?<!--TONGON-END-->', s, re.S)
+    if m:
+        LOCKT = ('<a class="jx-pbtn tslock" href="' + FB + '" target="_blank" rel="noopener" style="text-decoration:none;max-width:900px;margin:0 0 16px">'
+                 '<span style="font-size:20px;flex:none">🔒</span><span><b>Slide tổng ôn Vệ sinh toà nhà</b><small>' + LOCK_TXT
+                 + ' · 84 slide, 46 câu luyện tập có đáp án · nhắn Facebook</small></span><i>↗</i></a>')
+        s = s[:m.start()] + LOCKT + s[m.end():]
+
     # ---------- 4. bỏ đăng nhập/đăng xuất ----------
     s = re.sub(r"function jxLogout\(\) \{[^}]*\}", f"function jxLogout() {{ window.open({FBJ}, '_blank'); }}", s, count=1)
     s = rep(s, 'onclick="jxLogout()">Đăng xuất</button>', 'onclick="jxLogout()">Đăng ký khoá học</button>')
@@ -246,6 +254,7 @@ body{padding-top:var(--tbh)!important}
 
     # ---------- 7. kiểm tra: không còn nội dung bị khoá ----------
     assert slide_url not in s and '1RO-eu7-JmugTLkHC4dZ26KxrmVhV723o' not in s, 'còn link slide'
+    assert '/app/slides/tongon' not in s and 'TONGON' not in s, 'còn slide tổng ôn'
     for k in doc_locked: assert f'id="src-{k}"' not in s, ('còn nội dung tài liệu', k)
     assert not [x for x in doc_probe if x in s], 'còn đoạn nội dung tài liệu khoá'
     assert all(v[3] in OPEN_VOCAB_CH for v in V)
