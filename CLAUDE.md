@@ -18,9 +18,12 @@ demo/wrangler.jsonc  worker bản dùng thử (main: ../worker.js, assets: ../pu
 public/app/p1+p2     bản chính (chia đôi < 10MB để upload được qua trình duyệt; auth.js ghép lại)
 public/trial/        bản dùng thử (p1+p2 hoặc index.html) — SINH TỰ ĐỘNG, đừng sửa tay
 public/pub/          ảnh trang đăng nhập (công khai)
+public/app/slides/tongon/  84 ảnh WebP slide tổng ôn (cần đăng nhập mới tải được)
 src/build_demo.py    sinh bản dùng thử từ bản chính
 ```
 Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build_exams.py / build_cf.py) nằm ở máy làm việc, không trong repo. build.py chạy xong tự gọi build_cf.py → build_repo.py → src/build_demo.py, nên hai bản luôn cùng nội dung.
+
+- Bút dạ cho giáo viên (nút "Bút" trên thanh đầu chương lý thuyết và trên thanh trình xem slide tổng ôn): bút viết, highlight, gõ chữ ghi chú (font Quicksand/Klee One như app, bấm vào chữ đã gõ để sửa; Enter xong, Shift+Enter xuống dòng), tẩy, 5 màu, 3 độ dày, hoàn tác, xoá hết, ẩn nét. Phím tắt P/H/T/E, Esc tắt, Ctrl+Z hoàn tác. Nét chỉ lưu tạm trong lúc mở, mỗi phần/slide riêng. Mã ở `ink.py` (nguồn dựng), script `<script id="ink-src">` được tiêm vào iframe chương qua `chapterURL`.
 
 ## 3. Đăng nhập
 - Biến Cloudflare (không nằm trong repo): `ACCOUNTS` = `user:matkhau:Tên hiển thị;…` (mật khẩu không phân biệt hoa thường), `SECRET`.
@@ -35,6 +38,7 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
   - Thiết bị: mở 10/20 mỗi nhóm (`EQ_OPEN_PER_GROUP`), 20 thiết bị còn lại giữ tên nhưng XOÁ ảnh + cách dùng; trắc nghiệm ảnh chỉ dùng thiết bị mở.
   - Tài liệu: chỉ mở Chương 1 (`OPEN_DOCS`), XOÁ hẳn nội dung Chương 2–3 (`<script id="src-ch2/ch3">`); thẻ chương + lá sơ đồ tư duy hiện 🔒, bấm vào hiện hộp "Thuộc khoá học đầy đủ". Bản dùng thử luôn ghi p1+p2.
   - Link "Tải Slide bài giảng" (Google Drive) ở tab Tài liệu: bản chính mở được; bản dùng thử XOÁ link, thay bằng nút 🔒 trỏ Facebook (đánh dấu `<!--SLIDE-START/END-->` trong bản chính).
+  - Slide tổng ôn (tab Tài liệu, khối `<!--TONGON-START/END-->`: trình xem ảnh + đáp án 46 câu): bản dùng thử XOÁ cả khối, thay bằng nút 🔒 trỏ Facebook.
   - Thẻ khoá vẫn hiện tên + 🔒 "Thuộc khoá học đầy đủ" + nút nhắn Facebook.
 - Dải "Bản trải nghiệm" cố định trên cùng + nút nổi Facebook/TikTok góc dưới, hiện ở mọi màn (cả màn thi CBT, điện thoại).
 - Trang chủ có bảng giá (nhãn "🔥 Cam kết học tới khi đậu"): Zoom lớp 5–7 người 10.000 yên · Tự học app + video 7.000 yên · Combo tự học VSTN + Khách sạn 9.000 yên · Học theo nhóm từ 2 người 7.000 yên/người; nút "Đăng ký khoá học" (`REGISTER_URL`, hiện trỏ Facebook).
