@@ -1,3 +1,6 @@
+    <div class="dbody">
+      <div class="block"><span class="tag dlg">Nguyên văn giáo trình · 原文</span>
+        <div class="line note"><span class="ava n">※</span><div class="ltxt"><div class="lname">④ 遅刻[ちこく]・早退[そうたい]・欠勤[けっきん]</div><div class="ljp jp">病気等[びょうきとう]で出勤[しゅっきん]できないときは必[かなら]ず、連絡[れんらく]や届出[とどけで]が必要[ひつよう]です</div><div class="lvn">Khi không đi làm được vì ốm…, nhất định phải liên lạc và nộp giấy báo</div></div></div>
         <div class="line note"><span class="ava n">※</span><div class="ltxt"><div class="lname">●</div><div class="ljp jp">無断[むだん]で欠勤[けっきん]、遅刻[ちこく]をすると仲間[なかま]やお客様[きゃくさま]に迷惑[めいわく]をかけることになります</div><div class="lvn">Tự ý nghỉ hay đi muộn không báo sẽ gây phiền cho đồng nghiệp và khách hàng</div></div></div>
         <div class="line note"><span class="ava n">※</span><div class="ltxt"><div class="lname">●</div><div class="ljp jp">体調管理[たいちょうかんり]やスケジュールの管理[かんり]を心[こころ]がけよう</div><div class="lvn">Hãy chú ý giữ gìn sức khỏe và quản lý lịch làm việc</div></div></div>
       </div>
@@ -1249,6 +1252,7 @@ function chapterURL(k) {
   if (blobCache[k]) return blobCache[k];
   let raw = document.getElementById('src-' + k).textContent.replace(/<\\\/script/g, '</script');
   if (typeof FONTCSS === 'string') raw = raw.replace('</head>', '<style>' + FONTCSS + '</style></head>');
+  { const ik = document.getElementById('ink-src'); if (ik) { const j = raw.lastIndexOf('</body>'); const js = '<scr' + 'ipt>' + ik.textContent + ';GinoInk({mode:"doc",toggleBefore:".hd-progress",key:function(){var a=[].slice.call(document.querySelectorAll(".lesson")),o=document.querySelector(".lesson.on");return o?a.indexOf(o):"p";}});</scr' + 'ipt>'; raw = j > 0 ? raw.slice(0, j) + js + raw.slice(j) : raw + js; } }
   { const j = raw.lastIndexOf('</body>'); const js = '<scr' + 'ipt>(function(){var m=location.hash.match(/^#s(\\d+)$/);if(m&&typeof go===\'function\')go(+m[1]);})();</scr' + 'ipt>'; raw = j > 0 ? raw.slice(0, j) + js + raw.slice(j) : raw + js; }
   const url = URL.createObjectURL(new Blob([raw], { type: 'text/html;charset=utf-8' }));
   blobCache[k] = url; return url;
