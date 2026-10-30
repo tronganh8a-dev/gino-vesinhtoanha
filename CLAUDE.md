@@ -18,6 +18,7 @@ demo/wrangler.jsonc  worker bản dùng thử (main: ../worker.js, assets: ../pu
 public/app/p1+p2     bản chính (chia đôi < 10MB để upload được qua trình duyệt; auth.js ghép lại)
 public/trial/        bản dùng thử (p1+p2 hoặc index.html) — SINH TỰ ĐỘNG, đừng sửa tay
 public/pub/          ảnh trang đăng nhập (công khai)
+public/pub/brand/    logo Anh Trọng Dạy Gino (công khai): logo-h(-rev), mark(-rev), favicon, apple-touch-icon, og.png 1200×630
 public/app/slides/tongon/  84 ảnh WebP slide tổng ôn (cần đăng nhập mới tải được)
 src/build_demo.py    sinh bản dùng thử từ bản chính
 ```
