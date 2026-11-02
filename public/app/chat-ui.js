@@ -159,7 +159,7 @@
       const d = await r.json().catch(() => ({}));
       wait.remove();
       if (r.status === 401) throw new Error('Phiên đăng nhập đã hết — tải lại trang và đăng nhập lại nhé.');
-      if (!r.ok || !d.reply) throw new Error(d.error || 'Trợ lý đang lỗi, thử lại sau nhé.');
+      if (!r.ok || !d.reply) throw new Error((d.error || 'Trợ lý đang lỗi, thử lại sau nhé.') + (d.detail ? '\n(Mã lỗi: ' + d.detail + ')' : ''));
       hist.push({ role: 'assistant', content: d.reply }); add('assistant', d.reply);
     } catch (e) {
       wait.remove();

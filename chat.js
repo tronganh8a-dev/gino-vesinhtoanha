@@ -67,11 +67,60 @@ async function callOne(p, key, model, system, msgs) {
   return { status: r.status, err: msg, modelMissing: r.status === 404 || /model|not[_ ]found/i.test(msg) && r.status === 400 };
 }
 
+let picked = null;   // model dò được (nhớ trong instance)
+async function discover(p, key) {
+  try {
+    if (p === 'anthropic') {
+      const r = await fetch('https://api.anthropic.com/v1/models?limit=100', { headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01' } });
+      const ids = ((await r.json()).data || []).map(m => m.id);
+      return ids.find(i => /haiku/.test(i)) || ids.find(i => /sonnet/.test(i)) || ids[0] || null;
+    }
+    if (p === 'openai') {
+      const r = await fetch('https://api.openai.com/v1/models', { headers: { Authorization: 'Bearer ' + key } });
+      const ids = ((await r.json()).data || []).map(m => m.id).filter(i => /^gpt-/.test(i) && !/audio|realtime|search|transcribe|tts|image/.test(i)).sort().reverse();
+      return ids.find(i => /mini/.test(i)) || ids[0] || null;
+    }
+    const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models?key=' + encodeURIComponent(key));
+    const ms = ((await r.json()).models || []).filter(m => (m.supportedGenerationMethods || []).includes('generateContent')).map(m => m.name.replace('models/', ''));
+    return ms.find(i => /flash/.test(i) && !/image|tts|live|lite/.test(i)) || ms[0] || null;
+  } catch (e) { return null; }
+}
+async function ask(k, env, msgs) {
+  const list = env.CHAT_MODEL ? [env.CHAT_MODEL] : picked ? [picked] : MODELS[k.p];
+  let last;
+  for (const model of list) {
+    try { last = await callOne(k.p, k.key, model, SYSTEM, msgs); } catch (e) { last = { status: 502, err: String(e).slice(0, 200) }; }
+    if (last.text) { picked = model; return last; }
+    if (!last.modelMissing) return last;
+  }
+  if (!env.CHAT_MODEL) {
+    const m = await discover(k.p, k.key);
+    if (m && !list.includes(m)) {
+      try { last = await callOne(k.p, k.key, m, SYSTEM, msgs); } catch (e) { last = { status: 502, err: String(e).slice(0, 200) }; }
+      if (last.text) { picked = m; return last; }
+    }
+  }
+  return last || { status: 500, err: 'không có model' };
+}
+function friendly(last) {
+  const st = last && last.status, e = String(last && last.err || '');
+  if (/credit balance|billing|insufficient_quota|quota/i.test(e)) return 'Tài khoản API đã hết tiền / hết hạn mức — thầy cần nạp thêm credit.';
+  if (st === 401 || st === 403 || /api[_ ]key|authentication|permission/i.test(e)) return 'API key không hợp lệ hoặc chưa được cấp quyền — báo thầy kiểm tra lại key.';
+  if (st === 429 || st === 529 || /overloaded|rate/i.test(e)) return 'Trợ lý đang quá tải, thử lại sau ít phút nhé.';
+  return 'Trợ lý đang gặp lỗi, thử lại sau nhé.';
+}
+
 export async function chatAPI(req, env, user) {
   const k = findKey(env);
   const url = new URL(req.url);
-  if (req.method === 'GET' && url.pathname === '/api/chat/status')
-    return json({ ok: !!k, provider: k ? k.p : null, keyName: k ? k.name : null });
+  if (req.method === 'GET' && url.pathname === '/api/chat/status') {
+    const o = { ok: !!k, provider: k ? k.p : null, keyName: k ? k.name : null };
+    if (k && url.searchParams.has('test')) {      // /api/chat/status?test=1 → gọi thử 1 câu để xem lỗi
+      const r = await ask(k, env, [{ role: 'user', content: 'Trả lời đúng 1 từ: OK' }]);
+      Object.assign(o, r.text ? { test: 'ok', model: picked, reply: r.text.slice(0, 50) } : { test: 'fail', httpStatus: r.status, detail: r.err, hint: friendly(r) });
+    }
+    return json(o);
+  }
   if (req.method !== 'POST') return json({ error: 'Sai phương thức' }, 405);
   if (!k) return json({ error: 'Trợ lý chưa được bật (chưa có API key trên máy chủ).' }, 503);
 
@@ -89,18 +138,8 @@ export async function chatAPI(req, env, user) {
   const ctx = typeof body.context === 'string' ? body.context.slice(0, MAXCTX).trim() : '';
   if (ctx) msgs[msgs.length - 1] = { role: 'user', content: `[NGỮ CẢNH TỪ APP]\n${ctx}\n[/NGỮ CẢNH]\n\n${msgs[msgs.length - 1].content}` };
 
-  const list = env.CHAT_MODEL ? [env.CHAT_MODEL] : MODELS[k.p];
-  let last;
-  for (const model of list) {
-    try { last = await callOne(k.p, k.key, model, SYSTEM, msgs); }
-    catch (e) { last = { status: 502, err: String(e).slice(0, 200) }; }
-    if (last.text) return json({ reply: last.text });
-    if (!last.modelMissing) break;
-  }
-  console.log('chat error', k.p, last && last.status, last && last.err);
-  const st = last && last.status;
-  const msg = st === 401 || st === 403 ? 'API key không hợp lệ hoặc chưa được cấp quyền — báo thầy kiểm tra lại key.'
-    : st === 429 ? 'Trợ lý đang quá tải hoặc hết hạn mức API, thử lại sau ít phút nhé.'
-    : 'Trợ lý đang gặp lỗi, thử lại sau nhé.';
-  return json({ error: msg }, 502);
+  const last = await ask(k, env, msgs);
+  if (last.text) return json({ reply: last.text });
+  console.log('chat error', k.p, last.status, last.err);
+  return json({ error: friendly(last), detail: `${last.status || ''} ${String(last.err || '').slice(0, 160)}`.trim() }, 502);
 }
