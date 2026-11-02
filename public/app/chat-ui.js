@@ -42,7 +42,24 @@
 .gc-note{font-size:11px;color:#8794a0;text-align:center;padding:0 12px 8px;background:#fff}
 @media (max-width:880px){.gc-fab{bottom:calc(84px + env(safe-area-inset-bottom));right:12px;width:52px;height:52px}.gc-fab.gc-incbt{bottom:70px}
  .gc-p{right:8px;left:8px;width:auto;max-width:none;bottom:calc(8px + env(safe-area-inset-bottom));top:calc(56px + env(safe-area-inset-top));height:auto}}
-@media print{.gc-fab,.gc-p{display:none!important}}`;
+@media print{.gc-fab,.gc-p{display:none!important}}
+.gc-pm{position:fixed;inset:0;z-index:2147483002;background:rgba(10,30,45,.55);display:grid;place-items:center;padding:16px;animation:gcf .25s ease}
+.gc-pb{position:relative;background:#fff;border-radius:22px;max-width:620px;width:100%;max-height:calc(100vh - 32px);overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,.35);font-family:Quicksand,"Segoe UI",system-ui,sans-serif;color:#17222c;animation:gcu .35s cubic-bezier(.2,.8,.2,1)}
+.gc-pb .gc-im{display:block;width:100%;aspect-ratio:1200/760;background:#dce9f4;border-radius:22px 22px 0 0;object-fit:cover}
+.gc-pc{padding:18px 22px 20px}
+.gc-new2{display:inline-block;background:#c42f66;color:#fff;font-weight:800;font-size:12.5px;border-radius:99px;padding:3px 11px;letter-spacing:.02em}
+.gc-pc h3{font-size:22px;margin:8px 0 6px;line-height:1.3}.gc-pc h3 span{color:#0d5a8c}
+.gc-pc p{color:#4a5b68;font-size:15px;line-height:1.55;margin:0 0 10px}
+.gc-pc ul{margin:0 0 14px;padding:0;list-style:none;display:grid;gap:6px}.gc-pc li{font-size:14.5px;padding-left:24px;position:relative;line-height:1.45}
+.gc-pc li::before{content:'✓';position:absolute;left:2px;top:0;color:#1d7a4b;font-weight:900}
+.gc-pa{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.gc-pa .go{all:unset;cursor:pointer;background:linear-gradient(135deg,#0d5a8c,#c42f66);color:#fff;font-weight:800;padding:12px 22px;border-radius:12px;font-size:15.5px}
+.gc-pa .later{all:unset;cursor:pointer;color:#5a6873;font-weight:700;padding:12px 10px;font-size:14.5px}
+.gc-pa label{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:13px;color:#8794a0;cursor:pointer}
+.gc-px{all:unset;cursor:pointer;position:absolute;top:10px;right:12px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;font-size:22px;color:#17222c;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+@keyframes gcf{from{opacity:0}}@keyframes gcu{from{opacity:0;transform:translateY(24px) scale(.97)}}
+@media (max-width:640px){.gc-pc{padding:14px 16px 16px}.gc-pc h3{font-size:19px}.gc-pc p{font-size:14px}.gc-pa label{margin-left:0;width:100%}}
+@media print{.gc-pm{display:none!important}}`;
   D.head.appendChild(css);
 
   const ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.8A8 8 0 1 1 21 12z"/><path d="M8.5 10.5h7M8.5 13.8h4.5"/></svg>';
@@ -192,8 +209,29 @@
 
   setInterval(() => { const on = !!D.querySelector('.cbt.on'); fab.classList.toggle('gc-incbt', on); if (P.classList.contains('on')) CX.textContent = ctxLabel(); }, 800);
 
+
+  /* ---- popup giới thiệu chức năng mới (mỗi lần vào app 1 lần, có "Không hiện lại") ---- */
+  function promo() {
+    try { if (localStorage.getItem('gc_promo_off') === '1' || sessionStorage.getItem('gc_promo_seen')) return; } catch (e) { }
+    if (D.querySelector('.cbt.on')) return;
+    try { sessionStorage.setItem('gc_promo_seen', '1'); } catch (e) { }
+    const m = D.createElement('div'); m.className = 'gc-pm';
+    m.innerHTML = `<div class="gc-pb" role="dialog" aria-label="Chức năng mới: Hỏi đáp cùng AI"><button type="button" class="gc-px" aria-label="Đóng">×</button>
+      <img class="gc-im" src="/app/ai-promo.webp?v=1" alt="Trợ lý Gino giải thích đáp án ngay khi làm đề">
+      <div class="gc-pc"><span class="gc-new2">MỚI</span><h3>Chức năng mới: <span>Hỏi đáp cùng AI</span></h3>
+      <p>Làm đề mà chưa hiểu vì sao sai? Bấm nút chat góc dưới màn hình — Trợ lý Gino giải thích ngay tại chỗ.</p>
+      <ul><li>Giải thích đáp án đúng và vì sao các lựa chọn khác sai</li><li>Nghĩa từ vựng, cách đọc, âm Hán Việt của chữ Hán</li><li>Đang thi thử chưa nộp bài: chỉ gợi ý, không lộ đáp án</li></ul>
+      <div class="gc-pa"><button type="button" class="go">Thử hỏi ngay →</button><button type="button" class="later">Để sau</button>
+      <label><input type="checkbox" class="off"> Không hiện lại</label></div></div></div>`;
+    const close = () => { try { if (m.querySelector('.off').checked) localStorage.setItem('gc_promo_off', '1'); } catch (e) { } m.remove(); };
+    m.addEventListener('click', e => { if (e.target === m || e.target.closest('.gc-px,.later')) close(); });
+    m.querySelector('.go').onclick = () => { close(); open(); };
+    m.addEventListener('keydown', e => { if (e.key === 'Escape') close(); e.stopPropagation(); });
+    D.body.appendChild(m);
+  }
   fetch('/api/chat/status', { credentials: 'same-origin' }).then(r => r.json()).then(d => {
     if (!d.ok) return;            // chưa có API key → không hiện nút
     D.body.appendChild(fab); D.body.appendChild(P);
+    setTimeout(promo, 1200);
   }).catch(() => { });
 })();

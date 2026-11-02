@@ -49,7 +49,7 @@ function loginPage(err = '', user = '', next = '/') {
   return new Response(html, { status: err ? 401 : 200, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' } });
 }
 const norm = s => String(s || '').trim().toUpperCase();
-const CHAT_TAG = '\n<script src="/app/chat-ui.js?v=2" defer></script>\n';
+const CHAT_TAG = '\n<script src="/app/chat-ui.js?v=3" defer></script>\n';
 // trang app được chia 2 phần (mỗi file < 10MB) — ghép lại khi trả về
 async function appPage(req, env) {
   const base = new URL(req.url).origin;
