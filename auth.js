@@ -49,7 +49,7 @@ function loginPage(err = '', user = '', next = '/') {
   return new Response(html, { status: err ? 401 : 200, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' } });
 }
 const norm = s => String(s || '').trim().toUpperCase();
-const CHAT_TAG = '\n<script src="/app/chat-ui.js?v=3" defer></script>\n';
+const CHAT_TAG = '\n<script src="/app/chat-ui.js?v=4" defer></script>\n';
 // trang app được chia 2 phần (mỗi file < 10MB) — ghép lại khi trả về
 async function appPage(req, env) {
   const base = new URL(req.url).origin;
@@ -87,7 +87,7 @@ function trialRoute(req, env, url) {
   return null;
 }
 
-export async function handle(req, env) {
+export async function handle(req, env, ctx) {
   const url = new URL(req.url);
   const trial = trialRoute(req, env, url);
   if (trial) return trial;
@@ -126,7 +126,7 @@ export async function handle(req, env) {
       return Response.redirect(`${url.origin}/login?next=${encodeURIComponent(url.pathname + url.search)}`, 302);
     return new Response('Cần đăng nhập', { status: 401, headers: { 'Cache-Control': 'no-store' } });
   }
-  if (url.pathname === '/api/chat' || url.pathname === '/api/chat/status') return chatAPI(req, env, user);
+  if (url.pathname === '/api/chat' || url.pathname === '/api/chat/status') return chatAPI(req, env, user, ctx);
   const dest = req.headers.get('Sec-Fetch-Dest');
   const isDoc = req.method === 'GET' && (dest === 'document' || (!dest && (req.headers.get('Accept') || '').includes('text/html')));
   if (isDoc && (url.pathname === '/' || url.pathname === '/index.html')) {

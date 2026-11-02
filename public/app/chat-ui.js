@@ -170,17 +170,35 @@
     hist.push({ role: 'user', content: q }); add('user', q); save();
     busy = true; SB.disabled = true;
     const wait = add('assistant', ''); wait.innerHTML = '<span class="gc-dots"><span></span><span></span><span></span></span>';
+    const ac = new AbortController(); let tmo = setTimeout(() => ac.abort(), 45000);
+    let txt = '';
     try {
-      const r = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'same-origin',
+      const r = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'same-origin', signal: ac.signal,
         body: JSON.stringify({ messages: hist.filter(m => !m.err).slice(-12).map(m => ({ role: m.role, content: m.content })), context: buildCtx(q) }) });
-      const d = await r.json().catch(() => ({}));
-      wait.remove();
       if (r.status === 401) throw new Error('Phiên đăng nhập đã hết — tải lại trang và đăng nhập lại nhé.');
-      if (!r.ok || !d.reply) throw new Error((d.error || 'Trợ lý đang lỗi, thử lại sau nhé.') + (d.detail ? '\n(Mã lỗi: ' + d.detail + ')' : ''));
-      hist.push({ role: 'assistant', content: d.reply }); add('assistant', d.reply);
+      if ((r.headers.get('content-type') || '').includes('application/json')) {
+        const d = await r.json().catch(() => ({}));
+        if (!r.ok || !d.reply) throw new Error((d.error || 'Trợ lý đang lỗi, thử lại sau nhé.') + (d.detail && /gặp lỗi/.test(d.error || '') ? '\n(Mã lỗi: ' + d.detail + ')' : ''));
+        txt = d.reply;
+      } else {
+        // chữ hiện dần theo luồng trả về
+        const rd = r.body.getReader(), dec = new TextDecoder();
+        for (;;) {
+          const { done, value } = await rd.read(); if (done) break;
+          clearTimeout(tmo); tmo = setTimeout(() => ac.abort(), 30000);
+          txt += dec.decode(value, { stream: true });
+          wait.innerHTML = md(txt); M.scrollTop = M.scrollHeight;
+        }
+        if (!txt.trim()) throw new Error('Trợ lý chưa trả lời được câu này, bạn hỏi lại giúp mình nhé.');
+      }
+      clearTimeout(tmo);
+      wait.innerHTML = md(txt);
+      hist.push({ role: 'assistant', content: txt });
     } catch (e) {
-      wait.remove();
-      hist.push({ role: 'assistant', content: e.message, err: 1 }); add('assistant', e.message, 1);
+      clearTimeout(tmo);
+      const msg = e.name === 'AbortError' || e instanceof TypeError ? 'Mạng chậm hoặc trợ lý trả lời quá lâu — bạn hỏi lại nhé.' : e.message;
+      if (txt.trim()) { wait.innerHTML = md(txt); hist.push({ role: 'assistant', content: txt }); }   // đã có một phần câu trả lời thì giữ lại
+      else { wait.remove(); hist.push({ role: 'assistant', content: msg, err: 1 }); add('assistant', msg, 1); }
     }
     save(); busy = false; SB.disabled = false; TA.focus();
   }
