@@ -37,7 +37,7 @@ function guess(v) {
 const MODELS = {
   anthropic: ['claude-haiku-5-5', 'claude-haiku-4-5', 'claude-3-5-haiku-latest'],
   openai: ['gpt-4.1-mini', 'gpt-4o-mini'],
-  gemini: ['gemini-2.5-flash', 'gemini-2.0-flash'],
+  gemini: ['gemini-flash-latest', 'gemini-2.5-flash'],
 };
 const json = (o, status = 200) => new Response(JSON.stringify(o), { status, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
 
@@ -58,13 +58,13 @@ async function callOne(p, key, model, system, msgs) {
   } else {
     r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(key)}`, {
       method: 'POST', headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ systemInstruction: { parts: [{ text: system }] }, generationConfig: { maxOutputTokens: 1000 },
+      body: JSON.stringify({ systemInstruction: { parts: [{ text: system }] }, generationConfig: { maxOutputTokens: 2048 },
         contents: msgs.map(m => ({ role: m.role === 'assistant' ? 'model' : 'user', parts: [{ text: m.content }] })) }) });
     d = await r.json().catch(() => ({}));
     if (r.ok) return { text: (((d.candidates || [])[0] || {}).content?.parts || []).map(x => x.text || '').join('').trim() };
   }
   const msg = JSON.stringify(d.error || d).slice(0, 300);
-  return { status: r.status, err: msg, modelMissing: r.status === 404 || /model|not[_ ]found/i.test(msg) && r.status === 400 };
+  return { status: r.status, err: msg, modelMissing: r.status === 404 || /no longer available|not[_ ]found|not supported|deprecated/i.test(msg) && r.status >= 400 && r.status < 500 };
 }
 
 let picked = null;   // model dò được (nhớ trong instance)
@@ -73,17 +73,19 @@ async function discover(p, key) {
     if (p === 'anthropic') {
       const r = await fetch('https://api.anthropic.com/v1/models?limit=100', { headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01' } });
       const ids = ((await r.json()).data || []).map(m => m.id);
-      return ids.find(i => /haiku/.test(i)) || ids.find(i => /sonnet/.test(i)) || ids[0] || null;
+      return ids.filter(i => /haiku/.test(i)).concat(ids.filter(i => /sonnet/.test(i)));
     }
     if (p === 'openai') {
       const r = await fetch('https://api.openai.com/v1/models', { headers: { Authorization: 'Bearer ' + key } });
       const ids = ((await r.json()).data || []).map(m => m.id).filter(i => /^gpt-/.test(i) && !/audio|realtime|search|transcribe|tts|image/.test(i)).sort().reverse();
-      return ids.find(i => /mini/.test(i)) || ids[0] || null;
+      return ids.filter(i => /mini/.test(i)).concat(ids.filter(i => !/mini/.test(i)));
     }
     const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models?key=' + encodeURIComponent(key));
-    const ms = ((await r.json()).models || []).filter(m => (m.supportedGenerationMethods || []).includes('generateContent')).map(m => m.name.replace('models/', ''));
-    return ms.find(i => /flash/.test(i) && !/image|tts|live|lite/.test(i)) || ms[0] || null;
-  } catch (e) { return null; }
+    const ver = i => parseFloat((i.match(/gemini-(\d+(?:\.\d+)?)/) || [0, 0])[1]);
+    const ms = ((await r.json()).models || []).filter(m => (m.supportedGenerationMethods || []).includes('generateContent')).map(m => m.name.replace('models/', ''))
+      .filter(i => /^gemini-/.test(i) && !/image|tts|live|lite|preview|exp|embedding|thinking/.test(i)).sort((a, b) => ver(b) - ver(a));
+    return ms.filter(i => /flash/.test(i)).concat(ms.filter(i => !/flash/.test(i)));
+  } catch (e) { return []; }
 }
 async function ask(k, env, msgs) {
   const list = env.CHAT_MODEL ? [env.CHAT_MODEL] : picked ? [picked] : MODELS[k.p];
@@ -94,10 +96,14 @@ async function ask(k, env, msgs) {
     if (!last.modelMissing) return last;
   }
   if (!env.CHAT_MODEL) {
-    const m = await discover(k.p, k.key);
-    if (m && !list.includes(m)) {
+    // model cũ bị khai tử: thử model mà thông báo lỗi gợi ý, rồi model mới nhất trong danh sách của key
+    const hint = (String(last && last.err || '').match(/use (?:models\/)?([a-z0-9][a-z0-9.\-]+[a-z0-9])/i) || [])[1];
+    const tried = new Set(list), cands = [];
+    for (const m of [hint, ...(await discover(k.p, k.key))]) if (m && !tried.has(m)) { tried.add(m); cands.push(m); }
+    for (const m of cands.slice(0, 4)) {
       try { last = await callOne(k.p, k.key, m, SYSTEM, msgs); } catch (e) { last = { status: 502, err: String(e).slice(0, 200) }; }
       if (last.text) { picked = m; return last; }
+      if (!last.modelMissing) break;
     }
   }
   return last || { status: 500, err: 'không có model' };
