@@ -41,7 +41,28 @@
 .gc-f button[disabled]{opacity:.5;cursor:default}.gc-f button svg{width:20px;height:20px}
 .gc-note{font-size:11px;color:#8794a0;text-align:center;padding:0 12px 8px;background:#fff}
 @media (max-width:880px){.gc-fab{bottom:calc(84px + env(safe-area-inset-bottom));right:12px;width:52px;height:52px}.gc-fab.gc-incbt{bottom:70px}
- .gc-p{right:8px;left:8px;width:auto;max-width:none;bottom:calc(8px + env(safe-area-inset-bottom));top:calc(56px + env(safe-area-inset-top));height:auto}}
+ .gc-p{right:10px;left:auto;width:min(400px,calc(100vw - 20px));bottom:calc(150px + env(safe-area-inset-bottom));height:min(560px,calc(100dvh - 230px))}}
+/* điện thoại: khung chat dạng "ngăn kéo" từ dưới lên, cao ~2/3 màn hình, phía trên vẫn thấy câu hỏi đang làm */
+.gc-bd{display:none}.gc-h .gc-big{display:none}
+@media (max-width:640px){
+ .gc-bd.on{display:block;position:fixed;inset:0;z-index:2147483000;background:rgba(10,30,45,.28)}
+ .gc-p{left:0;right:0;bottom:0;top:auto;width:100%;max-width:none;height:min(64dvh,560px);border-radius:20px 20px 0 0;border:0;box-shadow:0 -10px 40px rgba(13,40,60,.25);animation:gcsh .25s cubic-bezier(.2,.8,.2,1)}
+ .gc-p.big{height:calc(100dvh - 48px)}
+ .gc-p::before{content:'';position:absolute;top:6px;left:50%;width:40px;height:4px;margin-left:-20px;border-radius:9px;background:rgba(255,255,255,.55);z-index:2}
+ .gc-h{padding:14px 12px 9px;gap:8px}.gc-h .gc-lg{width:30px;height:30px;border-radius:9px}.gc-h .gc-lg img{width:22px}
+ .gc-h b{font-size:14.5px}.gc-h small{display:none}
+ .gc-h button{font-size:12.5px;padding:5px 7px}.gc-h .gc-x{font-size:24px}
+ .gc-h .gc-big{display:inline-block;margin-left:2px;font-size:17px}
+ .gc-m{padding:10px;gap:8px}
+ .gc-b{font-size:14px;line-height:1.55;padding:8px 11px;max-width:92%}
+ .gc-hi{padding:11px;font-size:13.5px}.gc-hi b{font-size:14px}
+ .gc-ch{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:8px -11px 0;padding:0 11px}.gc-ch::-webkit-scrollbar{display:none}.gc-ch button{flex:none;font-size:12.5px;padding:6px 10px}
+ .gc-ctx{padding:4px 12px 0;font-size:11.5px}
+ .gc-f{padding:8px 10px calc(8px + env(safe-area-inset-bottom))}.gc-f textarea{font-size:16px;min-height:40px;padding:8px 11px}.gc-f button{width:40px;height:40px}
+ .gc-note{display:none}
+ .gc-p.on~.gc-fab,.gc-fab.hide{display:none}
+}
+@keyframes gcsh{from{transform:translateY(40px);opacity:.4}}
 @media print{.gc-fab,.gc-p{display:none!important}}
 .gc-pm{position:fixed;inset:0;z-index:2147483002;background:rgba(10,30,45,.55);display:grid;place-items:center;padding:16px;animation:gcf .25s ease}
 .gc-pb{position:relative;background:#fff;border-radius:22px;max-width:620px;width:100%;max-height:calc(100vh - 32px);overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,.35);font-family:Quicksand,"Segoe UI",system-ui,sans-serif;color:#17222c;animation:gcu .35s cubic-bezier(.2,.8,.2,1)}
@@ -70,10 +91,11 @@
   const P = D.createElement('div');
   P.className = 'gc-p'; P.setAttribute('role', 'dialog'); P.setAttribute('aria-label', 'Trợ lý Gino');
   P.innerHTML = `<div class="gc-h"><span class="gc-lg"><img src="/pub/brand/mark.png" alt=""></span><div><b>Trợ lý Gino</b><small>Hỏi từ vựng · giải thích đáp án</small></div>
-    <button type="button" class="gc-new" title="Cuộc trò chuyện mới">Mới</button><button type="button" class="gc-x" aria-label="Đóng">×</button></div>
+    <button type="button" class="gc-new" title="Cuộc trò chuyện mới">Mới</button><button type="button" class="gc-big" aria-label="Phóng to">⤢</button><button type="button" class="gc-x" aria-label="Đóng">×</button></div>
     <div class="gc-m"></div><div class="gc-ctx"></div>
     <div class="gc-f"><textarea rows="1" placeholder="Hỏi từ, câu hỏi, đáp án…"></textarea><button type="button" class="gc-s" aria-label="Gửi">${SEND}</button></div>
     <div class="gc-note">Trợ lý AI có thể nhầm — câu quan trọng hãy hỏi lại thầy Anh Trọng.</div>`;
+  const BD = D.createElement('div'); BD.className = 'gc-bd'; BD.onclick = () => close2();
   const M = P.querySelector('.gc-m'), TA = P.querySelector('textarea'), SB = P.querySelector('.gc-s'), CX = P.querySelector('.gc-ctx');
 
   let hist = [];
@@ -200,7 +222,7 @@
       if (txt.trim()) { wait.innerHTML = md(txt); hist.push({ role: 'assistant', content: txt }); }   // đã có một phần câu trả lời thì giữ lại
       else { wait.remove(); hist.push({ role: 'assistant', content: msg, err: 1 }); add('assistant', msg, 1); }
     }
-    save(); busy = false; SB.disabled = false; TA.focus();
+    save(); busy = false; SB.disabled = false; if (!matchMedia('(max-width:640px)').matches) TA.focus();
   }
   function fitTA() { TA.style.height = 'auto'; TA.style.height = Math.min(TA.scrollHeight, 120) + 'px'; }
   function selText() {
@@ -211,13 +233,15 @@
   }
   function open() {
     const s = selText();
-    P.classList.add('on'); render();
+    P.classList.add('on'); BD.classList.add('on'); fab.classList.add('hide'); render();
     if (s && !TA.value) { TA.value = `Giải thích giúp mình: 「${s}」`; fitTA(); }
-    setTimeout(() => TA.focus(), 50);
+    if (!matchMedia('(max-width:640px)').matches) setTimeout(() => TA.focus(), 50);
   }
   fab.addEventListener('mousedown', e => e.preventDefault());   // giữ vùng chữ đang bôi đen
-  fab.onclick = () => P.classList.contains('on') ? P.classList.remove('on') : open();
-  P.querySelector('.gc-x').onclick = () => P.classList.remove('on');
+  function close2() { P.classList.remove('on', 'big'); BD.classList.remove('on'); fab.classList.remove('hide'); }
+  fab.onclick = () => P.classList.contains('on') ? close2() : open();
+  P.querySelector('.gc-x').onclick = close2;
+  P.querySelector('.gc-big').onclick = () => { P.classList.toggle('big'); M.scrollTop = M.scrollHeight; };
   P.querySelector('.gc-new').onclick = () => { hist = []; save(); render(); TA.focus(); };
   SB.onclick = () => send();
   TA.addEventListener('input', fitTA);
@@ -249,7 +273,7 @@
   }
   fetch('/api/chat/status', { credentials: 'same-origin' }).then(r => r.json()).then(d => {
     if (!d.ok) return;            // chưa có API key → không hiện nút
-    D.body.appendChild(fab); D.body.appendChild(P);
+    D.body.appendChild(BD); D.body.appendChild(fab); D.body.appendChild(P);
     setTimeout(promo, 1200);
   }).catch(() => { });
 })();

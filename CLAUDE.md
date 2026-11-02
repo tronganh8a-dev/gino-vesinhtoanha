@@ -32,11 +32,12 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
 - Khoá học viên: xoá khỏi ACCOUNTS (hoặc xoá biến TK_ của bạn đó) → Deploy.
 
 ## 3b. Trợ lý chat (hỏi từ vựng, giải thích đáp án) — chỉ bản chính, cần đăng nhập
-- Nút chat tròn góc dưới phải (trên thanh tab ở điện thoại; trong màn thi CBT nằm trên thanh đáy). Code giao diện: `public/app/chat-ui.js`; auth.js tự chèn thẻ `<script src="/app/chat-ui.js?v=4">` vào cuối trang app (không cần build lại p1/p2). Sửa chat-ui.js thì tăng `?v=` trong `CHAT_TAG` (auth.js).
+- Nút chat tròn góc dưới phải (trên thanh tab ở điện thoại; trong màn thi CBT nằm trên thanh đáy). Code giao diện: `public/app/chat-ui.js`; auth.js tự chèn thẻ `<script src="/app/chat-ui.js?v=5">` vào cuối trang app (không cần build lại p1/p2). Sửa chat-ui.js thì tăng `?v=` trong `CHAT_TAG` (auth.js).
 - Máy chủ: `chat.js` → `POST /api/chat` (gọi AI), `GET /api/chat/status` (xem đã nhận key chưa, trả tên biến + nhà cung cấp, không lộ key; thêm `?test=1` để gọi thử 1 câu và xem mã lỗi). Trả lời dạng stream (chữ hiện dần). Gemini: tắt/giảm "suy nghĩ" (thinkingBudget 0 → thinkingLevel low) cho nhanh; model bị khai tử/quá tải (404, 503 UNAVAILABLE, timeout 20s) thì tự chuyển model khác (gợi ý trong lỗi → danh sách model của key, flash trước, flash-lite dự phòng); model chạy được được nhớ 1 ngày (Cache API). Chưa có key → nút không hiện.
 - API key đặt trên Cloudflare (Secret), KHÔNG để trong repo. Tự nhận: `ANTHROPIC_API_KEY`/`CLAUDE_API_KEY` (sk-ant-…), `OPENAI_API_KEY` (sk-…), `GEMINI_API_KEY`/`GOOGLE_API_KEY` (AIza…), hoặc biến tên có chữ KEY/API mà giá trị có các tiền tố đó. Tuỳ chọn: `CHAT_MODEL` (đổi model), `CHAT_LIMIT` (câu hỏi/người/giờ, mặc định 40).
 - Ngữ cảnh gửi kèm: câu đề đang mở trong màn CBT (khi đang làm bài thi thử chưa nộp thì KHÔNG gửi đáp án, trợ lý chỉ gợi ý; xem đáp án/luyện tập đã chấm thì gửi đáp án + giải thích của lớp), từ vựng V/EQ khớp với câu hỏi, chữ đang bôi đen. Lời dặn hệ thống (tiếng Việt, furigana 漢字[かな], Hán Việt, bám giáo trình) ở đầu chat.js.
 - Popup "Chức năng mới: Hỏi đáp cùng AI" hiện 1 lần mỗi lần vào app (sessionStorage), có ô "Không hiện lại" (localStorage `gc_promo_off`); ảnh `public/app/ai-promo.webp` (mock Đề 2 câu 5 + trợ lý giải thích). Chỉ hiện khi đã có API key.
+- Điện thoại (≤640px): khung chat là ngăn kéo từ dưới lên cao ~64% màn hình (nút ⤢ phóng to), nền mờ phía trên, bấm ra ngoài để đóng, không tự bật bàn phím.
 - Bản dùng thử không có chat (tránh tốn phí API).
 
 ## 4. Bản dùng thử
