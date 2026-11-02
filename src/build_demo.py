@@ -173,6 +173,83 @@ def main():
                  + ' · 84 slide, 46 câu luyện tập có đáp án · nhắn Facebook</small></span><i>↗</i></a>')
         s = s[:m.start()] + LOCKT + s[m.end():]
 
+    # ---------- 3f. thanh điều hướng: Trang chủ → Video → Học từ → Đề thi → Tài liệu → Hướng dẫn ----------
+    a = s.index('<aside class="jx-side" id="nav"'); b = s.index('<div class="jx-grow"></div>', a)
+    seg = s[a:b]
+    tabs = {m.group(1): m.group(0) for m in re.finditer(r'<button class="tab[^"]*" data-p="(\w+)"[^>]*>.*?</button>', seg, re.S)}
+    assert set(tabs) == {'home', 'video', 'docs', 'cards', 'exam', 'guide'}, tabs.keys()
+    first = seg.index(tabs['home'])
+    tabs['cards'] = rep(tabs['cards'], '<span class="jx-nt">Flashcard</span>', '<span class="jx-nt">Học từ</span>')
+    tabs['exam'] = rep(tabs['exam'], '<span class="jx-nt">Luyện đề</span>', '<span class="jx-nt">Đề thi</span>')
+    seg = seg[:first] + ''.join(tabs[k] for k in ('home', 'video', 'cards', 'exam', 'docs', 'guide'))
+    s = s[:a] + seg + s[b:]
+
+    # ---------- 3g. trang chủ: 10 câu trắc nghiệm làm ngay (đề mở + ảnh thiết bị mở) ----------
+    TQ_HTML = ('\n  <div class="jx-card tq" id="tq">'
+               '<div class="tq-h"><span class="tq-k">Làm thử ngay</span><b>10 câu trắc nghiệm Vệ sinh toà nhà</b>'
+               '<span class="jpt">お試し10問</span><label class="tq-vn"><input type="checkbox" id="tqVn" checked> Tiếng Việt</label></div>'
+               '<div class="tq-pr"><span class="tq-bar"><i id="tqTrack"></i></span><span id="tqPos"></span></div>'
+               '<div id="tqBody"></div></div>\n')
+    s = rep(s, '<section class="page on" id="p-home">\n', '<section class="page on" id="p-home">\n' + TQ_HTML)
+    TQ_JS = r'''<script id="trial-quiz">
+(function () {
+  const box = document.getElementById('tqBody'); if (!box) return;
+  const L = 'ABCD';
+  const EQO = EQ.filter(e => !e[6] && e[5]);
+  const okq = q => !q.type && !(q.figs || []).length && q.opts.every(o => o.img == null) && q.ans && q.ans.length === 1 && q.opts.length >= 2;
+  const fromExam = (no, n) => shuffle(((EXAMS[no] || {}).questions || []).filter(okq)).slice(0, n).map(q => ({
+    jp: q.jp, vn: q.vn, opts: q.opts.map(o => ({ jp: o.jp, vn: o.vn })), a: L.indexOf(q.ans), ex: q.evi, tag: 'Đề ' + no }));
+  const fromEq = n => shuffle(EQO).slice(0, n).map(e => {
+    const others = shuffle(EQO.filter(x => x !== e && x[3] === e[3])).slice(0, 2);
+    const opts = shuffle([e, ...others]);
+    return { img: e[5], jp: 'この資器材[しきざい]の名前[なまえ]はどれですか。', vn: 'Thiết bị trong ảnh tên là gì?',
+      opts: opts.map(x => ({ jp: x[0], vn: x[2] })), a: opts.indexOf(e), ex: e[2] + ' — ' + e[4], tag: 'Ảnh thiết bị' };
+  });
+  let Q = [], i = 0, score = 0, picked = null;
+  function build() {
+    const a = fromExam(1, 4), b = fromExam(2, 3), c = fromEq(3);
+    Q = [a[0], c[0], b[0], a[1], c[1], b[1], a[2], c[2], b[2], a[3]].filter(Boolean);
+    i = 0; score = 0; picked = null; draw();
+  }
+  const vnOn = () => document.getElementById('tqVn').checked;
+  function draw() {
+    const pos = document.getElementById('tqPos'), tr = document.getElementById('tqTrack');
+    if (i >= Q.length) { pos.textContent = 'Xong ' + Q.length + ' câu'; tr.style.width = '100%'; return result(); }
+    pos.textContent = 'Câu ' + (i + 1) + '/' + Q.length + ' · đúng ' + score;
+    tr.style.width = (i / Q.length * 100) + '%';
+    const q = Q[i], done = picked !== null, vn = vnOn();
+    box.innerHTML = `<div class="tq-q"><span class="tq-tag">${q.tag}</span><div class="tq-jp">${furi(q.jp)}</div>
+      ${vn || done ? `<div class="tq-qvn">${esc(q.vn || '')}</div>` : ''}</div>
+      ${q.img ? `<div class="tq-img"><img src="${q.img}" alt=""></div>` : ''}
+      <div class="tq-opts">${q.opts.map((o, k) => {
+        const cls = !done ? '' : k === q.a ? ' ok' : k === picked ? ' ng' : ' dim';
+        const showVn = done || (vn && !q.img);
+        return `<button type="button" class="tq-o${cls}" data-k="${k}" ${done ? 'disabled' : ''}><span class="tq-l">${L[k]}</span><span class="tq-t"><span class="jp">${furi(o.jp)}</span>${showVn && o.vn ? `<small>${esc(o.vn)}</small>` : ''}</span>${done && k === q.a ? '<em>✓</em>' : done && k === picked ? '<em>✗</em>' : ''}</button>`;
+      }).join('')}</div>
+      ${done ? `<div class="tq-ex ${picked === q.a ? 'ok' : 'ng'}"><b>${picked === q.a ? 'Chính xác!' : 'Chưa đúng — đáp án ' + L[q.a]}</b><p>${esc(q.ex || '')}</p></div>
+      <button type="button" class="tq-next">${i + 1 < Q.length ? 'Câu tiếp →' : 'Xem kết quả →'}</button>` : ''}`;
+  }
+  function result() {
+    const pct = Math.round(score / Q.length * 100);
+    const msg = pct >= 80 ? 'Quá đỉnh! Bạn đã sẵn sàng luyện đề thật.' : pct >= 50 ? 'Khá lắm! Học thêm video và từ vựng là chắc đậu.' : 'Không sao — xem video buổi 1 rồi làm lại nhé!';
+    box.innerHTML = `<div class="tq-res"><div class="tq-ring" style="--p:${pct}"><b>${score}<small>/${Q.length}</small></b></div>
+      <div><h3>${msg}</h3><p>Bản trải nghiệm còn mở: video buổi 1, từ vựng Chương 1, 20 thiết bị có ảnh, Đề 1 và Đề 2 (giao diện thi CBT).</p>
+      <div class="tq-acts"><button type="button" class="tq-again">Làm lại 10 câu khác</button>
+      <button type="button" data-go="video">Xem video</button><button type="button" data-go="cards">Học từ</button><button type="button" data-go="exam">Làm đề thi</button></div></div></div>`;
+  }
+  box.addEventListener('click', e => {
+    const o = e.target.closest('.tq-o');
+    if (o && picked === null) { picked = +o.dataset.k; if (picked === Q[i].a) score++; draw(); return; }
+    if (e.target.closest('.tq-next')) { i++; picked = null; draw(); const t = document.getElementById('tq').getBoundingClientRect().top; if (t < 60) window.scrollBy({ top: t - 70, behavior: 'smooth' }); return; }
+    if (e.target.closest('.tq-again')) build();
+  });
+  document.getElementById('tqVn').addEventListener('change', () => { if (i < Q.length) draw(); });
+  build();
+})();
+</script>'''
+    a = s.index('const EXAMS = EXD.exams;'); b = s.index('</script>', a) + len('</script>')
+    s = s[:b] + TQ_JS + s[b:]
+
     # ---------- 4. bỏ đăng nhập/đăng xuất ----------
     s = re.sub(r"function jxLogout\(\) \{[^}]*\}", f"function jxLogout() {{ window.open({FBJ}, '_blank'); }}", s, count=1)
     s = rep(s, 'onclick="jxLogout()">Đăng xuất</button>', 'onclick="jxLogout()">Đăng ký khoá học</button>')
@@ -193,7 +270,7 @@ def main():
     # ---------- 6. dải "Bản trải nghiệm" + nút nổi FB/TikTok (luôn hiện) ----------
     FB_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 8V6.5c0-.7.5-1 1-1h2V2h-3c-3 0-4 2-4 4.3V8H7.5v3.5H10V22h4V11.5h2.8l.5-3.5H14z"/></svg>'
     TT_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 2h-3.4v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.2a6.4 6.4 0 1 0 5.4 6.3V8.8a8 8 0 0 0 4.4 1.3V6.7a4.6 4.6 0 0 1-4.4-4.7z"/></svg>'
-    BAR = (f'<div class="trialbar" role="banner"><span class="tb-t">🎁 <b>Bản trải nghiệm</b><span class="tb-s"> · mở video buổi 1 &amp; 2 đề đầu</span></span>'
+    BAR = (f'<div class="trialbar" role="banner"><span class="tb-t">🎁 <b>Bản trải nghiệm</b><span class="tb-s"> · làm thử 10 câu ngay ở trang chủ</span></span>'
            f'<a class="tb-reg" href="{REGISTER_URL}" target="_blank" rel="noopener">Đăng ký</a>'
            f'<a class="tb-ic fb" href="{FB}" target="_blank" rel="noopener" aria-label="Facebook">{FB_SVG}</a>'
            f'<a class="tb-ic tt" href="{TIKTOK}" target="_blank" rel="noopener" aria-label="TikTok">{TT_SVG}</a></div>'
@@ -246,6 +323,33 @@ body{padding-top:var(--tbh)!important}
 .tp-card h4{margin:0 0 4px;font-size:17px}.tp-card p{margin:0 0 12px;color:#5b6b77;font-size:14px}
 .tp-price b{font-size:32px;color:#0d5a8c;letter-spacing:-.01em}.tp-price span{margin-left:4px;font-weight:700}.tp-price small{margin-left:6px;color:#8794a0}
 .tp-reg{display:inline-block;margin-top:16px;background:#c42f66;color:#fff;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:12px}
+.tq{border-top:4px solid #0d5a8c;margin-bottom:18px}
+.tq-h{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-bottom:10px}.tq-h b{font-size:20px}.tq-h .jpt{color:#8794a0}
+.tq-k{background:#c42f66;color:#fff;font-weight:800;font-size:12.5px;border-radius:999px;padding:3px 11px}
+.tq-vn{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:#5a6873;cursor:pointer;user-select:none}.tq-vn input{accent-color:#0d5a8c;width:16px;height:16px}
+.tq-pr{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:#5a6873;margin-bottom:14px}.tq-bar{flex:1;height:8px;border-radius:99px;background:#e5eff6;overflow:hidden}.tq-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#0d5a8c,#c42f66);border-radius:99px;transition:width .35s}
+.tq-q{margin-bottom:12px}.tq-tag{display:inline-block;font-size:12px;font-weight:700;color:#0d5a8c;background:#e5eff6;border-radius:8px;padding:2px 9px;margin-bottom:6px}
+.tq-jp{font-family:var(--fjp);font-size:21px;line-height:1.9;color:#17222c}.tq-jp rt,.tq-o rt{font-size:.5em;color:#2f6ea8}
+.tq-qvn{color:#2f6ea8;font-weight:600;font-size:14.5px;margin-top:2px}
+.tq-img{display:grid;place-items:center;background:#fff;border:1px solid #dbe2e7;border-radius:14px;padding:10px;margin-bottom:12px}.tq-img img{max-height:200px;max-width:100%;object-fit:contain}
+.tq-opts{display:grid;gap:9px}
+.tq-o{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:1.5px solid #dbe2e7;border-radius:12px;background:#fff;cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
+.tq-o:hover:not([disabled]){border-color:#0d5a8c;background:#f5f9fc}.tq-o:active:not([disabled]){transform:scale(.99)}
+.tq-l{flex:none;width:30px;height:30px;border-radius:50%;background:#17222c;color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px}
+.tq-t{flex:1;min-width:0}.tq-t .jp{font-family:var(--fjp);font-size:17px;line-height:1.75;display:block}.tq-t small{display:block;color:#5a6873;font-size:13px;line-height:1.35}
+.tq-o em{font-style:normal;font-weight:900;font-size:20px}
+.tq-o.ok{border-color:#1d7a4b;background:#e1f3e9}.tq-o.ok .tq-l{background:#1d7a4b}.tq-o.ok em{color:#1d7a4b}
+.tq-o.ng{border-color:#c42f66;background:#fbe6ee}.tq-o.ng .tq-l{background:#c42f66}.tq-o.ng em{color:#c42f66}
+.tq-o.dim{opacity:.55}.tq-o[disabled]{cursor:default}
+.tq-ex{margin-top:12px;border-radius:12px;padding:11px 14px;font-size:14.5px}.tq-ex.ok{background:#e1f3e9;border:1px solid #b9dfc9}.tq-ex.ng{background:#fdf2f6;border:1px solid #f1c4d4}
+.tq-ex b{display:block;font-size:15.5px;margin-bottom:2px}.tq-ex.ok b{color:#1d7a4b}.tq-ex.ng b{color:#c42f66}.tq-ex p{margin:0;color:#30414e;line-height:1.55}
+.tq-next{all:unset;display:block;margin:12px 0 0 auto;background:#0d5a8c;color:#fff;font-weight:800;padding:11px 22px;border-radius:12px;cursor:pointer}
+.tq-res{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.tq-ring{--p:0;width:120px;height:120px;border-radius:50%;background:conic-gradient(#1d7a4b calc(var(--p)*1%),#e5eff6 0);display:grid;place-items:center;flex:none}
+.tq-ring b{width:94px;height:94px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:34px;font-weight:800;color:#17222c;line-height:1}.tq-ring small{font-size:16px;color:#5a6873}
+.tq-res>div:last-child{flex:1;min-width:240px}.tq-res h3{margin:0 0 4px;font-size:19px}.tq-res p{margin:0 0 12px;color:#5a6873;font-size:14px}
+.tq-acts{display:flex;flex-wrap:wrap;gap:8px}.tq-acts button{all:unset;cursor:pointer;font-weight:700;font-size:14px;padding:9px 14px;border-radius:10px;background:#e5eff6;color:#0d5a8c}.tq-acts .tq-again{background:#c42f66;color:#fff}
+@media (max-width:640px){.tq{padding:14px 12px!important}.tq-h b{font-size:17px}.tq-jp{font-size:18px}.tq-t .jp{font-size:16px}.tq-o{padding:9px 11px;gap:10px}.tq-res{gap:14px}.tq-ring{width:96px;height:96px}.tq-ring b{width:74px;height:74px;font-size:27px}}
 @media (max-width:880px){.trialfab{right:10px;gap:8px}.trialfab a{width:40px;height:40px}.trialfab a svg{width:18px;height:18px}.trialbar .tb-s{display:none}.jx-side{top:auto!important;height:auto!important}.tp-grid{grid-template-columns:1fr}.trialfab{bottom:calc(84px + env(safe-area-inset-bottom))}}
 @media (max-width:640px){.jx-mtop{top:var(--tbh)!important}.tprice{padding:14px 12px!important}.tprice .tp-h{margin-bottom:12px}.tprice .tp-h b{font-size:17px}.tprice .tp-h .jpt{font-size:12px}.tp-pledge{margin:6px 0 0;font-size:12px;padding:4px 10px}.tp-grid{grid-template-columns:1fr 1fr!important;gap:8px}.tp-card{padding:13px 10px 10px;border-radius:12px}.tp-card h4{font-size:14px}.tp-card p{font-size:11.5px;margin-bottom:6px;line-height:1.4}.tp-price b{font-size:23px}.tp-price span{font-size:12px}.tp-price small{display:block;margin-left:0;font-size:11px}.tp-hot{font-size:10.5px;top:-9px;right:8px;padding:2px 7px}.tp-reg{display:block;text-align:center;margin-top:10px;padding:10px 14px;font-size:14.5px}}
 </style>'''

@@ -1994,6 +1994,61 @@ const GUIDE=[{"n":1,"t":"Hướng dẫn đi thi · Dọn vệ sinh tòa nhà","c
   });
 })();
 
+</script><script id="trial-quiz">
+(function () {
+  const box = document.getElementById('tqBody'); if (!box) return;
+  const L = 'ABCD';
+  const EQO = EQ.filter(e => !e[6] && e[5]);
+  const okq = q => !q.type && !(q.figs || []).length && q.opts.every(o => o.img == null) && q.ans && q.ans.length === 1 && q.opts.length >= 2;
+  const fromExam = (no, n) => shuffle(((EXAMS[no] || {}).questions || []).filter(okq)).slice(0, n).map(q => ({
+    jp: q.jp, vn: q.vn, opts: q.opts.map(o => ({ jp: o.jp, vn: o.vn })), a: L.indexOf(q.ans), ex: q.evi, tag: 'Đề ' + no }));
+  const fromEq = n => shuffle(EQO).slice(0, n).map(e => {
+    const others = shuffle(EQO.filter(x => x !== e && x[3] === e[3])).slice(0, 2);
+    const opts = shuffle([e, ...others]);
+    return { img: e[5], jp: 'この資器材[しきざい]の名前[なまえ]はどれですか。', vn: 'Thiết bị trong ảnh tên là gì?',
+      opts: opts.map(x => ({ jp: x[0], vn: x[2] })), a: opts.indexOf(e), ex: e[2] + ' — ' + e[4], tag: 'Ảnh thiết bị' };
+  });
+  let Q = [], i = 0, score = 0, picked = null;
+  function build() {
+    const a = fromExam(1, 4), b = fromExam(2, 3), c = fromEq(3);
+    Q = [a[0], c[0], b[0], a[1], c[1], b[1], a[2], c[2], b[2], a[3]].filter(Boolean);
+    i = 0; score = 0; picked = null; draw();
+  }
+  const vnOn = () => document.getElementById('tqVn').checked;
+  function draw() {
+    const pos = document.getElementById('tqPos'), tr = document.getElementById('tqTrack');
+    if (i >= Q.length) { pos.textContent = 'Xong ' + Q.length + ' câu'; tr.style.width = '100%'; return result(); }
+    pos.textContent = 'Câu ' + (i + 1) + '/' + Q.length + ' · đúng ' + score;
+    tr.style.width = (i / Q.length * 100) + '%';
+    const q = Q[i], done = picked !== null, vn = vnOn();
+    box.innerHTML = `<div class="tq-q"><span class="tq-tag">${q.tag}</span><div class="tq-jp">${furi(q.jp)}</div>
+      ${vn || done ? `<div class="tq-qvn">${esc(q.vn || '')}</div>` : ''}</div>
+      ${q.img ? `<div class="tq-img"><img src="${q.img}" alt=""></div>` : ''}
+      <div class="tq-opts">${q.opts.map((o, k) => {
+        const cls = !done ? '' : k === q.a ? ' ok' : k === picked ? ' ng' : ' dim';
+        const showVn = done || (vn && !q.img);
+        return `<button type="button" class="tq-o${cls}" data-k="${k}" ${done ? 'disabled' : ''}><span class="tq-l">${L[k]}</span><span class="tq-t"><span class="jp">${furi(o.jp)}</span>${showVn && o.vn ? `<small>${esc(o.vn)}</small>` : ''}</span>${done && k === q.a ? '<em>✓</em>' : done && k === picked ? '<em>✗</em>' : ''}</button>`;
+      }).join('')}</div>
+      ${done ? `<div class="tq-ex ${picked === q.a ? 'ok' : 'ng'}"><b>${picked === q.a ? 'Chính xác!' : 'Chưa đúng — đáp án ' + L[q.a]}</b><p>${esc(q.ex || '')}</p></div>
+      <button type="button" class="tq-next">${i + 1 < Q.length ? 'Câu tiếp →' : 'Xem kết quả →'}</button>` : ''}`;
+  }
+  function result() {
+    const pct = Math.round(score / Q.length * 100);
+    const msg = pct >= 80 ? 'Quá đỉnh! Bạn đã sẵn sàng luyện đề thật.' : pct >= 50 ? 'Khá lắm! Học thêm video và từ vựng là chắc đậu.' : 'Không sao — xem video buổi 1 rồi làm lại nhé!';
+    box.innerHTML = `<div class="tq-res"><div class="tq-ring" style="--p:${pct}"><b>${score}<small>/${Q.length}</small></b></div>
+      <div><h3>${msg}</h3><p>Bản trải nghiệm còn mở: video buổi 1, từ vựng Chương 1, 20 thiết bị có ảnh, Đề 1 và Đề 2 (giao diện thi CBT).</p>
+      <div class="tq-acts"><button type="button" class="tq-again">Làm lại 10 câu khác</button>
+      <button type="button" data-go="video">Xem video</button><button type="button" data-go="cards">Học từ</button><button type="button" data-go="exam">Làm đề thi</button></div></div></div>`;
+  }
+  box.addEventListener('click', e => {
+    const o = e.target.closest('.tq-o');
+    if (o && picked === null) { picked = +o.dataset.k; if (picked === Q[i].a) score++; draw(); return; }
+    if (e.target.closest('.tq-next')) { i++; picked = null; draw(); const t = document.getElementById('tq').getBoundingClientRect().top; if (t < 60) window.scrollBy({ top: t - 70, behavior: 'smooth' }); return; }
+    if (e.target.closest('.tq-again')) build();
+  });
+  document.getElementById('tqVn').addEventListener('change', () => { if (i < Q.length) draw(); });
+  build();
+})();
 </script>
 <script>
 /* ===== Giao diện kiểu app JFT — phần bổ sung (không đụng logic thi) ===== */
