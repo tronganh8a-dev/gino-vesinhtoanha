@@ -31,6 +31,13 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
 - Thêm tài khoản không cần nhập lại ACCOUNTS: Add variable → Secret, Name `TK_tendangnhap` (chữ/số/_), Value `matkhau` hoặc `matkhau:Tên hiển thị` → Deploy. ACCOUNTS và các biến TK_ dùng song song.
 - Khoá học viên: xoá khỏi ACCOUNTS (hoặc xoá biến TK_ của bạn đó) → Deploy.
 
+## 3b. Trợ lý chat (hỏi từ vựng, giải thích đáp án) — chỉ bản chính, cần đăng nhập
+- Nút chat tròn góc dưới phải (trên thanh tab ở điện thoại; trong màn thi CBT nằm trên thanh đáy). Code giao diện: `public/app/chat-ui.js`; auth.js tự chèn thẻ `<script src="/app/chat-ui.js?v=1">` vào cuối trang app (không cần build lại p1/p2). Sửa chat-ui.js thì tăng `?v=` trong `CHAT_TAG` (auth.js).
+- Máy chủ: `chat.js` → `POST /api/chat` (gọi AI), `GET /api/chat/status` (xem đã nhận key chưa, trả tên biến + nhà cung cấp, không lộ key). Chưa có key → nút không hiện.
+- API key đặt trên Cloudflare (Secret), KHÔNG để trong repo. Tự nhận: `ANTHROPIC_API_KEY`/`CLAUDE_API_KEY` (sk-ant-…), `OPENAI_API_KEY` (sk-…), `GEMINI_API_KEY`/`GOOGLE_API_KEY` (AIza…), hoặc biến tên có chữ KEY/API mà giá trị có các tiền tố đó. Tuỳ chọn: `CHAT_MODEL` (đổi model), `CHAT_LIMIT` (câu hỏi/người/giờ, mặc định 40).
+- Ngữ cảnh gửi kèm: câu đề đang mở trong màn CBT (khi đang làm bài thi thử chưa nộp thì KHÔNG gửi đáp án, trợ lý chỉ gợi ý; xem đáp án/luyện tập đã chấm thì gửi đáp án + giải thích của lớp), từ vựng V/EQ khớp với câu hỏi, chữ đang bôi đen. Lời dặn hệ thống (tiếng Việt, furigana 漢字[かな], Hán Việt, bám giáo trình) ở đầu chat.js.
+- Bản dùng thử không có chat (tránh tốn phí API).
+
 ## 4. Bản dùng thử
 - Không đăng nhập, không có ô mật khẩu. Đủ tính năng như bản chính, chỉ khoá:
   - Video: chỉ mở buổi 1 (`OPEN_VIDEOS`), các buổi khác bị XOÁ ID video.
