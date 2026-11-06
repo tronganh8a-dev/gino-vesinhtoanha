@@ -49,7 +49,8 @@ function loginPage(err = '', user = '', next = '/') {
   return new Response(html, { status: err ? 401 : 200, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' } });
 }
 const norm = s => String(s || '').trim().toUpperCase();
-const CHAT_TAG = '\n<script src="/app/chat-ui.js?v=5" defer></script>\n';
+const VR_TAG = '\n<script src="/pub/video-room.js?v=1" defer></script>\n';   // xem video màn hình lớn + lý thuyết bên cạnh (cả bản dùng thử)
+const CHAT_TAG = '\n<script src="/app/chat-ui.js?v=5" defer></script>\n' + VR_TAG;
 // trang app được chia 2 phần (mỗi file < 10MB) — ghép lại khi trả về
 async function appPage(req, env) {
   const base = new URL(req.url).origin;
@@ -74,7 +75,7 @@ async function trialPage(req, env) {
   if (!parts[0].ok) parts = await Promise.all(['/trial/p1.html', '/trial/p2.html'].map(p => env.ASSETS.fetch(new Request(base + p))));
   if (parts.some(r => !r.ok)) return new Response('Thiếu file bản dùng thử', { status: 500 });
   const { readable, writable } = new TransformStream();
-  (async () => { for (const r of parts) await r.body.pipeTo(writable, { preventClose: true }); await writable.close(); })();
+  (async () => { for (const r of parts) await r.body.pipeTo(writable, { preventClose: true }); const w = writable.getWriter(); await w.write(enc.encode(VR_TAG)); await w.close(); })();
   return new Response(readable, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache', 'X-Robots-Tag': 'noindex' } });
 }
 function trialRoute(req, env, url) {

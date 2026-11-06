@@ -40,6 +40,11 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
 - Điện thoại (≤640px): khung chat là ngăn kéo từ dưới lên cao ~64% màn hình (nút ⤢ phóng to), nền mờ phía trên, bấm ra ngoài để đóng, không tự bật bàn phím.
 - Bản dùng thử không có chat (tránh tốn phí API).
 
+## 3c. Xem video bài giảng (06/11/2026, giống app Khách sạn)
+- Bấm thẻ video ở tab Video → màn hình lớn tối `#jvOv`: YouTube API `controls=0` + thanh điều khiển riêng (phát, ±10s, tua, tiếng, tốc độ 1/1.25/1.5/0.75, toàn màn hình; phím Space/←/→, Esc đóng). Khung iframe kéo cao 90px mỗi đầu để ẩn tiêu đề; ảnh bìa (xanh thương hiệu + bìa chương `COVER[ch]`) ghim khi chưa phát/đang tải/tạm dừng; lớp chặn chuột lúc đang phát → không lộ logo, gợi ý của YouTube. Vị trí xem lưu `gvVidPos_<id>`.
+- Khung "📖 Lý thuyết" bên cạnh (máy tính mở sẵn; điện thoại: nút dưới video): chọn Chương 1–3, nạp `chapterURL(ch)` (có bút dạ); chương mặc định theo `SES[].ch` của buổi. ⇔ đổi độ rộng 34/42/52vw, ↗ mở tab riêng. Bản dùng thử: chương bị xoá nội dung hiện 🔒 + nút Facebook.
+- Code: `public/pub/video-room.js` (công khai, KHÔNG chứa ID video — ID lấy từ trang), auth.js chèn `VR_TAG` vào cả bản chính lẫn bản dùng thử, không cần build lại p1/p2. Sửa file thì tăng `?v=` trong `VR_TAG`.
+
 ## 4. Bản dùng thử
 - Không đăng nhập, không có ô mật khẩu. Đủ tính năng như bản chính, chỉ khoá:
   - Video: chỉ mở buổi 1 (`OPEN_VIDEOS`), các buổi khác bị XOÁ ID video.
