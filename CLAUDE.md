@@ -11,6 +11,7 @@
 
 ## 2. Cấu trúc
 ```
+session.js           phiên 1 thiết bị + chặn đoán mật khẩu (Durable Object)
 auth.js              đăng nhập (cookie gino_s ký HMAC, 30 ngày; tick "Lưu đăng nhập" = cookie gino_keep giữ đăng nhập 30 ngày, không tick thì tải lại / phải đăng nhập lại) + định tuyến bản dùng thử
 worker.js            lối vào, import auth.js — DÙNG CHUNG cho cả 2 worker
 wrangler.jsonc       worker bản chính (main: worker.js, assets: ./public)
@@ -30,6 +31,14 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
 - Biến Cloudflare (không nằm trong repo): `ACCOUNTS` = `user:matkhau:Tên hiển thị;…` (mật khẩu không phân biệt hoa thường), `SECRET`.
 - Thêm tài khoản không cần nhập lại ACCOUNTS: Add variable → Secret, Name `TK_tendangnhap` (chữ/số/_), Value `matkhau` hoặc `matkhau:Tên hiển thị` → Deploy. ACCOUNTS và các biến TK_ dùng song song.
 - Khoá học viên: xoá khỏi ACCOUNTS (hoặc xoá biến TK_ của bạn đó) → Deploy.
+
+## 3a. Bảo mật đăng nhập (10/11/2026)
+- **Mỗi tài khoản 1 thiết bị**: đăng nhập máy mới → máy cũ mất phiên. Máy cũ đang mở app tự kiểm tra `/api/ping` mỗi 30 giây / khi quay lại tab → xoá trang, hiện "Tài khoản đã đăng nhập trên thiết bị khác" (tên máy mới + giờ) + nút Đăng nhập lại; tải trang/ảnh/chat bằng phiên cũ → 401 hoặc về `/login?k=1`.
+- Code: `session.js` (Durable Object `Sessions`, SQLite, binding `SESS` + migration `v1` trong wrangler.jsonc — gói miễn phí dùng được, Cloudflare tự tạo khi build). Cookie `gino_s` = `user|hạn|sid|chữ ký` (chữ ký gồm cả mật khẩu → đổi mật khẩu là mọi máy mất phiên). Mỗi worker nhớ phiên 20 giây cho đỡ gọi DO.
+- Tài khoản được dùng nhiều máy (vd. tài khoản giáo viên): biến tuỳ chọn `MULTI_DEVICE` = `ten1,ten2` → Deploy.
+- Chặn đoán mật khẩu: 1 tài khoản sai 8 lần hoặc 1 IP sai 20 lần trong 15 phút → khoá tạm 15 phút.
+- Header bảo mật mọi trang bản chính: X-Frame-Options SAMEORIGIN, nosniff, HSTS, Referrer-Policy, Permissions-Policy.
+- Bản dùng thử không khai báo DO (demo/wrangler.jsonc) → code tự bỏ qua.
 
 ## 3b. Trợ lý chat (hỏi từ vựng, giải thích đáp án) — chỉ bản chính, cần đăng nhập
 - Nút chat tròn góc dưới phải (trên thanh tab ở điện thoại; trong màn thi CBT nằm trên thanh đáy). Code giao diện: `public/app/chat-ui.js`; auth.js tự chèn thẻ `<script src="/app/chat-ui.js?v=5">` vào cuối trang app (không cần build lại p1/p2). Sửa chat-ui.js thì tăng `?v=` trong `CHAT_TAG` (auth.js).
