@@ -40,6 +40,11 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
 - Header bảo mật mọi trang bản chính: X-Frame-Options SAMEORIGIN, nosniff, HSTS, Referrer-Policy, Permissions-Policy.
 - Bản dùng thử không khai báo DO (demo/wrangler.jsonc) → code tự bỏ qua.
 
+## 3a2. In chìm tên + chặn sao chép (10/11/2026)
+- `public/pub/protect.js`, auth.js chèn qua `protectTag()` (`PROTECT_V` — sửa file thì tăng). Bản chính: `window.__GWM={n:tên hiển thị,u:tên đăng nhập}` → lớp in chìm mờ (tên + tài khoản + ngày) phủ mọi màn hình, kể cả video và khi bật toàn màn hình (lớp được chuyển vào phần tử toàn màn hình); xoá/sửa lớp thì tự dựng lại.
+- Cả bản chính và bản dùng thử: chặn chuột phải, bôi đen, sao chép/cắt, kéo ảnh, Ctrl/Cmd+S/P/U, F12, in (trang trắng khi in). Ô nhập chữ (chat, ghi chú bút dạ) vẫn gõ/dán được.
+- Khung chương / slide (blob) cũng được bảo vệ: protect.js bọc `URL.createObjectURL` để gắn chính nó vào mọi trang HTML blob (cả khi mở tab riêng).
+
 ## 3b. Trợ lý chat (hỏi từ vựng, giải thích đáp án) — chỉ bản chính, cần đăng nhập
 - Nút chat tròn góc dưới phải (trên thanh tab ở điện thoại; trong màn thi CBT nằm trên thanh đáy). Code giao diện: `public/app/chat-ui.js`; auth.js tự chèn thẻ `<script src="/app/chat-ui.js?v=5">` vào cuối trang app (không cần build lại p1/p2). Sửa chat-ui.js thì tăng `?v=` trong `CHAT_TAG` (auth.js).
 - Máy chủ: `chat.js` → `POST /api/chat` (gọi AI), `GET /api/chat/status` (xem đã nhận key chưa, trả tên biến + nhà cung cấp, không lộ key; thêm `?test=1` để gọi thử 1 câu và xem mã lỗi). Trả lời dạng stream (chữ hiện dần). Gemini: tắt/giảm "suy nghĩ" (thinkingBudget 0 → thinkingLevel low) cho nhanh; model bị khai tử/quá tải (404, 503 UNAVAILABLE, timeout 20s) thì tự chuyển model khác (gợi ý trong lỗi → danh sách model của key, flash trước, flash-lite dự phòng); model chạy được được nhớ 1 ngày (Cache API). Chưa có key → nút không hiện.

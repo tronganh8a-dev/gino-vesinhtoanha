@@ -77,15 +77,20 @@ document.title='Đã đăng xuất';document.body.innerHTML='<div style="positio
 function ping(){if(b)return;b=1;fetch('/api/ping',{cache:'no-store',credentials:'same-origin'}).then(function(r){if(r.status===401)return r.json().catch(function(){return{}}).then(out)}).catch(function(){}).then(function(){b=0})}
 setInterval(function(){if(!document.hidden)ping()},30000);document.addEventListener('visibilitychange',function(){if(!document.hidden)ping()});window.addEventListener('focus',ping)})();</script>`;
 const CHAT_TAG = '\n<script src="/app/chat-ui.js?v=5" defer></script>\n' + VR_TAG + SESS_TAG;
+// In chìm tên học viên + chặn chuột phải / bôi đen / sao chép / in (public/pub/protect.js). Sửa file thì tăng ?v=
+const PROTECT_V = 1;
+const protectTag = (u, name) => '\n<script>window.__GWM=' + JSON.stringify(u ? { n: name || u, u } : null).replace(/</g, '\\u003c') +
+  `</script><script src="/pub/protect.js?v=${PROTECT_V}"></script>\n`;
 // trang app được chia 2 phần (mỗi file < 10MB) — ghép lại khi trả về
-async function appPage(req, env) {
+async function appPage(req, env, user) {
   const base = new URL(req.url).origin;
   const parts = await Promise.all(['/app/p1.html', '/app/p2.html'].map(p => env.ASSETS.fetch(new Request(base + p))));
   if (parts.some(r => !r.ok)) return new Response('Thiếu file trang học', { status: 500 });
   const { readable, writable } = new TransformStream();
   (async () => {
     for (const r of parts) await r.body.pipeTo(writable, { preventClose: true });
-    const w = writable.getWriter(); await w.write(enc.encode(CHAT_TAG)); await w.close();   // nút chat trợ lý
+    const acc = accounts(env).get(user) || {};
+    const w = writable.getWriter(); await w.write(enc.encode(protectTag(user, acc.name) + CHAT_TAG)); await w.close();   // in chìm + nút chat trợ lý
   })();
   return new Response(readable, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'X-Robots-Tag': 'noindex' } });
 }
@@ -101,7 +106,7 @@ async function trialPage(req, env) {
   if (!parts[0].ok) parts = await Promise.all(['/trial/p1.html', '/trial/p2.html'].map(p => env.ASSETS.fetch(new Request(base + p))));
   if (parts.some(r => !r.ok)) return new Response('Thiếu file bản dùng thử', { status: 500 });
   const { readable, writable } = new TransformStream();
-  (async () => { for (const r of parts) await r.body.pipeTo(writable, { preventClose: true }); const w = writable.getWriter(); await w.write(enc.encode(VR_TAG)); await w.close(); })();
+  (async () => { for (const r of parts) await r.body.pipeTo(writable, { preventClose: true }); const w = writable.getWriter(); await w.write(enc.encode(protectTag(null) + VR_TAG)); await w.close(); })();
   return new Response(readable, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache', 'X-Robots-Tag': 'noindex' } });
 }
 function trialRoute(req, env, url) {
@@ -184,7 +189,7 @@ async function guarded(req, env, ctx, url, next) {
   if (isDoc && (url.pathname === '/' || url.pathname === '/index.html')) {
     // không tick "Lưu đăng nhập" → tải lại trang là phải đăng nhập lại
     if (!getCookie(req, 'gino_once') && !getCookie(req, 'gino_keep')) return new Response(null, { status: 302, headers: { Location: '/login', 'Cache-Control': 'no-store' } });
-    const o = await appPage(req, env);
+    const o = await appPage(req, env, user);
     o.headers.set('Cache-Control', 'no-store');
     o.headers.set('X-Robots-Tag', 'noindex');
     o.headers.append('Set-Cookie', `gino_once=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax`);
