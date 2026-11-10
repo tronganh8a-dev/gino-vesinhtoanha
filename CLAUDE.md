@@ -61,7 +61,7 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
   - Flashcard: chỉ giữ từ vựng Chương 1 (`OPEN_VOCAB_CH`), XOÁ từ vựng Chương 2–3 khỏi V/TOPIC; chip Chương 2–3 hiện 🔒.
   - Thiết bị: mở 10/20 mỗi nhóm (`EQ_OPEN_PER_GROUP`), 20 thiết bị còn lại giữ tên nhưng XOÁ ảnh + cách dùng; trắc nghiệm ảnh chỉ dùng thiết bị mở.
   - Tài liệu: chỉ mở Chương 1 (`OPEN_DOCS`), XOÁ hẳn nội dung Chương 2–3 (`<script id="src-ch2/ch3">`); thẻ chương + lá sơ đồ tư duy hiện 🔒, bấm vào hiện hộp "Thuộc khoá học đầy đủ". Bản dùng thử luôn ghi p1+p2.
-  - Link "Tải Slide bài giảng" (Google Drive) ở tab Tài liệu: bản chính mở được; bản dùng thử XOÁ link, thay bằng nút 🔒 trỏ Facebook (đánh dấu `<!--SLIDE-START/END-->` trong bản chính).
+  - Link "Tải Slide bài giảng" (Google Drive; trong p1/p2 nằm ở tab Tài liệu, auth.js `SLIDE_HOME` chuyển ra Trang chủ — ô xanh dài dưới khung "Đăng ký & lịch thi"): bản chính mở được; bản dùng thử XOÁ link, thay bằng nút 🔒 trỏ Facebook (đánh dấu `<!--SLIDE-START/END-->` trong bản chính).
   - Slide tổng ôn (tab Tài liệu, khối `<!--TONGON-START/END-->`: trình xem ảnh + đáp án 46 câu): bản dùng thử XOÁ cả khối, thay bằng nút 🔒 trỏ Facebook.
   - Thẻ khoá vẫn hiện tên + 🔒 "Thuộc khoá học đầy đủ" + nút nhắn Facebook.
 - Trang chủ bản dùng thử mở đầu bằng khối **"Làm thử ngay · 10 câu"** (`<script id="trial-quiz">`, mục 3g trong build_demo.py): mỗi lượt lấy ngẫu nhiên 4 câu Đề 1 + 3 câu Đề 2 + 3 câu ảnh thiết bị (chỉ thiết bị mở), bấm là chấm ngay + giải thích, cuối có điểm và nút sang Video / Học từ / Đề thi. Có nút bật/tắt tiếng Việt.

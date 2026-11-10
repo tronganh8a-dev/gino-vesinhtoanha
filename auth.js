@@ -66,7 +66,11 @@ function loginPage(err = '', user = '', next = '/') {
   return new Response(html, { status: err ? 401 : 200, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' } });
 }
 const norm = s => String(s || '').trim().toUpperCase();
-const VR_TAG = '\n<script src="/pub/video-room.js?v=1" defer></script>\n';   // xem video màn hình lớn + lý thuyết bên cạnh (cả bản dùng thử)
+const VR_TAG0 = '\n<script src="/pub/video-room.js?v=1" defer></script>\n';
+// Chuyển nút "Tải Slide bài giảng" từ tab Tài liệu ra Trang chủ (khung nút dưới hero) — cả bản chính lẫn bản dùng thử (bản dùng thử là nút 🔒)
+const SLIDE_HOME = `<style>#p-home .jx-sbtn .dslide{grid-column:1/-1;background:linear-gradient(135deg,#3b8fd6,#0d5a8c);color:#fff}#p-home .jx-sbtn .dslide.tslock{background:linear-gradient(135deg,#7d8b98,#56636f)}</style>
+<script>(function(){var a=document.querySelector('#p-docs .dslide'),g=document.querySelector('#p-home .jx-sbtn');if(a&&g){a.classList.remove('c1');g.appendChild(a)}})();</script>\n`;
+const VR_TAG = VR_TAG0 + SLIDE_HOME;   // xem video màn hình lớn + lý thuyết bên cạnh (cả bản dùng thử)
 // Kiểm tra phiên mỗi 30 giây / khi quay lại tab: máy khác đăng nhập → xoá trang, hiện thông báo, mời đăng nhập lại
 const SESS_TAG = `<script>(function(){var b=0;function out(d){var t='';try{if(d&&d.dev){t='Thiết bị mới: <b>'+d.dev+'</b>';if(d.at){var x=new Date(d.at);t+=' · '+('0'+x.getHours()).slice(-2)+':'+('0'+x.getMinutes()).slice(-2)+' '+x.getDate()+'/'+(x.getMonth()+1)}t+='<br>'}}catch(e){}
 document.title='Đã đăng xuất';document.body.innerHTML='<div style="position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:20px;background:linear-gradient(140deg,#0b3d60,#0d5a8c);font-family:system-ui,-apple-system,Segoe UI,sans-serif"><div style="background:#fff;border-radius:20px;max-width:390px;width:100%;padding:30px 26px;text-align:center;color:#17222c;box-shadow:0 24px 60px rgba(0,0,0,.3)"><div style="font-size:42px;line-height:1">🔒</div><h2 style="margin:12px 0 10px;font-size:20px;line-height:1.35">Tài khoản đã đăng nhập trên thiết bị khác</h2><p style="font-size:14.5px;line-height:1.6;color:#5a6873;margin:0 0 20px">'+t+'Mỗi tài khoản chỉ dùng trên 1 thiết bị, nên máy này đã bị đăng xuất.</p><a href="/logout" style="display:block;background:#0d5a8c;color:#fff;text-decoration:none;font-weight:700;border-radius:12px;padding:13px">Đăng nhập lại</a></div></div>'}
