@@ -139,3 +139,7 @@ body.nofuri rt{visibility:hidden}
 .vxp{font-size:.92rem;line-height:1.7;color:#24384a}.vxp p{margin:3px 0}.vxp b{color:#0d2b40}
 .fxp{margin:14px 0 4px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;text-align:left}
 .exp .vxp{margin-top:8px;border-top:1px dashed var(--line);padding-top:6px}
+.psg table.tb{width:100%;border-collapse:collapse;font-size:.92rem;line-height:1.75;background:#fff}
+.psg table.tb th,.psg table.tb td{border:1px solid #c9d6e2;padding:6px 8px;vertical-align:top;text-align:left}
+.psg table.tb th{background:#eef4fa;white-space:nowrap;font-weight:700}
+.psg table.tb thead th{text-align:center}
