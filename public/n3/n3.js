@@ -1,10 +1,10 @@
-/* Tab JLPT N3: luyện đề (26 đề, có đáp án + giải thích) và từ vựng Mimikara N3. Trang độc lập, nhúng vào app bằng iframe. */
+/* Tab JLPT N3: luyện đề (24 đề, có đáp án + giải thích) và từ vựng Mimikara N3. Trang độc lập, nhúng vào app bằng iframe. */
 (function(){
 'use strict';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(_){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}}};
-const ALL=Array.from({length:26},(_,k)=>String(k+1).padStart(2,'0'));
+const ALL=Array.from({length:24},(_,k)=>String(k+1).padStart(2,'0'));
 const SECS=['文字・語彙','文法','読解'],SECVI={'文字・語彙':'Chữ & từ vựng','文法':'Ngữ pháp','読解':'Đọc hiểu'};
 const MARK=['①','②','③','④'];
 if(LS.get('n3furi',1)===0)document.body.classList.add('nofuri');
@@ -23,7 +23,7 @@ async function deInit(){
  $('#pDe').innerHTML=`<p class="hint">Mỗi đề gồm 文字・語彙 (chữ & từ vựng) + 文法・読解 (ngữ pháp & đọc hiểu), không có phần nghe. Chọn <b>Thi thử</b> để làm có giờ và chấm điểm cuối bài, hoặc <b>Luyện tập</b> để xem đáp án và giải thích ngay sau mỗi câu.</p>
  <div class="exgrid">${ALL.map(no=>{const e=have[no];const b=e&&LS.get('n3best_'+e.id,null);
   return `<button class="ex${e?'':' soon'}" type="button" ${e?`data-f="${e.f}"`:''}><b>${deTitle(no)}</b><small>${e?e.n+' câu · 100 phút':'Đang cập nhật'}</small>${b!=null?`<span class="sc">${b}%</span><div class="bar"><i style="width:${b}%"></i></div>`:''}</button>`}).join('')}</div>
- <p class="src">Nguồn đề: bộ "26 đề thi thử JLPT N3" (tài liệu luyện thi). Đáp án đã được kiểm tra lại; giải thích tiếng Việt do Anh Trọng soạn.</p>`;
+ <p class="src">Nguồn đề: bộ đề thi thử JLPT N3 (tài liệu luyện thi, 24 đề không trùng). Đáp án đã được kiểm tra lại; giải thích tiếng Việt do Anh Trọng soạn.</p>`;
  $$('#pDe .ex[data-f]').forEach(b=>b.onclick=()=>pickMode(b.dataset.f));
 }
 function pickMode(f){const e=IDX.find(x=>x.f===f);let m=$('#modeDlg');if(!m){m=document.createElement('div');m.id='modeDlg';m.className='mask';document.body.appendChild(m)}

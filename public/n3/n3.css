@@ -132,3 +132,4 @@ body.nofuri rt{visibility:hidden}
  .parts{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.parts::-webkit-scrollbar{display:none}.parts button{flex:none}
  .res .rows{grid-template-columns:1fr 1fr 1fr}
 }
+.exp .gl{margin:3px 0}.exp .gl b{color:#0d2b40}
