@@ -129,5 +129,6 @@ body.nofuri rt{visibility:hidden}
  .tabs{grid-template-columns:1fr 1fr;gap:8px}.tab{padding:9px;gap:8px}.tab .ico{width:34px;height:46px}.tab small{display:none}
  .q{font-size:1.04rem}.op{font-size:.98rem}.psg{font-size:.97rem;max-height:45vh}
  .vt td.h{display:none}.vt th.h{display:none}
+ .parts{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.parts::-webkit-scrollbar{display:none}.parts button{flex:none}
  .res .rows{grid-template-columns:1fr 1fr 1fr}
 }

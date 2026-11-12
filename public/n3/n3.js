@@ -97,20 +97,20 @@ function vRender(){const P=parts();
  $$('#pTv [data-p]').forEach(b=>b.onclick=()=>{VP=+b.dataset.p;FC={i:0,list:[]};VQ=null;vRender()});
  $$('#pTv [data-vm]').forEach(b=>b.onclick=()=>{VM=b.dataset.vm;FC={i:0,list:[]};VQ=null;vRender()});
  if(VM==='list'){const draw=f=>{const s=(f||'').trim().toLowerCase();const L=s?V.filter(w=>[w.k,w.r,w.h,w.m].join(' ').toLowerCase().includes(s)):cur;
-   $('#vBody').innerHTML=`<table class="vt"><thead><tr><th>#</th><th>Từ</th><th>Cách đọc</th><th class="h">Hán Việt</th><th>Nghĩa</th></tr></thead><tbody>${L.map(w=>`<tr><td class="no">${w.n}</td><td class="k">${esc(w.k)}</td><td class="r">${esc(w.r)}</td><td class="h">${esc(w.h)}</td><td>${esc(w.m)}</td></tr>`).join('')||'<tr><td colspan="5" class="muted">Không tìm thấy.</td></tr>'}</tbody></table>`};
+   $('#vBody').innerHTML=`<table class="vt"><thead><tr><th>#</th><th>Từ</th><th>Cách đọc</th><th class="h">Hán Việt</th><th>Nghĩa</th></tr></thead><tbody>${L.map(w=>`<tr><td class="no">${w.n}</td><td class="k">${esc(w.k)}</td><td class="r">${w.r!==w.k?esc(w.r):''}</td><td class="h">${esc(w.h)}</td><td>${esc(w.m)}</td></tr>`).join('')||'<tr><td colspan="5" class="muted">Không tìm thấy.</td></tr>'}</tbody></table>`};
   draw('');$('#vS').oninput=e=>draw(e.target.value)}
  else if(VM==='fc')fcDraw(cur);else qzDraw(cur)}
 function fcDraw(cur){if(!FC.list.length)FC.list=cur.slice();const w=FC.list[FC.i];
- $('#vBody').innerHTML=`<div class="fc"><div class="fcard" id="fcC"><div class="in"><div class="f"><div class="w">${esc(w.k)}</div><small class="muted" style="margin-top:10px">Bấm để lật thẻ</small></div><div class="b"><div class="rd">${esc(w.r)}</div><div class="hv">${esc(w.h)}</div><div class="mn">${esc(w.m)}</div></div></div></div>
+ $('#vBody').innerHTML=`<div class="fc"><div class="fcard" id="fcC"><div class="in"><div class="f"><div class="w">${esc(w.k)}</div><small class="muted" style="margin-top:10px">Bấm để lật thẻ</small></div><div class="b"><div class="w" style="font-size:1.6rem">${esc(w.k)}</div>${w.r!==w.k?`<div class="rd">${esc(w.r)}</div>`:''}<div class="hv">${esc(w.h)}</div><div class="mn">${esc(w.m)}</div></div></div></div>
  <div class="fnav"><button class="btn" id="fcP" type="button">←</button><span class="muted">${FC.i+1}/${FC.list.length}</span><button class="btn" id="fcN" type="button">→</button><button class="btn" id="fcS" type="button">Trộn thẻ</button></div></div>`;
  $('#fcC').onclick=()=>$('#fcC').classList.toggle('flip');
  $('#fcP').onclick=()=>{FC.i=(FC.i-1+FC.list.length)%FC.list.length;fcDraw(cur)};$('#fcN').onclick=()=>{FC.i=(FC.i+1)%FC.list.length;fcDraw(cur)};
  $('#fcS').onclick=()=>{FC.list.sort(()=>Math.random()-.5);FC.i=0;fcDraw(cur)}}
-function qzDraw(cur){if(!VQ){const pool=cur.slice().sort(()=>Math.random()-.5).slice(0,Math.min(10,cur.length));VQ={qs:pool.map(w=>{const ty=Math.random()<.5?'m':'r';const others=V.filter(x=>x!==w&&x[ty]!==w[ty]).sort(()=>Math.random()-.5).slice(0,3);const o=[w,...others].sort(()=>Math.random()-.5);return {w,ty,o,a:o.indexOf(w)}}),i:0,ok:0,pick:null}}
+function qzDraw(cur){if(!VQ){const pool=cur.slice().sort(()=>Math.random()-.5).slice(0,Math.min(10,cur.length));VQ={qs:pool.map(w=>{const ty=(w.r!==w.k&&Math.random()<.5)?'r':'m';const others=V.filter(x=>x!==w&&x[ty]!==w[ty]&&(ty==='m'||x.r!==x.k)).sort(()=>Math.random()-.5).slice(0,3);const o=[w,...others].sort(()=>Math.random()-.5);return {w,ty,o,a:o.indexOf(w)}}),i:0,ok:0,pick:null}}
  const Q=VQ.qs[VQ.i];if(!Q){$('#vBody').innerHTML=`<div class="card" style="text-align:center"><b style="font-size:1.3rem">${VQ.ok}/${VQ.qs.length} câu đúng</b><p class="muted">Làm lượt mới để ôn tiếp.</p><button class="btn pri" id="qzA" type="button">Làm lượt mới</button></div>`;$('#qzA').onclick=()=>{VQ=null;qzDraw(cur)};return}
  $('#vBody').innerHTML=`<div class="card vq"><p class="muted">Câu ${VQ.i+1}/${VQ.qs.length} · ${Q.ty==='m'?'Chọn nghĩa đúng':'Chọn cách đọc đúng'}</p><div class="q jp">${esc(Q.w.k)}</div>
  <div class="ops">${Q.o.map((w,k)=>{let c='';if(VQ.pick!=null){if(k===Q.a)c=' ok';else if(k===VQ.pick)c=' ng'}return `<button class="op${c}" data-k="${k}" type="button"><span class="k">${k+1}</span><span>${esc(Q.ty==='m'?w.m:w.r)}</span></button>`}).join('')}</div>
- ${VQ.pick!=null?`<div class="exp"><b class="jp">${esc(Q.w.k)}</b>（${esc(Q.w.r)}）· ${esc(Q.w.h)} — ${esc(Q.w.m)}</div><p style="margin-top:10px"><button class="btn pri" id="qzN" type="button">Câu tiếp →</button></p>`:''}</div>`;
+ ${VQ.pick!=null?`<div class="exp"><b class="jp">${esc(Q.w.k)}</b>${Q.w.r!==Q.w.k?'（'+esc(Q.w.r)+'）':''}${Q.w.h?' · '+esc(Q.w.h):''} — ${esc(Q.w.m)}</div><p style="margin-top:10px"><button class="btn pri" id="qzN" type="button">Câu tiếp →</button></p>`:''}</div>`;
  $$('#vBody .op').forEach(b=>b.onclick=()=>{if(VQ.pick!=null)return;VQ.pick=+b.dataset.k;if(VQ.pick===Q.a)VQ.ok++;qzDraw(cur)});
  const n=$('#qzN');if(n)n.onclick=()=>{VQ.i++;VQ.pick=null;qzDraw(cur)}}
 
