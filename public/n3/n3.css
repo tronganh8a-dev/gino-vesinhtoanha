@@ -133,3 +133,9 @@ body.nofuri rt{visibility:hidden}
  .res .rows{grid-template-columns:1fr 1fr 1fr}
 }
 .exp .gl{margin:3px 0}.exp .gl b{color:#0d2b40}
+.vt tr.hx{cursor:pointer}.vt tr.hx:hover td{background:#f7fbfe}.vt tr.hx.open td{background:#eef6fc}
+.vmore{display:inline-block;margin-left:8px;font-size:.72rem;font-weight:700;color:var(--pink);white-space:nowrap}
+.vt tr.vx td{border-top:0;background:#f7fbfe;padding-top:0}
+.vxp{font-size:.92rem;line-height:1.7;color:#24384a}.vxp p{margin:3px 0}.vxp b{color:#0d2b40}
+.fxp{margin:14px 0 4px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;text-align:left}
+.exp .vxp{margin-top:8px;border-top:1px dashed var(--line);padding-top:6px}
