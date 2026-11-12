@@ -92,3 +92,8 @@ bản chính `/` → 302 /login; host có "trial" `/`, `/login` → 200 bản d�
 ## JLPT N3 (12/11/2026)
 - Tab "JLPT N3" thêm bằng `public/app/n3-tab.js` (auth.js chèn `N3_TAG`, chỉ bản chính): nút trong `#nav` + trang `#p-n3` nhúng `/n3/` (cần đăng nhập). Trang n3: Luyện đề (26 đề N3 có đáp án + giải thích) + Từ vựng Mimikara N3.
 - Thư mục `public/n3/` chép nguyên từ repo anhtrong-jft-app (bản gốc + công cụ dựng ở `src/n3/` bên đó). Dùng chung cho 4 app: JFT, Khách sạn, Vệ sinh toà nhà, Chế biến thực phẩm.
+
+## 6. Trang giới thiệu (bio) của anh (12/11/2026)
+- File: `public/pub/anhtrong/index.html` (1 file, ảnh + logo nhúng sẵn; nguồn dựng ở máy làm việc). Công khai, không đăng nhập.
+- Link: `<bản chính>/me` (auth.js trả thẳng file) hoặc `/pub/anhtrong/`.
+- Link ngắn: worker riêng `anhtrong` (`bio/wrangler.jsonc`, chỉ file tĩnh) → https://anhtrong.tronganh8a.workers.dev — anh tạo worker trên Cloudflare, nối repo này, Root directory = `bio`.

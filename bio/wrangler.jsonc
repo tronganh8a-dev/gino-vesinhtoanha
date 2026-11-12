@@ -1,0 +1,8 @@
+// Trang giới thiệu (bio) của anh Trọng Anh — worker chỉ có file tĩnh, link ngắn: https://anhtrong.tronganh8a.workers.dev
+// Trên Cloudflare: tạo worker tên "anhtrong", nối repo này, Root directory = bio
+{
+  "name": "anhtrong",
+  "compatibility_date": "2026-01-01",
+  "assets": { "directory": "../public/pub/anhtrong" },
+  "workers_dev": true
+}

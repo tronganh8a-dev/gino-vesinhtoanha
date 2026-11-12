@@ -174,6 +174,8 @@ export async function handle(req, env, ctx) {
     return new Response(null, { status: 303, headers: h });
   }
   if (url.pathname.startsWith('/pub/') && req.method === 'GET') return next();
+  // Trang giới thiệu (bio): link ngắn /me
+  if ((url.pathname === '/me' || url.pathname === '/me/') && req.method === 'GET') return env.ASSETS.fetch(new Request(url.origin + '/pub/anhtrong/'));
   if (url.pathname === '/login') {
     const k = url.searchParams.get('k'), lk = Number(url.searchParams.get('l') || 0);
     const r = loginPage(k === '2' ? LOCKMSG(mins(lk || Date.now() + 5 * 60e3)) : k ? KICK : '', '', safeNext(url.searchParams.get('next')));
