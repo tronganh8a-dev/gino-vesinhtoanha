@@ -81,30 +81,51 @@ function result(){const {ok,per}=score(),T=S.E.qs.length,pct=Math.round(ok/T*100
  const rv=()=>{S.i=0;render()};$('#qRv').onclick=rv;$('#qRv2').onclick=rv;$('#qX').onclick=close;$('#qAg').onclick=()=>{const f='de'+S.E.id.replace('n3-','');start(IDX.find(e=>e.id===S.E.id).f,S.mode)}}
 
 /* ---------- từ vựng Mimikara ---------- */
-let V=null,VP=0,VM='list',FC={i:0,list:[]},VQ=null;const PER=40;
+let V=null,VP=LS.get('n3vp',0),VM='list',FC={i:0,list:[]},VQ=null;const PER=40;
+const MK=new Set(LS.get('n3mark',[]));
+const isMk=n=>MK.has(n);
+function togMk(n){MK.has(n)?MK.delete(n):MK.add(n);LS.set('n3mark',[...MK]);$$('[data-mk="'+n+'"]').forEach(b=>{b.classList.toggle('on',MK.has(n));if(b.dataset.lb)b.innerHTML=mkLb(n)});const c=$('#mkC');if(c)c.textContent=MK.size;vTiles()}
+const mkLb=n=>MK.has(n)?'★ Đã đánh dấu':'☆ Đánh dấu';
+const STAR='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-2.9-5.4 2.9 1.1-6-4.5-4.2 6.1-.8z"/></svg>';
 const xh=x=>(x||'').split('¶').filter(t=>t.trim()).map(t=>{t=esc(t.trim());const m=t.match(/^([^:：]{1,28})[:：]\s/);if(m&&!/[ぁ-んァ-ン一-龯]/.test(m[1]))t='<b>'+m[1]+':</b>'+t.slice(m[0].length-1);return '<p>'+t+'</p>'}).join('');
 async function vInit(){if(V){vRender();return}$('#pTv').innerHTML='<p class="muted">Đang tải từ vựng…</p>';
  try{V=await (await fetch('data/vocab.json',{cache:'no-cache'})).json()}catch(_){V=[]}
  vRender()}
 function parts(){const n=Math.ceil(V.length/PER);return Array.from({length:n},(_,k)=>V.slice(k*PER,(k+1)*PER))}
+function vTiles(){const g=$('#vGrid');if(!g)return;const P=parts();
+ g.innerHTML=P.map((p,k)=>{const c=p.filter(w=>MK.has(w.n)).length;return `<button type="button" data-p="${k}" class="${k===VP?'on':''}" title="Phần ${k+1}: từ ${p[0].n}–${p[p.length-1].n}"><b>${k+1}</b><small>${p[0].n}–${p[p.length-1].n}</small>${c?`<i>${c}</i>`:''}</button>`}).join('')}
 function vRender(){const P=parts();
  if(!V.length){$('#pTv').innerHTML='<div class="card">Từ vựng Mimikara N3 đang được cập nhật.</div>';return}
- const cur=VP<0?V:P[VP];
+ if(VP>=P.length)VP=0;
+ const cur=VP===-1?V:VP===-2?V.filter(w=>MK.has(w.n)):P[VP];
+ const sc=VP===-1?'all':VP===-2?'mk':'part';
  let h=`<div class="vhead"><img src="img/mimikara.jpg" alt="Mimikara N3"><div><h2>Từ vựng Mimikara N3</h2><p>耳から覚える 語彙トレーニング N3 · ${V.length} từ · Hán Việt · cách đọc · nghĩa · cách dùng &amp; cụm từ kết hợp (bấm vào từ)</p></div></div>
- <div class="parts"><button type="button" data-p="-1" class="${VP<0?'on':''}">Tất cả</button>${P.map((p,k)=>`<button type="button" data-p="${k}" class="${k===VP?'on':''}">Phần ${k+1} <small>(${p[0].n}–${p[p.length-1].n})</small></button>`).join('')}</div>
+ <div class="vsel">
+  <div class="vsel-h">
+   <div class="seg" role="tablist"><button type="button" data-sc="part" class="${sc==='part'?'on':''}">Học theo phần</button><button type="button" data-sc="all" class="${sc==='all'?'on':''}">Tất cả <b>${V.length}</b></button><button type="button" data-sc="mk" class="${sc==='mk'?'on':''}"><span class="st">${STAR}</span>Đã đánh dấu <b id="mkC">${MK.size}</b></button></div>
+   ${sc==='part'?`<div class="step"><button type="button" data-st="-1" aria-label="Phần trước" ${VP===0?'disabled':''}>‹</button><span>Phần <b>${VP+1}</b><em>/${P.length}</em> · từ ${cur[0].n}–${cur[cur.length-1].n}</span><button type="button" data-st="1" aria-label="Phần sau" ${VP===P.length-1?'disabled':''}>›</button></div>`:''}
+  </div>
+  ${sc==='part'?'<div class="vgrid" id="vGrid"></div>':''}
+ </div>
  <div class="vtool"><div class="vmodes"><button class="btn${VM==='list'?' pri':''}" data-vm="list" type="button">Bảng từ</button><button class="btn${VM==='fc'?' pri':''}" data-vm="fc" type="button">Thẻ ghi nhớ</button><button class="btn${VM==='qz'?' pri':''}" data-vm="qz" type="button">Kiểm tra</button></div>${VM==='list'?'<input id="vS" type="search" placeholder="Tìm: kanji, cách đọc, Hán Việt hoặc nghĩa…">':''}</div><div id="vBody"></div>
  <p class="src">Nguồn: bảng tổng hợp 880 từ vựng Mimikara N3 (Minato Dorimu), theo sách 耳から覚える 語彙トレーニング N3 (アルク).</p>`;
- $('#pTv').innerHTML=h;
- $$('#pTv [data-p]').forEach(b=>b.onclick=()=>{VP=+b.dataset.p;FC={i:0,list:[]};VQ=null;vRender()});
+ $('#pTv').innerHTML=h;vTiles();
+ const go=v=>{VP=v;LS.set('n3vp',v);FC={i:0,list:[]};VQ=null;vRender()};
+ $('#pTv .vsel').onclick=e=>{const t=e.target.closest('[data-p],[data-sc],[data-st]');if(!t||t.disabled)return;
+  if(t.dataset.p!=null)go(+t.dataset.p);else if(t.dataset.st)go(Math.min(P.length-1,Math.max(0,VP+ +t.dataset.st)));
+  else{const v=t.dataset.sc;go(v==='all'?-1:v==='mk'?-2:Math.max(0,LS.get('n3vpp',0)))}};
+ if(VP>=0)LS.set('n3vpp',VP);
  $$('#pTv [data-vm]').forEach(b=>b.onclick=()=>{VM=b.dataset.vm;FC={i:0,list:[]};VQ=null;vRender()});
+ if(sc==='mk'&&!cur.length){$('#vBody').innerHTML='<div class="card vempty"><span class="st">'+STAR+'</span><b>Chưa có từ nào được đánh dấu</b><p class="muted">Bấm ngôi sao cạnh từ (ở Bảng từ, Thẻ ghi nhớ hoặc khi Kiểm tra) để gom những từ cần ôn lại vào đây.</p></div>';const s=$('#vS');if(s)s.remove();return}
  if(VM==='list'){const draw=f=>{const s=(f||'').trim().toLowerCase();const L=s?V.filter(w=>[w.k,w.r,w.h,w.m].join(' ').toLowerCase().includes(s)):cur;
-   $('#vBody').innerHTML=`<table class="vt"><thead><tr><th>#</th><th>Từ</th><th>Cách đọc</th><th class="h">Hán Việt</th><th>Nghĩa</th></tr></thead><tbody>${L.map(w=>`<tr class="${w.x?'hx':''}" data-n="${w.n}"><td class="no">${w.n}</td><td class="k">${esc(w.k)}</td><td class="r">${w.r!==w.k?esc(w.r):''}</td><td class="h">${esc(w.h)}</td><td>${esc(w.m)}${w.x?'<span class="vmore">Cách dùng ▾</span>':''}</td></tr>${w.x?`<tr class="vx" data-x="${w.n}" hidden><td></td><td colspan="4"><div class="vxp">${xh(w.x)}</div></td></tr>`:''}`).join('')||'<tr><td colspan="5" class="muted">Không tìm thấy.</td></tr>'}</tbody></table>`};
-  $('#vBody').onclick=e=>{const r=e.target.closest('tr.hx');if(!r)return;const x=$('#vBody tr[data-x="'+r.dataset.n+'"]');if(x){x.hidden=!x.hidden;r.classList.toggle('open',!x.hidden)}};
+   $('#vBody').innerHTML=`<table class="vt"><thead><tr><th class="mkc"></th><th>#</th><th>Từ</th><th>Cách đọc</th><th class="h">Hán Việt</th><th>Nghĩa</th></tr></thead><tbody>${L.map(w=>`<tr class="${w.x?'hx':''}" data-n="${w.n}"><td class="mkc"><button type="button" class="mk${isMk(w.n)?' on':''}" data-mk="${w.n}" aria-label="Đánh dấu từ ${esc(w.k)}">${STAR}</button></td><td class="no">${w.n}</td><td class="k">${esc(w.k)}</td><td class="r">${w.r!==w.k?esc(w.r):''}</td><td class="h">${esc(w.h)}</td><td>${esc(w.m)}${w.x?'<span class="vmore">Cách dùng ▾</span>':''}</td></tr>${w.x?`<tr class="vx" data-x="${w.n}" hidden><td></td><td></td><td colspan="4"><div class="vxp">${xh(w.x)}</div></td></tr>`:''}`).join('')||'<tr><td colspan="6" class="muted">Không tìm thấy.</td></tr>'}</tbody></table>`};
+  $('#vBody').onclick=e=>{const m=e.target.closest('[data-mk]');if(m){togMk(+m.dataset.mk);return}const r=e.target.closest('tr.hx');if(!r)return;const x=$('#vBody tr[data-x="'+r.dataset.n+'"]');if(x){x.hidden=!x.hidden;r.classList.toggle('open',!x.hidden)}};
   draw('');$('#vS').oninput=e=>draw(e.target.value)}
  else if(VM==='fc')fcDraw(cur);else qzDraw(cur)}
 function fcDraw(cur){if(!FC.list.length)FC.list=cur.slice();const w=FC.list[FC.i];
  $('#vBody').innerHTML=`<div class="fc"><div class="fcard" id="fcC"><div class="in"><div class="f"><div class="w">${esc(w.k)}</div><small class="muted" style="margin-top:10px">Bấm để lật thẻ</small></div><div class="b"><div class="w" style="font-size:1.6rem">${esc(w.k)}</div>${w.r!==w.k?`<div class="rd">${esc(w.r)}</div>`:''}<div class="hv">${esc(w.h)}</div><div class="mn">${esc(w.m)}</div></div></div></div>${w.x?`<div class="vxp fxp" id="fcX" hidden>${xh(w.x)}</div>`:''}
- <div class="fnav"><button class="btn" id="fcP" type="button">←</button><span class="muted">${FC.i+1}/${FC.list.length}</span><button class="btn" id="fcN" type="button">→</button><button class="btn" id="fcS" type="button">Trộn thẻ</button></div></div>`;
+ <div class="fnav"><button class="btn" id="fcP" type="button">←</button><span class="muted">${FC.i+1}/${FC.list.length}</span><button class="btn" id="fcN" type="button">→</button><button class="btn" id="fcS" type="button">Trộn thẻ</button><button class="btn mkb${isMk(w.n)?' on':''}" data-mk="${w.n}" data-lb="1" type="button">${mkLb(w.n)}</button></div></div>`;
+ $('#vBody .mkb').onclick=e=>{e.stopPropagation();togMk(w.n)};
  $('#fcC').onclick=()=>{const f=$('#fcC').classList.toggle('flip');const x=$('#fcX');if(x)x.hidden=!f};
  $('#fcP').onclick=()=>{FC.i=(FC.i-1+FC.list.length)%FC.list.length;fcDraw(cur)};$('#fcN').onclick=()=>{FC.i=(FC.i+1)%FC.list.length;fcDraw(cur)};
  $('#fcS').onclick=()=>{FC.list.sort(()=>Math.random()-.5);FC.i=0;fcDraw(cur)}}
@@ -112,7 +133,8 @@ function qzDraw(cur){if(!VQ){const pool=cur.slice().sort(()=>Math.random()-.5).s
  const Q=VQ.qs[VQ.i];if(!Q){$('#vBody').innerHTML=`<div class="card" style="text-align:center"><b style="font-size:1.3rem">${VQ.ok}/${VQ.qs.length} câu đúng</b><p class="muted">Làm lượt mới để ôn tiếp.</p><button class="btn pri" id="qzA" type="button">Làm lượt mới</button></div>`;$('#qzA').onclick=()=>{VQ=null;qzDraw(cur)};return}
  $('#vBody').innerHTML=`<div class="card vq"><p class="muted">Câu ${VQ.i+1}/${VQ.qs.length} · ${Q.ty==='m'?'Chọn nghĩa đúng':'Chọn cách đọc đúng'}</p><div class="q jp">${esc(Q.w.k)}</div>
  <div class="ops">${Q.o.map((w,k)=>{let c='';if(VQ.pick!=null){if(k===Q.a)c=' ok';else if(k===VQ.pick)c=' ng'}return `<button class="op${c}" data-k="${k}" type="button"><span class="k">${k+1}</span><span>${esc(Q.ty==='m'?w.m:w.r)}</span></button>`}).join('')}</div>
- ${VQ.pick!=null?`<div class="exp"><b class="jp">${esc(Q.w.k)}</b>${Q.w.r!==Q.w.k?'（'+esc(Q.w.r)+'）':''}${Q.w.h?' · '+esc(Q.w.h):''} — ${esc(Q.w.m)}${Q.w.x?'<div class="vxp">'+xh(Q.w.x)+'</div>':''}</div><p style="margin-top:10px"><button class="btn pri" id="qzN" type="button">Câu tiếp →</button></p>`:''}</div>`;
+ ${VQ.pick!=null?`<div class="exp"><b class="jp">${esc(Q.w.k)}</b>${Q.w.r!==Q.w.k?'（'+esc(Q.w.r)+'）':''}${Q.w.h?' · '+esc(Q.w.h):''} — ${esc(Q.w.m)}${Q.w.x?'<div class="vxp">'+xh(Q.w.x)+'</div>':''}</div><p style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri" id="qzN" type="button">Câu tiếp →</button><button class="btn mkb${isMk(Q.w.n)?' on':''}" data-mk="${Q.w.n}" data-lb="1" type="button">${mkLb(Q.w.n)}</button></p>`:''}</div>`;
+ const mb=$('#vBody .mkb');if(mb)mb.onclick=()=>togMk(Q.w.n);
  $$('#vBody .op').forEach(b=>b.onclick=()=>{if(VQ.pick!=null)return;VQ.pick=+b.dataset.k;if(VQ.pick===Q.a)VQ.ok++;qzDraw(cur)});
  const n=$('#qzN');if(n)n.onclick=()=>{VQ.i++;VQ.pick=null;qzDraw(cur)}}
 
