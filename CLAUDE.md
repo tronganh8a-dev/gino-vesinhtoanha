@@ -88,3 +88,7 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
 ## 5. Kiểm tra local
 `npx wrangler dev` (ở gốc) và `cd demo && npx wrangler dev --inspector-port 9339` (chạy bằng `timeout`, không dùng `pkill -f wrangler`), gọi curl với header `Host` khác nhau:
 bản chính `/` → 302 /login; host có "trial" `/`, `/login` → 200 bản dùng thử; host chính `/trial/` → 200 bản dùng thử.
+
+## JLPT N3 (12/11/2026)
+- Tab "JLPT N3" thêm bằng `public/app/n3-tab.js` (auth.js chèn `N3_TAG`, chỉ bản chính): nút trong `#nav` + trang `#p-n3` nhúng `/n3/` (cần đăng nhập). Trang n3: Luyện đề (26 đề N3 có đáp án + giải thích) + Từ vựng Mimikara N3.
+- Thư mục `public/n3/` chép nguyên từ repo anhtrong-jft-app (bản gốc + công cụ dựng ở `src/n3/` bên đó). Dùng chung cho 4 app: JFT, Khách sạn, Vệ sinh toà nhà, Chế biến thực phẩm.

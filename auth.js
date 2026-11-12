@@ -81,6 +81,7 @@ setInterval(function(){if(!document.hidden)ping()},30000);document.addEventListe
 const CHAT_TAG = '\n<script src="/app/chat-ui.js?v=5" defer></script>\n' + VR_TAG + SESS_TAG;
 // Bút giảng bài nổi trên mọi màn hình (bút, highlight, chữ, tẩy, sổ memo) — public/app/teach-ink.js. Sửa file thì tăng ?v=
 const INK_TAG = '<script src="/app/teach-ink.js?v=1" defer></script>\n';
+const N3_TAG = '<script src="/app/n3-tab.js?v=1" defer></script>\n';   // tab JLPT N3 (12/11/2026) → trang /n3/
 // In chìm tên học viên + chặn chuột phải / bôi đen / sao chép / in (public/pub/protect.js). Sửa file thì tăng ?v=
 const PROTECT_V = 1;
 const protectTag = (u, name) => '\n<script>window.__GWM=' + JSON.stringify(u ? { n: name || u, u } : null).replace(/</g, '\\u003c') +
@@ -94,7 +95,7 @@ async function appPage(req, env, user) {
   (async () => {
     for (const r of parts) await r.body.pipeTo(writable, { preventClose: true });
     const acc = accounts(env).get(user) || {};
-    const w = writable.getWriter(); await w.write(enc.encode(protectTag(user, acc.name) + CHAT_TAG + INK_TAG)); await w.close();   // in chìm + nút chat trợ lý
+    const w = writable.getWriter(); await w.write(enc.encode(protectTag(user, acc.name) + CHAT_TAG + INK_TAG + N3_TAG)); await w.close();   // in chìm + nút chat trợ lý
   })();
   return new Response(readable, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'X-Robots-Tag': 'noindex' } });
 }
