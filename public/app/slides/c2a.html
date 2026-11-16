@@ -126,8 +126,8 @@
 *{box-sizing:border-box;margin:0}
 html,body{height:100%;background:#0d2b40;overflow:hidden}
 body{font-family:Quicksand,sans-serif;color:var(--ink)}
-#vp{position:fixed;inset:0;display:grid;place-items:center}
-#stage{position:relative;width:1600px;height:900px;transform-origin:center;flex:none}
+#vp{position:fixed;inset:0;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform-origin:center center;transform:translate(-50%,-50%)}
 .sl{position:absolute;inset:0;visibility:hidden;font-size:19px;overflow:hidden;padding:56px 70px 64px;
  background:radial-gradient(900px 600px at 0% 0%,#e3f0fa 0,transparent 70%),radial-gradient(800px 600px at 100% 100%,#fdeedd 0,transparent 70%),#f8fbfe}
 .sl.on{visibility:visible}
@@ -366,7 +366,7 @@ body.novn .vn{visibility:hidden}
 <script>
 (function(){
   var S=[].slice.call(document.querySelectorAll('.sl')), cur=0, step=0, stage=document.getElementById('stage');
-  function fit(){var s=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform='scale('+s+')';}
+  function fit(){var s=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform='translate(-50%,-50%) scale('+s+')';}
   addEventListener('resize',fit);fit();
   // chữ tự thu nhỏ nếu tràn khung
   function shrink(){S.forEach(function(sl){sl.querySelectorAll('.fit').forEach(function(b){var f=1;b.style.setProperty('--fs','1em');b.querySelectorAll('.fx').forEach(function(x){x.classList.remove('hid')});
