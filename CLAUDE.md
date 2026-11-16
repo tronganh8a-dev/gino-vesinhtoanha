@@ -97,3 +97,7 @@ bản chính `/` → 302 /login; host có "trial" `/`, `/login` → 200 bản d�
 - File: `public/pub/anhtrong/index.html` (1 file, ảnh + logo nhúng sẵn; nguồn dựng ở máy làm việc). Công khai, không đăng nhập.
 - Link: https://tinyurl.com/khoahocmienphi-anhtrong (trỏ đúng `/me`; tên `khoahocmienphi` đã có người dùng), https://tinyurl.com/anhtrongdaygino (trỏ vào `/me&alias=anhtrongdaygino` — auth.js nhận mọi đường dẫn bắt đầu `/me`, `/me/`, `/me&`), `<bản chính>/me` (auth.js trả thẳng file) hoặc `/pub/anhtrong/`.
 - Link ngắn: worker riêng `anhtrong` (`bio/wrangler.jsonc`, chỉ file tĩnh) → https://anhtrong.tronganh8a.workers.dev — anh tạo worker trên Cloudflare, nối repo này, Root directory = `bio`.
+
+## 7. Slide giảng theo buổi (16/11/2026)
+- `public/app/slides/c2a.html`: slide dạy Chương 2 phần 1 (mở đầu → lau bàn, lau kính), 104 slide, sinh từ nội dung trang bài học Chương 2 (src-ch2 trong p1/p2) + câu hỏi trong bộ đề (EXD). Nguồn dựng ở máy làm việc (`c2a/gen.py`, `tpl.html`). Có bút giảng bài (teach-ink.js nhúng sẵn, nét lưu theo từng slide qua `window.__gtiKey`), phím →/Space hiện từng ý, ←, ↑↓ nhảy slide, V bật/tắt tiếng Việt, F toàn màn hình, ☰ mục lục.
+- Thẻ mở slide ở đầu tab Tài liệu: `public/app/docs-extra.js` (mảng `DECKS`), auth.js chèn `DOCS_TAG` (chỉ bản chính). Thêm bộ slide mới: chép file vào `public/app/slides/` + thêm 1 dòng vào `DECKS` + tăng `?v=` trong `DOCS_TAG`.
