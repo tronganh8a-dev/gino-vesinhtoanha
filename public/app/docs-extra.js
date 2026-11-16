@@ -1,6 +1,6 @@
 /* Thẻ "Slide giảng" thêm vào đầu tab Tài liệu (16/11/2026). Mỗi bộ slide là 1 file HTML trong /app/slides/ (cần đăng nhập). */
 (function(){
-  var DECKS=[{href:'/app/slides/c2a.html',k:'第2章 · 日常清掃 · SLIDE GIẢNG',t:'Chương 2 · Vệ sinh hằng ngày (phần 1)',p:'Từ mở đầu đến lau bàn, lau kính · 104 slide · có bút viết, highlight'}];
+  var DECKS=[{href:'/app/slides/c2a.html',k:'第2章 · 日常清掃 · SLIDE GIẢNG',t:'Chương 2 · Vệ sinh hằng ngày (phần 1)',p:'Từ mở đầu đến lau bàn, lau kính · 169 slide · tranh cắt theo từng khung · có bút viết, highlight'}];
   function init(){
     var pg=document.getElementById('p-docs'); if(!pg||document.getElementById('dxDecks')) return;
     var w=document.createElement('div'); w.id='dxDecks';

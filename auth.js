@@ -82,7 +82,7 @@ const CHAT_TAG = '\n<script src="/app/chat-ui.js?v=5" defer></script>\n' + VR_TA
 // Bút giảng bài nổi trên mọi màn hình (bút, highlight, chữ, tẩy, sổ memo) — public/app/teach-ink.js. Sửa file thì tăng ?v=
 const INK_TAG = '<script src="/app/teach-ink.js?v=1" defer></script>\n';
 const N3_TAG = '<script src="/app/n3-tab.js?v=1" defer></script>\n';
-const DOCS_TAG = '<script src="/app/docs-extra.js?v=1" defer></script>\n';   // thẻ slide giảng ở tab Tài liệu (16/11/2026)   // tab JLPT N3 (12/11/2026) → trang /n3/
+const DOCS_TAG = '<script src="/app/docs-extra.js?v=2" defer></script>\n';   // thẻ slide giảng ở tab Tài liệu (16/11/2026)   // tab JLPT N3 (12/11/2026) → trang /n3/
 // In chìm tên học viên + chặn chuột phải / bôi đen / sao chép / in (public/pub/protect.js). Sửa file thì tăng ?v=
 const PROTECT_V = 1;
 const protectTag = (u, name) => '\n<script>window.__GWM=' + JSON.stringify(u ? { n: name || u, u } : null).replace(/</g, '\\u003c') +
