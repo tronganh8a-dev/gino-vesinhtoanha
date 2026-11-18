@@ -105,3 +105,6 @@ bản chính `/` → 302 /login; host có "trial" `/`, `/login` → 200 bản d�
 ## Popup ngành Logistics (18/11/2026)
 - `public/pub/logi.js` + `logi.webp` (công khai, chèn cả bản chính lẫn trang chính bản dùng thử; JFT để ở `public/app/`; dùng chung 4 app: VSTN, Khách sạn, Chế biến, JFT): popup giới thiệu ngành mới Tokutei Gino 物流倉庫, nút nhắn Facebook. Hiện 1 lần mỗi phiên (sessionStorage `logi_seen_v1`), không hiện trong iframe; không chen vào lúc đang thi. Sửa thì chép file sang cả 4 repo + tăng `?v=` trong `LOGI_TAG` (JFT: hàm `logi()` trong auth.js).
 - Popup cũ đã tắt: popup "Hỏi đáp cùng AI" (`promo()` trong chat-ui.js trả về ngay), JFT bỏ popup đề mới `newxShow` khi mở app.
+
+## Ảnh nền đầu Trang chủ (18/11/2026)
+- `public/pub/skin/skin.css` + `hero.webp` (auth.js chèn `SKIN_TAG`, chỉ bản chính): đầu trang chủ dùng ảnh sảnh toà nhà, phủ xanh đậm bên trái, chữ trắng, "Vệ sinh toà nhà" vàng, nút "Bắt đầu học" hồng; ẩn chồng bìa sách. Anh chỉ duyệt phần đầu trang — các đổi khác (thẻ trắng, thẻ 3 chương có ảnh, ô số liệu) anh chê xấu, đừng làm lại.

@@ -1,0 +1,25 @@
+/* Đầu trang chủ mới (18/11/2026): ảnh sảnh toà nhà + phủ xanh, chữ trắng. Gỡ: bỏ SKIN_TAG trong auth.js */
+/* ---- hero ---- */
+#p-home .jx-hero{background:#0b3552 url(/pub/skin/hero.webp) right center/cover no-repeat!important;border:0!important;border-radius:28px!important;min-height:400px;padding:34px 40px 40px!important;box-shadow:0 24px 60px rgba(11,53,82,.28);overflow:hidden;align-items:center}
+#p-home .jx-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#08304d 0%,rgba(9,52,82,.94) 34%,rgba(11,62,97,.62) 58%,rgba(13,90,140,.12) 100%);z-index:0}
+#p-home .jx-hero::after{height:5px;z-index:2}
+#p-home .jx-ht{z-index:1}
+#p-home .jx-hi{background:rgba(255,255,255,.14)!important;border:1px solid rgba(255,255,255,.28)!important;color:#e6f1f9!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+#p-home .jx-hi b{color:#fff!important}
+#p-home .jx-hi button{background:#fff!important;color:#0d5a8c!important;border:0!important}
+#p-home .jx-kick{color:#bcd8ec!important}
+#p-home .jx-hero h1{color:#fff!important;font-size:52px!important;line-height:1.08!important;margin:14px 0 14px!important;text-shadow:0 2px 20px rgba(0,0,0,.25)}
+#p-home .jx-hero h1 mark{background:none!important;color:#ffd84d!important;padding:0}
+#p-home .jx-by{color:#d5e6f3!important}#p-home .jx-by b{color:#fff!important}
+#p-home .jx-by img{background:#fff;border-radius:9px;padding:3px 5px;box-sizing:content-box}
+#p-home .jx-cta{margin-top:18px!important;gap:12px}
+#p-home .jx-hb{border:1.5px solid rgba(255,255,255,.7)!important;color:#fff!important;padding:12px 24px!important;font-size:15.5px!important;backdrop-filter:blur(6px)}
+#p-home .jx-hb.pri{background:linear-gradient(120deg,#e04b83,#c42f66)!important;border-color:transparent!important;box-shadow:0 12px 26px rgba(196,47,102,.45)}
+#p-home .jx-hb:not(.pri):hover{background:rgba(255,255,255,.18)!important}
+#p-home .jx-news{background:rgba(255,255,255,.95)!important;border:0!important;margin-top:18px!important;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+#p-home .jx-covers{display:none!important}
+@media(max-width:880px){
+#p-home .jx-hero{min-height:0;padding:22px 20px 28px!important;border-radius:22px!important;background-position:70% center!important}
+#p-home .jx-hero::before{background:linear-gradient(180deg,rgba(8,48,77,.93) 0%,rgba(9,52,82,.86) 60%,rgba(11,62,97,.7) 100%)}
+#p-home .jx-hero h1{font-size:33px!important}
+}
