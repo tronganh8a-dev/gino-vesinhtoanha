@@ -108,3 +108,7 @@ bản chính `/` → 302 /login; host có "trial" `/`, `/login` → 200 bản d�
 
 ## Ảnh nền đầu Trang chủ (18/11/2026)
 - `public/pub/skin/skin.css` + `hero.webp` (auth.js chèn `SKIN_TAG`, chỉ bản chính): đầu trang chủ dùng ảnh sảnh toà nhà, phủ xanh đậm bên trái, chữ trắng, "Vệ sinh toà nhà" vàng, nút "Bắt đầu học" hồng; ẩn chồng bìa sách. Anh chỉ duyệt phần đầu trang — các đổi khác (thẻ trắng, thẻ 3 chương có ảnh, ô số liệu) anh chê xấu, đừng làm lại.
+
+## Thuật ngữ tiếng Việt anh chốt (18/11/2026)
+- ダストクロス = cây lau khăn khô (khăn rời: khăn lau khô) · モップ = cây lau khăn ướt · 幅木 = len chân tường · 自在ぼうき = chổi cước · パッド = miếng chà sàn (白パッド = miếng chà trắng, パッド台 = đế gắn miếng chà) · 文化ちりとり = hót rác cán dài (có hộp đựng và nắp) · 汚水取り = hót nước bẩn. Không dùng "dust cloth", "mop", "pad", "chổi tự tại", "nẹp/ván chân tường", "ki hốt rác".
+- Đã sửa thẳng trong p1/p2 (tài liệu, đề, flashcard), bản dùng thử và slide c2a. Nguồn dựng ở máy làm việc chưa sửa → build lại từ nguồn cũ sẽ mất; khi đó chạy lại script `tr/fix.py` (ở máy làm việc) trên p1+p2.
