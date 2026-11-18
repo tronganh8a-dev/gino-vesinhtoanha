@@ -82,7 +82,7 @@ const CHAT_TAG = '\n<script src="/app/chat-ui.js?v=6" defer></script>\n' + VR_TA
 // Bút giảng bài nổi trên mọi màn hình (bút, highlight, chữ, tẩy, sổ memo) — public/app/teach-ink.js. Sửa file thì tăng ?v=
 const INK_TAG = '<script src="/app/teach-ink.js?v=1" defer></script>\n';
 const N3_TAG = '<script src="/app/n3-tab.js?v=1" defer></script>\n';
-const LOGI_TAG = '<script src="/app/logi.js?v=1" defer></script>\n';   // popup ngành mới Logistics (18/11/2026)
+const LOGI_TAG = '<script src="/pub/logi.js?v=2" defer></script>\n';   // popup ngành mới Logistics (18/11/2026)
 const DOCS_TAG = '<script src="/app/docs-extra.js?v=2" defer></script>\n';   // thẻ slide giảng ở tab Tài liệu (16/11/2026)   // tab JLPT N3 (12/11/2026) → trang /n3/
 // In chìm tên học viên + chặn chuột phải / bôi đen / sao chép / in (public/pub/protect.js). Sửa file thì tăng ?v=
 const PROTECT_V = 1;
@@ -113,7 +113,7 @@ async function trialPage(req, env) {
   if (!parts[0].ok) parts = await Promise.all(['/trial/p1.html', '/trial/p2.html'].map(p => env.ASSETS.fetch(new Request(base + p))));
   if (parts.some(r => !r.ok)) return new Response('Thiếu file bản dùng thử', { status: 500 });
   const { readable, writable } = new TransformStream();
-  (async () => { for (const r of parts) await r.body.pipeTo(writable, { preventClose: true }); const w = writable.getWriter(); await w.write(enc.encode(protectTag(null) + VR_TAG)); await w.close(); })();
+  (async () => { for (const r of parts) await r.body.pipeTo(writable, { preventClose: true }); const w = writable.getWriter(); await w.write(enc.encode(protectTag(null) + VR_TAG + LOGI_TAG)); await w.close(); })();
   return new Response(readable, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache', 'X-Robots-Tag': 'noindex' } });
 }
 function trialRoute(req, env, url) {
