@@ -254,6 +254,7 @@
 
   /* ---- popup giới thiệu chức năng mới (mỗi lần vào app 1 lần, có "Không hiện lại") ---- */
   function promo() {
+    return;   // 18/11/2026: tắt popup AI cũ, thay bằng popup ngành Logistics (logi.js)
     try { if (localStorage.getItem('gc_promo_off') === '1' || sessionStorage.getItem('gc_promo_seen')) return; } catch (e) { }
     if (D.querySelector('.cbt.on')) return;
     try { sessionStorage.setItem('gc_promo_seen', '1'); } catch (e) { }

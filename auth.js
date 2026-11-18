@@ -78,10 +78,11 @@ const SESS_TAG = `<script>(function(){var b=0;function out(d){var t='';if(d&&d.l
 document.title='Đã đăng xuất';document.body.innerHTML='<div style="position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:20px;background:linear-gradient(140deg,#0b3d60,#0d5a8c);font-family:system-ui,-apple-system,Segoe UI,sans-serif"><div style="background:#fff;border-radius:20px;max-width:390px;width:100%;padding:30px 26px;text-align:center;color:#17222c;box-shadow:0 24px 60px rgba(0,0,0,.3)"><div style="font-size:42px;line-height:1">🔒</div><h2 style="margin:12px 0 10px;font-size:20px;line-height:1.35">Tài khoản đã đăng nhập trên thiết bị khác</h2><p style="font-size:14.5px;line-height:1.6;color:#5a6873;margin:0 0 20px">'+t+'Mỗi tài khoản chỉ dùng trên 1 thiết bị, nên máy này đã bị đăng xuất.</p><a href="/logout" style="display:block;background:#0d5a8c;color:#fff;text-decoration:none;font-weight:700;border-radius:12px;padding:13px">Đăng nhập lại</a></div></div>'}
 function ping(){if(b)return;b=1;fetch('/api/ping',{cache:'no-store',credentials:'same-origin'}).then(function(r){if(r.status===401)return r.json().catch(function(){return{}}).then(out)}).catch(function(){}).then(function(){b=0})}
 setInterval(function(){if(!document.hidden)ping()},30000);document.addEventListener('visibilitychange',function(){if(!document.hidden)ping()});window.addEventListener('focus',ping)})();</script>`;
-const CHAT_TAG = '\n<script src="/app/chat-ui.js?v=5" defer></script>\n' + VR_TAG + SESS_TAG;
+const CHAT_TAG = '\n<script src="/app/chat-ui.js?v=6" defer></script>\n' + VR_TAG + SESS_TAG;
 // Bút giảng bài nổi trên mọi màn hình (bút, highlight, chữ, tẩy, sổ memo) — public/app/teach-ink.js. Sửa file thì tăng ?v=
 const INK_TAG = '<script src="/app/teach-ink.js?v=1" defer></script>\n';
 const N3_TAG = '<script src="/app/n3-tab.js?v=1" defer></script>\n';
+const LOGI_TAG = '<script src="/app/logi.js?v=1" defer></script>\n';   // popup ngành mới Logistics (18/11/2026)
 const DOCS_TAG = '<script src="/app/docs-extra.js?v=2" defer></script>\n';   // thẻ slide giảng ở tab Tài liệu (16/11/2026)   // tab JLPT N3 (12/11/2026) → trang /n3/
 // In chìm tên học viên + chặn chuột phải / bôi đen / sao chép / in (public/pub/protect.js). Sửa file thì tăng ?v=
 const PROTECT_V = 1;
@@ -96,7 +97,7 @@ async function appPage(req, env, user) {
   (async () => {
     for (const r of parts) await r.body.pipeTo(writable, { preventClose: true });
     const acc = accounts(env).get(user) || {};
-    const w = writable.getWriter(); await w.write(enc.encode(protectTag(user, acc.name) + CHAT_TAG + INK_TAG + N3_TAG + DOCS_TAG)); await w.close();   // in chìm + nút chat trợ lý
+    const w = writable.getWriter(); await w.write(enc.encode(protectTag(user, acc.name) + CHAT_TAG + INK_TAG + N3_TAG + DOCS_TAG + LOGI_TAG)); await w.close();   // in chìm + nút chat trợ lý
   })();
   return new Response(readable, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'X-Robots-Tag': 'noindex' } });
 }

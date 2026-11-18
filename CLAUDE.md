@@ -101,3 +101,7 @@ bản chính `/` → 302 /login; host có "trial" `/`, `/login` → 200 bản d�
 ## 7. Slide giảng theo buổi (16/11/2026)
 - `public/app/slides/c2a.html`: slide dạy Chương 2 phần 1 (mở đầu → lau bàn, lau kính), 169 slide, mỗi slide 1 khung tranh manga cắt riêng + phóng to (tự dò khung + OCR khớp lời thoại, `c2a/panels2.py`, `ocr.py`), sinh từ nội dung trang bài học Chương 2 (src-ch2 trong p1/p2) + câu hỏi trong bộ đề (EXD). Nguồn dựng ở máy làm việc (`c2a/gen.py`, `tpl.html`). Có bút giảng bài (teach-ink.js nhúng sẵn, nét lưu theo từng slide qua `window.__gtiKey`), phím →/Space hiện từng ý, ←, ↑↓ nhảy slide, V bật/tắt tiếng Việt, F toàn màn hình, ☰ mục lục.
 - Thẻ mở slide ở đầu tab Tài liệu: `public/app/docs-extra.js` (mảng `DECKS`), auth.js chèn `DOCS_TAG` (chỉ bản chính). Thêm bộ slide mới: chép file vào `public/app/slides/` + thêm 1 dòng vào `DECKS` + tăng `?v=` trong `DOCS_TAG`.
+
+## Popup ngành Logistics (18/11/2026)
+- `public/app/logi.js` + `logi.webp` (dùng chung 4 app: VSTN, Khách sạn, Chế biến, JFT): popup giới thiệu ngành mới Tokutei Gino 物流倉庫, nút nhắn Facebook. Hiện 1 lần mỗi phiên (sessionStorage `logi_seen_v1`), chỉ bản chính; không chen vào lúc đang thi. Sửa thì chép file sang cả 4 repo + tăng `?v=` trong `LOGI_TAG` (JFT: hàm `logi()` trong auth.js).
+- Popup cũ đã tắt: popup "Hỏi đáp cùng AI" (`promo()` trong chat-ui.js trả về ngay), JFT bỏ popup đề mới `newxShow` khi mở app.
