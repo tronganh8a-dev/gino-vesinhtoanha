@@ -84,7 +84,7 @@ const INK_TAG = '<script src="/app/teach-ink.js?v=1" defer></script>\n';
 const N3_TAG = '<script src="/app/n3-tab.js?v=1" defer></script>\n';
 const LOGI_TAG = '<script src="/pub/logi.js?v=2" defer></script>\n';   // popup ngành mới Logistics (18/11/2026)
 const SKIN_TAG = '<link rel="stylesheet" href="/pub/skin/skin.css?v=1">\n';   // ảnh nền đầu Trang chủ (18/11/2026)
-const DOCS_TAG = '<script src="/app/docs-extra.js?v=3" defer></script>\n';   // thẻ slide giảng ở tab Tài liệu (16/11/2026)   // tab JLPT N3 (12/11/2026) → trang /n3/
+const DOCS_TAG = '<script src="/app/docs-extra.js?v=4" defer></script>\n';   // thẻ slide giảng ở tab Tài liệu (16/11/2026)   // tab JLPT N3 (12/11/2026) → trang /n3/
 // In chìm tên học viên + chặn chuột phải / bôi đen / sao chép / in (public/pub/protect.js). Sửa file thì tăng ?v=
 const PROTECT_V = 1;
 const protectTag = (u, name) => '\n<script>window.__GWM=' + JSON.stringify(u ? { n: name || u, u } : null).replace(/</g, '\\u003c') +
