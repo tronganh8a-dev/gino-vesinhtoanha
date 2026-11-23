@@ -2067,7 +2067,7 @@ const GUIDE=[{"n":1,"t":"Hướng dẫn đi thi · Dọn vệ sinh tòa nhà","c
     var te = document.querySelector('.tile[data-go="exam"] h3 + span'); if (te) te.textContent = nE + ' đề · ' + nQ + ' câu · giao diện CBT';
   } catch (e) { }
   /* nhớ tab đang mở khi tải lại */
-  if (!location.hash) { try { var t = sessionStorage.getItem('vs_tab'); if (t && document.getElementById('p-' + t)) go(t); } catch (e) { } }
+  if (!location.hash) { try { var t = sessionStorage.getItem('vs_tab'); if (t && document.getElementById('p-' + t)) go(t); else go('exam'); } catch (e) { go('exam'); } }
   document.querySelectorAll('#nav .tab').forEach(function (b) {
     b.addEventListener('click', function () { try { sessionStorage.setItem('vs_tab', b.dataset.p); } catch (e) { } });
   });

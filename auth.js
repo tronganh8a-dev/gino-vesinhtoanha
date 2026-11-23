@@ -114,7 +114,7 @@ async function trialPage(req, env) {
   if (!parts[0].ok) parts = await Promise.all(['/trial/p1.html', '/trial/p2.html'].map(p => env.ASSETS.fetch(new Request(base + p))));
   if (parts.some(r => !r.ok)) return new Response('Thiếu file bản dùng thử', { status: 500 });
   const { readable, writable } = new TransformStream();
-  (async () => { for (const r of parts) await r.body.pipeTo(writable, { preventClose: true }); const w = writable.getWriter(); await w.write(enc.encode(protectTag(null) + VR_TAG + LOGI_TAG)); await w.close(); })();
+  (async () => { for (const r of parts) await r.body.pipeTo(writable, { preventClose: true }); const w = writable.getWriter(); await w.write(enc.encode(protectTag(null) + VR_TAG)); await w.close(); })();
   return new Response(readable, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache', 'X-Robots-Tag': 'noindex' } });
 }
 function trialRoute(req, env, url) {

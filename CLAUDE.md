@@ -72,6 +72,7 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
   - Link "Tải Slide bài giảng" (Google Drive; trong p1/p2 nằm ở tab Tài liệu, auth.js `SLIDE_HOME` chuyển ra Trang chủ — ô xanh dài dưới khung "Đăng ký & lịch thi"): bản chính mở được; bản dùng thử XOÁ link, thay bằng nút 🔒 trỏ Facebook (đánh dấu `<!--SLIDE-START/END-->` trong bản chính).
   - Slide tổng ôn (tab Tài liệu, khối `<!--TONGON-START/END-->`: trình xem ảnh + đáp án 46 câu): bản dùng thử XOÁ cả khối, thay bằng nút 🔒 trỏ Facebook.
   - Thẻ khoá vẫn hiện tên + 🔒 "Thuộc khoá học đầy đủ" + nút nhắn Facebook.
+- (23/11/2026) Bản dùng thử: mở link là vào thẳng tab **Đề thi** (`go('exam')`, mục 3h trong build_demo.py); ĐÃ BỎ popup Logistics ở bản dùng thử (auth.js `trialPage` không chèn `LOGI_TAG`) — bản chính vẫn có.
 - Trang chủ bản dùng thử mở đầu bằng khối **"Làm thử ngay · 10 câu"** (`<script id="trial-quiz">`, mục 3g trong build_demo.py): mỗi lượt lấy ngẫu nhiên 4 câu Đề 1 + 3 câu Đề 2 + 3 câu ảnh thiết bị (chỉ thiết bị mở), bấm là chấm ngay + giải thích, cuối có điểm và nút sang Video / Học từ / Đề thi. Có nút bật/tắt tiếng Việt.
 - Thanh điều hướng bản dùng thử xếp lại: Trang chủ → Video → Học từ (Flashcard) → Đề thi → Tài liệu → Hướng dẫn thi (mục 3f).
 - Dải "Bản trải nghiệm" cố định trên cùng + nút nổi Facebook/TikTok góc dưới, hiện ở mọi màn (cả màn thi CBT, điện thoại).
@@ -103,7 +104,7 @@ bản chính `/` → 302 /login; host có "trial" `/`, `/login` → 200 bản d�
 - Thẻ mở slide ở đầu tab Tài liệu: `public/app/docs-extra.js` (mảng `DECKS`), auth.js chèn `DOCS_TAG` (chỉ bản chính). Thêm bộ slide mới: chép file vào `public/app/slides/` + thêm 1 dòng vào `DECKS` + tăng `?v=` trong `DOCS_TAG`.
 
 ## Popup ngành Logistics (18/11/2026)
-- `public/pub/logi.js` + `logi.webp` (công khai, chèn cả bản chính lẫn trang chính bản dùng thử; JFT để ở `public/app/`; dùng chung 4 app: VSTN, Khách sạn, Chế biến, JFT): popup giới thiệu ngành mới Tokutei Gino 物流倉庫, nút nhắn Facebook. Hiện 1 lần mỗi phiên (sessionStorage `logi_seen_v1`), không hiện trong iframe; không chen vào lúc đang thi. Sửa thì chép file sang cả 4 repo + tăng `?v=` trong `LOGI_TAG` (JFT: hàm `logi()` trong auth.js).
+- `public/pub/logi.js` + `logi.webp` (công khai, chèn bản chính — bản dùng thử đã gỡ 23/11; JFT để ở `public/app/`; dùng chung 4 app: VSTN, Khách sạn, Chế biến, JFT): popup giới thiệu ngành mới Tokutei Gino 物流倉庫, nút nhắn Facebook. Hiện 1 lần mỗi phiên (sessionStorage `logi_seen_v1`), không hiện trong iframe; không chen vào lúc đang thi. Sửa thì chép file sang cả 4 repo + tăng `?v=` trong `LOGI_TAG` (JFT: hàm `logi()` trong auth.js).
 - Popup cũ đã tắt: popup "Hỏi đáp cùng AI" (`promo()` trong chat-ui.js trả về ngay), JFT bỏ popup đề mới `newxShow` khi mở app.
 
 ## Ảnh nền đầu Trang chủ (18/11/2026)

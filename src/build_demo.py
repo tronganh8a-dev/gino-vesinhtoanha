@@ -250,6 +250,10 @@ def main():
     a = s.index('const EXAMS = EXD.exams;'); b = s.index('</script>', a) + len('</script>')
     s = s[:b] + TQ_JS + s[b:]
 
+    # ---------- 3h. mở app là vào thẳng tab Đề thi (23/11/2026) ----------
+    s = rep(s, "if (t && document.getElementById('p-' + t)) go(t); } catch (e) { } }",
+            "if (t && document.getElementById('p-' + t)) go(t); else go('exam'); } catch (e) { go('exam'); } }")
+
     # ---------- 4. bỏ đăng nhập/đăng xuất ----------
     s = re.sub(r"function jxLogout\(\) \{[^}]*\}", f"function jxLogout() {{ window.open({FBJ}, '_blank'); }}", s, count=1)
     s = rep(s, 'onclick="jxLogout()">Đăng xuất</button>', 'onclick="jxLogout()">Đăng ký khoá học</button>')
