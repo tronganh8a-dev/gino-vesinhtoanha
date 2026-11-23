@@ -254,6 +254,23 @@ def main():
     s = rep(s, "if (t && document.getElementById('p-' + t)) go(t); } catch (e) { } }",
             "if (t && document.getElementById('p-' + t)) go(t); else go('exam'); } catch (e) { go('exam'); } }")
 
+    # ---------- 3i. tab Đề thi: thẻ video học thử (buổi mở đầu tiên), bấm là xem ngay (23/11/2026) ----------
+    import html as _h
+    a = s.index('const SES = ['); b = s.index('];', a)
+    vm = re.search(r"\{ n: (\d+), t: '([^']*)', jp: '([^']*)', id: '([^']+)', ch: '([^']*)'", s[a:b])
+    assert vm and int(vm.group(1)) in OPEN_VIDEOS, 'không thấy video mở'
+    vn_, vt, vjp, vid, vch = vm.groups()
+    meta = json.dumps({'no': 'Buổi ' + vn_, 't': _h.unescape(vt), 'jp': vjp, 'ch': vch or 'ch1'}, ensure_ascii=False)
+    EV_HTML = (f'<button type="button" class="card evid" data-evid="{vid}" aria-label="Xem video học thử Buổi {vn_}">'
+               f'<span class="evid-th"><img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">'
+               '<span class="evid-pl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12z"/></svg></span></span>'
+               f'<span class="evid-bd"><span class="evid-k">▶ Video học thử</span><b>Buổi {vn_} · {vt}</b><span class="jpt">{vjp}</span>'
+               '<span class="evid-p">Xem bài giảng trước, rồi làm Đề 1 – Đề 2 bên dưới.</span><span class="evid-go">Xem ngay</span></span></button>\n  ')
+    s = rep(s, '<div class="exgrid" id="exgrid"></div>', EV_HTML + '<div class="exgrid" id="exgrid"></div>')
+    EV_JS = ('<script id="trial-exvid">document.addEventListener("click",function(e){var c=e.target.closest&&e.target.closest("[data-evid]");if(!c)return;'
+             'e.preventDefault();if(window.ginoVideoRoom)window.ginoVideoRoom.open(c.dataset.evid,' + meta + ');else if(typeof go==="function")go("video");});</script>')
+    i = s.rindex('</body>'); s = s[:i] + EV_JS + s[i:]
+
     # ---------- 4. bỏ đăng nhập/đăng xuất ----------
     s = re.sub(r"function jxLogout\(\) \{[^}]*\}", f"function jxLogout() {{ window.open({FBJ}, '_blank'); }}", s, count=1)
     s = rep(s, 'onclick="jxLogout()">Đăng xuất</button>', 'onclick="jxLogout()">Đăng ký khoá học</button>')
@@ -327,6 +344,15 @@ body{padding-top:var(--tbh)!important}
 .tp-card h4{margin:0 0 4px;font-size:17px}.tp-card p{margin:0 0 12px;color:#5b6b77;font-size:14px}
 .tp-price b{font-size:32px;color:#0d5a8c;letter-spacing:-.01em}.tp-price span{margin-left:4px;font-weight:700}.tp-price small{margin-left:6px;color:#8794a0}
 .tp-reg{display:inline-block;margin-top:16px;background:#c42f66;color:#fff;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:12px}
+.evid{font:inherit;color:inherit;text-align:left;box-sizing:border-box;display:flex;align-items:center;gap:18px;width:100%;max-width:900px;margin:0 0 18px;padding:14px!important;cursor:pointer;border-top:4px solid #c42f66!important;transition:transform .15s,box-shadow .15s}
+.evid:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(13,90,140,.14)}
+.evid-th{position:relative;flex:none;width:300px;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#0d5a8c}.evid-th img{width:100%;height:100%;object-fit:cover;display:block}
+.evid-pl{position:absolute;inset:0;margin:auto;width:58px;height:58px;border-radius:50%;background:rgba(196,47,102,.92);color:#fff;display:grid;place-items:center;box-shadow:0 0 0 6px rgba(255,255,255,.35)}.evid-pl svg{width:26px;height:26px;margin-left:3px}
+.evid-bd{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.evid-k{background:#c42f66;color:#fff;font-weight:800;font-size:12.5px;border-radius:999px;padding:3px 11px}
+.evid-bd b{font-size:19px;line-height:1.35;color:#17222c}.evid-bd .jpt{color:#8794a0}.evid-p{color:#5a6873;font-size:14px}
+.evid-go{margin-top:6px;background:#0d5a8c;color:#fff;font-weight:800;padding:9px 20px;border-radius:10px;font-size:14.5px}
+@media (max-width:640px){.evid{flex-direction:column;align-items:stretch;gap:10px;padding:10px!important}.evid-th{width:100%}.evid-bd b{font-size:16.5px}.evid-go{align-self:stretch;text-align:center}}
 .tq{border-top:4px solid #0d5a8c;margin-bottom:18px}
 .tq-h{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-bottom:10px}.tq-h b{font-size:20px}.tq-h .jpt{color:#8794a0}
 .tq-k{background:#c42f66;color:#fff;font-weight:800;font-size:12.5px;border-radius:999px;padding:3px 11px}

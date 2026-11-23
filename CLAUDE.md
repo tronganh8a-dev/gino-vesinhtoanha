@@ -73,6 +73,7 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
   - Slide tổng ôn (tab Tài liệu, khối `<!--TONGON-START/END-->`: trình xem ảnh + đáp án 46 câu): bản dùng thử XOÁ cả khối, thay bằng nút 🔒 trỏ Facebook.
   - Thẻ khoá vẫn hiện tên + 🔒 "Thuộc khoá học đầy đủ" + nút nhắn Facebook.
 - (23/11/2026) Bản dùng thử: mở link là vào thẳng tab **Đề thi** (`go('exam')`, mục 3h trong build_demo.py); ĐÃ BỎ popup Logistics ở bản dùng thử (auth.js `trialPage` không chèn `LOGI_TAG`) — bản chính vẫn có.
+- (23/11/2026) Tab **Đề thi** bản dùng thử có thẻ **"▶ Video học thử"** ngay trên lưới đề (mục 3i trong build_demo.py): lấy buổi mở đầu tiên trong `SES` (hiện Buổi 1), bấm là mở màn xem video lớn (`ginoVideoRoom.open` của video-room.js).
 - Trang chủ bản dùng thử mở đầu bằng khối **"Làm thử ngay · 10 câu"** (`<script id="trial-quiz">`, mục 3g trong build_demo.py): mỗi lượt lấy ngẫu nhiên 4 câu Đề 1 + 3 câu Đề 2 + 3 câu ảnh thiết bị (chỉ thiết bị mở), bấm là chấm ngay + giải thích, cuối có điểm và nút sang Video / Học từ / Đề thi. Có nút bật/tắt tiếng Việt.
 - Thanh điều hướng bản dùng thử xếp lại: Trang chủ → Video → Học từ (Flashcard) → Đề thi → Tài liệu → Hướng dẫn thi (mục 3f).
 - Dải "Bản trải nghiệm" cố định trên cùng + nút nổi Facebook/TikTok góc dưới, hiện ở mọi màn (cả màn thi CBT, điện thoại).
