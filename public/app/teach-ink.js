@@ -6,14 +6,19 @@
   'use strict';
   if (window.__gti) return; window.__gti = 1;
   var D = document, W = window;
-  var PEN = ['#e0245e', '#2f6fe4', '#1fa34a', '#f59e0b', '#1b2430'], HL = ['#fff06a', '#ffb3d9', '#b4f5a3', '#a8dcff', '#ffd59a'];
-  var PW = [2, 3.5, 6], HW = [12, 20, 30], TS = [17, 24, 34];
+  var PEN = ['#e0245e', '#2f6fe4', '#1fa34a', '#f59e0b', '#1b2430'], HL = ['#ffc400', '#ff8fc0', '#7fdc6f', '#6cc0ff', '#ffa64d'];
+  var PW = [2, 3.5, 6], HW = [12, 20, 30], TS = [18, 26, 36, 50, 70];
+  // phông chữ cho công cụ Chữ: chữ Việt lấy phông đầu, kana/kanji rơi xuống Klee One / M PLUS (tải từ Google Fonts nên đủ mọi chữ)
+  var FONTS = [{ n: 'Tròn', w: 700, f: "'M PLUS Rounded 1c','Noto Sans JP',sans-serif" }, { n: 'Sách', w: 700, f: "Quicksand,'Klee One','Noto Sans JP',sans-serif" }, { n: 'Viết tay', w: 700, f: "Mali,'Klee One','Noto Sans JP',sans-serif" }];
+  (function () { if (D.getElementById('gti-gf')) return; var l = D.createElement('link'); l.id = 'gti-gf'; l.rel = 'stylesheet'; l.href = 'https://fonts.googleapis.com/css2?family=Klee+One:wght@600&family=M+PLUS+Rounded+1c:wght@700&family=Quicksand:wght@700&family=Mali:wght@700&display=swap'; (D.head || D.documentElement).appendChild(l); })();
+  function tfont(s) { var F = FONTS[s.f == null ? 0 : s.f] || FONTS[0]; return F.w + ' ' + s.w + 'px ' + F.f; }
+  function ensure(s) { try { var f = tfont(s); if (D.fonts && !D.fonts.check(f, s.s || 'あ')) D.fonts.load(f, s.s || 'あ').then(function () { later(); fit(); }); } catch (e) {} }
   var FONT = "Quicksand,'Klee One','UD Digi Kyokasho NP-R','Noto Sans JP',system-ui,sans-serif";
   var LS = {
     get: function (k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
     set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
-  var st = { tool: null, pc: 0, hc: 0, sz: 1, open: false, hide: false, vert: !!LS.get('gti_vert', false), pages: {}, hist: {}, cur: null, erasing: false, edit: null, last: 'main' };
+  var st = { tool: null, pc: 0, hc: 0, sz: 1, ts: 2, tf: LS.get('gti_tf', 0), open: false, hide: false, vert: !!LS.get('gti_vert', false), pages: {}, hist: {}, cur: null, erasing: false, edit: null, last: 'main' };
 
   // ---------- giao diện ----------
   var css = D.createElement('style');
@@ -34,6 +39,7 @@
     '.gti-bar .gti-c.on{background:none}.gti-bar .gti-c.on i{box-shadow:0 0 0 2px #1b2430,0 0 0 4px #fff}' +
     '.gti-bar .gti-s{padding:0;width:34px}.gti-bar .gti-s b{display:block;width:15px;border-radius:9px;background:currentColor}' +
     '.gti-bar.dis .gti-c,.gti-bar.dis .gti-s{opacity:.3;pointer-events:none}' +
+    '.gti-bar .gti-z{padding:0;width:32px;min-width:32px;font-weight:800}.gti-bar .gti-f{padding:0 8px;font-weight:700}' +
     '.gti-bar.vert .gti-l{display:none}@media (max-width:760px){.gti-bar .gti-l{display:none}.gti-bar button{padding:0 7px}}' +
     '.gti-fab{position:fixed;z-index:2147483400;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#c42f66;color:#fff;' +
     'box-shadow:0 6px 18px rgba(196,47,102,.4);touch-action:none}.gti-fab:hover{background:#a8244f}.gti-fab svg{width:24px;height:24px}.gti-fab.off{display:none}' +
@@ -133,7 +139,7 @@
       if (s.t !== 'tx' || s === st.edit) return; var b = tbox(s), fs = s.w, pd = fs * 0.22;
       cx2.fillStyle = 'rgba(255,255,255,.9)'; cx2.beginPath();
       if (cx2.roundRect) cx2.roundRect(b[0] - pd, b[1] - pd * 0.6, b[2] + pd * 2, b[3] + pd * 0.6, pd); else cx2.rect(b[0] - pd, b[1] - pd * 0.6, b[2] + pd * 2, b[3] + pd * 0.6);
-      cx2.fill(); cx2.font = '700 ' + fs + 'px ' + FONT; cx2.fillStyle = s.c;
+      cx2.fill(); ensure(s); cx2.font = tfont(s); cx2.fillStyle = s.c;
       s.s.split('\n').forEach(function (ln, i) { cx2.fillText(ln, b[0], b[1] + fs * 0.12 + i * fs * 1.3); });
     });
   }
@@ -141,7 +147,7 @@
   function hist() { return st.hist[ctxK] || (st.hist[ctxK] = []); }
   function page() { return st.pages[ctxK] || (st.pages[ctxK] = []); }
   function tbox(s) {
-    var o = toC(s.p[0]), fs = s.w, L = s.s.split('\n'), w = 0; cx.font = '700 ' + fs + 'px ' + FONT;
+    var o = toC(s.p[0]), fs = s.w, L = s.s.split('\n'), w = 0; cx.font = tfont(s);
     L.forEach(function (l) { w = Math.max(w, cx.measureText(l).width); }); return [o[0], o[1], w, L.length * fs * 1.3];
   }
   function textAt(x, y) { var P = page(); for (var i = P.length - 1; i >= 0; i--) { var s = P[i]; if (s.t !== 'tx') continue; var b = tbox(s); if (x >= b[0] - 6 && x <= b[0] + b[2] + 6 && y >= b[1] - 6 && y <= b[1] + b[3] + 6) return s; } return null; }
@@ -175,7 +181,7 @@
   }
   function fit() {
     if (!ta || !st.edit) return; var fs = st.edit.w, o = toC(st.edit.p[0]);
-    ta.style.font = '700 ' + fs + 'px ' + FONT; ta.style.color = st.edit.c;
+    ta.style.font = tfont(st.edit); ta.style.color = st.edit.c; ensure(st.edit);
     ta.style.left = (o[0] - 5.5) + 'px'; ta.style.top = (o[1] - 3.5) + 'px';
     ta.style.height = 'auto'; ta.style.width = 'auto';
     ta.style.width = Math.min(A.w - o[0], Math.max(60, ta.scrollWidth + 12)) + 'px'; ta.style.height = (ta.scrollHeight + 2) + 'px';
@@ -205,7 +211,7 @@
       if (ta) { commit(); return; }
       var hitT = textAt(e.clientX, e.clientY);
       if (hitT) { hitT._old = hitT.s; editText(hitT); }
-      else editText({ t: 'tx', c: PEN[st.pc], w: TS[st.sz], s: '', p: [toS(e.clientX, e.clientY - TS[st.sz] * 0.6)], _old: null });
+      else editText({ t: 'tx', c: PEN[st.pc], w: TS[st.ts], f: st.tf, s: '', p: [toS(e.clientX, e.clientY - TS[st.ts] * 0.6)], _old: null });
       return;
     }
     st.cur = newStroke(e.clientX, e.clientY, toS); st.curSurf = 'main'; later();
@@ -339,19 +345,25 @@
     h += '<span class="gti-sep"></span>';
     cols.forEach(function (c, i) { h += '<button type="button" class="gti-c' + (i === ci ? ' on' : '') + '" data-c="' + i + '" title="Màu"><i style="background:' + c + '"></i></button>'; });
     h += '<span class="gti-sep"></span>';
-    [3, 6, 10].forEach(function (px, i) { h += '<button type="button" class="gti-s' + (i === st.sz ? ' on' : '') + '" data-s="' + i + '" title="Độ dày / cỡ chữ"><b style="height:' + px + 'px"></b></button>'; });
+    if (st.tool === 'tx') {
+      TS.forEach(function (px, i) { h += '<button type="button" class="gti-z' + (i === st.ts ? ' on' : '') + '" data-z="' + i + '" title="Cỡ chữ"><span style="font-size:' + (11 + i * 3) + 'px">A</span></button>'; });
+      h += '<span class="gti-sep"></span>';
+      FONTS.forEach(function (F, i) { h += '<button type="button" class="gti-f' + (i === st.tf ? ' on' : '') + '" data-f="' + i + '" title="Phông chữ: ' + F.n + '" style="font:' + F.w + ' 15px ' + F.f + '">あAă <span class="gti-l">' + F.n + '</span></button>'; });
+    } else [3, 6, 10].forEach(function (px, i) { h += '<button type="button" class="gti-s' + (i === st.sz ? ' on' : '') + '" data-s="' + i + '" title="Độ dày"><b style="height:' + px + 'px"></b></button>'; });
     h += '<span class="gti-sep"></span>' + btn('undo', I.undo, '', 'Hoàn tác (Ctrl+Z)') + btn('clr', I.clr, '', 'Xoá hết nét trên màn hình này') +
       btn('hide', I.eye, '', st.hide ? 'Hiện lại nét' : 'Ẩn nét', st.hide) + '<span class="gti-sep"></span>' +
       btn('nb', I.nb, 'Sổ memo', 'Mở / đóng sổ memo', nbOn) + btn('rot', I.rot, '', st.vert ? 'Xếp thanh công cụ nằm ngang' : 'Xếp thanh công cụ dọc') + btn('min', I.min, '', 'Thu gọn thành nút bút (nét vẫn giữ)');
     bar.innerHTML = h;
     clamp(bar);
   }
-  bar.addEventListener('mousedown', function (e) { if (ta && e.target.closest('.gti-c,.gti-s')) e.preventDefault(); });
+  bar.addEventListener('mousedown', function (e) { if (ta && e.target.closest('.gti-c,.gti-s,.gti-z,.gti-f')) e.preventDefault(); });
   bar.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
-    var k = b.getAttribute('data-k'), c = b.getAttribute('data-c'), z = b.getAttribute('data-s');
+    var k = b.getAttribute('data-k'), c = b.getAttribute('data-c'), z = b.getAttribute('data-s'), tz = b.getAttribute('data-z'), tf = b.getAttribute('data-f');
+    if (tz != null) { st.ts = +tz; if (st.edit) { st.edit.w = TS[st.ts]; fit(); } return render(); }
+    if (tf != null) { st.tf = +tf; LS.set('gti_tf', st.tf); if (st.edit) { st.edit.f = st.tf; fit(); } return render(); }
     if (c != null) { if (st.tool === 'hl') st.hc = +c; else st.pc = +c; if (st.edit) { st.edit.c = PEN[st.pc]; fit(); } return render(); }
-    if (z != null) { st.sz = +z; if (st.edit) { st.edit.w = TS[st.sz]; fit(); } return render(); }
+    if (z != null) { st.sz = +z; return render(); }
     if (k === 'cur') setTool(null);
     else if (k === 'pen' || k === 'hl' || k === 'tx' || k === 'er') setTool(st.tool === k ? null : k);
     else if (k === 'undo') undo();
@@ -361,6 +373,7 @@
     else if (k === 'rot') { st.vert = !st.vert; LS.set('gti_vert', st.vert); render(); }
     else if (k === 'min') { st.open = false; setTool(null); }
   });
+  W.__gtiOpen = function () { st.open = !st.open; if (!st.open) setTool(null); else { if (!st.tool) st.tool = 'pen'; setTool(st.tool); } };
   function setTool(t) { commit(); if (t && st.hide) st.hide = false; st.tool = t; if (t) detect(); render(); }
   function undo() {
     if (st.last === 'nb' && nb.classList.contains('on')) {

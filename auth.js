@@ -80,7 +80,7 @@ function ping(){if(b)return;b=1;fetch('/api/ping',{cache:'no-store',credentials:
 setInterval(function(){if(!document.hidden)ping()},30000);document.addEventListener('visibilitychange',function(){if(!document.hidden)ping()});window.addEventListener('focus',ping)})();</script>`;
 const CHAT_TAG = '\n<script src="/app/chat-ui.js?v=6" defer></script>\n' + VR_TAG + SESS_TAG;
 // Bút giảng bài nổi trên mọi màn hình (bút, highlight, chữ, tẩy, sổ memo) — public/app/teach-ink.js. Sửa file thì tăng ?v=
-const INK_TAG = '<script src="/app/teach-ink.js?v=1" defer></script>\n';
+const INK_TAG = '<script src="/app/teach-ink.js?v=2" defer></script>\n';
 const N3_TAG = '<script src="/app/n3-tab.js?v=1" defer></script>\n';
 const LOGI_TAG = '<script src="/pub/logi.js?v=2" defer></script>\n';   // popup ngành mới Logistics (18/11/2026)
 const SKIN_TAG = '<link rel="stylesheet" href="/pub/skin/skin.css?v=1">\n';   // ảnh nền đầu Trang chủ (18/11/2026)
