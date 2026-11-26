@@ -65,7 +65,7 @@ Nguồn dựng bản chính (file gốc đã giải mã, script build.py / build
 ## 4. Bản dùng thử
 - Không đăng nhập, không có ô mật khẩu. Đủ tính năng như bản chính, chỉ khoá:
   - Video: chỉ mở buổi 1 (`OPEN_VIDEOS`), các buổi khác bị XOÁ ID video.
-  - Đề thi: chỉ mở Đề 1–2 (`OPEN_EXAMS`), các đề khác bị XOÁ toàn bộ câu hỏi; ảnh chỉ đề khoá dùng bị xoá khỏi EXIMG.
+  - Đề thi (26/11/2026): mở Đề 16 (đề thi thử mới nhất, lên đầu + nhãn hồng), Đề 12, 13 (`OPEN_EXAMS`, số theo bản chính); ẨN HẲN Đề 1, 2 (`HIDE_EXAMS`); bản dùng thử đổi tên Đề 12 → "Đề 1", Đề 13 → "Đề 2" (`RENAME_EXAMS`); thứ tự đầu lưới `TOP_EXAMS` (số sau khi đổi). Đề khoá bị XOÁ toàn bộ câu hỏi; ảnh chỉ đề khoá dùng bị xoá khỏi EXIMG. 10 câu làm thử ở trang chủ lấy 7 câu Đề 16 + 3 ảnh thiết bị.
   - Flashcard: chỉ giữ từ vựng Chương 1 (`OPEN_VOCAB_CH`), XOÁ từ vựng Chương 2–3 khỏi V/TOPIC; chip Chương 2–3 hiện 🔒.
   - Thiết bị: mở 10/20 mỗi nhóm (`EQ_OPEN_PER_GROUP`), 20 thiết bị còn lại giữ tên nhưng XOÁ ảnh + cách dùng; trắc nghiệm ảnh chỉ dùng thiết bị mở.
   - Tài liệu: chỉ mở Chương 1 (`OPEN_DOCS`), XOÁ hẳn nội dung Chương 2–3 (`<script id="src-ch2/ch3">`); thẻ chương + lá sơ đồ tư duy hiện 🔒, bấm vào hiện hộp "Thuộc khoá học đầy đủ". Bản dùng thử luôn ghi p1+p2.

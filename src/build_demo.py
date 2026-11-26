@@ -6,7 +6,10 @@ import json, os, re, sys
 
 # ===================== CÀI ĐẶT (sửa ở đây) =====================
 OPEN_VIDEOS = [1]          # buổi video được mở
-OPEN_EXAMS = [1, 2]        # đề được mở
+OPEN_EXAMS = [16, 12, 13]  # đề được mở — số theo bản chính (26/11/2026: Đề 16 = đề thi thử mới nhất, Đề 12, 13)
+HIDE_EXAMS = [1, 2]        # đề ẩn hẳn khỏi bản dùng thử (không hiện thẻ)
+RENAME_EXAMS = {12: 1, 13: 2}   # bản dùng thử đổi số đề: Đề 12 → "Đề 1", Đề 13 → "Đề 2"
+TOP_EXAMS = [16, 1, 2]     # thứ tự đầu lưới đề (số SAU khi đổi); đề đầu tiên gắn nhãn "Đề thi thử mới nhất"
 OPEN_VOCAB_CH = ['ch1']    # chương mở từ vựng (Flashcard)
 OPEN_DOCS = ['ch1']        # chương mở trong tab Tài liệu — chương khác bị XOÁ nội dung
 EQ_OPEN_PER_GROUP = 10     # thiết bị mở mỗi nhóm (tay/may) — còn lại khoá
@@ -66,11 +69,16 @@ def main():
     a = s.index(key) + len(key)
     exd, end = json.JSONDecoder().raw_decode(s[a:])
     locked_q = []
+    for k in [k for k, e in exd['exams'].items() if e['no'] in HIDE_EXAMS]:
+        locked_q += exd['exams'].pop(k)['questions']
     for k, e in exd['exams'].items():
         if e['no'] not in OPEN_EXAMS:
             locked_q += e['questions']
             e['questions'] = []
             e['lock'] = True
+    for old, new in RENAME_EXAMS.items():
+        assert str(new) not in exd['exams'], ('trùng số đề', new)
+        e = exd['exams'].pop(str(old)); e['no'] = new; exd['exams'][str(new)] = e
     s = s[:a] + json.dumps(exd, ensure_ascii=False, separators=(',', ':')) + s[a + end:]
     used = set()
     for e in exd['exams'].values():
@@ -89,7 +97,12 @@ def main():
              f'<div class="ex-meta"><span>${{e.n}} câu</span><span>${{e.minutes}} phút</span></div>'
              f'<div class="lockmsg">🔒 {LOCK_TXT}</div><div class="ex-act"><a class="lockfb" href="{FB}" target="_blank" rel="noopener">Nhắn Facebook để mở đề</a></div></div></div>`')
     s = rep(s, "  g.innerHTML = Object.values(EXAMS).map(e => {\n    const nimg",
-            "  g.innerHTML = Object.values(EXAMS).map(e => {\n    if (e.lock) return " + LOCKE + ";\n    const nimg")
+            "  g.innerHTML = Object.values(EXAMS).sort((a, b) => exTop(a) - exTop(b)).map(e => {\n    if (e.lock) return " + LOCKE + ";\n    const nimg")
+    # đề thi thử mới nhất lên đầu + nhãn (26/11/2026)
+    s = rep(s, "function renderExamList() {",
+            "const EX_TOP = " + json.dumps(TOP_EXAMS) + ";\nconst exTop = e => { const i = EX_TOP.indexOf(e.no); return i < 0 ? 99 + e.no : i; };\nfunction renderExamList() {")
+    s = rep(s, '    return `<div class="excard">',
+            '    return `<div class="excard${e.no === EX_TOP[0] ? \' exnew\' : \'\'}">${e.no === EX_TOP[0] ? \'<span class="exnew-b">🔥 Đề thi thử mới nhất · làm thử miễn phí</span>\' : \'\'}')
     s = rep(s, "function openExam(no, mode) {\n  const e = EXAMS[no];",
             "function openExam(no, mode) {\n  const e = EXAMS[no];\n  if (!e || e.lock) return;")
     # số câu trên trang chủ: đề khoá vẫn tính số câu gốc
@@ -207,7 +220,7 @@ def main():
   });
   let Q = [], i = 0, score = 0, picked = null;
   function build() {
-    const a = fromExam(1, 4), b = fromExam(2, 3), c = fromEq(3);
+    const t = fromExam(16, 7), a = t.slice(0, 4), b = t.slice(4), c = fromEq(3);
     Q = [a[0], c[0], b[0], a[1], c[1], b[1], a[2], c[2], b[2], a[3]].filter(Boolean);
     i = 0; score = 0; picked = null; draw();
   }
@@ -233,7 +246,7 @@ def main():
     const pct = Math.round(score / Q.length * 100);
     const msg = pct >= 80 ? 'Quá đỉnh! Bạn đã sẵn sàng luyện đề thật.' : pct >= 50 ? 'Khá lắm! Học thêm video và từ vựng là chắc đậu.' : 'Không sao — xem video buổi 1 rồi làm lại nhé!';
     box.innerHTML = `<div class="tq-res"><div class="tq-ring" style="--p:${pct}"><b>${score}<small>/${Q.length}</small></b></div>
-      <div><h3>${msg}</h3><p>Bản trải nghiệm còn mở: video buổi 1, từ vựng Chương 1, 20 thiết bị có ảnh, Đề 1 và Đề 2 (giao diện thi CBT).</p>
+      <div><h3>${msg}</h3><p>Bản trải nghiệm còn mở: video buổi 1, từ vựng Chương 1, 20 thiết bị có ảnh, đề thi thử mới nhất (Đề 16, 50 câu), Đề 1 và Đề 2 — giao diện thi CBT.</p>
       <div class="tq-acts"><button type="button" class="tq-again">Làm lại 10 câu khác</button>
       <button type="button" data-go="video">Xem video</button><button type="button" data-go="cards">Học từ</button><button type="button" data-go="exam">Làm đề thi</button></div></div></div>`;
   }
@@ -265,7 +278,7 @@ def main():
                f'<span class="evid-th"><img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">'
                '<span class="evid-pl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12z"/></svg></span></span>'
                f'<span class="evid-bd"><span class="evid-k">▶ Video học thử</span><b>Buổi {vn_} · {vt}</b><span class="jpt">{vjp}</span>'
-               '<span class="evid-p">Xem bài giảng trước, rồi làm Đề 1 – Đề 2 bên dưới.</span><span class="evid-go">Xem ngay</span></span></button>\n  ')
+               '<span class="evid-p">Xem bài giảng trước, rồi làm đề thi thử mới nhất bên dưới.</span><span class="evid-go">Xem ngay</span></span></button>\n  ')
     s = rep(s, '<div class="exgrid" id="exgrid"></div>', EV_HTML + '<div class="exgrid" id="exgrid"></div>')
     EV_JS = ('<script id="trial-exvid">document.addEventListener("click",function(e){var c=e.target.closest&&e.target.closest("[data-evid]");if(!c)return;'
              'e.preventDefault();if(window.ginoVideoRoom)window.ginoVideoRoom.open(c.dataset.evid,' + meta + ');else if(typeof go==="function")go("video");});</script>')
@@ -306,6 +319,8 @@ body{padding-top:var(--tbh)!important}
 .trialbar .tb-ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;flex:none}
 .trialbar .tb-ic.fb{background:#1877f2}.trialbar .tb-ic.tt{background:#111}
 .trialbar svg,.trialfab svg{width:16px;height:16px}
+.excard.exnew{position:relative;border:2.5px solid #c42f66;box-shadow:0 8px 24px rgba(196,47,102,.18);grid-column:1/-1}
+.exnew-b{display:inline-block;align-self:flex-start;width:max-content;max-width:calc(100% - 28px);margin:10px 0 0 14px;background:linear-gradient(90deg,#c42f66,#e0573f);color:#fff;font:800 12.5px/1 "Quicksand",sans-serif;padding:7px 12px;border-radius:999px}
 .trialfab{position:fixed;right:14px;bottom:84px;z-index:1000;display:flex;flex-direction:column;gap:10px}
 .trialfab a{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,.25)}
 .trialfab a svg{width:22px;height:22px}
