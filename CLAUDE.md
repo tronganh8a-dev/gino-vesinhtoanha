@@ -118,3 +118,9 @@ bản chính `/` → 302 /login; host có "trial" `/`, `/login` → 200 bản d�
 - Đã sửa thẳng trong p1/p2 (tài liệu, đề, flashcard), bản dùng thử và slide c2a. Nguồn dựng ở máy làm việc chưa sửa → build lại từ nguồn cũ sẽ mất; khi đó chạy lại script `tr/fix.py` (ở máy làm việc) trên p1+p2.
 - **Không dùng tiếng Anh trong phần tiếng Việt** (anh dặn 18/11): đã bỏ/đổi wax→sáp, polisher→máy chà sàn, squeegee→cây gạt kính, hose→ống mềm, nozzle→đầu hút, toilet/WC→nhà vệ sinh (nước tẩy bồn cầu), SNS→mạng xã hội, teamwork→làm việc nhóm, trap→bẫy nước, các chú thích (upright), (pod), (microfiber), (floor sign)… Giữ: tên riêng/giao diện (Video, Flashcard, Slide, CBT, Facebook, TikTok), từ mượn quen (axit, clo, vinyl, virus, lavabo, nilon, inox), cột phiên âm romaji.
 - 4 loại máy hút bụi (bảng anh gửi 18/11): ポッド型 = máy hút bụi khô dạng thùng · アップライト型 = máy hút bụi thảm dạng đứng · ウェット型 = máy hút nước bẩn · ハンディ型 = máy hút bụi cầm tay.
+
+## Giáo án giảng dạy (Artifact, 27/11/2026 — đang làm thử Bài 1 chờ anh duyệt)
+- Link (riêng tư, cập nhật giữ nguyên link): https://claude.ai/artifact/9geEFPEgtgPP9kRuNUB3Lm — publish lại từ `src/ga/out/index.html` + files (ga.json, ga_c1–3.json, img/), capability `sample` (khung Hỏi đáp).
+- Dựng: `python3 src/ga/build_ga.py` → `src/ga/out/` (gitignore; `local.html` để xem thử ở máy). Câu sách lấy nguyên từ p1+p2 (`src-chN`), câu đề từ EXD, câu kiểm tra từ QZ/QZ2 (chương 1). Nội dung giảng viết tay: `src/ga/bai/<mã bài>.json` (units trỏ câu sách bằng chỉ số). Khung trang: `src/ga/page.html`.
+- 4 bước dùng chung với slide: `src/ga/steps.py` (① a1..an lý thuyết · ② de · ③ q1 câu bộ đề + q2 câu kiểm tra app · ④ tk + ket). Danh sách bài `BAI` (Chương 1: 6 bài, Chương 2–3: mỗi phần bài học 1 bài).
+- Script tự kiểm: câu sách chưa giảng / giảng 2 lần, đoạn chưa nằm trong trang, câu đề không thấy, chữ tiếng Anh trong phần tiếng Việt.

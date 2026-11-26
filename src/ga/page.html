@@ -1,0 +1,399 @@
+<title>Giáo án Gino Vệ sinh toà nhà</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Quicksand:wght@500;600;700&display=swap">
+<style>
+/* Bố cục: mục lục bài bên trái (chọn bài → chọn mục) · bên phải chỉ hiện 1 mục: câu gốc của sách + các lớp giảng bên dưới */
+:root{
+ --ink:#10283a; --mute:#5b7387; --blue:#0d5a8c; --blue-soft:#e6f0f8; --pink:#c42f66; --pink-soft:#fbe9f0;
+ --paper:#f3f6f9; --card:#ffffff; --line:#d8e2eb; --src:#f7fafc; --ask:#fff4cf; --ask-line:#e8cf72; --exam:#1f7a4d; --exam-soft:#e6f4ec; --hl:#ffe76a;
+ --furi:#2f5573;
+ --jp:"Klee One","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;
+ --vi:"Quicksand","Segoe UI",system-ui,sans-serif;
+ --fs:16px; color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:500 var(--fs)/1.65 var(--vi);font-size:var(--fs)}
+button{font:inherit;color:inherit}
+.j{font-family:var(--jp);font-weight:600;line-height:2.05}
+rt{font-size:.5em;color:var(--furi);font-weight:600}
+b{background:linear-gradient(transparent 0,var(--hl) 0);font-weight:inherit;padding:0 .1em}
+/* thanh trên */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line);
+ padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+ display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--card)}
+.brand{display:flex;flex-direction:column;line-height:1.25;margin-right:auto;min-width:0}
+.brand small{color:var(--mute);font-weight:600;font-size:.78em;letter-spacing:.04em;text-transform:uppercase}
+.brand strong{font-weight:700;font-size:1.05em}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 11px;font-size:.8em;font-weight:600;cursor:pointer;color:var(--mute)}
+.chip:focus-visible,.nav a:focus-visible,.pn button:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+#menuBtn{display:none}
+/* khung */
+.wrap{display:grid;grid-template-columns:290px minmax(0,1fr);gap:0;min-height:calc(100vh - 60px)}
+.nav{border-right:1px solid var(--line);background:var(--card);padding-block:14px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:12px;
+ position:sticky;top:calc(var(--hh,60px) + env(safe-area-inset-top,0px));height:calc(100vh - var(--hh,60px) - env(safe-area-inset-top,0px));overflow:auto}
+.cht{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:0 4px 12px}
+.cht a{display:block;text-align:center;padding:6px 0 5px;border-radius:9px;border:1px solid var(--line);color:var(--mute);font-weight:700;text-decoration:none;font-size:.86em;line-height:1.15}
+.cht a small{display:block;font-size:.66em;font-weight:600;letter-spacing:.02em}
+.cht a.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.phh{margin:10px 0 2px 6px;font-size:.74em;font-weight:700;letter-spacing:.04em;color:var(--pink)}
+.ptag{display:flex;width:max-content;max-width:100%;align-items:center;gap:6px;margin:2px 0 4px;padding:2px 12px 2px 4px;border-radius:999px;background:var(--pink-soft);color:var(--pink);font-weight:700;font-size:.82em}
+.ptag b{background:var(--pink);color:#fff;border-radius:999px;width:1.6em;height:1.6em;display:grid;place-items:center;font-size:.9em;padding:0}
+.nav h2{font-size:.72em;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:4px 8px 8px;font-weight:700}
+.bai{display:block;text-decoration:none;color:inherit;border-radius:10px;padding:7px 8px;display:grid;grid-template-columns:30px 1fr;gap:2px 8px;align-items:start}
+.bai .n{grid-row:span 2;width:28px;height:28px;border-radius:7px;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;font-weight:700;font-size:.85em;margin-top:6px}
+.bai .t{font-family:var(--jp);font-weight:600;font-size:.92em;line-height:1.9}
+.bai .tv{font-size:.76em;color:var(--mute);line-height:1.35}
+.bai.off{opacity:.55}
+.bai.on{background:var(--blue-soft)}
+.bai.on .n{background:var(--blue);color:#fff}
+.sub{margin:2px 0 10px 38px;display:flex;flex-direction:column;border-left:2px solid var(--line)}
+.sub a{color:var(--mute);text-decoration:none;font-size:.82em;padding:5px 10px;display:flex;justify-content:space-between;gap:8px;line-height:1.35}
+.sub a span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.sub a.on{color:var(--blue);font-weight:700;border-left:2px solid var(--blue);margin-left:-2px}
+main{min-width:0;padding-block:22px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.col{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.crumb{font-size:.8em;color:var(--mute);font-weight:600;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.crumb .j{font-weight:600;line-height:1.6}
+h1{margin:0;font-size:1.55em;line-height:1.35;text-wrap:balance}
+h1 .j{line-height:1.9}
+.sv{color:var(--mute);font-weight:600;margin-top:-6px}
+.min{display:inline-block;font-size:.75em;font-weight:700;color:var(--pink);background:var(--pink-soft);border-radius:6px;padding:1px 8px;margin-left:6px;vertical-align:middle;font-variant-numeric:tabular-nums}
+/* tổng quan */
+.ov{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.ov h3{margin:0 0 8px;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.ov ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
+.tl{display:flex;flex-direction:column;gap:6px}
+.tl a{display:grid;grid-template-columns:minmax(0,1fr) 54px;gap:10px;align-items:center;text-decoration:none;color:inherit;font-size:.88em}
+.tl .bar{height:22px;border-radius:5px;background:var(--blue-soft);position:relative;overflow:hidden}
+.tl .bar i{position:absolute;inset:0 auto 0 0;background:var(--blue);opacity:.85}
+.tl .bar span{position:relative;padding:0 8px;line-height:22px;color:var(--ink);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.tl .bar i+span{color:#fff}
+.tl em{font-style:normal;font-variant-numeric:tabular-nums;color:var(--mute);text-align:right}
+/* đơn vị giảng */
+.unit{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.unit .no{font-size:.72em;font-weight:700;color:var(--mute);letter-spacing:.06em;padding:10px 18px 0}
+.src{background:var(--src);margin:8px 12px 0;border-radius:10px;padding:10px 14px;display:flex;flex-direction:column;gap:6px}
+.sl .j{font-size:1.12em}
+.sl .v{color:var(--mute);font-size:.88em;line-height:1.45}
+.sl.bs .j,.sl.bh .j{color:var(--blue)}
+.sl.bl .j::before{content:"・";color:var(--blue)}
+.sl.bt .v{color:var(--pink)}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;font-size:.86em;min-width:560px}
+td{border:1px solid var(--line);padding:6px 8px;vertical-align:top;background:var(--card)}
+td .j{font-size:1em;line-height:1.85}
+td .v{color:var(--mute);font-size:.86em;line-height:1.4}
+figure{margin:4px 0;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+figure img{max-height:320px;border-radius:8px;border:1px solid var(--line);background:#fff}
+figcaption{font-size:.78em;color:var(--mute)}
+.qq{display:flex;flex-direction:column;gap:6px}
+.qh{font-size:.8em;font-weight:700;color:var(--pink)}
+.qh rt{color:var(--pink)}
+.qq ol{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.qq li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:start;border:1px solid var(--line);border-radius:9px;padding:6px 10px;background:var(--card)}
+.qq li>b{background:var(--blue-soft);color:var(--blue);border-radius:6px;text-align:center;font-weight:700;margin-top:8px;padding:0}
+.qq li.ok{border-color:var(--exam);background:var(--exam-soft)}
+.qq li.ok>b{background:var(--exam);color:#fff}
+.qq li img{max-height:120px}
+.ex{margin-top:4px;border-top:1px dashed var(--line);padding-top:6px}
+.ex summary{cursor:pointer;font-weight:700;font-size:.85em;color:var(--blue)}
+.ex[open]{display:flex;flex-direction:column;gap:4px}
+.ex .sl .j{font-size:1em}
+.layers{padding:14px 18px 16px;display:flex;flex-direction:column;gap:12px}
+.ly{display:grid;grid-template-columns:118px minmax(0,1fr);gap:12px;align-items:start}
+.ly>h4{margin:0;font-size:.72em;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);padding-top:4px;line-height:1.4}
+.ly>div{min-width:0}
+.ly p{margin:0 0 .5em}.ly p:last-child{margin:0}
+.pt{display:flex;flex-direction:column;gap:3px;font-size:.92em}
+.pt span{line-height:1.9}
+.lg>div{font-size:1.06em;line-height:1.75}
+.ask>div{background:var(--ask);border:1px solid var(--ask-line);border-radius:9px;padding:8px 12px;font-size:.95em}
+.de>div{color:var(--exam);font-weight:600;font-size:.93em}
+.gv>div{border:1px dashed var(--pink);border-radius:9px;padding:8px 12px;font-size:.9em;color:var(--ink)}
+/* 確認問題 */
+.kq{display:flex;flex-direction:column;gap:10px}
+.kq .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;display:flex;flex-direction:column;gap:6px}
+.kq .card>.j{font-size:1.05em}
+.kq ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.kq li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;font-size:.95em}
+.kq li b{color:var(--mute);background:none} .kq li.ok .j{color:var(--exam)} .kq li.ok>b{color:#fff}
+.kq li img{max-height:110px;display:block}
+.kq figure img{max-height:220px}
+.kq .nt{font-size:.86em;color:var(--mute);border-top:1px solid var(--line);padding-top:6px}
+.sl{display:flex;flex-direction:column;gap:0}
+.sl .who{font-size:.72em;font-weight:700;color:var(--blue);letter-spacing:.03em}
+.sl.sn .j{color:var(--ink)}
+.dc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.dch{font-weight:700;color:var(--blue);margin-bottom:6px}.dch span{color:var(--pink);margin-right:4px}
+.dc figure{flex-direction:row;flex-wrap:wrap;gap:8px}.dc figcaption{width:100%}
+.dc figure img{max-height:420px}
+.tg{display:inline-block;font-size:.72em;font-weight:700;border-radius:6px;padding:1px 8px;margin-right:6px;background:var(--exam-soft);color:var(--exam);vertical-align:middle;font-family:var(--jp)}
+.dek{margin-bottom:4px}.dt{background:none;font-weight:700}
+.refs{margin:6px 0 0;padding-left:1.1em;font-size:.9em;color:var(--mute)}.refs b{background:none;color:var(--ink)}.refs .j{line-height:1.9}
+.ans{color:var(--exam);font-weight:700}
+.kq .card .v{color:var(--mute);font-size:.88em;line-height:1.45}
+.kq li>div{min-width:0}
+.ex p{margin:0}
+.soon{background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:28px;text-align:center;color:var(--mute)}
+.pn{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pn button{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 14px;cursor:pointer;font-weight:600;max-width:48%;text-align:left}
+.pn button:disabled{visibility:hidden}
+.pn button small{display:block;color:var(--mute);font-size:.72em;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:860px){
+ #menuBtn{display:inline-block}
+ .wrap{grid-template-columns:minmax(0,1fr)}
+ .nav{position:fixed;inset:0 auto 0 0;width:min(86vw,320px);height:100%;z-index:20;transform:translateX(-102%);transition:transform .2s;padding-top:calc(14px + env(safe-area-inset-top,0px));box-shadow:0 0 0 100vmax transparent}
+ body.menu .nav{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+ .ly{grid-template-columns:minmax(0,1fr);gap:2px}
+ .ly>h4{padding-top:0}
+}
+@media (prefers-reduced-motion:reduce){.nav{transition:none}}
+/* ---- Hỏi đáp (khung phải) ---- */
+#askBtn{background:var(--pink);border-color:var(--pink);color:#fff;font-weight:700;padding:6px 14px;font-size:.86em}
+#askBtn[hidden]{display:none}
+:root{--cw:min(420px,40vw)}
+body.chat .wrap{margin-right:var(--cw)}
+#chat{position:fixed;right:0;bottom:0;top:calc(var(--hh,60px) + env(safe-area-inset-top,0px));width:var(--cw);z-index:6;background:var(--card);border-left:1px solid var(--line);
+ display:flex;flex-direction:column;padding-right:env(safe-area-inset-right,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+#chat[hidden]{display:none}
+.ch-h{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.ch-h b{background:none;font-weight:700;margin-right:auto;line-height:1.3}
+.ch-h b small{display:block;color:var(--mute);font-weight:600;font-size:.78em}
+.ch-x{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:3px 9px;cursor:pointer;color:var(--mute);font-size:.82em;font-weight:600}
+.ch-q{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px 4px}
+.ch-q button{border:1px solid var(--blue-soft);background:var(--blue-soft);color:var(--blue);border-radius:999px;padding:3px 11px;font-size:.8em;font-weight:700;cursor:pointer}
+.ch-v{padding:4px 14px 8px;border-bottom:1px solid var(--line)}
+.ch-v summary{cursor:pointer;color:var(--mute);font-weight:700;font-size:.8em;padding:4px 0;list-style:none}
+.ch-v summary::-webkit-details-marker{display:none}
+.ch-v summary::before{content:"▸ "}.ch-v[open] summary::before{content:"▾ "}
+.vw{display:flex;flex-wrap:wrap;gap:5px;max-height:150px;overflow:auto;padding:2px 0 4px}
+.vw button{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:0 8px;cursor:pointer;font-family:var(--jp);font-weight:600;font-size:.92em;line-height:2;color:var(--ink);text-align:left}
+.vw button:hover{border-color:var(--pink);color:var(--pink)}
+.vw button small{font-family:var(--vi);color:var(--mute);font-size:.72em;margin-left:4px}
+.ch-m{flex:1;overflow:auto;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.ch-m .hint{color:var(--mute);font-size:.88em;line-height:1.6}
+.msg{border-radius:12px;padding:8px 12px;max-width:100%;overflow-wrap:anywhere}
+.msg.u{align-self:flex-end;background:var(--blue);color:#fff;max-width:88%;font-weight:600}
+.msg.u q{display:block;font-size:.84em;opacity:.85;border-left:2px solid #fff6;padding-left:8px;margin-bottom:4px;font-family:var(--jp)}
+.msg.a{background:var(--src);border:1px solid var(--line);line-height:1.75}
+.msg.a p{margin:.3em 0}.msg.a ul,.msg.a ol{margin:.3em 0;padding-left:1.3em}.msg.a h5{margin:.5em 0 .2em;font-size:1em;color:var(--blue)}
+.msg.a ruby{font-family:var(--jp);font-weight:600}
+.msg.a .wait{color:var(--mute);font-style:italic}
+.msg.err{background:var(--pink-soft);color:var(--pink);font-weight:600;font-size:.88em}
+.ch-sel{margin:0 14px;padding:6px 10px;border-radius:8px;background:var(--ask);border:1px solid var(--ask-line);font-size:.82em;display:flex;gap:8px;align-items:flex-start}
+.ch-sel[hidden]{display:none}
+.ch-sel span{flex:1;font-family:var(--jp);max-height:3.6em;overflow:hidden}
+.ch-sel button{border:0;background:none;cursor:pointer;color:var(--mute);font-weight:700}
+.ch-f{display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--line)}
+.ch-f textarea{flex:1;min-width:0;resize:none;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:500 .95em/1.5 var(--vi);color:var(--ink);background:var(--card);height:62px}
+.ch-f textarea:focus{outline:2px solid var(--blue-soft);border-color:var(--blue)}
+.ch-f button{border:0;border-radius:10px;background:var(--pink);color:#fff;font-weight:700;padding:0 14px;cursor:pointer}
+.ch-f button.stop{background:var(--ink)}
+#selAsk{position:absolute;z-index:7;border:0;border-radius:999px;background:var(--pink);color:#fff;font-weight:700;font-size:.8em;padding:5px 12px;cursor:pointer;box-shadow:0 4px 12px rgba(16,40,58,.25)}
+#selAsk[hidden]{display:none}
+@media (max-width:860px){
+ :root{--cw:100vw}
+ body.chat .wrap{margin-right:0}
+ #chat{top:0;left:0;width:auto;border-left:0;z-index:20;padding-left:env(safe-area-inset-left,0px);padding-top:env(safe-area-inset-top,0px)}
+ .vw{max-height:96px}
+ #askBtn{order:-1}
+}
+</style>
+
+<header>
+ <button class="chip" id="menuBtn" aria-label="Mở mục lục">☰ Mục lục</button>
+ <div class="brand"><small>Giáo án · Gino Vệ sinh toà nhà</small><strong id="chTitle">Chương 1</strong></div>
+ <button class="chip" id="askBtn" hidden aria-expanded="false" aria-controls="chat">Hỏi đáp</button>
+</header>
+<div class="wrap">
+ <nav class="nav" id="nav" aria-label="Mục lục"></nav>
+ <main><div class="col" id="view"><p class="soon">Đang tải giáo án…</p></div></main>
+</div>
+<aside id="chat" hidden aria-label="Hỏi đáp">
+ <div class="ch-h"><b>Hỏi đáp<small id="chBai"></small></b><button class="ch-x" id="chClr">Xoá</button><button class="ch-x" id="chClose" aria-label="Đóng">✕</button></div>
+ <div class="ch-q" id="chQ"></div>
+ <details class="ch-v" id="chV"><summary>Từ vựng của bài · bấm để hỏi</summary><div class="vw" id="chVW"></div></details>
+ <div class="ch-m" id="chM"><p class="hint">Hỏi về từ vựng, dụng cụ, hoá chất, hay bất cứ ý nào trong giáo án. Bôi đen một đoạn trong giáo án rồi bấm "Hỏi về đoạn này" để hỏi đúng chỗ đó.</p></div>
+ <div class="ch-sel" id="chSel" hidden><span id="chSelT"></span><button id="chSelX" aria-label="Bỏ đoạn đã chọn">✕</button></div>
+ <form class="ch-f" id="chF"><textarea id="chIn" placeholder="Ví dụ: 遅刻 và 早退 khác nhau thế nào?" aria-label="Câu hỏi"></textarea><button id="chGo">Gửi</button></form>
+</aside>
+<button id="selAsk" hidden>Hỏi về đoạn này</button>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const st=(k,v)=>{try{if(v===undefined)return localStorage.getItem('ga_'+k);localStorage.setItem('ga_'+k,v)}catch(e){return null}};
+const setH=()=>document.documentElement.style.setProperty('--hh',document.querySelector('header').offsetHeight+'px');setH();window.addEventListener('resize',setH);
+$('#menuBtn').onclick=()=>document.body.classList.toggle('menu');
+document.addEventListener('click',e=>{if(document.body.classList.contains('menu')&&!e.target.closest('.nav')&&!e.target.closest('#menuBtn'))document.body.classList.remove('menu')});
+
+// danh sách "trang" của 1 bài: tổng quan, mở bài, các mục, kết bài
+// 4 bước giống slide: ① lý thuyết → ② đề thi hỏi gì → ③ trắc nghiệm (câu sách + 確認問題) → ④ tổng kết (+ kết bài)
+const PHN=['Học lý thuyết','Đề thi sẽ hỏi gì','Trắc nghiệm','Tổng kết'], CIR='①②③④';
+function pages(b){ return b.ready?b.pages:[{k:'0',t:'Tổng quan',p:0}] }
+let IDX=null; const CD={};
+const chOf=id=>IDX.chs.find(c=>c.bai.some(b=>b.id===id));
+function parse(){
+ const h=(location.hash||'').slice(1); const m=h.match(/^(b\d\d)-(\w+)$/);
+ const c=(m&&chOf(m[1]))||IDX.chs[0];
+ const d=CD[c.ch]; const first=d.bai.find(b=>b.ready)||d.bai[0];
+ if(!m||c!==chOf(m[1])) return {c,b:first,k:'0'};
+ const b=d.bai.find(x=>x.id===m[1])||first; const ks=pages(b).map(p=>p.k);
+ return {c,b,k:ks.includes(m[2])?m[2]:'0'};
+}
+function nav(cur){
+ let h='<div class="cht">'+IDX.chs.map(c=>`<a href="#${c.bai[0].id}-0" class="${c===cur.c?'on':''}" title="${c.catv}">Ch.${c.ch}<small>${c.catv}</small></a>`).join('')+'</div>';
+ h+='<h2>Chương '+cur.c.ch+' · '+cur.c.catv+'</h2>';
+ CD[cur.c.ch].bai.forEach(b=>{
+  const on=b.id===cur.b.id;
+  h+=`<a class="bai${on?' on':''}${b.ready?'':' off'}" href="#${b.id}-0"><span class="n">${b.no}</span><span class="t">${b.tj}</span><span class="tv">${b.tv}${b.ready?'':' · đang soạn'}</span></a>`;
+  if(on&&b.ready){ let last=0; h+='<div class="sub">'+pages(b).map(p=>{let g='';if(p.ph&&p.ph!==last){last=p.ph;g=`<div class="phh">${CIR[p.ph-1]} ${PHN[p.ph-1]}</div>`}return g+`<a href="#${b.id}-${p.k}" class="${p.k===cur.k?'on':''}${p.ph?' in':''}"><span>${p.t}</span><span>${p.p?p.p+'′':''}</span></a>`}).join('')+'</div>'; }
+ });
+ $('#nav').innerHTML=h;
+}
+const _L=(cls,label,html)=>html?`<div class="ly ${cls}"><h4>${label}</h4><div>${html}</div></div>`:'';
+function render(){
+ const m=(location.hash||'').match(/^#(b\d\d)-/); const c=(m&&chOf(m[1]))||IDX.chs[0];
+ if(!CD[c.ch]){$('#view').innerHTML='<p class="soon">Đang tải Chương '+c.ch+'…</p>';fetch('ga_c'+c.ch+'.json').then(r=>r.json()).then(d=>{CD[c.ch]=d;render()}).catch(()=>{$('#view').innerHTML='<p class="soon">Không tải được Chương '+c.ch+'. Tải lại trang để thử lại.</p>'});return}
+ const cur=parse(); window.GA_CUR=cur; $('#chTitle').textContent='Chương '+cur.c.ch+' · '+cur.c.catv; nav(cur); const b=cur.b; const ps=pages(b); const idx=ps.findIndex(p=>p.k===cur.k); const pg=ps[idx];
+ const ptag=pg&&pg.ph?`<div class="ptag"><b>${CIR[pg.ph-1]}</b>Bước ${pg.ph} · ${PHN[pg.ph-1]}</div>`:'';
+ const crumb=`<div class="crumb"><span>Bài ${b.no}</span><span>·</span><span class="j">${b.tj}</span><span>·</span><span>${b.pg}</span></div>`;
+ let h=crumb+ptag;
+ if(!b.ready){ h+=`<h1>${b.tv}</h1><div class="soon">Bài này đang soạn.</div>`; }
+ else h+=pg.html;
+ const pv=ps[idx-1], nx=ps[idx+1];
+ h+=`<div class="pn"><button id="pv" ${pv?'':'disabled'}><small>Trước</small>${pv?pv.t:''}</button><button id="nx" ${nx?'':'disabled'}><small>Tiếp</small>${nx?nx.t:''}</button></div>`;
+ $('#view').innerHTML=h;
+ if(pv) $('#pv').onclick=()=>{location.hash=b.id+'-'+pv.k};
+ if(nx) $('#nx').onclick=()=>{location.hash=b.id+'-'+nx.k};
+ document.body.classList.remove('menu'); window.scrollTo(0,0);
+ if(window.GA_CHAT_SYNC) window.GA_CHAT_SYNC();
+}
+fetch('ga.json').then(r=>r.json()).then(d=>{IDX=d;render();window.addEventListener('hashchange',render)})
+ .catch(()=>{$('#view').innerHTML='<p class="soon">Không tải được dữ liệu giáo án (ga.json). Tải lại trang để thử lại.</p>'});
+})();
+
+/* ---------- Hỏi đáp: hỏi Claude về từ vựng, thiết bị, kiến thức trong trang đang mở ---------- */
+(function(){
+const $=s=>document.querySelector(s);
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const RULES=`Bạn là trợ giảng cho anh Trọng Anh, giáo viên dạy luyện thi 特定技能（とくていぎのう）1号 ngành ビルクリーニング (Vệ sinh toà nhà) cho học viên người Việt. Anh đang đứng lớp, mở giáo án và hỏi nhanh để giảng.
+
+Cách trả lời:
+- Tiếng Việt, xưng "em", gọi "anh". Giọng thầy giáo tự nhiên, dễ hiểu, đi thẳng vào ý.
+- Bám giáo trình học tập 特定技能 ビルクリーニング (nội dung trang anh đang mở có ở dưới). Ý nào ngoài giáo trình thì nói rõ là ngoài sách. Điều luật, con số không chắc thì nói là không chắc, không bịa.
+- Hỏi về một từ, dụng cụ, hoá chất hay khái niệm thì giải thích đủ: cách đọc, âm Hán Việt từng chữ Hán, nghĩa; dùng khi nào, dùng cho loại sàn/bề mặt nào; từ dễ nhầm và cách phân biệt; đề thi hay hỏi gì (学科 hay 実技 nhìn hình); 1 câu ví dụ tiếng Nhật kèm nghĩa.
+- Hoá chất: nói rõ axit / kiềm / trung tính, dùng cho vết bẩn nào, không dùng cho vật liệu nào.
+- Mọi chữ Hán tiếng Nhật viết furigana ngay sau, dạng 漢字（かな）.
+- Tiếng Việt không dùng từ tiếng Anh. Tên dụng cụ katakana giữ nguyên rồi giải thích tiếng Việt, dùng đúng tên lớp đã chốt: ダストクロス = cây lau khăn khô, モップ = cây lau khăn ướt, 幅木（はばき） = len chân tường, 自在（じざい）ぼうき = chổi cước, パッド = miếng chà sàn, 文化（ぶんか）ちりとり = hót rác cán dài, 汚水取（おすいと）り = hót nước bẩn, ポッド型（がた） = máy hút bụi khô dạng thùng, アップライト型（がた） = máy hút bụi thảm dạng đứng, ウェット型（がた） = máy hút nước bẩn, ハンディ型（がた） = máy hút bụi cầm tay.
+- Không dùng nhãn kiểu "Mẹo", "Bẫy", "Ghi nhớ", "Lưu ý quan trọng".
+- Không tự đổi đáp án của sách hay của đề; thấy mâu thuẫn thì nói rõ để anh quyết.
+- Trình bày gọn để anh nhìn nhanh khi đang dạy: tiêu đề ngắn in đậm, gạch đầu dòng "- ", danh sách số "1. ". Không dùng bảng. Khoảng 250 chữ, trừ khi anh hỏi kỹ hơn.`;
+let sample=null, turns=[], busy=null, sel='';
+const P=()=>window.GA_CUR;
+// trang đang mở → chữ thường, furigana dạng 漢字（かな）
+function plain(el){
+ const c=el.cloneNode(true);
+ c.querySelectorAll('ruby').forEach(r=>{const rt=[...r.querySelectorAll('rt')].map(x=>x.textContent).join('');r.querySelectorAll('rt,rp').forEach(x=>x.remove());r.replaceWith(document.createTextNode(r.textContent+(rt?'（'+rt+'）':'')))});
+ c.querySelectorAll('button,img,.pn').forEach(x=>x.remove());
+ return c.textContent.replace(/[ \t]+/g,' ').replace(/\n\s*\n+/g,'\n').trim();
+}
+function ctx(){
+ const cur=P(); if(!cur) return '';
+ const b=cur.b, vo=(b.vo||[]).map(v=>'- '+v[1]+(v[2]?' ｜ '+v[2]:'')+' ｜ '+v[3]+(v[4]?' ｜ '+v[4]:'')).join('\n');
+ return `Anh đang mở: Chương ${cur.c.ch} (${cur.c.catv}) · Bài ${b.no} ${plain(Object.assign(document.createElement('div'),{innerHTML:b.tj}))} (${b.tv}).
+
+Từ vựng của bài (từ ｜ Hán Việt ｜ nghĩa ｜ ghi chú):
+${vo||'(không có)'}
+
+Nội dung mục đang mở trong giáo án:
+${plain($('#view')).slice(0,9000)}`;
+}
+// câu trả lời → HTML: chỉ **đậm**, gạch đầu dòng, danh sách số, tiêu đề ###, furigana 漢字（かな）→ ruby
+function md(t){
+ const ruby=s=>s.replace(/([\u4E00-\u9FFF\u3005\u30F6]+)（([\u3041-\u309F\u30FC]+)）/g,'<ruby>$1<rt>$2</rt></ruby>');
+ const inl=s=>ruby(esc(s)).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+ let h='',l=null;
+ const close=()=>{if(l){h+='</'+l+'>';l=null}};
+ for(const raw of t.split('\n')){
+  const x=raw.trim(); let m;
+  if(!x){close();continue}
+  if((m=x.match(/^#{1,4}\s+(.*)/))){close();h+='<h5>'+inl(m[1])+'</h5>';continue}
+  if((m=x.match(/^[-*•]\s+(.*)/))){if(l!=='ul'){close();h+='<ul>';l='ul'}h+='<li>'+inl(m[1])+'</li>';continue}
+  if((m=x.match(/^\d+[.)]\s+(.*)/))){if(l!=='ol'){close();h+='<ol>';l='ol'}h+='<li>'+inl(m[1])+'</li>';continue}
+  close();h+='<p>'+inl(x)+'</p>';
+ }
+ close();return h;
+}
+const box=$('#chM');
+function bubble(cls,html){const d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;box.appendChild(d);box.scrollTop=box.scrollHeight;return d}
+const ERR={not_granted:'Anh chưa cho phép trang này dùng Claude nên chưa hỏi được.',sampling_disabled:'Tài khoản này chưa dùng được Claude trong trang.',rate_limited:'Hỏi hơi dồn, anh chờ một lát rồi hỏi lại.',session_expired:'Phiên đăng nhập đã hết, anh tải lại trang.',refused:'Câu này không trả lời được, anh hỏi cách khác.',prompt_too_large:'Nội dung quá dài, anh bấm Xoá rồi hỏi lại.'};
+async function ask(q,quote){
+ if(!sample||busy||!q.trim()) return;
+ open(true);
+ const u=bubble('u',(quote?'<q>'+esc(quote.slice(0,300))+(quote.length>300?'…':'')+'</q>':'')+esc(q));
+ const content=(quote?'Đoạn anh bôi đen trong giáo án:\n「'+quote.slice(0,2000)+'」\n\n':'')+q;
+ turns.push({role:'user',content}); turns=turns.slice(-12);
+ const a=bubble('a','<span class="wait">Đang soạn câu trả lời…</span>');
+ busy=new AbortController(); setBusy(true);
+ try{
+  const {text,truncated}=await sample([{role:'user',content:RULES+'\n\n'+ctx()},...turns],{cache:false,signal:busy.signal,onText:({text})=>{a.innerHTML=md(text);box.scrollTop=box.scrollHeight}});
+  a.innerHTML=md(text)+(truncated?'<p class="wait">(Câu trả lời bị cắt ngắn — anh hỏi gọn hơn.)</p>':'');
+  turns.push({role:'assistant',content:text});
+ }catch(e){
+  if(e&&e.text){a.innerHTML=md(e.text)}else a.remove();
+  if(!e||e.code!=='cancelled') bubble('err',esc(ERR[e&&e.code]||'Chưa trả lời được, anh thử lại.'));
+  turns.pop();
+  if(e&&(e.code==='not_granted'||e.code==='sampling_disabled')){sample=null}
+ }finally{busy=null;setBusy(false);box.scrollTop=box.scrollHeight}
+}
+function setBusy(on){const g=$('#chGo');g.textContent=on?'Dừng':'Gửi';g.classList.toggle('stop',on)}
+$('#chF').onsubmit=e=>{e.preventDefault(); if(busy){busy.abort();return} const q=$('#chIn').value.trim(); if(!q)return; $('#chIn').value=''; const s=sel; clearSel(); ask(q,s)};
+$('#chIn').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();$('#chF').requestSubmit()}});
+$('#chClr').onclick=()=>{if(busy)busy.abort();turns=[];box.innerHTML='<p class="hint">Đã xoá. Anh hỏi tiếp nhé.</p>'};
+function open(on){$('#chat').hidden=!on;document.body.classList.toggle('chat',on);$('#askBtn').setAttribute('aria-expanded',on);try{localStorage.setItem('ga_chat',on?'1':'0')}catch(e){}}
+$('#askBtn').onclick=()=>open($('#chat').hidden);
+$('#chClose').onclick=()=>open(false);
+// câu hỏi nhanh theo mục đang mở
+const QUICK=[['Giảng kỹ mục này','Giải thích kỹ, dễ hiểu nội dung mục đang mở để em giảng cho học viên: ý chính, vì sao như vậy, liên hệ công việc vệ sinh toà nhà ở Nhật.'],
+ ['Ví dụ thực tế','Cho 2–3 ví dụ thực tế ở nơi làm vệ sinh toà nhà tại Nhật minh hoạ cho mục đang mở (chỉ điều có thật, không chắc thì nói rõ).'],
+ ['Câu hỏi cho lớp','Gợi ý 3 câu hỏi ngắn để hỏi lớp về mục đang mở, kèm đáp án.'],
+ ['Đề hay hỏi gì','Phần này đề thi hay hỏi gì (ở 学科 hay 実技), đáp án sai thường viết thế nào?']];
+$('#chQ').innerHTML=QUICK.map((q,i)=>`<button data-i="${i}">${q[0]}</button>`).join('');
+$('#chQ').onclick=e=>{const b=e.target.closest('button');if(b)ask(QUICK[+b.dataset.i][1])};
+// từ vựng của bài → bấm để hỏi
+window.GA_CHAT_SYNC=()=>{
+ const cur=P(); if(!cur) return; const b=cur.b;
+ $('#chBai').innerHTML='Bài '+b.no+' · '+esc(b.tv);
+ const vo=b.vo||[]; $('#chV').hidden=!vo.length;
+ $('#chVW').innerHTML=vo.map((v,i)=>`<button data-i="${i}" title="${esc(v[3])}">${v[0]}<small>${esc(v[3])}</small></button>`).join('');
+};
+$('#chVW').onclick=e=>{const b=e.target.closest('button');if(!b)return;const v=(P().b.vo||[])[+b.dataset.i];if(v)ask('Giải thích kỹ từ 「'+v[1]+'」 để em giảng cho học viên.')};
+// bôi đen trong giáo án → nút "Hỏi về đoạn này"
+const sa=$('#selAsk');
+function clearSel(){sel='';$('#chSel').hidden=true;sa.hidden=true}
+function readSel(){
+ const s=window.getSelection(); if(!s||s.isCollapsed||!s.rangeCount){sa.hidden=true;return}
+ const r=s.getRangeAt(0); if(!$('#view').contains(r.commonAncestorContainer)){sa.hidden=true;return}
+ const tmp=document.createElement('div'); tmp.appendChild(r.cloneContents()); const t=plain(tmp); if(t.length<2){sa.hidden=true;return}
+ sel=t; const rc=r.getBoundingClientRect();
+ sa.style.top=(window.scrollY+rc.bottom+8)+'px'; sa.style.left=Math.max(8,Math.min(window.scrollX+rc.left,window.scrollX+document.documentElement.clientWidth-170))+'px';
+ if(sample) sa.hidden=false;
+ $('#chSelT').textContent='「'+t.slice(0,160)+(t.length>160?'…':'')+'」'; $('#chSel').hidden=false;
+}
+document.addEventListener('mouseup',e=>{if(!e.target.closest('#chat')&&e.target!==sa)setTimeout(readSel,0)});
+document.addEventListener('touchend',e=>{if(!e.target.closest('#chat')&&e.target!==sa)setTimeout(readSel,300)});
+sa.addEventListener('mousedown',e=>e.preventDefault());
+sa.onclick=()=>{const s=sel;sa.hidden=true;$('#chSel').hidden=true;sel='';window.getSelection().removeAllRanges();ask('Giải thích kỹ đoạn này để em giảng cho học viên: nghĩa từng ý, từ khó (cách đọc, Hán Việt), liên hệ thực tế khi làm vệ sinh toà nhà.',s)};
+$('#chSelX').onclick=clearSel;
+// chỉ hiện chức năng khi trang chạy trong Claude và có quyền hỏi Claude
+if(window.claude&&window.claude.use){
+ window.claude.use('sample').then(f=>{if(!f)return;sample=f;$('#askBtn').hidden=false;setTimeout(()=>window.dispatchEvent(new Event('resize')),0);
+  let on=null;try{on=localStorage.getItem('ga_chat')}catch(e){} if(innerWidth>860){$('#chV').open=true;if(on==='1')open(true)} if(window.GA_CHAT_SYNC)window.GA_CHAT_SYNC();}).catch(()=>{});
+}
+})();
+</script>
+
