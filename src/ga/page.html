@@ -189,7 +189,7 @@ body.chat .wrap{margin-right:var(--cw)}
 .vw button{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:0 8px;cursor:pointer;font-family:var(--jp);font-weight:600;font-size:.92em;line-height:2;color:var(--ink);text-align:left}
 .vw button:hover{border-color:var(--pink);color:var(--pink)}
 .vw button small{font-family:var(--vi);color:var(--mute);font-size:.72em;margin-left:4px}
-.ch-m{flex:1;overflow:auto;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.ch-m{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
 .ch-m .hint{color:var(--mute);font-size:.88em;line-height:1.6}
 .msg{border-radius:12px;padding:8px 12px;max-width:100%;overflow-wrap:anywhere}
 .msg.u{align-self:flex-end;background:var(--blue);color:#fff;max-width:88%;font-weight:600}
@@ -232,7 +232,7 @@ body.chat .wrap{margin-right:var(--cw)}
  <div class="ch-h"><b>Hỏi đáp<small id="chBai"></small></b><button class="ch-x" id="chClr">Xoá</button><button class="ch-x" id="chClose" aria-label="Đóng">✕</button></div>
  <div class="ch-q" id="chQ"></div>
  <details class="ch-v" id="chV"><summary>Từ vựng của bài · bấm để hỏi</summary><div class="vw" id="chVW"></div></details>
- <div class="ch-m" id="chM"><p class="hint">Hỏi về từ vựng, dụng cụ, hoá chất, hay bất cứ ý nào trong giáo án. Bôi đen một đoạn trong giáo án rồi bấm "Hỏi về đoạn này" để hỏi đúng chỗ đó.</p></div>
+ <div class="ch-m" id="chM"><p class="hint">Hỏi về dụng cụ, hoá chất, cách làm, hay bất cứ ý nào trong giáo án. Bôi đen một đoạn trong giáo án rồi bấm "Hỏi về đoạn này" để hỏi đúng chỗ đó.</p></div>
  <div class="ch-sel" id="chSel" hidden><span id="chSelT"></span><button id="chSelX" aria-label="Bỏ đoạn đã chọn">✕</button></div>
  <form class="ch-f" id="chF"><textarea id="chIn" placeholder="Ví dụ: 遅刻 và 早退 khác nhau thế nào?" aria-label="Câu hỏi"></textarea><button id="chGo">Gửi</button></form>
 </aside>
@@ -301,9 +301,10 @@ const RULES=`Bạn là trợ giảng cho anh Trọng Anh, giáo viên dạy luy�
 Cách trả lời:
 - Tiếng Việt, xưng "em", gọi "anh". Giọng thầy giáo tự nhiên, dễ hiểu, đi thẳng vào ý.
 - Bám giáo trình học tập 特定技能 ビルクリーニング (nội dung trang anh đang mở có ở dưới). Ý nào ngoài giáo trình thì nói rõ là ngoài sách. Điều luật, con số không chắc thì nói là không chắc, không bịa.
-- Hỏi về một từ, dụng cụ, hoá chất hay khái niệm thì giải thích đủ: cách đọc, âm Hán Việt từng chữ Hán, nghĩa; dùng khi nào, dùng cho loại sàn/bề mặt nào; từ dễ nhầm và cách phân biệt; đề thi hay hỏi gì (学科 hay 実技 nhìn hình); 1 câu ví dụ tiếng Nhật kèm nghĩa.
+- Tập trung giải thích KIẾN THỨC NGÀNH, không giảng tiếng Nhật: không giải thích cách đọc, âm Hán Việt, ngữ pháp, mẫu câu, trừ khi anh hỏi đúng về tiếng Nhật.
+- Hỏi về một dụng cụ, máy, hoá chất, vật liệu, quy trình hay khái niệm thì nói rõ: là gì, dùng để làm gì, dùng khi nào và cho sàn/bề mặt nào; làm thế nào, theo thứ tự nào, vì sao phải làm như vậy; điều nguy hiểm, lỗi người mới hay mắc; thứ dễ nhầm và cách phân biệt; thực tế ở nơi làm việc tại Nhật; đề thi hay hỏi gì (学科 hay 実技 nhìn ảnh).
 - Hoá chất: nói rõ axit / kiềm / trung tính, dùng cho vết bẩn nào, không dùng cho vật liệu nào.
-- Mọi chữ Hán tiếng Nhật viết furigana ngay sau, dạng 漢字（かな）.
+- Khi phải ghi tên tiếng Nhật thì ghi ngắn, chữ Hán có furigana ngay sau dạng 漢字（かな）, rồi giải thích bằng tiếng Việt. Không chép lại câu tiếng Nhật dài.
 - Tiếng Việt không dùng từ tiếng Anh. Tên dụng cụ katakana giữ nguyên rồi giải thích tiếng Việt, dùng đúng tên lớp đã chốt: ダストクロス = cây lau khăn khô, モップ = cây lau khăn ướt, 幅木（はばき） = len chân tường, 自在（じざい）ぼうき = chổi cước, パッド = miếng chà sàn, 文化（ぶんか）ちりとり = hót rác cán dài, 汚水取（おすいと）り = hót nước bẩn, ポッド型（がた） = máy hút bụi khô dạng thùng, アップライト型（がた） = máy hút bụi thảm dạng đứng, ウェット型（がた） = máy hút nước bẩn, ハンディ型（がた） = máy hút bụi cầm tay.
 - Không dùng nhãn kiểu "Mẹo", "Bẫy", "Ghi nhớ", "Lưu ý quan trọng".
 - Không tự đổi đáp án của sách hay của đề; thấy mâu thuẫn thì nói rõ để anh quyết.
@@ -319,10 +320,10 @@ function plain(el){
 }
 function ctx(){
  const cur=P(); if(!cur) return '';
- const b=cur.b, vo=(b.vo||[]).map(v=>'- '+v[1]+(v[2]?' ｜ '+v[2]:'')+' ｜ '+v[3]+(v[4]?' ｜ '+v[4]:'')).join('\n');
+ const b=cur.b, vo=(b.vo||[]).map(v=>'- '+v[1]+' ｜ '+v[3]+(v[4]?' ｜ '+v[4]:'')).join('\n');
  return `Anh đang mở: Chương ${cur.c.ch} (${cur.c.catv}) · Bài ${b.no} ${plain(Object.assign(document.createElement('div'),{innerHTML:b.tj}))} (${b.tv}).
 
-Từ vựng của bài (từ ｜ Hán Việt ｜ nghĩa ｜ ghi chú):
+Từ chuyên môn của bài (từ ｜ nghĩa ｜ ghi chú):
 ${vo||'(không có)'}
 
 Nội dung mục đang mở trong giáo án:
@@ -345,6 +346,9 @@ function md(t){
  close();return h;
 }
 const box=$('#chM');
+// đang trả lời mà anh lướt lên thì không kéo xuống nữa; lướt về cuối thì lại tự theo
+let stick=true;
+box.addEventListener('scroll',()=>{stick=box.scrollHeight-box.scrollTop-box.clientHeight<48},{passive:true});
 function bubble(cls,html){const d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;box.appendChild(d);box.scrollTop=box.scrollHeight;return d}
 const ERR={not_granted:'Anh chưa cho phép trang này dùng Claude nên chưa hỏi được.',sampling_disabled:'Tài khoản này chưa dùng được Claude trong trang.',rate_limited:'Hỏi hơi dồn, anh chờ một lát rồi hỏi lại.',session_expired:'Phiên đăng nhập đã hết, anh tải lại trang.',refused:'Câu này không trả lời được, anh hỏi cách khác.',prompt_too_large:'Nội dung quá dài, anh bấm Xoá rồi hỏi lại.'};
 async function ask(q,quote){
@@ -356,7 +360,7 @@ async function ask(q,quote){
  const a=bubble('a','<span class="wait">Đang soạn câu trả lời…</span>');
  busy=new AbortController(); setBusy(true);
  try{
-  const {text,truncated}=await sample([{role:'user',content:RULES+'\n\n'+ctx()},...turns],{cache:false,signal:busy.signal,onText:({text})=>{a.innerHTML=md(text);box.scrollTop=box.scrollHeight}});
+  stick=true; const {text,truncated}=await sample([{role:'user',content:RULES+'\n\n'+ctx()},...turns],{cache:false,signal:busy.signal,onText:({text})=>{a.innerHTML=md(text);if(stick)box.scrollTop=box.scrollHeight}});
   a.innerHTML=md(text)+(truncated?'<p class="wait">(Câu trả lời bị cắt ngắn — anh hỏi gọn hơn.)</p>':'');
   turns.push({role:'assistant',content:text});
  }catch(e){
@@ -364,7 +368,7 @@ async function ask(q,quote){
   if(!e||e.code!=='cancelled') bubble('err',esc(ERR[e&&e.code]||'Chưa trả lời được, anh thử lại.'));
   turns.pop();
   if(e&&(e.code==='not_granted'||e.code==='sampling_disabled')){sample=null}
- }finally{busy=null;setBusy(false);box.scrollTop=box.scrollHeight}
+ }finally{busy=null;setBusy(false);if(stick)box.scrollTop=box.scrollHeight}
 }
 function setBusy(on){const g=$('#chGo');g.textContent=on?'Dừng':'Gửi';g.classList.toggle('stop',on)}
 $('#chF').onsubmit=e=>{e.preventDefault(); if(busy){busy.abort();return} const q=$('#chIn').value.trim(); if(!q)return; $('#chIn').value=''; const s=sel; clearSel(); ask(q,s)};
@@ -387,7 +391,7 @@ window.GA_CHAT_SYNC=()=>{
  const vo=b.vo||[]; $('#chV').hidden=!vo.length;
  $('#chVW').innerHTML=vo.map((v,i)=>`<button data-i="${i}" title="${esc(v[3])}">${v[0]}<small>${esc(v[3])}</small></button>`).join('');
 };
-$('#chVW').onclick=e=>{const b=e.target.closest('button');if(!b)return;const v=(P().b.vo||[])[+b.dataset.i];if(v)ask('Giải thích kỹ từ 「'+v[1]+'」 để em giảng cho học viên.')};
+$('#chVW').onclick=e=>{const b=e.target.closest('button');if(!b)return;const v=(P().b.vo||[])[+b.dataset.i];if(v)ask('「'+v[1]+'」 là gì trong nghề vệ sinh toà nhà? Giải thích kiến thức để em giảng cho học viên: dùng để làm gì, dùng khi nào, cách làm và vì sao, thứ dễ nhầm, đề thi hay hỏi gì.')};
 // bôi đen trong giáo án → nút "Hỏi về đoạn này"
 const sa=$('#selAsk');
 function clearSel(){sel='';$('#chSel').hidden=true;sa.hidden=true}

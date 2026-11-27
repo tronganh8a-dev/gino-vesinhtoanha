@@ -116,8 +116,10 @@ def vocab_of(cards, ch, d):
     allv = CH[ch]['js'].get('V1', []) + CH[ch]['js'].get('VOCAB', [])
     for v in allv:
         if v[3] in tp: add(v[0], v[2])
+    n_own = len(V)
     # từ của cả chương (chỉ hiện ở Phân tích câu khi có trong câu)
     for v in allv: add(v[0], v[2])
+    for i, v in enumerate(V): v['own'] = i < n_own
     return V
 
 def img_file(bid, key, k, src):
@@ -322,7 +324,7 @@ for ch, lst in BAI.items():
         hl = d['mo'].get('hl', '')
         pages[1]['html'] = f'<h1>Mở bài<span class="min">{d["mo"]["p"]}′</span></h1><article class="unit"><div class="layers">{L("lg", "Lời giảng", R(d["mo"]["lg"]))}{L("ask", "Hỏi lớp", R(hl))}</div></article>'
         b.update(pages=pages, phut=sum(p['p'] for p in pages),
-                 vo=[[R(v['w']), plain(v['w']) + (('（' + ''.join(re.findall(r'\[([^\]]+)\]', v['w'])) + '）') if '[' in v['w'] else ''), v['hv'], v['m'], v['x']] for v in V])
+                 vo=[[R(v['w']), plain(v['w']) + (('（' + ''.join(re.findall(r'\[([^\]]+)\]', v['w'])) + '）') if '[' in v['w'] else ''), v['hv'], v['m'], v['x']] for v in V if v['own']])
         cinfo['bai'][-1].update(phut=b['phut'])
         CHD[ch]['bai'].append(b)
     IDX['chs'].append(dict(cinfo, cat=R(cinfo['cat'])))
