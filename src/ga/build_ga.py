@@ -30,7 +30,7 @@ def esc(s): return html.escape(s or '', quote=False)
 # tiếng Việt lấy từ dữ liệu sách: bỏ từ tiếng Anh (giữ tên riêng/từ mượn quen)
 VI_FIX = [(r'\bcheck-?in\b', 'nhận phòng'), (r'\bcheck-?out\b', 'trả phòng'), (r'\bwax\b', 'sáp'), (r'\bpolisher\b', 'máy chà sàn'),
           (r'\bsqueegee\b', 'cây gạt kính'), (r'\btoilet\b', 'nhà vệ sinh'), (r'\bteamwork\b', 'làm việc nhóm'), (r'\blogic\b', 'trình tự'), (r'\burethane\b', 'uretan'), (r'\bgas\b', 'ga'), (r'\bhandle\b', 'tay cầm'), (r'Ky hốt nước bẩn', 'Hót nước bẩn'), (r'[Kk]y hốt rác', 'hót rác'), (r'cái hốt nước bẩn', 'hót nước bẩn'), (r'cái hốt rác', 'hót rác cán dài'), (r'cây lau nhà dùng khăn \(lau khô\)', 'cây lau khăn khô'), (r'đồ gom rác khô', 'khăn lau khô'), (r'cái gạt nước sàn', 'cây gạt nước sàn'), (r'cái gạt nước kính', 'cây gạt kính')]
-VI_OK = {'SNS', 'CBT', 'Video', 'Slide', 'Facebook', 'TikTok', 'Wi', 'Fi', 'pH', 'HORENSO', 'axit', 'clo', 'vinyl', 'virus', 'lavabo', 'nilon', 'inox', 'photo', 'photocopy', 'linoleum', 'tatami', 'acrylic', 'protein', 'uretan', 'sofa', 'axit', 'clo', 'Mai', 'Kei'}
+VI_OK = {'SNS', 'CBT', 'Video', 'Slide', 'Facebook', 'TikTok', 'Wi', 'Fi', 'pH', 'HORENSO', 'axit', 'clo', 'vinyl', 'virus', 'lavabo', 'nilon', 'inox', 'photo', 'photocopy', 'linoleum', 'tatami', 'acrylic', 'protein', 'uretan', 'sofa', 'manga', 'micromet', 'kekaki', 'axit', 'clo', 'Mai', 'Kei'}
 def vi(s, where=''):
     s = s or ''
     for a, b in VI_FIX: s = re.sub(a, b, s, flags=re.I)
@@ -113,8 +113,11 @@ def vocab_of(cards, ch, d):
                         td[ix].get_text(' ', strip=True) if ix is not None and len(td) > ix else '')
     for w, m in d.get('vx', []): add(w, m)
     tp = d.get('vtopic', 'kt'); tp = [tp] if isinstance(tp, str) else tp
-    for v in CH[ch]['js'].get('V1', []) + CH[ch]['js'].get('VOCAB', []):
+    allv = CH[ch]['js'].get('V1', []) + CH[ch]['js'].get('VOCAB', [])
+    for v in allv:
         if v[3] in tp: add(v[0], v[2])
+    # từ của cả chương (chỉ hiện ở Phân tích câu khi có trong câu)
+    for v in allv: add(v[0], v[2])
     return V
 
 def img_file(bid, key, k, src):
@@ -149,7 +152,8 @@ def card_unit_html(u, n, i):
 def unit_html(u, A, V, n, i):
     src = ''.join(line_html(A[k]) for k in u['a'])
     text = ''.join(plain(A[k]['jp']) for k in u['a'])
-    pt = pt_auto(text, V) + [f'<span>{R(x)}</span>' for x in u.get('ng', [])]
+    ngp = ' '.join(plain(x).split(':')[0] for x in u.get('ng', []))
+    pt = [x for x in pt_auto(text, V) if plain(re.sub(r'<span class="j">(.*?)</span>.*', r'\1', x)).strip() not in ngp] + [f'<span>{R(x)}</span>' for x in u.get('ng', [])]
     hl = u.get('hl'); hl = f'<p>{R(hl[0])}</p><p class="ans">→ {R(hl[1])}</p>' if hl else ''
     return (f'<article class="unit"><div class="no">CÂU {i} / {n}</div><div class="src">{src}</div><div class="layers">'
             + L('pt-l', 'Phân tích câu', ('<div class="pt">' + ''.join(pt) + '</div>') if pt else '')

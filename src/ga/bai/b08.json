@@ -1,0 +1,109 @@
+{
+"id": "b08",
+"mt": [
+"Biết chổi cước 自在[じざい]ぼうき dùng ở đâu (chỗ không dùng được cây lau khăn khô: sàn gạch, sàn đá, cầu thang) và cầm đúng cách (ngón cái tay trên đè đầu cán, hai tay cách 30〜40cm).",
+"Quét không làm bụi bay: chổi không rời sàn, không hất, ấn nhẹ đầu lông ở chỗ dừng; sát tường không chạm len chân tường; gom rác từ sát tường về giữa.",
+"Cầu thang: không đặt đồ ở lối đi, đồ để vào góc; rác gom từ hai mép vào giữa rồi nhẹ nhàng gạt xuống.",
+"Dùng hót rác cán dài 文化[ぶんか]ちりとり đúng cách, làm sạch và cất chổi đúng (毛[け]かき, đầu lông lên trên)."
+],
+"cb": [
+"Mở Chương 2 trong app, Phần 3 (slide c2a có các trang này nếu anh dạy bằng slide).",
+"Nếu có: 1 cây chổi cước và 1 hót rác cán dài để làm mẫu cầm chổi, quét vòng tròn vào hót rác.",
+"Rải ít giấy vụn trên sàn lớp để 2–3 học viên tập quét theo đúng cách."
+],
+"vtopic": ["choi"],
+"hv": {
+"自在ぼうき": "TỰ TẠI", "撒き散らす": "TẢN TÁN", "先端": "TIÊN ĐOAN", "親指": "THÂN CHỈ", "握る": "ÁC", "役割": "DỊCH CÁT", "毛先": "MAO TIÊN", "払う": "PHẤT",
+"壁際": "BÍCH TẾ", "幅木": "PHÚC MỘC", "順路": "THUẬN LỘ", "一箇所": "NHẤT CÁ SỞ", "階段": "GIAI ĐOẠN", "踊り場": "DŨNG TRƯỜNG", "両端": "LƯỠNG ĐOAN", "文化ちりとり": "VĂN HOÁ", "保管": "BẢO QUẢN", "毛カキ": "MAO"
+},
+"vx": [["掃[は]き清掃[せいそう]", "quét dọn"], ["柄[え]", "cán chổi"], ["保管[ほかん]", "cất giữ"]],
+"mo": {
+"p": 3,
+"lg": "<p>Quét nhà thì ai cũng biết, nhưng quét kiểu nghề có quy tắc riêng — và đề thi hỏi đúng mấy quy tắc đó: cầm chổi thế nào, dừng chổi thế nào, quét cầu thang thế nào, cất chổi thế nào. Hôm nay mình học với 自在[じざい]ぼうき (chổi cước) và 文化[ぶんか]ちりとり (hót rác cán dài).</p>",
+"hl": "Hỏi lớp: “Quét xong cất chổi, các bạn dựng đầu lông chổi lên trên hay chống xuống đất?” — Nhiều bạn sẽ nói chống xuống. Cuối bài mình xem sách nói gì."
+},
+"pages": [
+{"k": "a1", "ph": 1, "p": 8, "t": "<ruby>自在<rt>じざい</rt></ruby>ぼうきの<ruby>持<rt>も</rt></ruby>ち<ruby>方<rt>かた</rt></ruby>", "tv": "Tr.22 · Chổi cước dùng ở đâu, cầm thế nào", "cards": ["s2:0"]},
+{"k": "a2", "ph": 1, "p": 8, "t": "<ruby>掃<rt>は</rt></ruby>き<ruby>方<rt>かた</rt></ruby>・<ruby>掃<rt>は</rt></ruby>き<ruby>清掃<rt>せいそう</rt></ruby>の<ruby>順路<rt>じゅんろ</rt></ruby>", "tv": "Tr.23 · Cách quét, sát tường, lộ trình", "cards": ["s2:1"]},
+{"k": "a3", "ph": 1, "p": 10, "t": "<ruby>階段<rt>かいだん</rt></ruby>・<ruby>文化<rt>ぶんか</rt></ruby>ちりとり・<ruby>保管<rt>ほかん</rt></ruby>", "tv": "Tr.24–25 · Cầu thang, hót rác cán dài, làm sạch và cất chổi", "cards": ["s2:2"]},
+{"k": "de", "ph": 2, "p": 4},
+{"k": "q1", "ph": 3, "p": 7},
+{"k": "q2", "ph": 3, "p": 2},
+{"k": "tk", "ph": 4, "p": 3},
+{"k": "ket", "ph": 4, "p": 2}
+],
+"units": [
+{"a": [0, 1],
+"ng": ["撒[ま]き散[ち]らす: làm vương vãi, bay tung", "〜ちゃダメ: không được … (cách nói thân mật của 〜てはだめ)"],
+"lg": "<p>Mai bắt đầu quét, Kei nhắc ngay: ホコリを撒[ま]き散[ち]らしちゃダメだよ!! — không được làm bụi bay tung. Quét mạnh tay thì bụi bay lên rồi lại rơi xuống chỗ khác, lên bàn ghế, vào mũi người đi qua. Quét kiểu nghề là gom bụi lại, không đánh bụi bay đi.</p>"},
+{"a": [2, 3],
+"ng": ["〜が使[つか]えない場所[ばしょ]: chỗ không dùng được …", "コツ: bí quyết, cách làm khéo"],
+"lg": "<p>自在[じざい]ぼうきはダストクロスが使[つか]えない場所[ばしょ]の清掃[せいそう]に使用[しよう] — chổi cước dùng ở chỗ không dùng được cây lau khăn khô. Tranh ghi 3 chỗ: タイル (sàn gạch), 石材[せきざい] (sàn đá), 階段[かいだん] (cầu thang).</p><p>Nhớ bảng bài trước: sàn trơn bóng → cây lau khăn khô; sàn nhám, có ron, có bậc → chổi cước.</p>",
+"hl": ["Chổi cước dùng ở những chỗ nào?", "Chỗ không dùng được cây lau khăn khô: sàn gạch, sàn đá, cầu thang."],
+"de": "<p>Đề 6 câu 5: dụng cụ quét cầu thang → 自在[じざい]ぼうき.</p>"},
+{"a": [4, 5, 6, 7],
+"ng": ["先端[せんたん]: đầu mút (đầu cán)", "親指[おやゆび]で押[おさ]える: lấy ngón cái đè", "クッションの役割[やくわり]をする: làm đệm"],
+"lg": "<p>Cách cầm: 先端[せんたん]を上[うえ]の手[て]の親指[おやゆび]で押[おさ]えるように握[にぎ]る — tay trên nắm ở đầu cán, ngón cái đè lên đỉnh cán. Hai tay cách nhau <b>30〜40cm</b>.</p><p>Vì sao? 人[ひと]にぶつかったときに親指[おやゆび]がクッションの役割[やくわり]をする — lỡ va đầu cán vào người khác thì ngón cái làm đệm, đầu cán không chọc thẳng vào người. Tranh vẽ đúng cảnh đó: đầu cán chạm vào khách, khách nói 大丈夫[だいじょうぶ]ですよ.</p>",
+"hl": ["Vì sao ngón cái tay trên phải đè lên đầu cán chổi?", "Để lỡ va vào người thì ngón cái làm đệm (クッションの役割)."],
+"de": "<p>Đề 7 câu 2 (cầm đúng), 実技 Đề 15 câu 40 (vì sao ngón cái đè đầu cán). 〇× Đề 5 câu 9 đánh tráo hai chi tiết: “cách 30cm, ngón cái đặt giữa cán” → ×.</p>"},
+{"a": [8, 9, 10],
+"ng": ["床[ゆか]から離[はな]さないように: không để rời khỏi sàn", "払[はら]わないでとめる: không hất, dừng lại", "毛先[けさき]を軽[かる]くおさえる: ấn nhẹ đầu lông"],
+"lg": "<p>Ba động tác của quét: 床[ゆか]から離[はな]さないように掃[は]く — chổi không rời sàn; 払[はら]わないでとめる — cuối nhát quét thì dừng lại, không hất lên; 掃[は]き止[と]めるところで毛先[けさき]を軽[かる]くおさえる — ở chỗ dừng ấn nhẹ đầu lông xuống. Làm vậy thì ゴミを撒[ま]き散[ち]らさない.</p><p>Cho học viên làm thử: quét kiểu hất cuối nhát, giấy vụn bay; quét dừng và ấn đầu lông, giấy vụn nằm yên thành đống.</p>",
+"hl": ["Cuối mỗi nhát quét làm gì để rác không bay?", "Dừng lại, không hất; ấn nhẹ đầu lông chổi xuống."],
+"de": "<p>Trắc nghiệm tổng hợp app: “để rác không bay tứ tung nên…” → giữ chổi sát sàn, ấn nhẹ đầu lông ở điểm dừng.</p>"},
+{"a": [11],
+"lg": "<p>ほうきのゴミを落[お]としてから次[つぎ]の場所[ばしょ]に移動[いどう] — gõ rác dính trên chổi rơi xuống rồi mới chuyển chỗ. Không gõ thì mang rác của chỗ này sang chỗ khác.</p>"},
+{"a": [12, 13],
+"ng": ["壁際[かべぎわ]: sát tường", "幅木[はばき]: len chân tường", "触[ふ]れないように: để không chạm"],
+"lg": "<p>壁際[かべぎわ]を掃[は]くときは幅木[はばき]に触[ふ]れないように — quét sát tường thì không chạm vào len chân tường. Tranh vẽ chổi nghiêng <b>45°</b> để đầu lông vào sát góc mà cán không đập vào tường. Len chân tường bị chổi, máy hút bụi va hoài sẽ trầy, bong.</p>",
+"hl": ["Quét sát tường chú ý gì?", "Không chạm vào len chân tường (幅木)."],
+"de": "<p>実技 Đề 15 câu 41 hỏi nguyên ý. Đề 2 câu 12 hỏi tương tự với máy hút bụi: đầu hút được va vào len chân tường → ×.</p>"},
+{"a": [14, 15],
+"ng": ["順路[じゅんろ]: lộ trình", "一箇所[いっかしょ]に集[あつ]める: gom về một chỗ"],
+"lg": "<p>掃[は]き清掃[せいそう]の順路[じゅんろ] — lộ trình quét: ゴミは壁際[かべぎわ]から中央[ちゅうおう]の一箇所[いっかしょ]に集[あつ]める — gom rác từ sát tường về <b>một chỗ ở giữa</b>. Góc tường là chỗ bụi đọng nhiều nhất; quét từ ngoài vào trong thì rác dồn về một đống, hốt một lần là xong.</p>",
+"hl": ["Quét phòng thì gom rác từ đâu về đâu?", "Từ sát tường về một chỗ ở giữa."],
+"de": "<p>Đề 8 hỏi nguyên văn. Đáp án nhiễu: “từ giữa ra sát tường”, “gom về cửa”.</p>"},
+{"a": [16, 17],
+"ng": ["特[とく]に: đặc biệt", "事故[じこ]を起[お]こさないように: để không gây tai nạn", "踊[おど]り場[ば]: chiếu nghỉ cầu thang"],
+"lg": "<p>階段[かいだん]は特[とく]に注意[ちゅうい]が必要[ひつよう] — cầu thang đặc biệt phải cẩn thận. Chú thích: 歩行動線[ほこうどうせん]にものを置[お]かない — không đặt đồ trên lối đi; ものは隅[すみ]に置[お]く — đồ để vào góc (chiếu nghỉ 踊[おど]り場[ば]).</p><p>Ngã ở cầu thang nguy hiểm hơn ngã ở sàn phẳng nhiều. Một cái xô đặt giữa bậc thang là đủ gây tai nạn.</p>",
+"hl": ["Đang quét cầu thang, đặt xô và hót rác ở đâu?", "Ở góc (隅), không đặt trên lối đi."],
+"de": "<p>実技 Đề 16 câu 34: chọn 2 điều đúng khi quét cầu thang → đồ để vào góc, không đặt đồ trên lối đi.</p>"},
+{"a": [18, 19],
+"ng": ["両端[りょうたん]から中央[ちゅうおう]に: từ hai mép vào giữa", "静[しず]かに落[お]とそう: nhẹ nhàng gạt xuống"],
+"lg": "<p>Rác cầu thang: 両端[りょうたん]から中央[ちゅうおう]に集[あつ]め — gom từ hai mép bậc vào giữa, 静[しず]かに落[お]とそう — rồi nhẹ nhàng gạt xuống bậc dưới. Quét từ trên xuống dưới (nhớ nguyên tắc 上[うえ]から下[した]), bậc nào cũng vậy, cuối cùng hốt ở chân cầu thang.</p><p>Khác với phòng: phòng gom về giữa từ sát tường; cầu thang gom về giữa từ hai mép.</p>",
+"hl": ["Rác ở bậc cầu thang gom thế nào?", "Từ hai mép (両端) vào giữa, rồi nhẹ nhàng gạt xuống bậc dưới."],
+"de": "<p>Đề 5 câu 7, Đề 12 câu 46; Đề 13 câu 9 sắp xếp các bước quét cầu thang (để đồ vào góc → gom hai mép vào giữa → … → hốt bằng hót rác vòng tròn).</p>"},
+{"a": [20, 21, 22, 23, 24],
+"ng": ["円[えん]を描[えが]くように: như vẽ vòng tròn", "ちりとりの中[なか]までブラシを入[い]れる: đưa đầu chổi vào tận trong hót rác"],
+"lg": "<p>文化[ぶんか]ちりとり — hót rác cán dài, có hộp đựng và nắp, đứng mà hốt không phải cúi. Cách dùng: ゴミを一箇所[いっかしょ]に集[あつ]めてから — gom rác một chỗ trước; 円[えん]を描[えが]くようにちりとりの中[なか]にゴミを回収[かいしゅう] — quét theo vòng tròn vào trong hót rác. Chú thích: ちりとりの中[なか]までブラシを入[い]れる — đưa đầu chổi vào tận trong, không thì ゴミが残[のこ]る.</p>",
+"hl": ["Hốt rác vào 文化ちりとり thế nào?", "Gom rác một chỗ, quét theo vòng tròn, đưa đầu chổi vào tận trong hót rác."],
+"de": "<p>Đề 7 câu 13: cách dùng đúng → 円[えん]を描[えが]くように回収[かいしゅう]し、ゴミがなくなるまで繰[く]り返[かえ]す.</p>"},
+{"a": [25, 26, 27],
+"ng": ["繰[く]り返[かえ]し: lặp lại", "直角[ちょっかく]に向[む]ける: đặt vuông góc"],
+"lg": "<p>文化[ぶんか]ちりとりを持[も]ち上[あ]げるとゴミが残[のこ]っている — nhấc hót rác lên vẫn còn một vệt rác ở mép, nên ゴミがなくなるまで繰[く]り返[かえ]し回収[かいしゅう] — hốt lặp lại tới hết. Chú thích: miệng hót rác đặt <b>vuông góc 90°</b> với hướng quét.</p>"},
+{"a": [28, 29, 30],
+"ng": ["毛[け]カキ: dụng cụ gỡ rác ở lông chổi", "毛先[けさき]を上[うえ]にした状態[じょうたい]で: để đầu lông hướng lên trên"],
+"lg": "<p>Làm xong: 毛先[けさき]を確認[かくにん]して、ゴミが付[つ]いていたら毛[け]カキを使[つか]って除去[じょきょ] — xem đầu lông chổi, có tóc, rác vướng thì dùng 毛[け]カキ gỡ ra.</p><p>Cất: 自在[じざい]ぼうきは毛先[けさき]を上[うえ]にした状態[じょうたい]で保管[ほかん] — <b>đầu lông hướng lên trên</b>. Chống đầu lông xuống đất lâu ngày lông bị cong, quét không sát sàn nữa. Đây là câu trả lời cho câu hỏi đầu giờ.</p>",
+"hl": ["Cất chổi cước thế nào? Vì sao?", "Đầu lông hướng lên trên; chống xuống thì lông bị cong, hỏng chổi."],
+"de": "<p>Đề 2 câu 14 (cất đúng), 〇× Đề 7 câu 4 (đầu lông xuống → ×); 実技 Đề 15 câu 23 nhìn ảnh chọn 毛[け]かき.</p>",
+"gv": "<p>Câu “lông bị cong” là giải thích của lớp, sách chỉ ghi cách cất.</p>"}
+],
+"de": {
+"intro": "<p>Tr.22–25 có 15 câu trong bộ đề app. Toàn bộ là chi tiết thao tác — 学科[がっか] hỏi “cách đúng là gì” và 〇× đánh tráo một chi tiết; 実技[じつぎ] hỏi “vì sao” và nhìn ảnh dụng cụ.</p>",
+"items": [
+{"k": "学科", "t": "〇× đánh tráo chi tiết", "lg": "<p>Khoảng cách tay, chỗ đặt ngón cái, hướng đầu lông khi cất, chạm len chân tường. Học viên phải nhớ đúng từng chi tiết của sách.</p>", "q": [["5", "9"], ["7", "4"], ["2", "12"]]},
+{"k": "学科", "t": "Gom rác về đâu", "lg": "<p>Phòng: sát tường → giữa. Cầu thang: hai mép → giữa rồi gạt xuống. Đáp án nhiễu đảo chiều.</p>", "q": [["8", "E4"], ["5", "7"], ["13", "9"]]},
+{"k": "実技", "t": "Hỏi lý do và chọn 2", "lg": "<p>“Vì sao ngón cái đè đầu cán”, “quét sát tường chú ý gì”, “chọn 2 điều đúng ở cầu thang”, ảnh 毛[け]かき.</p>", "q": [["15", "40"], ["15", "41"], ["16", "34"], ["15", "23"]]}
+]
+},
+"q1": "auto",
+"q2": {"MT": [8, 9, 10, 11]},
+"tk": {
+"src": [2, 4, 7, 8, 10, 12, 15, 18, 19, 23, 29],
+"lg": "<p>Chổi cước dùng ở sàn gạch, sàn đá, cầu thang. Cầm: ngón cái tay trên đè đầu cán, hai tay cách 30〜40cm — để làm đệm khi va người. Quét: không rời sàn, không hất, ấn nhẹ đầu lông ở chỗ dừng; gõ rác khỏi chổi rồi mới chuyển chỗ; sát tường không chạm len chân tường; gom từ sát tường về giữa. Cầu thang: đồ để góc, gom hai mép vào giữa, gạt nhẹ xuống. Hót rác: vòng tròn, chổi vào tận trong, lặp tới hết. Xong: 毛かき gỡ rác, cất đầu lông lên trên.</p>"
+},
+"ket": {
+"lg": "<p>Một cây chổi mà có hơn mười quy tắc. Không cần học thuộc lòng từng câu — cầm chổi làm đúng vài lần là nhớ. Buổi sau mình học cây lau khăn khô ダストクロス.</p>",
+"bt": "<p>1. Tập quét ở nhà đúng cách: dừng nhát quét, ấn đầu lông; quay video 15 giây gửi nhóm lớp.<br>2. Viết 5 câu 〇× về chổi cước (có câu đúng, câu sai), đổi cho bạn làm.</p>"
+}
+}

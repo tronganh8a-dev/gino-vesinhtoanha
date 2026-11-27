@@ -1,145 +1,785 @@
 {
-"id": "b15",
-"mt": [
-"Nói được vì sao không phải sàn nào cũng “cứ chà máy là xong”: phải chọn cách làm theo 床材[ゆかざい] và 汚[よご]れ.",
-"Thuộc 5 nhóm vật liệu sàn (弾性[だんせい]・硬性[こうせい]・木質[もくしつ]・カーペット・その他[た]) và 5 nhóm vết bẩn (無機質[むきしつ]・水溶性[すいようせい]・油溶性[ゆようせい]・感染性[かんせんせい]・その他[た]), mỗi nhóm nêu được 2 ví dụ.",
-"Đọc được bảng pH chất tẩy: axit 0〜3, axit nhẹ 3〜6, trung tính 6〜8, kiềm nhẹ 8〜11, kiềm 11〜14 và chất tẩy tiêu biểu của từng nhóm.",
-"Thuộc 5 nguyên tắc 作業動線[さぎょうどうせん] và 3 loại 床維持剤[ゆかいじざい]; làm đúng các câu 〇×, chọn 2, chọn số pH trong bộ đề."
-],
-"cb": [
-"Mở Chương 3 trong app (tab Tài liệu → Chương 3, Phần 1–3). Chương 3 chưa có bộ slide; chiếu thẳng trang bài học, bật nút Bút để khoanh 5 nhóm sàn và bảng pH.",
-"Bảng trắng: kẻ sẵn 1 thước pH từ 0 đến 14, chia 5 ô màu (đỏ → vàng → xanh lá → xanh dương → tím) để điền chất tẩy khi giảng.",
-"Nếu có: vài chai chất tẩy thật (nước rửa tay, nước tẩy bồn cầu, thuốc tẩy gốc clo) để học viên tìm dòng 液性[えきせい] in trên nhãn. Chỉ cho xem nhãn, không mở nắp.",
-"Ảnh hoặc mẫu nhỏ: sàn nhựa vinyl, đá, gỗ, thảm tấm — để học viên tự xếp vào nhóm."
-],
-"vtopic": ["sannha", "chattay", "phuongphap"],
-"hv": {
-"床面": "SÀNG DIỆN", "床面清掃": "SÀNG DIỆN THANH TẢO", "清掃方法": "THANH TẢO PHƯƠNG PHÁP", "床材": "SÀNG TÀI", "分類": "PHÂN LOẠI", "原則": "NGUYÊN TẮC", "建材": "KIẾN TÀI",
-"弾性床材": "ĐÀN TÍNH SÀNG TÀI", "硬性床材": "NGẠNH TÍNH SÀNG TÀI", "木質床材": "MỘC CHẤT SÀNG TÀI",
-"無機質": "VÔ CƠ CHẤT", "水溶性": "THUỶ DUNG TÍNH", "油溶性": "DU DUNG TÍNH", "感染性": "CẢM NHIỄM TÍNH", "皮脂": "BÌ CHI", "日焼け": "NHẬT THIÊU",
-"液性": "DỊCH TÍNH", "酸性": "TOAN TÍNH", "中性": "TRUNG TÍNH", "界面活性剤": "GIỚI DIỆN HOẠT TÍNH TỄ", "誤飲": "NGỘ ẨM", "漂白剤": "PHIÊU BẠCH TỄ",
-"浸透": "THẨM THẤU", "分離": "PHÂN LY", "作業動線": "TÁC NGHIỆP ĐỘNG TUYẾN", "奥": "ÁO", "手前": "THỦ TIỀN", "床維持剤": "SÀNG DUY TRÌ TỄ", "塗布": "ĐỒ BỐ", "予防策": "DỰ PHÒNG SÁCH", "樹脂": "THỤ CHI"
-},
-"vx": [["弾性床材[だんせいゆかざい]", "sàn đàn hồi"], ["硬性床材[こうせいゆかざい]", "sàn cứng"], ["木質床材[もくしつゆかざい]", "sàn gỗ"], ["浸透[しんとう]", "thấm vào"], ["分離[ぶんり]", "tách ra"], ["ハクリ剤[ざい]", "chất bóc lớp phủ sàn"]],
-"mo": {
-"p": 4,
-"lg": "<p>Các bạn ơi, sang Chương 3 là mình chuyển từ vệ sinh hằng ngày sang 定期清掃[ていきせいそう] — vệ sinh định kỳ, chủ yếu là làm sàn bằng máy. Nhưng trước khi đụng vào máy, giáo trình bắt mình học 5 thứ kiến thức đã. Vì sao? Vì cùng một cái máy chà, cùng một chai chất tẩy, dùng đúng sàn thì sàn đẹp, dùng sai sàn là hỏng sàn, có khi phải đền.</p><p>Hôm nay Mai lại hăng hái nhận làm sàn, và lại bị Kei cản. Mình xem Kei dạy Mai 5 nguyên tắc gì.</p>",
-"hl": "Hỏi lớp: “Ở nhà các bạn lau sàn gạch và sàn gỗ có dùng chung một cách không? Có dùng nước tẩy bồn cầu để lau sàn gỗ không?” — Đáp: không; sàn khác nhau thì cách lau, chất tẩy khác nhau. Đó chính là ý của bài hôm nay."
-},
-"pages": [
-{"k": "a1", "ph": 1, "p": 9, "t": "<ruby>床面清掃<rt>ゆかめんせいそう</rt></ruby>・① <ruby>建材<rt>けんざい</rt></ruby>の<ruby>知識<rt>ちしき</rt></ruby>", "tv": "Tr.62 · 5 nguyên tắc và 5 nhóm vật liệu sàn", "cards": ["s0:0"]},
-{"k": "a2", "ph": 1, "p": 9, "t": "② <ruby>汚<rt>よご</rt></ruby>れの<ruby>知識<rt>ちしき</rt></ruby>", "tv": "Tr.63 · Vết bẩn theo nơi chốn và 5 nhóm vết bẩn", "cards": ["s1:0"]},
-{"k": "a3", "ph": 1, "p": 12, "t": "③ <ruby>洗剤<rt>せんざい</rt></ruby>の<ruby>知識<rt>ちしき</rt></ruby>", "tv": "Tr.64 · Chất tẩy theo độ pH, cơ chế làm sạch, an toàn", "cards": ["s1:1"]},
-{"k": "a4", "ph": 1, "p": 8, "t": "④ <ruby>作業方法<rt>さぎょうほうほう</rt></ruby>・⑤ <ruby>予防策<rt>よぼうさく</rt></ruby>の<ruby>知識<rt>ちしき</rt></ruby>", "tv": "Tr.65 · Nguyên tắc đường đi và chất bảo dưỡng sàn", "cards": ["s2:0"]},
-{"k": "de", "ph": 2, "p": 6},
-{"k": "q1", "ph": 3, "p": 12},
-{"k": "q2", "ph": 3, "p": 5},
-{"k": "tk", "ph": 4, "p": 3},
-{"k": "ket", "ph": 4, "p": 2}
-],
-"units": [
-{"a": [0, 1, 2, 3],
-"ng": ["〜まかせてください: cứ giao cho em (tự nhận việc)", "〜といえば: nói đến … thì (là) …", "〜ないといけない: phải …"],
-"lg": "<p>Mai lại xung phong: 床面清掃[ゆかめんせいそう]まかせてください — vệ sinh sàn cứ để em. Trong đầu Mai, làm sàn là phải có ポリッシャー, tức là máy chà sàn. Kei chặn lại ngay: ちょっと待[ま]った!!</p><p>Câu chốt của trang là câu cuối của Kei: 床材[ゆかざい]と汚[よご]れに合[あ]った清掃方法[せいそうほうほう]を選[えら]ばないといけない — phải chọn cách vệ sinh hợp với <b>vật liệu sàn</b> và <b>vết bẩn</b>. Hai thứ, không phải một. Máy chà chỉ là công cụ, chọn công cụ là bước sau.</p>",
-"hl": ["Chọn cách vệ sinh sàn dựa vào mấy thứ? Là những gì?", "Hai thứ: loại vật liệu sàn (床材) và loại vết bẩn (汚れ)."],
-"de": "<p>Câu Ôn nhanh số 1 của app hỏi đúng ý này; đáp án nhiễu chỉ có “chỉ loại vật liệu sàn”. Các bạn phải nhớ đủ cả hai.</p>"},
-{"a": [4],
-"lg": "<p>Khung đỏ: ビルクリーニングの5原則[げんそく] — 5 nguyên tắc của nghề vệ sinh toà nhà. Năm nguyên tắc này là khung của cả Phần 1–3 hôm nay, mỗi khung đỏ đánh số ①〜⑤:</p><p>① 建材[けんざい]の知識[ちしき] — vật liệu · ② 汚[よご]れの知識[ちしき] — vết bẩn · ③ 洗剤[せんざい]の知識[ちしき] — chất tẩy · ④ 作業方法[さぎょうほうほう]の知識[ちしき] — cách làm · ⑤ 予防策[よぼうさく]の知識[ちしき] — phòng ngừa.</p><p>Mình viết 5 ô này lên bảng, học đến đâu điền đến đó.</p>",
-"hl": ["Kể tên 5 nguyên tắc của vệ sinh toà nhà theo thứ tự.", "建材・汚れ・洗剤・作業方法・予防策 (vật liệu, vết bẩn, chất tẩy, cách làm, phòng ngừa)."]},
-{"a": [5, 6, 7],
-"ng": ["主[おも]に: chủ yếu", "〜に分類[ぶんるい]できる: có thể chia thành …", "〜系[けい]: thuộc loại, gốc …"],
-"lg": "<p>Nguyên tắc ①: vật liệu sàn. Sách chia làm 5 nhóm:</p><p>● 弾性床材[だんせいゆかざい] — sàn <b>đàn hồi</b>, ấn vào hơi lún: ビニル系[けい] (nhựa vinyl), リノリウム, ゴム系[けい] (cao su).<br>● 硬性床材[こうせいゆかざい] — sàn <b>cứng</b>: 石材[せきざい] (đá), 陶磁器[とうじき] (gạch gốm sứ), コンクリート.<br>● 木質床材[もくしつゆかざい] — sàn <b>gỗ</b>: フローリング, コルク.<br>● カーペット床材[ゆかざい] — <b>thảm</b>: タイルカーペット (thảm tấm), じゅうたん (thảm trải).<br>● その他[た] — loại khác: 塗[ぬ]り床[ゆか] (sàn sơn phủ), たたみ.</p><p>Cách nhớ nhóm đầu: 弾[だん] là ĐÀN trong đàn hồi — ấn vào có độ nảy. 硬[こう] là NGẠNH — cứng.</p>",
-"tt": "<p>Ở Nhật, văn phòng, trường học, siêu thị phần lớn lát tấm nhựa vinyl (người làm nghề gọi là 塩[えん]ビタイル hay Pタイル); bệnh viện hay dùng tấm nhựa cuộn dài (長尺[ちょうじゃく]シート); sảnh khách sạn, ga tàu hay lát đá. Học viên đi làm sẽ gặp sàn nhựa vinyl nhiều nhất.</p>",
-"hl": ["ゴム系 (cao su) thuộc nhóm sàn nào? Còn コンクリート?", "ゴム系 là 弾性床材 (sàn đàn hồi); コンクリート là 硬性床材 (sàn cứng)."],
-"de": "<p>Đề rất hay hỏi “cái nào thuộc 弾性床材” hoặc “cái nào KHÔNG thuộc”. Đáp án nhiễu là vật liệu của nhóm bên cạnh (石材 lẫn vào nhóm đàn hồi). Còn kiểu “教科書[きょうかしょ]にないもの” (cái không có trong sách) thì đáp án là thứ nghe hợp lý nhưng sách không có, ví dụ 金属床材[きんぞくゆかざい] (sàn kim loại).</p>"},
-{"a": [8, 9],
-"lg": "<p>Mai: いろんな床材[ゆかざい]があるのですね — có nhiều loại sàn quá. Khung đỏ ① khép lại phần vật liệu.</p><p>Mình nói thêm một câu cho các bạn hiểu vì sao phải phân loại: sàn đàn hồi thì sợ chất tẩy quá mạnh làm bạc màu, sàn đá thì sợ axit làm mòn, sàn gỗ thì sợ nước, thảm thì không lau ướt như sàn cứng được. Cho nên nhìn sàn trước, chọn cách sau.</p>",
-"gv": "<p>Phần “sàn nào sợ gì” ở đoạn trên là giải thích thêm của lớp, sách trang này chỉ liệt kê tên nhóm. Đề không hỏi ý này.</p>"},
-{"a": [10, 11, 12],
-"ng": ["水[みず]アカ: cặn nước (vệt trắng do nước khô để lại)", "ヒールマーク: vết đen do gót giày cọ xuống sàn", "家具[かぐ]の跡[あと]: vết đồ đạc để lại", "パイル: sợi lông của thảm", "ステープルの芯[しん]: ghim bấm"],
-"lg": "<p>Nguyên tắc ②: vết bẩn. Tranh tr.63 vẽ 4 nơi, mỗi nơi một kiểu bẩn hay gặp:</p><p>● Sàn nhựa vinyl: 水[みず]アカ, ヒールマーク.<br>● Sàn hành lang, sảnh: 土砂[どしゃ] (đất cát), ホコリ, 日焼[ひや]け, 家具[かぐ]の跡[あと], カビ.<br>● Sàn thảm: 染[し]み (vết ố), パイル内[ない]のホコリ (bụi trong sợi thảm).<br>● Sàn văn phòng: 髪[かみ], ゴミ, ステープルの芯[しん], クリップ.</p><p>Ý của tranh: đứng ở đâu thì đoán trước được bẩn gì, mang dụng cụ cho đúng.</p>",
-"tt": "<p>Ở cửa ra vào các toà nhà Nhật luôn có thảm chùi chân (玄関[げんかん]マット) — chính là để chặn đất cát từ giày, vì sảnh là nơi đất cát vào nhiều nhất.</p>",
-"hl": ["Sàn thảm hay có loại bẩn nào?", "染み (vết ố) và パイル内のホコリ (bụi trong sợi thảm)."],
-"de": "<p>Phần 実技 của đề thi thử có câu chọn 2: “sàn nhựa vinyl hay có bẩn gì” (水アカ・ヒールマーク), “sàn thảm hay có bẩn gì” (染み・パイル内のホコリ). Đáp án nhiễu lấy bẩn của nơi khác trong cùng tranh — học theo cặp nơi ↔ bẩn.</p>"},
-{"a": [13, 14, 15],
-"ng": ["〜によって: tuỳ theo …", "様々[さまざま]な: đủ loại", "〜しか知[し]らなかった: chỉ biết mỗi …"],
-"lg": "<p>Kei: 建材[けんざい]や場所[ばしょ]によって様々[さまざま]な汚[よご]れがある — tuỳ vật liệu và nơi chốn mà có đủ loại bẩn. Mai thật thà: em tưởng bẩn chỉ có đất cát với bụi thôi.</p><p>Kei mới đưa ra bảng: 汚[よご]れも大[おお]きくこの5種類[しゅるい]に分類[ぶんるい]できる — vết bẩn cũng chia làm 5 loại lớn. Vật liệu sàn 5 nhóm, vết bẩn cũng 5 nhóm, dễ nhớ.</p>",
-"hl": ["Vết bẩn chia làm mấy loại lớn?", "5 loại."]},
-{"a": [16, 17],
-"lg": "<p>Năm loại vết bẩn — các bạn để ý chữ cuối 〜性[せい] (TÍNH) chỉ tính chất:</p><p>● 無機質[むきしつ]の汚[よご]れ — bẩn <b>vô cơ</b>: ホコリ (đất, sợi bông), 灰[はい] (tro).<br>● 水溶性[すいようせい] — <b>tan trong nước</b>: 染[し]み, 飲[の]み物[もの] (đồ uống).<br>● 油溶性[ゆようせい] — <b>tan trong dầu</b>: ヒールマーク, 皮脂[ひし] (dầu nhờn trên da).<br>● 感染性[かんせんせい] — <b>gây lây nhiễm</b>: カビ (nấm mốc), ダニ (con mạt).<br>● その他[た] — loại khác: サビ (gỉ sét), 日焼[ひや]け.</p><p>Biết bẩn tan trong gì thì biết lấy gì để tẩy: bẩn tan trong nước thì nước và chất tẩy nhẹ là đủ; bẩn tan trong dầu thì cần chất tẩy kiềm — mình sẽ thấy ở trang sau.</p>",
-"hl": ["ヒールマーク và 皮脂 thuộc loại bẩn nào? カビ thì sao?", "油溶性 (tan trong dầu). カビ là 感染性 (gây lây nhiễm)."],
-"de": "<p>Câu hay ra nhất: “ヒールマークや皮脂[ひし]は何性[なにせい]の汚[よご]れ？” → 油溶性. Đáp án nhiễu là 水溶性 (vì chữ giống nhau, chỉ khác 水 và 油). Kiểu “教科書[きょうかしょ]にないもの” thì đáp án là 気体[きたい]の汚[よご]れ (bẩn dạng khí, chỉ có mùi) — sách không có loại này.</p>"},
-{"a": [18, 19],
-"ng": ["〜では落[お]ちない: không sạch được bằng …"],
-"lg": "<p>Mai rút ra một ý rất quan trọng: その他[た]の日焼[ひや]けなどは清掃[せいそう]では落[お]ちないですね — mấy loại như bạc màu do nắng thì vệ sinh không hết được. Đúng vậy: サビ và 日焼[ひや]け là hư hại của vật liệu, không phải lớp bẩn nằm trên bề mặt, nên chà mấy cũng không ra.</p><p>Đi làm gặp vết loại này thì báo người phụ trách, đừng cố chà mạnh hay đổ chất tẩy mạnh vào — càng làm càng hỏng sàn.</p>",
-"hl": ["Vết bạc màu do nắng có tẩy sạch được bằng vệ sinh không? Gặp thì làm gì?", "Không. Báo người phụ trách, không tự chà mạnh."],
-"de": "<p>Đề có câu “サビや日焼[ひや]けについて正[ただ]しいもの” → 清掃[せいそう]では落[お]ちない. Đáp án nhiễu kiểu “dùng chất tẩy mạnh là sạch”.</p>"},
-{"a": [20, 21],
-"ng": ["液性[えきせい]: tính chất của dung dịch (axit, trung tính, kiềm)", "用途[ようと]: công dụng", "鉄[てつ]サビ落[お]とし: chất tẩy gỉ sắt"],
-"lg": "<p>Nguyên tắc ③: chất tẩy. Sách phân chất tẩy theo 液性[えきせい], đo bằng pH từ 0 đến 14. Số càng nhỏ càng axit, 7 ở giữa là trung tính, càng lớn càng kiềm.</p><p>Hai ô đầu là phía axit: 酸性[さんせい] pH 0〜3 — 酸性[さんせい]トイレクリーナー (nước tẩy bồn cầu tính axit), 鉄[てつ]サビ落[お]とし (tẩy gỉ sắt). 弱酸性[じゃくさんせい] pH 3〜6 — 浴室用洗剤[よくしつようせんざい] (chất tẩy phòng tắm). Axit dùng cho bẩn gốc khoáng: cặn vôi, cặn nước tiểu, gỉ.</p>",
-"tt": "<p>Ở Nhật, chai chất tẩy bán ra phải ghi 液性[えきせい] trên nhãn (theo luật ghi nhãn đồ gia dụng 家庭用品品質表示法[かていようひんひんしつひょうじほう]). Đi làm, các bạn tìm dòng 液性[えきせい]：酸性[さんせい] / 中性[ちゅうせい] / アルカリ性[せい] ở mặt sau chai là biết ngay thuộc ô nào.</p>",
-"hl": ["Muốn tẩy gỉ sắt thì dùng chất tẩy tính gì?", "Tính axit (酸性)."]},
-{"a": [22],
-"lg": "<p>Ô giữa: 中性[ちゅうせい] pH 6〜8 — 床用中性洗剤[ゆかようちゅうせいせんざい] (chất tẩy trung tính cho sàn), 中性[ちゅうせい]トイレクリーナー, カーペット洗剤[せんざい], 手洗[てあら]い用洗剤[ようせんざい] (xà phòng rửa tay).</p><p>Trung tính là nhóm dịu nhất, ít làm hại vật liệu, nên dùng hằng ngày nhiều nhất. Thấy chất tẩy dùng cho tay người, cho thảm thì đoán ngay là trung tính.</p>",
-"hl": ["Xà phòng rửa tay và chất tẩy thảm thuộc nhóm nào, pH bao nhiêu?", "中性 (trung tính), pH 6〜8."],
-"gv": "<p>Sách tr.64 ghi 中性[ちゅうせい] là pH 6〜8, nhưng câu Ôn nhanh số 3 của Chương 3 trong app ghi “6–7” là đáp án đúng. Bộ đề (Đề 16) thì theo sách 6〜8. Em không tự sửa câu trong app (đang chờ anh quyết).</p>"},
-{"a": [23, 24],
-"ng": ["弱[じゃく]〜: … nhẹ (弱酸性, 弱アルカリ性)", "換気扇[かんきせん]: quạt thông gió", "塩素系漂白剤[えんそけいひょうはくざい]: thuốc tẩy trắng gốc clo"],
-"lg": "<p>Phía kiềm: 弱[じゃく]アルカリ性[せい] pH 8〜11 — 表面洗浄剤[ひょうめんせんじょうざい], 一般住宅用洗剤[いっぱんじゅうたくようせんざい] (chất tẩy dùng trong nhà), アルカリ性[せい]トイレクリーナー. アルカリ性[せい] pH 11〜14 — ハクリ剤[ざい] (chất bóc lớp sáp phủ sàn), 換気扇用洗剤[かんきせんようせんざい], カビ取[と]り剤[ざい], 浴室用洗剤[よくしつようせんざい], ガスレンジ用洗剤[ようせんざい], 塩素系漂白剤[えんそけいひょうはくざい].</p><p>Kiềm mạnh dùng cho bẩn dầu mỡ (quạt thông gió, bếp ga), nấm mốc, và để bóc lớp sáp cũ. Nhớ: dầu mỡ → kiềm; gỉ, cặn → axit.</p><p>Để ý: 浴室用洗剤[よくしつようせんざい] xuất hiện ở cả ô axit nhẹ lẫn ô kiềm — chất tẩy phòng tắm có cả loại axit nhẹ và loại kiềm.</p>",
-"tt": "<p>Chai thuốc tẩy gốc clo và chai chất tẩy tính axit ở Nhật bắt buộc in chữ 「まぜるな危険[きけん]」 (trộn vào là nguy hiểm): trộn hai loại này sinh ra khí clo độc. Đi làm tuyệt đối không đổ chung hai chai vào một xô.</p>",
-"hl": ["Bẩn dầu mỡ ở quạt thông gió dùng chất tẩy tính gì? Thuốc tẩy gốc clo thuộc nhóm nào?", "Tính kiềm (アルカリ性). Thuốc tẩy gốc clo là アルカリ性 (pH 11〜14)."],
-"de": "<p>Câu “chọn 2 chất tẩy kiềm (pH 11〜14)” ở phần 実技: ハクリ剤 và カビ取り剤. Đáp án nhiễu là chất tẩy nhóm khác có tên nghe mạnh (トイレクリーナー). Còn 学科 có câu chọn số trên thước pH: đề in thước 1〜5, hỏi ô nào là trung tính, ô nào là kiềm.</p>",
-"gv": "<p>Đề 12 câu 37 hỏi “muốn tẩy trắng dùng pH bao nhiêu” và lấy pH9 làm đáp án, trong khi bảng sách xếp 塩素系漂白剤[えんそけいひょうはくざい] vào ô 11〜14. Nếu học viên hỏi thì giải thích: trong 3 phương án chỉ pH9 thuộc phía kiềm. Em không đổi đáp án (đang chờ anh quyết có nên sửa phương án cho khớp sách không).</p>"},
-{"a": [25, 26, 27],
-"ng": ["取[と]り扱[あつか]い注意[ちゅうい]: cẩn thận khi sử dụng", "使用[しよう]の際[さい]は: khi sử dụng", "必[かなら]ず: nhất định"],
-"lg": "<p>Kei nhắc hai câu: 洗剤[せんざい]はとても危険[きけん]だから取[と]り扱[あつか]い注意[ちゅうい] — chất tẩy rất nguy hiểm, cẩn thận khi dùng; 使用[しよう]の際[さい]は必[かなら]ず種類[しゅるい]を確認[かくにん]してね — dùng thì nhất định kiểm tra loại.</p><p>Kiểm tra loại tức là đọc nhãn: tính axit hay kiềm, dùng cho bề mặt nào, pha bao nhiêu. Khung đỏ ③ 洗剤[せんざい]の知識[ちしき] đóng lại bảng pH.</p>",
-"hl": ["Trước khi dùng chất tẩy phải làm gì?", "Kiểm tra loại chất tẩy (đọc nhãn: tính chất, công dụng, cách pha)."]},
-{"a": [28, 29],
-"ng": ["浸透[しんとう]して: thấm vào", "分解[ぶんかい]: phân giải", "浮[う]かす: làm nổi lên", "親水基[しんすいき]・疎水基[そすいき]: đầu ưa nước, đầu kỵ nước"],
-"lg": "<p>Chất tẩy làm sạch thế nào? Kei: 洗剤[せんざい]は汚[よご]れに浸透[しんとう]して分解[ぶんかい]することで汚[よご]れを落[お]としている — chất tẩy thấm vào vết bẩn và phân giải nó.</p><p>Hình vẽ cơ chế: chất tẩy có 界面活性剤[かいめんかっせいざい] (chất hoạt động bề mặt), một đầu ưa nước, một đầu kỵ nước. Đi theo 3 bước: 浸透[しんとう] thấm vào → 汚[よご]れを浮[う]かす làm bẩn nổi lên → 分離[ぶんり] tách ra. Vì vậy thoa chất tẩy xong phải đợi một chút cho nó thấm, đừng vừa thoa đã chà.</p>",
-"hl": ["Chất tẩy làm sạch qua 3 bước nào?", "浸透 (thấm vào) → 浮かす (làm nổi lên) → 分離 (tách ra)."],
-"de": "<p>Đề hỏi “cơ chế làm sạch đúng là gì” → 汚[よご]れに浸透[しんとう]し、汚[よご]れを浮[う]かせて分離[ぶんり]させる. Đáp án nhiễu: “đốt cháy vết bẩn”, “phủ lên vết bẩn”.</p>"},
-{"a": [30, 31],
-"ng": ["業務用[ぎょうむよう]: dùng cho công việc, loại công nghiệp", "着用[ちゃくよう]: đeo, mặc", "誤飲[ごいん]: uống nhầm"],
-"lg": "<p>Hai quy tắc an toàn phải thuộc nguyên văn:</p><p>1. 業務用[ぎょうむよう]の洗剤[せんざい]は危険[きけん]だから必[かなら]ず手袋[てぶくろ]を着用[ちゃくよう]すること — chất tẩy công nghiệp nguy hiểm, nhất định đeo găng tay.<br>2. 目[め]に入[はい]ったときや誤飲[ごいん]したときはすぐに病院[びょういん]へ行[い]くこと — bắn vào mắt hay uống nhầm thì đi bệnh viện ngay.</p><p>Chất tẩy công nghiệp đậm đặc hơn loại dùng ở nhà nhiều. Bắn vào mắt mà chỉ rửa nước rồi thôi là sai — rửa nước là sơ cứu, sau đó vẫn phải đi bệnh viện.</p>",
-"tt": "<p>Ở Nhật, khi lỡ nuốt hay bị chất tẩy bắn vào người có thể gọi 中毒[ちゅうどく]110番[ばん] (đường dây tư vấn ngộ độc của 日本中毒情報[にほんちゅうどくじょうほう]センター) để hỏi cách xử lý; còn với quy tắc trong sách thì cứ nhớ: đi bệnh viện.</p>",
-"hl": ["Chất tẩy công nghiệp bắn vào mắt, rửa nước xong thấy hết cay rồi. Có cần đi bệnh viện không?", "Có. Sách ghi: bắn vào mắt hoặc uống nhầm thì đi bệnh viện ngay."],
-"de": "<p>学科 Đề 15 có câu 〇×: “chất tẩy công nghiệp vào mắt thì rửa nước là được, không cần đi bệnh viện” → ×. 実技 có câu nhìn ảnh “khi dùng chất tẩy công nghiệp nhất định phải đeo gì” → 保護手袋[ほごてぶくろ] (găng tay).</p>"},
-{"a": [32, 33, 34],
-"ng": ["奥[おく]から手前[てまえ]へ: từ phía trong ra phía gần mình (phía cửa)", "利用者[りようしゃ]の位置[いち]で確認[かくにん]: kiểm tra từ chỗ người sử dụng đứng"],
-"lg": "<p>Nguyên tắc ④: cách làm. 作業動線[さぎょうどうせん]の基本[きほん] — đường đi khi làm việc có 5 điều:</p><p>● 上[うえ]から下[した] — trên xuống dưới (bụi rơi xuống, làm dưới trước là phải làm lại).<br>● 奥[おく]から手前[てまえ]へ — từ trong ra ngoài (lùi dần về cửa, không giẫm lên chỗ vừa làm).<br>● 狭[せま]い所[ところ]から広[ひろ]い所[ところ]へ — từ chỗ hẹp ra chỗ rộng.<br>● 汚[よご]れの少[すく]ない所[ところ]から汚[よご]れの多[おお]い所[ところ]へ — từ chỗ ít bẩn đến chỗ bẩn nhiều (để không kéo bẩn sang chỗ sạch).<br>● 利用者[りようしゃ]の位置[いち]で確認[かくにん] — xong thì đứng ở chỗ người dùng đứng mà kiểm tra.</p>",
-"hl": ["Làm từ chỗ bẩn nhiều sang chỗ ít bẩn có đúng không? Vì sao?", "Sai. Phải từ chỗ ít bẩn sang chỗ bẩn nhiều, để không kéo bẩn sang chỗ đã sạch."],
-"de": "<p>Đây là phần đề ra nhiều nhất của trang 65. Kiểu bẫy duy nhất là <b>đảo chiều</b> một vế: “汚[よご]れの多[おお]い所[ところ]から少[すく]ない所[ところ]へ”, “手前[てまえ]から奥[おく]へ”, “下[した]から上[うえ]へ”. 実技 Đề 16 có câu chọn 2 điều đúng (奥から手前へ・上から下へ).</p>"},
-{"a": [35],
-"ng": ["床維持材[ゆかいじざい]・床維持剤[ゆかいじざい]: chất bảo dưỡng sàn (lớp phủ bảo vệ)", "キレイを維持[いじ]する: giữ sạch đẹp"],
-"lg": "<p>Nguyên tắc ⑤: phòng ngừa. Kei: để bảo vệ sàn khỏi bẩn và giữ sàn sạch đẹp thì cần cả biện pháp phòng ngừa, như 床維持材[ゆかいじざい]を塗布[とふ]する — phủ chất bảo dưỡng sàn.</p><p>Hiểu đơn giản: phủ một lớp sáp mỏng lên sàn, bẩn sẽ bám lên lớp sáp chứ không ăn vào sàn. Lớp sáp bẩn, mòn thì bóc đi phủ lại — chính là công việc vệ sinh định kỳ mình sẽ học với máy chà sàn.</p>",
-"gv": "<p>Câu này sách viết 床維持材[ゆかいじざい] (chữ 材), còn bảng bên dưới viết 床維持剤[ゆかいじざい] (chữ 剤). Giữ nguyên văn; khi giảng dùng 床維持剤 như bảng và như đề.</p>"},
-{"a": [36, 37],
-"ng": ["ロウ: sáp (chất sáp tự nhiên)", "主成分[しゅせいぶん]: thành phần chính", "合成樹脂[ごうせいじゅし]: nhựa tổng hợp", "乳化性[にゅうかせい]: dạng nhũ hoá"],
-"lg": "<p>Ba loại 床維持剤[ゆかいじざい]:</p><p>● 樹脂[じゅし]ワックス — sáp nhựa: ウレタン系[けい], アクリル系[けい].<br>● 水性[すいせい]ワックス — sáp gốc nước: thành phần chính là ロウ (sáp).<br>● 乳化性[にゅうかせい]ワックス — sáp nhũ hoá: ロウ + 合成樹脂[ごうせいじゅし].</p><p>Nhìn tên là đoán được: 樹脂[じゅし] (THỤ CHI) là nhựa → ウレタン, アクリル đều là nhựa. 乳化[にゅうか] là trộn hai thứ vào nhau → ロウ trộn với nhựa. Còn 水性[すいせい] → ロウ.</p>",
-"tt": "<p>Sàn nhựa vinyl ở văn phòng, siêu thị Nhật thường được phủ sáp nhựa gốc acrylic; lớp sáp này định kỳ được bóc bằng ハクリ剤[ざい] (kiềm mạnh) rồi phủ lại — gọi là 剥離清掃[はくりせいそう].</p>",
-"hl": ["Sáp gốc nước (水性ワックス) có thành phần chính là gì? 乳化性ワックス thì sao?", "水性ワックス: ロウ. 乳化性ワックス: ロウ và 合成樹脂."],
-"de": "<p>Ba câu hay gặp: thành phần chính của 水性[すいせい]ワックス → ロウ; thành phần của 乳化性[にゅうかせい]ワックス → ロウと合成樹脂[ごうせいじゅし]; loại nào là 樹脂[じゅし]ワックス → ウレタン系[けい]・アクリル系[けい]. Đáp án nhiễu là tráo thành phần giữa 3 loại.</p>"}
-],
-"de": {
-"intro": "<p>Phần 5 nguyên tắc ra đề ở cả hai phần thi. Theo 実施要領[じっしようりょう]: 学科[がっか] 20 câu/20 phút, 実技[じつぎ] 30 câu/30 phút là 判断試験[はんだんしけん] nhìn ảnh, hình minh hoạ; mỗi phần đạt từ 60%. Trong bộ đề của app có 40 câu thuộc tr.62–65 — đây là cụm trang có nhiều câu nhất của Chương 3, chỉ sau trang danh mục dụng cụ.</p>",
-"items": [
-{"k": "学科", "t": "Phân loại: “thuộc nhóm nào / không thuộc nhóm nào”", "lg": "<p>Hỏi 1 vật liệu thuộc 5 nhóm sàn nào, 1 vết bẩn thuộc 5 nhóm bẩn nào. Đáp án nhiễu lấy từ nhóm bên cạnh. Kiểu “教科書[きょうかしょ]にないもの” thì đáp án là thứ sách không có (金属床材[きんぞくゆかざい], 気体[きたい]の汚[よご]れ).</p>", "q": [["4", "1"], ["5", "16"], ["11", "35"], ["4", "2"]]},
-{"k": "学科", "t": "Thước pH: chọn số, chọn tính chất", "lg": "<p>Đề in thước pH đánh số 1〜5 rồi hỏi ô nào là trung tính, ô nào kiềm, ô nào ứng với nước tẩy bồn cầu axit. Hoặc hỏi thẳng: tẩy gỉ dùng gì (酸性[さんせい]), tẩy dầu mỡ dùng gì (アルカリ性[せい]), xà phòng rửa tay là gì (中性[ちゅうせい]). Học viên phải thuộc cả 5 khoảng số và chất tẩy tiêu biểu.</p>", "q": [["4", "3"], ["4", "4"], ["10", "20"], ["16", "17"], ["16", "18"]]},
-{"k": "実技", "t": "Chọn 2 ảnh / chọn 2 cụm từ", "lg": "<p>Phần 実技 của đề thi thử đưa 4 phương án, chọn đúng 2: bẩn hay gặp ở sàn nhựa, ở sàn thảm; 2 chất tẩy kiềm; 2 nguyên tắc đường đi. Phải đúng cả hai mới được điểm.</p>", "q": [["15", "33"], ["16", "39"], ["15", "36"], ["16", "40"]]},
-{"k": "学科", "t": "〇× đảo một vế", "lg": "<p>Câu 〇× lấy nguyên câu sách rồi đảo một vế: đổi chiều 作業動線[さぎょうどうせん], đổi “phải đi bệnh viện” thành “rửa nước là đủ”. Dạy học viên đọc từng vế, so với câu gốc.</p>", "q": [["5", "20"], ["15", "18"], ["16", "19"]]},
-{"k": "実技", "t": "Nhìn ảnh dụng cụ an toàn", "lg": "<p>Ảnh 4 dụng cụ, hỏi khi dùng chất tẩy công nghiệp phải đeo gì (găng tay), pha chất tẩy dùng gì để đong (計量[けいりょう]カップ).</p>", "q": [["16", "24"], ["15", "26"]]}
-],
-"gv": "<p>Hai chỗ lệch cần anh quyết: (1) câu Ôn nhanh số 3 Chương 3 trong app ghi trung tính pH 6–7, sách ghi 6〜8; (2) Đề 12 câu 37 lấy pH9 làm đáp án cho tẩy trắng, sách xếp thuốc tẩy gốc clo vào 11〜14. Em giữ nguyên cả hai (đang chờ anh quyết).</p>"
-},
-"q1": "auto",
-"q2": {"QUICK": [0, 1, 2, 3, 4], "MT": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]},
-"tk": {
-"src": [3, 4, 15, 26, 30, 31, 32],
-"lg": "<p>Hôm nay mình có 5 ô trên bảng: ① vật liệu — 5 nhóm sàn; ② vết bẩn — 5 nhóm bẩn, bạc màu với gỉ thì không tẩy được; ③ chất tẩy — thước pH 5 khoảng, dầu mỡ dùng kiềm, gỉ cặn dùng axit, dùng hằng ngày là trung tính, luôn đeo găng tay, vào mắt là đi viện; ④ cách làm — trên xuống, trong ra, hẹp ra rộng, ít bẩn đến nhiều bẩn, kiểm tra ở chỗ người dùng; ⑤ phòng ngừa — 3 loại sáp. Buổi sau mình cầm máy chà sàn, nhưng chọn chất tẩy và miếng chà nào thì vẫn quay về 5 ô này.</p>"
-},
-"ket": {
-"lg": "<p>Các bạn nhớ câu của Kei: 床材[ゆかざい]と汚[よご]れに合[あ]った清掃方法[せいそうほうほう]を選[えら]ぶ. Người mới thì vội cầm máy, người làm lâu thì nhìn sàn, nhìn bẩn trước. Đề thi cũng chấm đúng cái nhìn đó.</p>",
-"bt": "<p>1. Chép bảng 5 nhóm sàn và 5 nhóm bẩn, mỗi nhóm 2 ví dụ, có furigana.<br>2. Vẽ thước pH 0〜14, ghi đủ 5 khoảng và ít nhất 2 chất tẩy mỗi khoảng.<br>3. Về nhà tìm 3 chai chất tẩy, đọc dòng 液性[えきせい] trên nhãn, chụp ảnh gửi nhóm lớp.<br>4. Làm lại Đề 11 (Vật liệu sàn & vết bẩn) trong app.</p>"
-}
+ "id": "b15",
+ "mt": [
+  "Nói được vì sao không phải sàn nào cũng “cứ chà máy là xong”: phải chọn cách làm theo 床材[ゆかざい] và 汚[よご]れ.",
+  "Thuộc 5 nhóm vật liệu sàn (弾性[だんせい]・硬性[こうせい]・木質[もくしつ]・カーペット・その他[た]) và 5 nhóm vết bẩn (無機質[むきしつ]・水溶性[すいようせい]・油溶性[ゆようせい]・感染性[かんせんせい]・その他[た]), mỗi nhóm nêu được 2 ví dụ.",
+  "Đọc được bảng pH chất tẩy: axit 0〜3, axit nhẹ 3〜6, trung tính 6〜8, kiềm nhẹ 8〜11, kiềm 11〜14 và chất tẩy tiêu biểu của từng nhóm.",
+  "Thuộc 5 nguyên tắc 作業動線[さぎょうどうせん] và 3 loại 床維持剤[ゆかいじざい]; làm đúng các câu 〇×, chọn 2, chọn số pH trong bộ đề."
+ ],
+ "cb": [
+  "Mở Chương 3 trong app (tab Tài liệu → Chương 3, Phần 1–3). Chương 3 chưa có bộ slide; chiếu thẳng trang bài học, bật nút Bút để khoanh 5 nhóm sàn và bảng pH.",
+  "Bảng trắng: kẻ sẵn 1 thước pH từ 0 đến 14, chia 5 ô màu (đỏ → vàng → xanh lá → xanh dương → tím) để điền chất tẩy khi giảng.",
+  "Nếu có: vài chai chất tẩy thật (nước rửa tay, nước tẩy bồn cầu, thuốc tẩy gốc clo) để học viên tìm dòng 液性[えきせい] in trên nhãn. Chỉ cho xem nhãn, không mở nắp.",
+  "Ảnh hoặc mẫu nhỏ: sàn nhựa vinyl, đá, gỗ, thảm tấm — để học viên tự xếp vào nhóm."
+ ],
+ "vtopic": [
+  "sannha",
+  "chattay",
+  "phuongphap"
+ ],
+ "hv": {
+  "床面": "SÀNG DIỆN",
+  "床面清掃": "SÀNG DIỆN THANH TẢO",
+  "清掃方法": "THANH TẢO PHƯƠNG PHÁP",
+  "床材": "SÀNG TÀI",
+  "分類": "PHÂN LOẠI",
+  "原則": "NGUYÊN TẮC",
+  "建材": "KIẾN TÀI",
+  "弾性床材": "ĐÀN TÍNH SÀNG TÀI",
+  "硬性床材": "NGẠNH TÍNH SÀNG TÀI",
+  "木質床材": "MỘC CHẤT SÀNG TÀI",
+  "無機質": "VÔ CƠ CHẤT",
+  "水溶性": "THUỶ DUNG TÍNH",
+  "油溶性": "DU DUNG TÍNH",
+  "感染性": "CẢM NHIỄM TÍNH",
+  "皮脂": "BÌ CHI",
+  "日焼け": "NHẬT THIÊU",
+  "液性": "DỊCH TÍNH",
+  "酸性": "TOAN TÍNH",
+  "中性": "TRUNG TÍNH",
+  "界面活性剤": "GIỚI DIỆN HOẠT TÍNH TỄ",
+  "誤飲": "NGỘ ẨM",
+  "漂白剤": "PHIÊU BẠCH TỄ",
+  "浸透": "THẨM THẤU",
+  "分離": "PHÂN LY",
+  "作業動線": "TÁC NGHIỆP ĐỘNG TUYẾN",
+  "奥": "ÁO",
+  "手前": "THỦ TIỀN",
+  "床維持剤": "SÀNG DUY TRÌ TỄ",
+  "塗布": "ĐỒ BỐ",
+  "予防策": "DỰ PHÒNG SÁCH",
+  "樹脂": "THỤ CHI"
+ },
+ "vx": [
+  [
+   "弾性床材[だんせいゆかざい]",
+   "sàn đàn hồi"
+  ],
+  [
+   "硬性床材[こうせいゆかざい]",
+   "sàn cứng"
+  ],
+  [
+   "木質床材[もくしつゆかざい]",
+   "sàn gỗ"
+  ],
+  [
+   "浸透[しんとう]",
+   "thấm vào"
+  ],
+  [
+   "分離[ぶんり]",
+   "tách ra"
+  ],
+  [
+   "ハクリ剤[ざい]",
+   "chất bóc lớp phủ sàn"
+  ]
+ ],
+ "mo": {
+  "p": 4,
+  "lg": "<p>Các bạn ơi, sang Chương 3 là mình chuyển từ vệ sinh hằng ngày sang 定期清掃[ていきせいそう] — vệ sinh định kỳ, chủ yếu là làm sàn bằng máy. Nhưng trước khi đụng vào máy, giáo trình bắt mình học 5 thứ kiến thức đã. Vì sao? Vì cùng một cái máy chà, cùng một chai chất tẩy, dùng đúng sàn thì sàn đẹp, dùng sai sàn là hỏng sàn, có khi phải đền.</p><p>Hôm nay Mai lại hăng hái nhận làm sàn, và lại bị Kei cản. Mình xem Kei dạy Mai 5 nguyên tắc gì.</p>",
+  "hl": "Hỏi lớp: “Ở nhà các bạn lau sàn gạch và sàn gỗ có dùng chung một cách không? Có dùng nước tẩy bồn cầu để lau sàn gỗ không?” — Đáp: không; sàn khác nhau thì cách lau, chất tẩy khác nhau. Đó chính là ý của bài hôm nay."
+ },
+ "pages": [
+  {
+   "k": "a1",
+   "ph": 1,
+   "p": 12,
+   "t": "<ruby>床面清掃<rt>ゆかめんせいそう</rt></ruby>・① <ruby>建材<rt>けんざい</rt></ruby>の<ruby>知識<rt>ちしき</rt></ruby>",
+   "tv": "Tr.62 · 5 nguyên tắc và 5 nhóm vật liệu sàn",
+   "cards": [
+    "s0:0"
+   ]
+  },
+  {
+   "k": "a2",
+   "ph": 1,
+   "p": 12,
+   "t": "② <ruby>汚<rt>よご</rt></ruby>れの<ruby>知識<rt>ちしき</rt></ruby>",
+   "tv": "Tr.63 · Vết bẩn theo nơi chốn và 5 nhóm vết bẩn",
+   "cards": [
+    "s1:0"
+   ]
+  },
+  {
+   "k": "a3",
+   "ph": 1,
+   "p": 15,
+   "t": "③ <ruby>洗剤<rt>せんざい</rt></ruby>の<ruby>知識<rt>ちしき</rt></ruby>",
+   "tv": "Tr.64 · Chất tẩy theo độ pH, cơ chế làm sạch, an toàn",
+   "cards": [
+    "s1:1"
+   ]
+  },
+  {
+   "k": "a4",
+   "ph": 1,
+   "p": 11,
+   "t": "④ <ruby>作業方法<rt>さぎょうほうほう</rt></ruby>・⑤ <ruby>予防策<rt>よぼうさく</rt></ruby>の<ruby>知識<rt>ちしき</rt></ruby>",
+   "tv": "Tr.65 · Nguyên tắc đường đi và chất bảo dưỡng sàn",
+   "cards": [
+    "s2:0"
+   ]
+  },
+  {
+   "k": "de",
+   "ph": 2,
+   "p": 6
+  },
+  {
+   "k": "q1",
+   "ph": 3,
+   "p": 12
+  },
+  {
+   "k": "q2",
+   "ph": 3,
+   "p": 5
+  },
+  {
+   "k": "tk",
+   "ph": 4,
+   "p": 3
+  },
+  {
+   "k": "ket",
+   "ph": 4,
+   "p": 2
+  }
+ ],
+ "units": [
+  {
+   "a": [
+    0
+   ],
+   "ng": [
+    "〜まかせてください: “cứ giao … cho em”. まかせる (任せる – NHIỆM) = giao phó; thể て + ください = xin hãy … → dùng khi tự xung phong nhận việc. Ví dụ: 掃除[そうじ]はまかせてください。— Dọn dẹp cứ để em.",
+    "!! : hai dấu chấm than — Mai nói rất hăng hái"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 床面清掃[ゆかめんせいそう] / まかせてください!!</p><p><span class=\"lb\">Dịch sát</span> 床面清掃[ゆかめんせいそう] — vệ sinh mặt sàn; まかせてください — xin cứ giao cho em. → “Vệ sinh sàn thì cứ để em lo!!”</p><p><span class=\"lb\">Giảng</span> Chữ 床面[ゆかめん] ghép từ 床[ゆか] (SÀNG – sàn) và 面[めん] (DIỆN – mặt): mặt sàn. 清掃[せいそう] (THANH TẢO) là “vệ sinh, dọn dẹp” — từ chuyên môn, dùng trong công việc; ở nhà người Nhật hay nói 掃除[そうじ]. Cả cụm 床面清掃[ゆかめんせいそう] là tên của cả Chương 3 trong sách.</p><p>Mai mở đầu bằng thái độ hăng hái — đó là điểm tốt. Nhưng các bạn để ý: Mai nhận việc ngay mà chưa hỏi sàn loại gì, bẩn loại gì. Câu sau Kei sẽ chặn lại. Người mới đi làm hay mắc đúng lỗi này: nhiệt tình nhưng làm theo thói quen, không xem hiện trường trước.</p>"
+  },
+  {
+   "a": [
+    1
+   ],
+   "ng": [
+    "ちょっと待[ま]った!!: “khoan đã!!”. 待[ま]った là thể た của 待つ (ĐÃI – chờ), nói gọn, mạnh để chặn người khác lại ngay lập tức. Lịch sự hơn: ちょっと待[ま]ってください。",
+    "マイさん: gọi tên + さん — người trên gọi người dưới trong công việc vẫn dùng さん"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> マイさん / ちょっと待[ま]った!!</p><p><span class=\"lb\">Dịch sát</span> Mai này — khoan đã!!</p><p><span class=\"lb\">Giảng</span> ちょっと待[ま]った là cách nói rất tự nhiên của người Nhật khi muốn chặn ai đó lại ngay, giọng hơi đùa nhưng dứt khoát. Kei là tiền bối nên nói kiểu thân mật này được; các bạn nói với cấp trên thì dùng すみません、ちょっと待[ま]ってください.</p><p>Ý của câu: chưa được làm vội. Trong nghề vệ sinh toà nhà, làm sai cách trên sàn có thể làm hỏng sàn — tiền đền có khi lớn hơn tiền công cả tháng. Cho nên người có kinh nghiệm luôn dừng lại hỏi trước khi làm.</p>"
+  },
+  {
+   "a": [
+    2
+   ],
+   "ng": [
+    "〜といえば: “nói đến … thì (phải là) …” — nêu điều đầu tiên mình nghĩ tới. Ví dụ: 日本[にほん]といえば富士山[ふじさん]。— Nói đến Nhật là núi Phú Sĩ.",
+    "〜ですよね！: “… đúng không ạ!” — tin chắc mình đúng và tìm sự đồng tình",
+    "ポリッシャー: máy chà sàn"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 床面清掃[ゆかめんせいそう]といえば / ポリッシャーですよね！</p><p><span class=\"lb\">Dịch sát</span> Nói đến vệ sinh sàn thì / là máy chà sàn đúng không ạ!</p><p><span class=\"lb\">Giảng</span> Mẫu 〜といえば dùng khi nêu “hình ảnh đầu tiên hiện ra trong đầu”. Với Mai, làm sàn = cầm máy chà. Đuôi ですよね cho thấy Mai tin chắc mình đúng.</p><p>Nhưng đây chính là cái sai: ポリッシャー chỉ là <b>một dụng cụ</b>, dùng cho sàn cứng và sàn đàn hồi khi chà ướt. Sàn gỗ ngại nước, thảm thì có máy riêng, có sàn chỉ cần gom bụi. Chọn dụng cụ trước khi nhìn sàn là làm ngược thứ tự.</p>",
+   "hl": [
+    "Mai nghĩ vệ sinh sàn thì phải dùng gì? Như vậy đúng hay sai?",
+    "Mai nghĩ phải dùng ポリッシャー (máy chà sàn). Sai: phải xem loại sàn và loại bẩn trước rồi mới chọn dụng cụ."
+   ]
+  },
+  {
+   "a": [
+    3
+   ],
+   "ng": [
+    "床材[ゆかざい]: SÀNG TÀI — vật liệu làm sàn",
+    "〜に合[あ]った: hợp với … (合う – HỢP, thể た đứng trước danh từ). Ví dụ: 体[からだ]に合[あ]った靴[くつ] — đôi giày vừa chân.",
+    "〜ないといけない: phải … (bắt buộc). = 〜なければならない, cách nói thường ngày",
+    "〜んだよ: giải thích cho người nghe hiểu, giọng thân mật"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 床材[ゆかざい]と汚[よご]れに / 合[あ]った / 清掃方法[せいそうほうほう]を / 選[えら]ばないといけないんだよ</p><p><span class=\"lb\">Dịch sát</span> với vật liệu sàn và vết bẩn / hợp / phương pháp vệ sinh / phải chọn → “Phải chọn phương pháp vệ sinh hợp với vật liệu sàn và vết bẩn.”</p><p><span class=\"lb\">Giảng</span> Đây là <b>câu quan trọng nhất của trang 62</b>, các bạn gạch chân. Cấu trúc: [床材[ゆかざい]と汚[よご]れ] に合[あ]った [清掃方法[せいそうほうほう]] — phần trước 合った là “cái để so cho hợp”, phần sau là “thứ mình chọn”. Có <b>hai</b> thứ để so: 床材[ゆかざい] (vật liệu sàn) và 汚[よご]れ (vết bẩn). Thiếu một trong hai là chọn sai.</p><p>Ví dụ: cùng là sàn nhựa vinyl, bụi khô thì chỉ cần cây lau khăn khô; vết gót giày đen thì phải chà với chất tẩy kiềm. Cùng là vết cà phê, trên sàn nhựa thì lau, trên thảm thì phải dùng máy giặt thảm. Đó là lý do có cả Chương 3 với 5 nguyên tắc tiếp theo.</p><p>Ngữ pháp 〜ないといけない các bạn gặp rất nhiều trong sách: là “bắt buộc phải”. Đề thi hay biến thành câu hỏi “〜しなければならないことはどれですか” — việc gì bắt buộc phải làm.</p>",
+   "hl": [
+    "Chọn cách vệ sinh sàn phải dựa vào mấy thứ? Là những gì?",
+    "Hai thứ: vật liệu sàn (床材) và vết bẩn (汚れ)."
+   ],
+   "de": "<p>Câu Ôn nhanh số 1 Chương 3 trong app hỏi đúng ý này; đáp án nhiễu là “chỉ loại vật liệu sàn”, “kích thước phòng”, “máy đang có”. Phải nhớ đủ cả hai.</p>"
+  },
+  {
+   "a": [
+    4
+   ],
+   "ng": [
+    "原則[げんそく]: NGUYÊN TẮC — nguyên tắc",
+    "5原則[ごげんそく]: 5 nguyên tắc (đọc ご)"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc</span> ビルクリーニングの / 5原則[ごげんそく] — 5 nguyên tắc của vệ sinh toà nhà.</p><p><span class=\"lb\">Giảng</span> Khung đỏ này là “bản đồ” của cả Phần 1 đến Phần 3 hôm nay. Năm nguyên tắc, mỗi cái là một loại kiến thức (知識[ちしき] – TRI THỨC), và trong sách mỗi cái được đánh số bằng một khung đỏ:</p><p>① 建材[けんざい]の知識[ちしき] — vật liệu xây dựng (tr.62)<br>② 汚[よご]れの知識[ちしき] — vết bẩn (tr.63)<br>③ 洗剤[せんざい]の知識[ちしき] — chất tẩy (tr.64)<br>④ 作業方法[さぎょうほうほう]の知識[ちしき] — cách làm (tr.65)<br>⑤ 予防策[よぼうさく]の知識[ちしき] — biện pháp phòng ngừa (tr.65)</p><p>Mình viết 5 ô này lên bảng ngay từ đầu, học đến đâu điền đến đó. Cuối buổi các bạn phải nói lại được cả 5.</p>",
+   "hl": [
+    "Kể tên 5 nguyên tắc theo thứ tự.",
+    "建材・汚れ・洗剤・作業方法・予防策 (vật liệu, vết bẩn, chất tẩy, cách làm, phòng ngừa)."
+   ]
+  },
+  {
+   "a": [
+    5
+   ],
+   "ng": [
+    "主[おも]に: CHỦ — chủ yếu",
+    "これら: những cái này (số nhiều của これ)",
+    "〜種類[しゅるい]: CHỦNG LOẠI — … loại",
+    "〜に分類[ぶんるい]できる: có thể phân loại thành … (分類 – PHÂN LOẠI)"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 床材[ゆかざい]は / 主[おも]に / これらの5種類[ごしゅるい]に / 分類[ぶんるい]できるんだ</p><p><span class=\"lb\">Dịch sát</span> Vật liệu sàn / chủ yếu / thành 5 loại này / có thể phân loại → “Vật liệu sàn chủ yếu chia làm 5 loại sau.”</p><p><span class=\"lb\">Giảng</span> Mẫu 〜に分類[ぶんるい]できる các bạn sẽ gặp lại ngay ở trang sau với vết bẩn: 汚[よご]れも5種類[ごしゅるい]に分類[ぶんるい]できる. Hai câu giống hệt nhau — dễ nhớ: <b>sàn 5 loại, bẩn 5 loại</b>.</p><p>Chữ 主[おも]に quan trọng: “chủ yếu” — tức là ngoài thực tế còn loại khác, nhưng đề thi chỉ hỏi 5 loại của sách.</p>",
+   "de": "<p>Đề hỏi “床材[ゆかざい]は何種類[なんしゅるい]に分[わ]けられますか” → 5. Trắc nghiệm tổng hợp app câu 1 hỏi đúng con số này.</p>"
+  },
+  {
+   "a": [
+    6
+   ],
+   "ng": [
+    "弾性[だんせい]: ĐÀN TÍNH — có tính đàn hồi",
+    "硬性[こうせい]: NGẠNH TÍNH — cứng",
+    "〜系[けい]: HỆ — thuộc dòng, gốc …",
+    "陶磁器[とうじき]: ĐÀO TỪ KHÍ — gốm sứ"
+   ],
+   "lg": "<p><span class=\"lb\">Bảng – phần 1</span> </p><p>● 弾性床材[だんせいゆかざい] — sàn đàn hồi: ビニル系[けい] (gốc nhựa vinyl), リノリウム系[けい] (linoleum), ゴム系[けい] (gốc cao su).<br>● 硬性床材[こうせいゆかざい] — sàn cứng: 石材[せきざい] (đá), 陶磁器[とうじき] (gốm sứ — gạch men), コンクリート (bê tông).</p><p><span class=\"lb\">Giảng</span> Hai nhóm này nhớ bằng chữ Hán: 弾[だん] là ĐÀN trong “đàn hồi” — ấn tay xuống thấy hơi lún, có độ nảy, giống cao su. 硬[こう] là NGẠNH trong “cứng ngắc” — đá, gạch, bê tông.</p><p>Chữ 系[けい] (HỆ) nghĩa là “thuộc dòng”: ビニル系[けい] là các loại sàn làm từ nhựa vinyl — có tấm vuông, có loại cuộn dài. Người làm nghề ở Nhật hay gọi sàn này là 塩[えん]ビタイル hoặc Pタイル. Đây là loại sàn các bạn gặp nhiều nhất: văn phòng, trường học, siêu thị.</p>",
+   "hl": [
+    "ゴム系 (cao su) thuộc nhóm sàn nào? コンクリート thì sao?",
+    "ゴム系 là 弾性床材 (sàn đàn hồi); コンクリート là 硬性床材 (sàn cứng)."
+   ],
+   "de": "<p>Đề hay hỏi: “弾性床材[だんせいゆかざい]はどれですか” (→ ビニル系), “弾性床材に当[あ]てはまらないもの” (→ 石材). Đáp án nhiễu luôn lấy từ nhóm bên cạnh — nên học theo cặp 弾性 ↔ 硬性.</p>"
+  },
+  {
+   "a": [
+    7
+   ],
+   "ng": [
+    "木質[もくしつ]: MỘC CHẤT — chất gỗ",
+    "じゅうたん: thảm trải (cả tấm)",
+    "塗[ぬ]り床[ゆか]: sàn sơn phủ (塗る – ĐỒ = sơn, quét)",
+    "たたみ: chiếu tatami"
+   ],
+   "lg": "<p><span class=\"lb\">Bảng – phần 2</span> </p><p>● 木質床材[もくしつゆかざい] — sàn gỗ: フローリング (ván gỗ), コルク (gỗ bần — loại vỏ cây làm nút chai).<br>● カーペット床材[ゆかざい] — sàn thảm: タイルカーペット (thảm tấm vuông ghép lại), じゅうたん (thảm trải liền).<br>● その他[た] — loại khác: 塗[ぬ]り床[ゆか] (sàn quét sơn phủ, như sàn nhà xưởng, bãi xe), たたみ (chiếu tatami).</p><p><span class=\"lb\">Giảng</span> Câu dễ sai nhất là コルク: nhiều bạn nghĩ “loại lạ” nên xếp vào その他[た]. Không — コルク là gỗ bần, thuộc 木質[もくしつ]. Còn たたみ thì sách xếp vào その他[た], không xếp vào thảm.</p><p>Tổng kết 5 nhóm, viết lên bảng: <b>弾性・硬性・木質・カーペット・その他</b>.</p>",
+   "tt": "<p>タイルカーペット rất phổ biến ở văn phòng Nhật vì tấm nào bẩn, hỏng thì nhấc riêng tấm đó ra thay, không phải thay cả phòng.</p>",
+   "hl": [
+    "コルク thuộc nhóm nào? たたみ thuộc nhóm nào?",
+    "コルク: 木質床材 (sàn gỗ). たたみ: その他 (loại khác)."
+   ],
+   "de": "<p>Đề 12 câu 8 hỏi コルク thuộc nhóm nào → 木質床材. Kiểu “教科書[きょうかしょ]にないもの” (cái không có trong sách) thì đáp án là 金属床材[きんぞくゆかざい] (sàn kim loại) — nghe hợp lý nhưng sách không có.</p>"
+  },
+  {
+   "a": [
+    8,
+    9
+   ],
+   "ng": [
+    "いろんな: đủ thứ, nhiều loại (cách nói thường của いろいろな)",
+    "〜のですね！: “… nhỉ!” — ngạc nhiên, cảm thán khi vừa hiểu ra",
+    "建材[けんざい]: KIẾN TÀI — vật liệu xây dựng"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> いろんな床材[ゆかざい]があるのですね！ — Có nhiều loại sàn quá ạ!</p><p><span class=\"lb\">Giảng</span> いろんな là cách nói thân mật của いろいろな; đuôi のですね thể hiện Mai vừa nhận ra một điều mới. Khung đỏ ① 建材[けんざい]の知識[ちしき] — khép lại nguyên tắc thứ nhất.</p><p>Mình nói thêm vì sao phải biết vật liệu: sàn đàn hồi sợ chất tẩy quá mạnh làm bạc màu; sàn đá sợ axit làm mòn bóng; sàn gỗ sợ nước thấm vào làm phồng; thảm không thể lau ướt như sàn cứng. Nhìn sàn trước, chọn cách làm sau.</p>",
+   "gv": "<p>Phần “sàn nào sợ gì” là giải thích thêm của lớp; sách trang này chỉ liệt kê tên nhóm. Đề không hỏi.</p>"
+  },
+  {
+   "a": [
+    10,
+    11
+   ],
+   "ng": [
+    "水[みず]アカ: cặn nước — vệt trắng do nước khô để lại",
+    "ヒールマーク: vết đen do gót giày cọ xuống sàn",
+    "土砂[どしゃ]: THỔ SA — đất cát",
+    "家具[かぐ]の跡[あと]: vết đồ đạc để lại (跡 – TÍCH = dấu vết)",
+    "日焼[ひや]け: NHẬT THIÊU — bạc màu do nắng"
+   ],
+   "lg": "<p><span class=\"lb\">Khung đỏ</span> いろんな場所[ばしょ]のいろんな汚[よご]れ — nhiều nơi, nhiều loại bẩn.</p><p><span class=\"lb\">Tranh – phần 1</span> <br>● ビニル系[けい]の床[ゆか] (sàn nhựa): 水[みず]アカ, ヒールマーク.<br>● 廊下[ろうか]・エントランスの床[ゆか] (hành lang, sảnh): 土砂[どしゃ], ホコリ, 日焼[ひや]け, 家具[かぐ]の跡[あと], カビ.</p><p><span class=\"lb\">Giảng</span> Sàn nhựa ở văn phòng, nhà ăn: người đi lại nhiều nên có vết gót giày đen; chỗ gần bồn nước, máy nước thì có cặn nước trắng. Sảnh và hành lang là chỗ người từ ngoài đường vào, nên đất cát nhiều nhất; gần cửa kính thì nắng chiếu làm bạc màu; chỗ kê tủ lâu ngày để lại vết.</p><p>Ý của tranh: <b>đứng ở đâu thì đoán trước được bẩn gì</b>, mang dụng cụ cho đúng.</p>",
+   "tt": "<p>Cửa vào các toà nhà ở Nhật luôn đặt thảm chùi chân (玄関[げんかん]マット) — chính là để chặn đất cát từ giày, vì sảnh là nơi đất cát vào nhiều nhất.</p>",
+   "hl": [
+    "Sàn nhựa vinyl hay có loại bẩn nào?",
+    "水アカ (cặn nước) và ヒールマーク (vết gót giày)."
+   ],
+   "de": "<p>Phần 実技 của đề thi thử: “ビニル系[けい]の床[ゆか]に多[おお]い汚[よご]れを2つ選[えら]びなさい” → 水アカ, ヒールマーク. Đề 10 câu 19: sảnh vào có bẩn gì nhiều nhất → 土砂[どしゃ].</p>"
+  },
+  {
+   "a": [
+    12
+   ],
+   "ng": [
+    "染[し]み: vết ố, vết loang",
+    "パイル内[ない]のホコリ: bụi trong sợi thảm (パイル = sợi lông thảm, 内 – NỘI = bên trong)",
+    "ステープルの芯[しん]: ghim bấm (芯 – TÂM = lõi)"
+   ],
+   "lg": "<p><span class=\"lb\">Tranh – phần 2</span> <br>● カーペットの床[ゆか] (thảm): 染[し]み (vết ố — cà phê, nước ngọt đổ ra), パイル内[ない]のホコリ (bụi nằm sâu trong sợi thảm).<br>● オフィスの床[ゆか] (văn phòng): 髪[かみ] (tóc), ゴミ (rác), ステープルの芯[しん] (ghim bấm), クリップ (kẹp giấy).</p><p><span class=\"lb\">Giảng</span> Thảm khác sàn cứng ở chỗ: bụi không nằm trên mặt mà chui xuống giữa các sợi — nên phải có máy hút chuyên dụng (học ở Chương 2). Vết đồ uống đổ lên thảm ngấm xuống thành vết ố. Văn phòng thì rác nhỏ: tóc, ghim bấm — ghim bấm mà bị máy hút bụi hút vào có thể kẹt máy.</p>",
+   "hl": [
+    "Sàn thảm hay có loại bẩn nào?",
+    "染み (vết ố) và パイル内のホコリ (bụi trong sợi thảm)."
+   ],
+   "de": "<p>Đề 16 câu 39 (実技): “カーペットの床[ゆか]に多[おお]い汚[よご]れを2つ” → 染み, パイル内のホコリ. Đề 15 câu 20 (学科 〇×): “オフィスの床には髪やゴミ、ステープルの芯、クリップなどの汚れが多い” → 〇. Đáp án nhiễu lấy bẩn của nơi khác trong cùng tranh, nên học theo cặp nơi ↔ bẩn.</p>"
+  },
+  {
+   "a": [
+    13
+   ],
+   "ng": [
+    "〜や〜: … và … (liệt kê không hết)",
+    "〜によって: tuỳ theo …",
+    "様々[さまざま]な: đủ loại (様 – DẠNG)"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 建材[けんざい]や場所[ばしょ]によって / 様々[さまざま]な汚[よご]れが / あるんだ</p><p><span class=\"lb\">Dịch sát</span> Tuỳ theo vật liệu và nơi chốn / các loại vết bẩn khác nhau / có → “Tuỳ vật liệu và nơi chốn mà có đủ loại bẩn khác nhau.”</p><p><span class=\"lb\">Giảng</span> 〜によって là mẫu cực kỳ hay gặp trong giáo trình: “tuỳ theo”. Câu này nối nguyên tắc ① (vật liệu) với nguyên tắc ② (vết bẩn): bẩn thay đổi theo <b>hai thứ</b> — loại sàn và nơi chốn. Cùng một hành lang, đoạn gần cửa nhiều đất cát, đoạn gần nhà ăn nhiều vết dầu.</p>"
+  },
+  {
+   "a": [
+    14
+   ],
+   "ng": [
+    "〜って: cách nói thân mật của 〜は — nêu chủ đề",
+    "〜しか知[し]らなかった: chỉ biết mỗi … (しか + phủ định = chỉ). Ví dụ: 日本語[にほんご]しか話[はな]せない — chỉ nói được tiếng Nhật."
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 汚[よご]れって / 土砂[どしゃ]やホコリしか / 知[し]らなかったです</p><p><span class=\"lb\">Dịch sát</span> Vết bẩn ấy / chỉ đất cát và bụi / em đã không biết (gì khác) → “Em cứ tưởng bẩn chỉ có đất cát với bụi thôi.”</p><p><span class=\"lb\">Giảng</span> Mẫu しか〜ない các bạn chú ý: đi với động từ phủ định nhưng nghĩa là “chỉ”. 土砂[どしゃ]やホコリしか知[し]らなかった = chỉ biết đất cát và bụi. Người học hay dịch nhầm thành “không biết đất cát và bụi” — sai hẳn nghĩa.</p><p>Mai nói đúng cái nhìn của người mới: bẩn là thứ nhìn thấy, quét được. Trang này sẽ cho thấy còn bẩn dầu, bẩn gây bệnh, và cả loại không thể tẩy.</p>"
+  },
+  {
+   "a": [
+    15
+   ],
+   "ng": [
+    "〜も: cũng (vết bẩn <i>cũng</i> — giống như sàn)",
+    "大[おお]きく: một cách khái quát, chia lớn"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 汚[よご]れも / 大[おお]きく / この5種類[ごしゅるい]に / 分類[ぶんるい]できるんだよ</p><p><span class=\"lb\">Dịch sát</span> Vết bẩn cũng / nói chung / thành 5 loại này / có thể chia → “Vết bẩn cũng chia làm 5 loại lớn.”</p><p><span class=\"lb\">Giảng</span> Chữ も (cũng) nối với câu tr.62: 床材[ゆかざい]は5種類[ごしゅるい]に分類[ぶんるい]できる. Sàn 5 loại, bẩn <b>cũng</b> 5 loại. 大[おお]きく ở đây không phải “to” mà là “chia theo nhóm lớn”, khái quát.</p>",
+   "hl": [
+    "Vết bẩn chia làm mấy loại lớn?",
+    "5 loại."
+   ],
+   "de": "<p>Đề 5 câu 1: “汚[よご]れは大[おお]きく何種類[なんしゅるい]に分[わ]けることができますか” → 5種類.</p>"
+  },
+  {
+   "a": [
+    16
+   ],
+   "ng": [
+    "無機質[むきしつ]: VÔ CƠ CHẤT — chất vô cơ",
+    "水溶性[すいようせい]: THUỶ DUNG TÍNH — tan trong nước (溶 – DUNG = tan)",
+    "油溶性[ゆようせい]: DU DUNG TÍNH — tan trong dầu",
+    "皮脂[ひし]: BÌ CHI — dầu nhờn trên da",
+    "灰[はい]: HÔI — tro"
+   ],
+   "lg": "<p><span class=\"lb\">Bảng – phần 1</span> <br>● 無機質[むきしつ]の汚[よご]れ — bẩn vô cơ: ホコリ (đất, sợi bông), 灰[はい] (tro, tàn thuốc).<br>● 水溶性[すいようせい] — tan trong nước: 染[し]み, 飲[の]み物[もの] (đồ uống).<br>● 油溶性[ゆようせい] — tan trong dầu: ヒールマーク, 皮脂[ひし].</p><p><span class=\"lb\">Giảng</span> Ba tên này chỉ khác một chữ, các bạn nhìn kỹ: 水[すい]溶性 — THUỶ (nước); 油[ゆ]溶性 — DU (dầu). 溶[よう] là DUNG trong “dung dịch, hoà tan”, 性[せい] là TÍNH. Vậy 水溶性 = tính tan trong nước, 油溶性 = tính tan trong dầu.</p><p>Biết bẩn tan trong gì là biết lấy gì tẩy: bẩn tan trong nước thì nước và chất tẩy trung tính là đủ; bẩn tan trong dầu (vết giày, dầu da tay ở tay nắm cửa) thì cần chất tẩy kiềm — trang sau sẽ thấy.</p>",
+   "hl": [
+    "ヒールマーク và 皮脂 thuộc loại bẩn nào?",
+    "油溶性 (tan trong dầu)."
+   ],
+   "de": "<p>Câu ra nhiều nhất trang 63: “ヒールマークや皮脂[ひし]は何性[なにせい]の汚[よご]れですか” → 油溶性. Đáp án nhiễu là 水溶性 — vì hai chữ chỉ khác 水 và 油.</p>"
+  },
+  {
+   "a": [
+    17
+   ],
+   "ng": [
+    "感染性[かんせんせい]: CẢM NHIỄM TÍNH — có thể lây nhiễm",
+    "ダニ: con mạt",
+    "サビ: gỉ sét"
+   ],
+   "lg": "<p><span class=\"lb\">Bảng – phần 2</span> <br>● 感染性[かんせんせい]の汚[よご]れ — bẩn gây lây nhiễm: カビ (nấm mốc), ダニ (mạt).<br>● その他[た] — loại khác: サビ (gỉ sét), 日焼[ひや]け (bạc màu do nắng).</p><p><span class=\"lb\">Giảng</span> 感染[かんせん] là CẢM NHIỄM — “lây nhiễm”, từ các bạn nghe nhiều thời dịch bệnh (感染症[かんせんしょう] = bệnh truyền nhiễm). Bẩn loại này nguy hiểm cho sức khoẻ, không chỉ làm xấu; xử lý bằng khử trùng, tẩy nấm mốc chứ không chỉ lau.</p><p>Nhóm その他[た] đặc biệt: gỉ và bạc màu không phải lớp bẩn nằm trên bề mặt, mà là vật liệu đã bị biến đổi. Câu sau Mai sẽ nói ra điều này.</p>",
+   "hl": [
+    "カビ (nấm mốc) thuộc loại bẩn nào?",
+    "感染性 (gây lây nhiễm)."
+   ],
+   "de": "<p>Trắc nghiệm tổng hợp app câu 4: カビ → 感染性. Kiểu “教科書[きょうかしょ]にないもの”: 気体[きたい]の汚[よご]れ (bẩn dạng khí, chỉ có mùi) — sách không có loại này.</p>"
+  },
+  {
+   "a": [
+    18,
+    19
+   ],
+   "ng": [
+    "〜では落[お]ちない: không sạch được bằng … (落ちる = vết bẩn bong ra, sạch đi)",
+    "〜ですね: “… nhỉ” — Mai tự rút ra kết luận"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> その他[た]の日焼[ひや]けなどは / 清掃[せいそう]では / 落[お]ちないですね</p><p><span class=\"lb\">Dịch sát</span> Như bạc màu do nắng ở nhóm khác / bằng vệ sinh / không sạch được nhỉ.</p><p><span class=\"lb\">Giảng</span> Động từ 落[お]ちる bình thường là “rơi”, nhưng với vết bẩn thì nghĩa là “bong ra, sạch đi”: 汚[よご]れが落[お]ちる = vết bẩn sạch. 落[お]ちない = không sạch được. Còn 落[お]とす là ngoại động từ: 汚[よご]れを落[お]とす = làm sạch vết bẩn. Cặp này gặp suốt Chương 3.</p><p>Ý quan trọng: サビ và 日焼[ひや]け là hư hại của vật liệu, chà mấy cũng không ra. Đi làm gặp loại này thì <b>báo người phụ trách</b>, không tự chà mạnh hay đổ chất tẩy mạnh — càng làm càng hỏng.</p><p>Khung đỏ ② 汚[よご]れの知識[ちしき] khép lại nguyên tắc thứ hai.</p>",
+   "hl": [
+    "Vết bạc màu do nắng có tẩy được bằng vệ sinh không? Gặp thì làm gì?",
+    "Không. Báo người phụ trách, không tự chà mạnh."
+   ],
+   "de": "<p>Đề 11 câu 33: “サビや日焼[ひや]けについて正[ただ]しいもの” → 清掃[せいそう]では落[お]ちない. Đáp án nhiễu: “中性洗剤[ちゅうせいせんざい]ですぐ落ちる”, “水拭[みずぶ]きだけで落ちる”. Câu Ôn nhanh số 2 của app cũng hỏi ý này.</p>"
+  },
+  {
+   "a": [
+    20
+   ],
+   "ng": [
+    "液性[えきせい]: DỊCH TÍNH — tính chất của dung dịch (axit, trung tính, kiềm)",
+    "〜による: theo …, dựa vào …",
+    "用途[ようと]: DỤNG ĐỒ — công dụng"
+   ],
+   "lg": "<p><span class=\"lb\">Tiêu đề bảng</span> 液性[えきせい]による洗剤[せんざい]の用途[ようと]（pH） — công dụng chất tẩy theo tính chất dung dịch (độ pH).</p><p><span class=\"lb\">Giảng</span> Nguyên tắc ③: chất tẩy. Sách chia chất tẩy theo 液性[えきせい], đo bằng thang <b>pH từ 0 đến 14</b>. Số nhỏ → axit; 7 ở giữa → trung tính; số lớn → kiềm. Mình kẻ thước pH lên bảng, chia 5 ô, điền dần theo sách.</p>",
+   "tt": "<p>Ở Nhật, chai chất tẩy bán ra phải ghi 液性[えきせい] trên nhãn (theo luật ghi nhãn đồ gia dụng 家庭用品品質表示法[かていようひんひんしつひょうじほう]). Đi làm, lật mặt sau chai tìm dòng 液性[えきせい]：酸性[さんせい] / 中性[ちゅうせい] / アルカリ性[せい] là biết ngay thuộc ô nào.</p>"
+  },
+  {
+   "a": [
+    21
+   ],
+   "ng": [
+    "酸性[さんせい]: TOAN TÍNH — tính axit",
+    "弱[じゃく]〜: NHƯỢC — … nhẹ (弱酸性 = axit nhẹ)",
+    "鉄[てつ]サビ落[お]とし: chất tẩy gỉ sắt",
+    "浴室用[よくしつよう]: dùng cho phòng tắm (浴室 – DỤC THẤT)"
+   ],
+   "lg": "<p><span class=\"lb\">Hai ô phía axit</span> <br>● 酸性[さんせい] pH <b>0〜3</b>: 酸性[さんせい]トイレクリーナー (nước tẩy bồn cầu tính axit), 鉄[てつ]サビ落[お]とし (tẩy gỉ sắt).<br>● 弱酸性[じゃくさんせい] pH <b>3〜6</b>: 浴室用洗剤[よくしつようせんざい] (chất tẩy phòng tắm).</p><p><span class=\"lb\">Giảng</span> Axit hợp với bẩn gốc khoáng: cặn vôi, cặn nước tiểu vàng ở bồn tiểu, gỉ sắt. Vì vậy chất tẩy bồn cầu loại mạnh là axit. Nhưng axit làm hỏng đá tự nhiên (đá cẩm thạch bị mòn bóng), nên không dùng bừa trên sàn đá.</p>",
+   "hl": [
+    "Muốn tẩy gỉ sắt thì dùng chất tẩy tính gì?",
+    "Tính axit (酸性)."
+   ],
+   "de": "<p>Đề 6 câu 19, Đề 10 câu 20: tẩy gỉ sắt → 酸性. Đề 16 câu 18: chất tẩy axit nhẹ (pH 3〜6) → 浴室用洗剤.</p>"
+  },
+  {
+   "a": [
+    22
+   ],
+   "ng": [
+    "中性[ちゅうせい]: TRUNG TÍNH",
+    "床用[ゆかよう]: dùng cho sàn (〜用 – DỤNG = dùng cho …)",
+    "手洗[てあら]い用洗剤[ようせんざい]: xà phòng rửa tay"
+   ],
+   "lg": "<p><span class=\"lb\">Ô giữa</span> 中性[ちゅうせい] pH <b>6〜8</b>: 床用中性洗剤[ゆかようちゅうせいせんざい], 中性[ちゅうせい]トイレクリーナー, カーペット洗剤[せんざい], 手洗[てあら]い用洗剤[ようせんざい].</p><p><span class=\"lb\">Giảng</span> Trung tính là nhóm <b>dịu nhất</b>, ít làm hại vật liệu và da tay, nên dùng hằng ngày nhiều nhất. Cách đoán nhanh: thứ gì dùng cho <b>tay người</b> hoặc cho <b>thảm</b> → trung tính. Chữ 〜用[よう] (DỤNG) rất hay gặp trên nhãn: 床用[ゆかよう] cho sàn, トイレ用[よう] cho nhà vệ sinh, 業務用[ぎょうむよう] dùng cho công việc.</p>",
+   "hl": [
+    "Xà phòng rửa tay và chất tẩy thảm thuộc nhóm nào, pH bao nhiêu?",
+    "中性 (trung tính), pH 6〜8."
+   ],
+   "gv": "<p>Sách tr.64 ghi 中性[ちゅうせい] pH 6〜8, nhưng câu Ôn nhanh số 3 Chương 3 trong app ghi “6–7”. Bộ đề (Đề 16 câu 17) theo sách 6〜8. Em không tự sửa câu trong app (đang chờ anh quyết).</p>",
+   "de": "<p>Đề 10 câu 21 (rửa tay → 中性), Đề 16 câu 17 (〇×: chất tẩy sàn trung tính, chất tẩy thảm là pH 6〜8 → 〇), Đề 4 câu 3 (chọn ô trung tính trên thước pH).</p>"
+  },
+  {
+   "a": [
+    23
+   ],
+   "ng": [
+    "弱[じゃく]アルカリ性[せい]: kiềm nhẹ",
+    "表面洗浄剤[ひょうめんせんじょうざい]: chất tẩy bề mặt (表面 – BIỂU DIỆN, 洗浄 – TẨY TỊNH)",
+    "一般住宅用[いっぱんじゅうたくよう]: dùng cho nhà ở thông thường"
+   ],
+   "lg": "<p><span class=\"lb\">Ô kiềm nhẹ</span> 弱[じゃく]アルカリ性[せい] pH <b>8〜11</b>: 表面洗浄剤[ひょうめんせんじょうざい], 一般住宅用洗剤[いっぱんじゅうたくようせんざい] (chất tẩy dùng trong nhà), アルカリ性[せい]トイレクリーナー.</p><p><span class=\"lb\">Giảng</span> Kiềm bắt đầu có tác dụng với bẩn dầu mỡ nhẹ: dấu tay, vết dầu trên bàn. Chất tẩy đa năng bán ở siêu thị Nhật cho gia đình phần nhiều thuộc ô này. Để ý: nước tẩy bồn cầu có cả loại axit (ô 1) và loại kiềm (ô 4) — đọc nhãn mới biết.</p>"
+  },
+  {
+   "a": [
+    24
+   ],
+   "ng": [
+    "ハクリ剤[ざい]: chất bóc lớp sáp phủ sàn (剥離 – BÁC LY = bóc ra)",
+    "換気扇[かんきせん]: HOÁN KHÍ PHIẾN — quạt thông gió",
+    "カビ取[と]り剤[ざい]: chất tẩy nấm mốc",
+    "塩素系漂白剤[えんそけいひょうはくざい]: thuốc tẩy trắng gốc clo (塩素 – DIÊM TỐ = clo, 漂白 – PHIÊU BẠCH = tẩy trắng)"
+   ],
+   "lg": "<p><span class=\"lb\">Ô kiềm</span> アルカリ性[せい] pH <b>11〜14</b>: ハクリ剤[ざい], 換気扇用洗剤[かんきせんようせんざい], カビ取[と]り剤[ざい], 浴室用洗剤[よくしつようせんざい], ガスレンジ用洗剤[ようせんざい], 塩素系漂白剤[えんそけいひょうはくざい].</p><p><span class=\"lb\">Giảng</span> Kiềm mạnh dùng cho ba việc: <b>dầu mỡ nặng</b> (quạt thông gió, bếp ga), <b>nấm mốc</b> (chất tẩy mốc, thuốc tẩy clo), và <b>bóc lớp sáp cũ</b> trên sàn (ハクリ剤 — sẽ gặp khi học máy chà sàn). Ghi nhớ một dòng: <b>dầu mỡ → kiềm; gỉ, cặn → axit; hằng ngày → trung tính</b>.</p><p>浴室用洗剤[よくしつようせんざい] xuất hiện ở cả ô axit nhẹ lẫn ô kiềm — chất tẩy phòng tắm có cả hai loại.</p>",
+   "tt": "<p>Chai thuốc tẩy gốc clo và chai chất tẩy tính axit ở Nhật bắt buộc in chữ 「まぜるな危険[きけん]」 (trộn vào là nguy hiểm): trộn hai loại sinh ra khí clo độc. Tuyệt đối không đổ chung hai chai vào một xô.</p>",
+   "hl": [
+    "Bẩn dầu mỡ ở quạt thông gió dùng chất tẩy gì? Thuốc tẩy gốc clo thuộc nhóm nào?",
+    "Chất tẩy kiềm (アルカリ性). Thuốc tẩy gốc clo là アルカリ性 pH 11〜14."
+   ],
+   "de": "<p>実技 Đề 15 câu 36: chọn 2 chất tẩy kiềm pH 11〜14 → ハクリ剤, カビ取り剤. Đề 10 câu 22 (tẩy mốc → アルカリ性), Đề 10 câu 23 (thuốc tẩy clo → アルカリ性), Đề 5 câu 12 (bẩn dầu → アルカリ性).</p>",
+   "gv": "<p>Đề 12 câu 37 hỏi “muốn tẩy trắng dùng pH bao nhiêu” và lấy pH9 làm đáp án, trong khi sách xếp 塩素系漂白剤 vào ô 11〜14. Nếu học viên hỏi: trong các phương án chỉ pH9 thuộc phía kiềm. Em không đổi đáp án (đang chờ anh quyết có sửa phương án cho khớp sách không).</p>"
+  },
+  {
+   "a": [
+    25
+   ],
+   "ng": [
+    "〜だから: vì … nên",
+    "取[と]り扱[あつか]い注意[ちゅうい]: cẩn thận khi sử dụng (取り扱い – THỦ TRÁP = cách cầm dùng). Hay in trên thùng hàng, chai hoá chất."
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 洗剤[せんざい]は / とても危険[きけん]だから / 取[と]り扱[あつか]い注意[ちゅうい]だよ！</p><p><span class=\"lb\">Dịch sát</span> Chất tẩy / vì rất nguy hiểm / nên phải cẩn thận khi dùng!</p><p><span class=\"lb\">Giảng</span> 取[と]り扱[あつか]い là từ các bạn sẽ thấy khắp nơi ở Nhật: 取扱説明書[とりあつかいせつめいしょ] (sách hướng dẫn sử dụng), 取扱注意[とりあつかいちゅうい] (cẩn thận khi cầm). Kei nhấn mạnh: chất tẩy không phải nước rửa chén ở nhà — chất tẩy công nghiệp đậm đặc, có thể gây bỏng da, hỏng mắt.</p>"
+  },
+  {
+   "a": [
+    26,
+    27
+   ],
+   "ng": [
+    "使用[しよう]の際[さい]は: khi sử dụng (際 – TẾ = lúc, khi; cách nói trang trọng của 〜とき)",
+    "必[かなら]ず: TẤT — nhất định, bắt buộc",
+    "〜てね: … nhé (nhắc nhở thân mật)"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 使用[しよう]の際[さい]は / 必[かなら]ず / 種類[しゅるい]を / 確認[かくにん]してね</p><p><span class=\"lb\">Dịch sát</span> Khi sử dụng / nhất định / loại (chất tẩy) / hãy kiểm tra nhé.</p><p><span class=\"lb\">Giảng</span> 〜の際[さい]は là cách nói trang trọng của 〜のときは, rất hay gặp trên biển báo, hướng dẫn: ご使用[しよう]の際[さい]は… (khi sử dụng…). 必[かなら]ず là “nhất định” — trong đề thi, câu có 必ず thường là quy tắc bắt buộc.</p><p>“Kiểm tra loại” cụ thể là đọc nhãn: tính axit hay kiềm, dùng cho bề mặt nào, pha loãng bao nhiêu lần. Khung đỏ ③ 洗剤[せんざい]の知識[ちしき] khép lại phần bảng pH.</p>",
+   "hl": [
+    "Trước khi dùng chất tẩy phải làm gì?",
+    "Kiểm tra loại chất tẩy (đọc nhãn: tính chất, công dụng, cách pha)."
+   ]
+  },
+  {
+   "a": [
+    28
+   ],
+   "ng": [
+    "浸透[しんとう]する: THẨM THẤU — thấm vào",
+    "分解[ぶんかい]する: PHÂN GIẢI — phân huỷ, làm tách nhỏ",
+    "〜ことで: bằng cách …, nhờ … Ví dụ: 毎日[まいにち]練習[れんしゅう]することで上手[じょうず]になる — nhờ luyện mỗi ngày mà giỏi lên.",
+    "汚[よご]れを落[お]とす: làm sạch vết bẩn"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 洗剤[せんざい]は / 汚[よご]れに浸透[しんとう]して / 分解[ぶんかい]することで / 汚[よご]れを落[お]としているんだよ</p><p><span class=\"lb\">Dịch sát</span> Chất tẩy / thấm vào vết bẩn / bằng cách phân giải / đang làm sạch vết bẩn → “Chất tẩy thấm vào vết bẩn và phân giải nó, nhờ vậy làm sạch được.”</p><p><span class=\"lb\">Giảng</span> Hai từ Hán Việt các bạn đoán được ngay: 浸透[しんとう] = THẨM THẤU, 分解[ぶんかい] = PHÂN GIẢI. Mẫu 〜ことで nghĩa là “bằng cách, nhờ vào” — chỉ cách thức dẫn đến kết quả.</p><p>Ý thực hành: chất tẩy cần <b>thời gian</b> để thấm. Thoa xong mà chà ngay thì chất tẩy chưa kịp làm việc, tốn sức mà không sạch. Thợ có kinh nghiệm thoa chất tẩy rồi đợi một chút mới chà.</p>"
+  },
+  {
+   "a": [
+    29
+   ],
+   "ng": [
+    "界面活性剤[かいめんかっせいざい]: GIỚI DIỆN HOẠT TÍNH TỄ — chất hoạt động bề mặt",
+    "親水基[しんすいき]・疎水基[そすいき]: đầu ưa nước (THÂN THUỶ CƠ), đầu kỵ nước (SƠ THUỶ CƠ)",
+    "浮[う]かす: làm nổi lên",
+    "分離[ぶんり]: PHÂN LY — tách ra"
+   ],
+   "lg": "<p><span class=\"lb\">Hình cơ chế làm sạch</span> 界面活性剤[かいめんかっせいざい] (chất hoạt động bề mặt) có một đầu ưa nước 親水基[しんすいき], một đầu kỵ nước 疎水基[そすいき]. Đi theo 3 bước: 浸透[しんとう] thấm vào → 汚[よご]れを浮[う]かす làm bẩn nổi lên → 分離[ぶんり] tách ra.</p><p><span class=\"lb\">Giảng</span> Giải thích đơn giản cho lớp: đầu kỵ nước bám vào vết dầu, đầu ưa nước quay ra phía nước. Rất nhiều phân tử bám quanh vết dầu thì kéo nó rời khỏi sàn, lơ lửng trong nước — lúc đó mình lau đi. Ba bước nhớ theo thứ tự: <b>thấm → nổi → tách</b>.</p>",
+   "hl": [
+    "Chất tẩy làm sạch qua 3 bước nào?",
+    "浸透 (thấm vào) → 浮かす (làm nổi lên) → 分離 (tách ra)."
+   ],
+   "de": "<p>Đề 7 câu 19: “洗剤[せんざい]が汚[よご]れを落[お]とす仕組[しく]み” → 汚[よご]れに浸透[しんとう]し、汚[よご]れを浮[う]かせて分離[ぶんり]させる. Đáp án nhiễu: “đốt cháy vết bẩn”, “phủ lên vết bẩn”.</p>"
+  },
+  {
+   "a": [
+    30
+   ],
+   "ng": [
+    "業務用[ぎょうむよう]: NGHIỆP VỤ DỤNG — dùng cho công việc, loại công nghiệp",
+    "着用[ちゃくよう]する: TRƯỚC DỤNG — đeo, mặc (đồ bảo hộ)",
+    "〜こと！: phải … (đuôi こと dùng để ra quy định, mệnh lệnh). Ví dụ: 廊下[ろうか]を走[はし]らないこと — không được chạy ở hành lang."
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 業務用[ぎょうむよう]の洗剤[せんざい]は / 危険[きけん]だから / 必[かなら]ず手袋[てぶくろ]を着用[ちゃくよう]すること！</p><p><span class=\"lb\">Dịch sát</span> Chất tẩy dùng cho công việc / vì nguy hiểm / nhất định phải đeo găng tay!</p><p><span class=\"lb\">Giảng</span> Đuôi 〜こと ở cuối câu là cách viết <b>quy định</b> — giống nội quy, biển báo. Gặp 〜こと các bạn hiểu ngay đây là điều bắt buộc. 着用[ちゃくよう] là từ trang trọng của “đeo, mặc” — trên biển công trường hay ghi ヘルメット着用[ちゃくよう] (bắt buộc đội mũ).</p><p>業務用[ぎょうむよう] khác 家庭用[かていよう] (dùng trong gia đình): đậm đặc hơn nhiều, nên luật lệ chặt hơn. Găng tay là thứ <b>bắt buộc</b>, không phải “nên”.</p>",
+   "hl": [
+    "Dùng chất tẩy công nghiệp thì bắt buộc phải đeo gì?",
+    "Găng tay (手袋)."
+   ],
+   "de": "<p>実技 Đề 16 câu 24: nhìn ảnh, khi dùng chất tẩy công nghiệp nhất định phải đeo gì → 保護手袋[ほごてぶくろ]. Trắc nghiệm tổng hợp app câu 9 hỏi ý này.</p>"
+  },
+  {
+   "a": [
+    31
+   ],
+   "ng": [
+    "目[め]に入[はい]ったとき: khi bắn vào mắt",
+    "誤飲[ごいん]する: NGỘ ẨM — uống nhầm, nuốt phải",
+    "〜たり〜たり: lúc thì …, lúc thì … (ở đây dùng 〜ときや〜とき: khi … hoặc khi …)",
+    "すぐに: ngay lập tức"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 洗剤[せんざい]が目[め]に入[はい]ったときや / 誤飲[ごいん]したときは / すぐに病院[びょういん]へ行[い]くこと！</p><p><span class=\"lb\">Dịch sát</span> Khi chất tẩy vào mắt, hoặc / khi uống nhầm / thì phải đến bệnh viện ngay!</p><p><span class=\"lb\">Giảng</span> 誤飲[ごいん]: 誤[ご] là NGỘ trong “ngộ nhận, nhầm”, 飲[いん] là ẨM — uống. Lại đuôi 〜こと: đây là quy định.</p><p>Điểm đề thi rất hay bẫy: nhiều người nghĩ bắn vào mắt thì rửa nước là xong. Rửa nước là <b>sơ cứu</b>, sau đó <b>vẫn phải đi bệnh viện</b>. Chất tẩy kiềm mạnh có thể làm tổn thương mắt dù lúc đầu thấy hết cay.</p>",
+   "tt": "<p>Ở Nhật, khi lỡ nuốt hay bị hoá chất bắn vào người có thể gọi 中毒[ちゅうどく]110番[ばん] (đường dây tư vấn ngộ độc của 日本中毒情報[にほんちゅうどくじょうほう]センター) để hỏi cách sơ cứu. Còn với quy tắc trong sách: đi bệnh viện.</p>",
+   "hl": [
+    "Chất tẩy công nghiệp bắn vào mắt, rửa nước xong thấy hết cay. Có cần đi bệnh viện không?",
+    "Có. Sách ghi: vào mắt hoặc uống nhầm thì đến bệnh viện ngay."
+   ],
+   "de": "<p>学科 Đề 15 câu 18 (〇×): “業務用[ぎょうむよう]の洗剤[せんざい]が目[め]に入[はい]ったときは、水[みず]で洗[あら]えば病院[びょういん]へ行[い]かなくてもよい” → ×.</p>"
+  },
+  {
+   "a": [
+    32
+   ],
+   "ng": [
+    "作業動線[さぎょうどうせん]: TÁC NGHIỆP ĐỘNG TUYẾN — đường di chuyển khi làm việc",
+    "奥[おく]: ÁO — phía trong sâu",
+    "手前[てまえ]: THỦ TIỀN — phía gần mình",
+    "狭[せま]い / 広[ひろ]い: hẹp / rộng",
+    "利用者[りようしゃ]: LỢI DỤNG GIẢ — người sử dụng"
+   ],
+   "lg": "<p><b>Bảng 作業動線[さぎょうどうせん]の基本[きほん]</b> — 5 điều cơ bản về đường đi khi làm việc:</p><p>● 上[うえ]から下[した] — từ trên xuống dưới: bụi rơi xuống, làm dưới trước thì phải làm lại.<br>● 奥[おく]から手前[てまえ]へ — từ trong ra ngoài: lùi dần về phía cửa, không giẫm lên chỗ vừa làm.<br>● 狭[せま]い所[ところ]から広[ひろ]い所[ところ]へ — từ chỗ hẹp ra chỗ rộng.<br>● 汚[よご]れの少[すく]ない所[ところ]から汚[よご]れの多[おお]い所[ところ]へ — từ chỗ ít bẩn đến chỗ bẩn nhiều: không kéo bẩn sang chỗ sạch, nước lau cũng bẩn chậm hơn.<br>● 利用者[りようしゃ]の位置[いち]で確認[かくにん] — kiểm tra ở vị trí của người sử dụng.</p><p><span class=\"lb\">Giảng</span> Điều cuối hay bị quên: làm xong, đứng (hoặc ngồi) đúng chỗ người dùng đứng ngồi mà nhìn. Ví dụ nhà vệ sinh: ngồi xuống nhìn sẽ thấy vết bẩn mặt dưới bồn rửa mà lúc đứng không thấy.</p>",
+   "hl": [
+    "Làm từ chỗ bẩn nhiều sang chỗ ít bẩn có đúng không? Vì sao?",
+    "Sai. Phải từ chỗ ít bẩn sang chỗ bẩn nhiều, để không kéo bẩn sang chỗ đã sạch."
+   ],
+   "de": "<p>Phần ra nhiều nhất của tr.65. Kiểu bẫy duy nhất là <b>đảo chiều</b> một vế: “汚[よご]れの多[おお]い所[ところ]から少[すく]ない所[ところ]へ”, “手前[てまえ]から奥[おく]へ”, “下[した]から上[うえ]へ”. Đề 4 câu 15, Đề 5 câu 20 (〇×), Đề 16 câu 19 (〇×: kiểm tra ở vị trí người dùng → 〇), Đề 16 câu 40 (実技 chọn 2: 奥から手前へ・上から下へ).</p>"
+  },
+  {
+   "a": [
+    33,
+    34
+   ],
+   "ng": [
+    "いくつか: một vài",
+    "進[すす]め方[かた]: cách tiến hành (〜方 = cách …)"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 作業[さぎょう]には / いくつか / 基本的[きほんてき]な進[すす]め方[かた]が / あるんだよ</p><p><span class=\"lb\">Dịch sát</span> Trong công việc / có một vài / cách tiến hành cơ bản.</p><p><span class=\"lb\">Giảng</span> Câu này giới thiệu chính cái bảng vừa học. 〜方[かた] gắn sau thể ます của động từ thành “cách làm”: 進[すす]め方[かた] cách tiến hành, 使[つか]い方[かた] cách dùng, 持[も]ち方[かた] cách cầm — các bạn sẽ gặp rất nhiều ở Chương 2 và 3. Khung đỏ ④ 作業方法[さぎょうほうほう]の知識[ちしき].</p>"
+  },
+  {
+   "a": [
+    35
+   ],
+   "ng": [
+    "床維持材[ゆかいじざい]: SÀNG DUY TRÌ TÀI — chất bảo dưỡng sàn (維持 – DUY TRÌ)",
+    "〜から守[まも]る: bảo vệ khỏi …",
+    "キレイを維持[いじ]する: giữ sạch đẹp",
+    "〜ために: để …",
+    "塗布[とふ]する: ĐỒ BỐ — phủ, thoa lên",
+    "予防策[よぼうさく]: DỰ PHÒNG SÁCH — biện pháp phòng ngừa"
+   ],
+   "lg": "<p><span class=\"lb\">Đọc câu</span> 床材等[ゆかざいとう]を汚[よご]れから守[まも]り / キレイを維持[いじ]するために / 床維持材[ゆかいじざい]を塗布[とふ]するなど / 予防策[よぼうさく]も必要[ひつよう]なんだよ</p><p><span class=\"lb\">Dịch sát</span> Bảo vệ sàn khỏi vết bẩn và / để giữ sạch đẹp / như là phủ chất bảo dưỡng sàn / biện pháp phòng ngừa cũng cần.</p><p><span class=\"lb\">Giảng</span> Câu dài nhất trang, các bạn tách theo dấu “/”. Mẫu 〜ために = “để”, chỉ mục đích. 〜など = “như là …” — phủ sáp là một ví dụ, không phải cách duy nhất.</p><p>Ý: ngoài việc lau sạch bẩn đã có (xử lý sau), còn phải <b>ngăn bẩn trước</b>. Phủ một lớp sáp mỏng lên sàn thì bẩn bám lên lớp sáp chứ không ăn vào sàn; lớp sáp mòn, bẩn thì bóc đi phủ lại — chính là công việc vệ sinh định kỳ mình học với máy chà sàn.</p>",
+   "gv": "<p>Câu này sách viết 床維持材[ゆかいじざい] (chữ 材), còn bảng ngay dưới viết 床維持剤[ゆかいじざい] (chữ 剤). Giữ nguyên văn; khi giảng dùng 床維持剤 như bảng và như đề.</p>"
+  },
+  {
+   "a": [
+    36,
+    37
+   ],
+   "ng": [
+    "樹脂[じゅし]: THỤ CHI — nhựa",
+    "ロウ: sáp (sáp tự nhiên)",
+    "主成分[しゅせいぶん]: CHỦ THÀNH PHẦN — thành phần chính",
+    "乳化性[にゅうかせい]: NHŨ HOÁ TÍNH — dạng nhũ hoá",
+    "合成樹脂[ごうせいじゅし]: HỢP THÀNH THỤ CHI — nhựa tổng hợp"
+   ],
+   "lg": "<p><b>Bảng 床維持剤[ゆかいじざい]の種類[しゅるい]</b> — 3 loại chất bảo dưỡng sàn:</p><p>● 樹脂[じゅし]ワックス — sáp nhựa: ウレタン系[けい], アクリル系[けい].<br>● 水性[すいせい]ワックス — sáp gốc nước: thành phần chính là ロウ (sáp).<br>● 乳化性[にゅうかせい]ワックス — sáp nhũ hoá: ロウ + 合成樹脂[ごうせいじゅし].</p><p><span class=\"lb\">Giảng</span> Nhìn chữ Hán là đoán được: 樹脂[じゅし] (THỤ CHI) là nhựa → ウレタン, アクリル đều là nhựa. 乳化[にゅうか] (NHŨ HOÁ) là trộn hai thứ vào nhau như sữa → ロウ trộn với nhựa. Còn 水性[すいせい] → ロウ. Khung đỏ ⑤ 予防策[よぼうさく]の知識[ちしき] — xong 5 nguyên tắc.</p>",
+   "tt": "<p>Sàn nhựa vinyl ở văn phòng, siêu thị Nhật thường phủ sáp nhựa gốc acrylic; lớp sáp định kỳ được bóc bằng ハクリ剤[ざい] (kiềm mạnh) rồi phủ lại — gọi là 剥離清掃[はくりせいそう].</p>",
+   "hl": [
+    "Sáp gốc nước (水性ワックス) có thành phần chính là gì? 乳化性ワックス thì sao?",
+    "水性ワックス: ロウ. 乳化性ワックス: ロウ và 合成樹脂."
+   ],
+   "de": "<p>Ba câu hay gặp: thành phần chính của 水性[すいせい]ワックス → ロウ (Đề 6, Đề 10 câu 26); thành phần của 乳化性[にゅうかせい]ワックス → ロウと合成樹脂[ごうせいじゅし] (Đề 16 câu 20); loại nào là 樹脂[じゅし]ワックス → ウレタン系[けい]・アクリル系[けい] (Đề 15 câu 19). Đáp án nhiễu là tráo thành phần giữa 3 loại.</p>"
+  }
+ ],
+ "de": {
+  "intro": "<p>Phần 5 nguyên tắc ra đề ở cả hai phần thi. Theo 実施要領[じっしようりょう]: 学科[がっか] 20 câu/20 phút, 実技[じつぎ] 30 câu/30 phút là 判断試験[はんだんしけん] nhìn ảnh, hình minh hoạ; mỗi phần đạt từ 60%. Trong bộ đề của app có 40 câu thuộc tr.62–65 — đây là cụm trang có nhiều câu nhất của Chương 3, chỉ sau trang danh mục dụng cụ.</p>",
+  "items": [
+   {
+    "k": "学科",
+    "t": "Phân loại: “thuộc nhóm nào / không thuộc nhóm nào”",
+    "lg": "<p>Hỏi 1 vật liệu thuộc 5 nhóm sàn nào, 1 vết bẩn thuộc 5 nhóm bẩn nào. Đáp án nhiễu lấy từ nhóm bên cạnh. Kiểu “教科書[きょうかしょ]にないもの” thì đáp án là thứ sách không có (金属床材[きんぞくゆかざい], 気体[きたい]の汚[よご]れ).</p>",
+    "q": [
+     [
+      "4",
+      "1"
+     ],
+     [
+      "5",
+      "16"
+     ],
+     [
+      "11",
+      "35"
+     ],
+     [
+      "4",
+      "2"
+     ]
+    ]
+   },
+   {
+    "k": "学科",
+    "t": "Thước pH: chọn số, chọn tính chất",
+    "lg": "<p>Đề in thước pH đánh số 1〜5 rồi hỏi ô nào là trung tính, ô nào kiềm, ô nào ứng với nước tẩy bồn cầu axit. Hoặc hỏi thẳng: tẩy gỉ dùng gì (酸性[さんせい]), tẩy dầu mỡ dùng gì (アルカリ性[せい]), xà phòng rửa tay là gì (中性[ちゅうせい]). Học viên phải thuộc cả 5 khoảng số và chất tẩy tiêu biểu.</p>",
+    "q": [
+     [
+      "4",
+      "3"
+     ],
+     [
+      "4",
+      "4"
+     ],
+     [
+      "10",
+      "20"
+     ],
+     [
+      "16",
+      "17"
+     ],
+     [
+      "16",
+      "18"
+     ]
+    ]
+   },
+   {
+    "k": "実技",
+    "t": "Chọn 2 ảnh / chọn 2 cụm từ",
+    "lg": "<p>Phần 実技 của đề thi thử đưa 4 phương án, chọn đúng 2: bẩn hay gặp ở sàn nhựa, ở sàn thảm; 2 chất tẩy kiềm; 2 nguyên tắc đường đi. Phải đúng cả hai mới được điểm.</p>",
+    "q": [
+     [
+      "15",
+      "33"
+     ],
+     [
+      "16",
+      "39"
+     ],
+     [
+      "15",
+      "36"
+     ],
+     [
+      "16",
+      "40"
+     ]
+    ]
+   },
+   {
+    "k": "学科",
+    "t": "〇× đảo một vế",
+    "lg": "<p>Câu 〇× lấy nguyên câu sách rồi đảo một vế: đổi chiều 作業動線[さぎょうどうせん], đổi “phải đi bệnh viện” thành “rửa nước là đủ”. Dạy học viên đọc từng vế, so với câu gốc.</p>",
+    "q": [
+     [
+      "5",
+      "20"
+     ],
+     [
+      "15",
+      "18"
+     ],
+     [
+      "16",
+      "19"
+     ]
+    ]
+   },
+   {
+    "k": "実技",
+    "t": "Nhìn ảnh dụng cụ an toàn",
+    "lg": "<p>Ảnh 4 dụng cụ, hỏi khi dùng chất tẩy công nghiệp phải đeo gì (găng tay), pha chất tẩy dùng gì để đong (計量[けいりょう]カップ).</p>",
+    "q": [
+     [
+      "16",
+      "24"
+     ],
+     [
+      "15",
+      "26"
+     ]
+    ]
+   }
+  ],
+  "gv": "<p>Hai chỗ lệch cần anh quyết: (1) câu Ôn nhanh số 3 Chương 3 trong app ghi trung tính pH 6–7, sách ghi 6〜8; (2) Đề 12 câu 37 lấy pH9 làm đáp án cho tẩy trắng, sách xếp thuốc tẩy gốc clo vào 11〜14. Em giữ nguyên cả hai (đang chờ anh quyết).</p>"
+ },
+ "q1": "auto",
+ "q2": {
+  "QUICK": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "MT": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ]
+ },
+ "tk": {
+  "src": [
+   3,
+   4,
+   15,
+   26,
+   30,
+   31,
+   32
+  ],
+  "lg": "<p>Hôm nay mình có 5 ô trên bảng: ① vật liệu — 5 nhóm sàn; ② vết bẩn — 5 nhóm bẩn, bạc màu với gỉ thì không tẩy được; ③ chất tẩy — thước pH 5 khoảng, dầu mỡ dùng kiềm, gỉ cặn dùng axit, dùng hằng ngày là trung tính, luôn đeo găng tay, vào mắt là đi viện; ④ cách làm — trên xuống, trong ra, hẹp ra rộng, ít bẩn đến nhiều bẩn, kiểm tra ở chỗ người dùng; ⑤ phòng ngừa — 3 loại sáp. Buổi sau mình cầm máy chà sàn, nhưng chọn chất tẩy và miếng chà nào thì vẫn quay về 5 ô này.</p>"
+ },
+ "ket": {
+  "lg": "<p>Các bạn nhớ câu của Kei: 床材[ゆかざい]と汚[よご]れに合[あ]った清掃方法[せいそうほうほう]を選[えら]ぶ. Người mới thì vội cầm máy, người làm lâu thì nhìn sàn, nhìn bẩn trước. Đề thi cũng chấm đúng cái nhìn đó.</p>",
+  "bt": "<p>1. Chép bảng 5 nhóm sàn và 5 nhóm bẩn, mỗi nhóm 2 ví dụ, có furigana.<br>2. Vẽ thước pH 0〜14, ghi đủ 5 khoảng và ít nhất 2 chất tẩy mỗi khoảng.<br>3. Về nhà tìm 3 chai chất tẩy, đọc dòng 液性[えきせい] trên nhãn, chụp ảnh gửi nhóm lớp.<br>4. Làm lại Đề 11 (Vật liệu sàn & vết bẩn) trong app.</p>"
+ }
 }
