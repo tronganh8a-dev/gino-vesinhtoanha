@@ -1,0 +1,118 @@
+{
+"id": "b17",
+"mt": [
+"Nói được đường chạy phần giữa phòng: bắt đầu từ chỗ xa ổ điện nhất, dây men theo tường, lùi dần về phía ổ điện.",
+"Sửa được lỗi người mới: lực dồn vào một phần miếng chà → chỉnh miếng chà nằm ngang; mỗi đường chồng khoảng 1/3 bề ngang miếng chà.",
+"Nêu 3 quy tắc với dây điện: không giẫm, không để cuốn vào máy; tay trái gỡ dây; dây thừa thì cuộn lại. Biết chia khu khi phòng rộng.",
+"Làm đúng thứ tự thu dọn: hạ bánh xe → dựng thẳng tay cầm → giữ bánh, đặt nằm máy → rút phích (cầm phích) → tháo miếng chà, hứng nước bẩn → tháo đế bằng tua vít dẹt → lau máy, lau dây khi cuộn."
+],
+"cb": [
+"Mở Chương 3 trong app, Phần 6. Chiếu tranh tr.71 (sơ đồ đường chạy) và tr.73–74 (thu dọn).",
+"Bảng trắng: vẽ lại căn phòng bài trước, đánh dấu ổ điện, vẽ đường chạy phần giữa lùi dần về ổ điện.",
+"Mang 1 dây nối điện để học viên tập cầm phích rút ra và cuộn dây; 1 cái tua vít dẹt để chỉ.",
+"In sẵn 7 thẻ giấy các bước thu dọn để học viên xếp thứ tự."
+],
+"vtopic": ["polisher"],
+"hv": {
+"電源": "ĐIỆN NGUYÊN", "初心者": "SƠ TÂM GIẢ", "圧": "ÁP", "均等": "QUÂN ĐẲNG", "重ねる": "TRÙNG", "踏む": "ĐẠP", "巻き込む": "QUYỂN NHẬP", "確保": "XÁC BẢO",
+"範囲": "PHẠM VI", "分割": "PHÂN CÁT", "垂直": "THUỲ TRỰC", "抜く": "BẠT", "引っ張る": "DẪN TRƯƠNG", "外す": "NGOẠI", "受ける": "THỤ", "パッド台": "ĐÀI",
+"二又部分": "NHỊ XOA BỘ PHẬN", "差し込む": "SAI NHẬP", "水拭き": "THUỶ THỨC", "作業完了": "TÁC NGHIỆP HOÀN LIỄU", "這わせる": "GIÁ"
+},
+"vx": [["中央[ちゅうおう]", "phần giữa"], ["巻[ま]き取[と]る", "cuộn lại"], ["効率的[こうりつてき]", "hiệu quả"], ["片付[かたづ]ける", "dọn dẹp"]],
+"mo": {
+"p": 3,
+"lg": "<p>Buổi trước Mai đã chạy được vòng ngoài. Hôm nay mình làm nốt phần giữa phòng và học một việc người mới hay coi nhẹ: thu dọn máy. Đề thi hỏi phần thu dọn bằng dạng sắp xếp thứ tự — rất dễ mất điểm.</p><p>Ngoài ra, hôm nay có một nhân vật nguy hiểm hơn cả cái máy: sợi dây điện.</p>",
+"hl": "Hỏi lớp: “Chà giữa phòng, các bạn bắt đầu ở chỗ gần ổ điện hay chỗ xa ổ điện?” — Đáp: chỗ xa nhất, rồi lùi dần về ổ điện, để dây luôn nằm phía sau, không bị máy cán lên."
+},
+"pages": [
+{"k": "a1", "ph": 1, "p": 9, "t": "<ruby>中央<rt>ちゅうおう</rt></ruby>の<ruby>清掃<rt>せいそう</rt></ruby>・パッドの<ruby>圧<rt>あつ</rt></ruby>", "tv": "Tr.71 · Đường chạy phần giữa, lực ép đều, chồng 1/3", "cards": ["s5:0"]},
+{"k": "a2", "ph": 1, "p": 7, "t": "コードさばき・<ruby>作業範囲<rt>さぎょうはんい</rt></ruby>の<ruby>分割<rt>ぶんかつ</rt></ruby>", "tv": "Tr.72 · Xử lý dây điện, chia khu làm việc", "cards": ["s5:1"]},
+{"k": "a3", "ph": 1, "p": 8, "t": "<ruby>後片付<rt>あとかたづ</rt></ruby>け①", "tv": "Tr.73 · Đặt nằm máy, rút phích, tháo miếng chà", "cards": ["s5:2"]},
+{"k": "a4", "ph": 1, "p": 6, "t": "<ruby>後片付<rt>あとかたづ</rt></ruby>け②", "tv": "Tr.74 · Tháo đế, lau máy, lau và cuộn dây", "cards": ["s5:3"]},
+{"k": "de", "ph": 2, "p": 5},
+{"k": "q1", "ph": 3, "p": 8},
+{"k": "q2", "ph": 3, "p": 3},
+{"k": "tk", "ph": 4, "p": 3},
+{"k": "ket", "ph": 4, "p": 2}
+],
+"units": [
+{"a": [0, 1, 2, 3],
+"ng": ["一番遠[いちばんとお]いところ: chỗ xa nhất", "這[は]わせる: cho dây chạy men theo", "〜側[がわ]へ下[さ]がりながら: vừa lùi về phía …"],
+"lg": "<p>Phần giữa phòng: 電源[でんげん]から一番遠[いちばんとお]いところから — bắt đầu từ chỗ xa ổ điện nhất; コードを壁際[かべぎわ]に這[は]わせる — dây chạy men theo tường; 電源側[でんげんがわ]へ下[さ]がりながら中央[ちゅうおう]を清掃[せいそう] — vừa lùi về phía ổ điện vừa chà phần giữa.</p><p>Làm như vậy thì sợi dây luôn ở phía sau lưng mình, ở phần đã chà xong; máy không bao giờ phải cán qua dây. Và lùi dần về ổ điện cũng là lùi dần về cửa — đúng nguyên tắc 奥[おく]から手前[てまえ]へ của bài trước.</p>",
+"hl": ["Chà phần giữa phòng thì bắt đầu ở đâu, đi về hướng nào?", "Bắt đầu chỗ xa ổ điện nhất, lùi dần về phía ổ điện."],
+"de": "<p>Đề 4 câu 17 cho 4 tranh đường chạy phần giữa, chọn tranh đúng. Trắc nghiệm tổng hợp của app hỏi “bắt đầu từ vị trí nào so với ổ điện”.</p>"},
+{"a": [4, 5],
+"ng": ["〜てしまうことがある: có khi lỡ …", "圧[あつ]をかける: dồn lực ép", "均等[きんとう]に: đều"],
+"lg": "<p>Lỗi người mới: 初心者[しょしんしゃ]はパッドの一部[いちぶ]に圧[あつ]をかけてしまう — dồn lực vào một phần miếng chà. Hậu quả: chỗ bị ép thì sạch quá (có khi mòn cả lớp sàn), chỗ còn lại không sạch, máy thì giật đi một hướng.</p><p>Cách sửa đã học ở bài trước: パッドを水平[すいへい]に調整[ちょうせい] — chỉnh miếng chà nằm ngang để 均等[きんとう]に圧[あつ]がかかる, lực ép đều.</p>",
+"hl": ["Người mới hay mắc lỗi gì với miếng chà? Sửa thế nào?", "Dồn lực vào một phần miếng chà; chỉnh miếng chà nằm ngang để lực ép đều."],
+"de": "<p>Đề 9 câu 21 hỏi cả cặp “lỗi — cách sửa”. Đáp án nhiễu đưa cách sửa sai: “ấn mạnh tay cầm xuống”, “chà chậm lại”.</p>"},
+{"a": [6, 7],
+"ng": ["〜程[ほど]: khoảng", "重[かさ]ねる: chồng lên"],
+"lg": "<p>パッド幅[はば]を1/3程[ほど]重[かさ]ねるように清掃[せいそう] — mỗi đường chà chồng lên đường trước khoảng <b>1/3</b> bề ngang miếng chà. Không chồng thì để lại vệt sót giữa hai đường.</p><p>Các bạn ghi rõ con số: máy chà sàn chồng <b>1/3</b>. Bài sau học cây gạt kính, chồng <b>1/4</b> — hai con số này đề hay tráo cho nhau.</p>",
+"hl": ["Máy chà sàn: mỗi đường chồng lên nhau bao nhiêu?", "Khoảng 1/3 bề ngang miếng chà."],
+"de": "<p>Đề 4 câu 21, Đề 9 câu 20: con số 1/3. Đáp án nhiễu là 1/2, 1/4 (của cây gạt kính).</p>"},
+{"a": [8, 9, 10],
+"ng": ["踏[ふ]んだり巻[ま]き込[こ]まないように: để không giẫm hay cuốn vào", "さばく: gỡ, gạt cho gọn", "スペースを確保[かくほ]する: giữ chỗ trống"],
+"lg": "<p>Dây điện khi di chuyển: コードを踏[ふ]んだり巻[ま]き込[こ]まないように — không giẫm lên dây, không để dây bị cuốn vào máy đang quay. コードを左手[ひだりて]でさばきながら移動[いどう] — tay trái gạt dây gọn sang bên, chừa đường cho máy đi (進[すす]むスペースを確保[かくほ]).</p><p>Tay trái, vì tay phải đang giữ cần quay. Dây mà bị miếng chà cuốn vào là đứt dây, có khi giật máy khỏi tay.</p>",
+"hl": ["Khi di chuyển máy, dây điện xử lý bằng tay nào, thế nào?", "Tay trái, vừa gạt dây gọn vừa đi; không giẫm, không để máy cuốn dây."],
+"de": "<p>Đề 9 câu 22, Đề 12 câu 26: コードを左手[ひだりて]でさばきながら移動[いどう]する. Đáp án nhiễu: “vắt dây lên vai”, “để dây trước máy”.</p>"},
+{"a": [11],
+"ng": ["余[あま]る: thừa ra", "巻[ま]き取[と]る: cuộn lại"],
+"lg": "<p>コードが余[あま]ってきたら危険[きけん]なので巻[ま]き取[と]っておこう — dây thừa nhiều thì nguy hiểm, cuộn gọn lại. Dây thừa nằm lòng thòng trên sàn ướt: người vấp ngã, máy cán lên.</p><p>Vì mình lùi dần về ổ điện, dây sẽ thừa dần ra — vừa làm vừa cuộn.</p>",
+"hl": ["Dây điện thừa ra thì làm gì?", "Cuộn gọn lại (巻き取る), vì để thừa là nguy hiểm."],
+"de": "<p>Đề 9 câu 23 hỏi nguyên văn.</p>"},
+{"a": [12, 13],
+"ng": ["〜場合[ばあい]は: trong trường hợp …", "分割[ぶんかつ]して: chia ra", "効率的[こうりつてき]に: một cách hiệu quả"],
+"lg": "<p>広[ひろ]い場所[ばしょ]や家具[かぐ]の移動[いどう]が必要[ひつよう]な場合[ばあい]は作業範囲[さぎょうはんい]を分割[ぶんかつ]して効率的[こうりつてき]に清掃[せいそう] — chỗ rộng hoặc phải dời đồ đạc thì chia khu làm.</p><p>Ví dụ văn phòng nhiều bàn: dời bàn nửa bên trái sang phải, làm xong nửa trái, đợi khô, dời bàn về, rồi làm nửa phải. Không ai dời hết cả phòng một lúc.</p>",
+"tt": "<p>Ở Nhật, vệ sinh sàn định kỳ cho văn phòng, cửa hàng thường làm vào ban đêm hoặc ngày nghỉ để không ảnh hưởng người làm việc — nên thời gian có hạn, chia khu cho hiệu quả là việc thường ngày.</p>",
+"hl": ["Phòng rộng, nhiều đồ đạc thì làm thế nào?", "Chia khu làm việc (作業範囲を分割) để chà cho hiệu quả."],
+"de": "<p>Đề 9 câu 24 hỏi nguyên văn.</p>"},
+{"a": [14, 15, 16, 17],
+"ng": ["下[お]ろす: hạ xuống", "垂直[すいちょく]に戻[もど]す: đưa về thẳng đứng"],
+"lg": "<p>Chà xong, đặt nằm máy theo thứ tự: ① タイヤを下[お]ろす — hạ bánh xe xuống; ② ハンドルを垂直[すいちょく]に戻[もど]す — dựng tay cầm thẳng đứng; ③ タイヤを足[あし]で固定[こてい]して寝[ね]かせる — chân giữ bánh, đặt nằm máy (trên 養生[ようじょう]マット, dựng chân đỡ スタンド).</p><p>Ngược với lúc chuẩn bị: lúc chuẩn bị bánh xe nâng <b>sau cùng</b>, lúc thu dọn bánh xe hạ <b>đầu tiên</b>.</p>",
+"hl": ["Chà xong, việc đầu tiên trước khi đặt nằm máy là gì?", "Hạ bánh xe xuống (タイヤを下ろす)."],
+"gv": "<p>Đề 9 câu 25 lấy phương án A “タイヤを下[お]ろす → タイヤを足[あし]で固定[こてい]して寝[ね]かせる → ハンドルを垂直[すいちょく]に戻[もど]す → スタンドを立[た]てる” làm đáp án; sách tr.73 thì dựng tay cầm thẳng đứng <b>trước</b> khi đặt nằm. Phương án B cũng không khớp sách. Em không đổi đáp án (đang chờ anh quyết).</p>"},
+{"a": [18, 19],
+"ng": ["〜前[まえ]に: trước khi …", "プラグを抜[ぬ]く: rút phích", "引[ひ]っ張[ぱ]ってはいけない: không được kéo"],
+"lg": "<p>パッドを外[はず]す前[まえ]に電源[でんげん]からプラグを抜[ぬ]こう — <b>trước khi tháo miếng chà</b>, rút phích khỏi nguồn. Còn cắm điện mà lỡ chạm cần phải là trục quay ngay khi tay đang ở chỗ miếng chà.</p><p>Cách rút: プラグを持[も]つ — cầm vào phích; コードを引[ひ]っ張[ぱ]ってはいけない!! — không được giật dây.</p>",
+"tt": "<p>Cơ quan an toàn sản phẩm của Nhật (NITE, 製品評価技術基盤機構[せいひんひょうかぎじゅつきばんきこう]) nhiều lần cảnh báo: rút điện bằng cách giật dây làm đứt lõi dây bên trong, về sau gây chập, cháy. Đây là quy tắc dùng điện chung ở Nhật, không riêng máy chà.</p>",
+"hl": ["Tháo miếng chà trước hay rút phích trước? Rút phích thế nào?", "Rút phích trước; cầm vào phích mà rút, không giật dây."],
+"de": "<p>Đề 9 câu 26: trước khi tháo miếng chà nhất định phải làm gì → 電源[でんげん]からプラグを抜[ぬ]く. Trắc nghiệm tổng hợp app: rút phích đúng cách → cầm phích.</p>",
+"gv": "<p>Đề 12 câu 33 (sắp xếp) lấy “rút phích” làm bước đầu tiên của cả việc thu dọn, trước cả hạ bánh xe; sách tr.73 thì rút phích sau khi đặt nằm máy, trước khi tháo miếng chà. Đề 4 câu 8 chỉ xếp 4 bước từ rút phích trở đi nên khớp sách. Em giữ nguyên Đề 12 (đang chờ anh quyết).</p>"},
+{"a": [20, 21, 22],
+"ng": ["たらさない: không để nhỏ giọt", "回収[かいしゅう]する: thu lại"],
+"lg": "<p>Tháo フロアパッド ra, 汚水[おすい]をたらさないように回収[かいしゅう] — đừng để nước bẩn nhỏ xuống. Cách làm: タオルで汚水[おすい]を受[う]ける — lấy khăn hứng bên dưới.</p><p>Miếng chà vừa chà xong ngậm đầy nước bẩn và chất tẩy kiềm. Nhỏ xuống chỗ sàn đã làm sạch là phải lau lại, nhỏ lên sàn chưa phủ sáp là thành vệt.</p>",
+"hl": ["Tháo miếng chà ra thì chú ý gì?", "Không để nước bẩn nhỏ xuống; dùng khăn hứng."],
+"de": "<p>Đề 9 câu 28 hỏi nguyên văn.</p>"},
+{"a": [23, 24],
+"ng": ["マイナスドライバー: tua vít dẹt (đầu dấu trừ)", "二又部分[ふたまたぶぶん]: chỗ chẻ đôi", "差[さ]し込[こ]む: cắm vào"],
+"lg": "<p>パッド台[だい]はマイナスドライバーを使[つか]うとかんたんに外[はず]せる — đế gắn miếng chà tháo dễ bằng tua vít dẹt: ① 二又部分[ふたまたぶぶん]にドライバーを差[さ]し込[こ]む — cắm tua vít vào chỗ chẻ đôi; ② 持[も]ち上[あ]げる — bẩy lên.</p><p>Tên tiếng Nhật: マイナス (dấu trừ) = đầu dẹt; プラス (dấu cộng) = đầu chữ thập. Đề có thể cho ảnh cả hai loại.</p>",
+"hl": ["Tháo đế gắn miếng chà dùng dụng cụ gì, cắm vào đâu?", "Tua vít dẹt (マイナスドライバー), cắm vào chỗ chẻ đôi rồi bẩy lên."],
+"de": "<p>Đề 5 câu 17, Đề 9 câu 27. Đáp án nhiễu: プラスドライバー (tua vít chữ thập), ペンチ (kìm), dùng tay kéo mạnh.</p>"},
+{"a": [25, 26, 27, 28, 29],
+"ng": ["仕上[しあ]げに: để hoàn thiện, cuối cùng", "拭[ふ]きながら回収[かいしゅう]: vừa lau vừa thu lại", "片付[かたづ]けたら: dọn xong thì"],
+"lg": "<p>Cuối cùng: 本体[ほんたい]をタオルで水拭[みずぶ]き — lau ướt thân máy, cả mặt dưới (本体裏[ほんたいうら]) và bình chứa (タンク). コードもタオルで拭[ふ]きながら回収[かいしゅう] — dây điện thì vừa lau vừa cuộn: tay trái giữ, khăn kẹp dây, chân giữ bánh xe.</p><p>資器材[しきざい]を片付[かたづ]けたら作業完了[さぎょうかんりょう] — dọn hết dụng cụ mới là xong việc. Dây kéo lê trên sàn vừa chà cả buổi, không lau mà cuộn vào thì lần sau mang bẩn sang chỗ mới.</p>",
+"hl": ["Dây điện thu lại thế nào?", "Vừa lau bằng khăn vừa cuộn lại."],
+"de": "<p>Đề 4 câu 8: thứ tự 4 bước rút phích → tháo miếng chà → lau thân máy → vừa lau vừa cuộn dây. Đáp án nhiễu đưa lau thân máy lên trước rút phích.</p>"}
+],
+"de": {
+"intro": "<p>Trang 71–74 có 17 câu trong bộ đề app, hầu hết là 学科[がっか] dạng chọn 1 và dạng sắp xếp. 実技[じつぎ] hỏi bằng tranh đường chạy và ảnh dụng cụ (hót nước bẩn, tua vít dẹt).</p>",
+"items": [
+{"k": "学科", "t": "Sắp xếp thứ tự thu dọn", "lg": "<p>Dạng khó nhất của phần này. Học viên cần thuộc 2 chặng: đặt nằm máy (hạ bánh → dựng tay cầm → giữ bánh, đặt nằm) và tháo, lau (rút phích → tháo miếng chà, hứng nước → tháo đế → lau máy → lau, cuộn dây). Hai câu trong bộ đề lệch thứ tự sách — xem Ghi chú cho giáo viên.</p>", "q": [["4", "8"], ["9", "25"], ["12", "33"]]},
+{"k": "学科", "t": "Con số và tay trái", "lg": "<p>1/3 bề ngang miếng chà; tay trái gỡ dây. Đáp án nhiễu: 1/2, 1/4; tay phải.</p>", "q": [["4", "21"], ["9", "20"], ["9", "22"]]},
+{"k": "学科", "t": "Lỗi người mới và cách sửa", "lg": "<p>Câu cho cả cặp lỗi — cách sửa, hoặc dạng chọn 2 câu đúng về thao tác (Đề 13 câu 20).</p>", "q": [["9", "21"], ["13", "20"]]},
+{"k": "実技", "t": "Tranh đường chạy, ảnh dụng cụ", "lg": "<p>Chọn tranh đường chạy phần giữa đúng; nhìn ảnh chọn dụng cụ thu nước còn lại trên sàn (汚水取[おすいと]り — hót nước bẩn) và dụng cụ tháo đế (マイナスドライバー).</p>", "q": [["4", "17"], ["12", "10"], ["5", "17"]]}
+],
+"gv": "<p>Hai câu sắp xếp lệch sách tr.73: Đề 9 câu 25 (đặt nằm máy trước rồi mới dựng tay cầm) và Đề 12 câu 33 (rút phích trước cả hạ bánh xe). Khi chữa, nên đọc thứ tự sách cho học viên, và nói đề trong app đang chờ sửa. Em không đổi đáp án (đang chờ anh quyết). Ngoài ra phương án tiếng Việt của Đề 12 câu 10 trong app ghi “Ky hốt nước bẩn”; tên lớp đã chốt là “hót nước bẩn” — giáo án đã hiện theo tên chốt.</p>"
+},
+"q1": "auto",
+"q2": {"MT": [20, 21, 22, 23, 24]},
+"tk": {
+"src": [0, 2, 4, 6, 9, 11, 14, 15, 16, 18, 23, 27],
+"lg": "<p>Phần giữa phòng: xa ổ điện trước, dây men tường, lùi dần về ổ điện; miếng chà nằm ngang cho lực đều; mỗi đường chồng 1/3. Dây điện: không giẫm, không cuốn, tay trái gỡ, thừa thì cuộn. Phòng rộng thì chia khu. Thu dọn: hạ bánh → dựng tay cầm → giữ bánh, đặt nằm → cầm phích rút điện → tháo miếng chà có khăn hứng → tua vít dẹt tháo đế → lau máy → vừa lau vừa cuộn dây. Dọn xong dụng cụ mới là xong việc.</p>"
+},
+"ket": {
+"lg": "<p>Hai buổi máy chà sàn khép lại ở đây. Các bạn để ý: một nửa số câu đề không hỏi chà thế nào, mà hỏi an toàn — điện, dây, thứ tự tháo lắp. Người Nhật đánh giá thợ mới chính ở chỗ đó.</p>",
+"bt": "<p>1. Xếp lại 7 thẻ thu dọn theo đúng thứ tự sách, chụp ảnh gửi nhóm lớp.<br>2. Viết 3 câu tiếng Nhật về dây điện (踏まない・左手でさばく・巻き取る), có furigana.<br>3. Làm lại Đề 9 trong app, câu 20–28.</p>"
+}
+}

@@ -14,9 +14,13 @@ def step_of(k):
     if k in ('tk', 'ket'): return 4
     return 0
 
-# Bài = phần bài học trong app (tab Tài liệu). Chương 1: Phần A (hội thoại tr.8) + Phần B (quy tắc tr.9) gộp thành Bài 1.
+# Bài = 1 hoặc vài phần bài học liền nhau trong app (tab Tài liệu); phần ngắn gộp lại cho đủ 1 buổi dạy.
+# (mã bài, [phần], tên tiếng Việt khi gộp nhiều phần)
 BAI = {
-    1: [('b01', ['s1', 's2']), ('b02', ['s3']), ('b03', ['s4']), ('b04', ['s5']), ('b05', ['s6']), ('b06', ['s7'])],
-    2: [('b%02d' % (7 + i), ['s%d' % i]) for i in range(10)],
-    3: [('b%02d' % (17 + i), ['s%d' % i]) for i in range(10)],
+    1: [('b01', ['s1', 's2'], 'Vào làm, nghỉ giải lao, tan ca'), ('b02', ['s3']), ('b03', ['s4']), ('b04', ['s5']), ('b05', ['s6']), ('b06', ['s7'])],
+    2: [('b07', ['s0', 's1'], 'Bắt đầu ca, an toàn & vật tư vệ sinh sàn'), ('b08', ['s2']), ('b09', ['s3']), ('b10', ['s4']), ('b11', ['s5']),
+        ('b12', ['s6']), ('b13', ['s7']), ('b14', ['s8', 's9'], 'Rác thải, vệ sinh & an toàn lao động')],
+    3: [('b15', ['s0', 's1', 's2'], '5 nguyên tắc: vật liệu sàn, vết bẩn, chất tẩy, cách làm'),
+        ('b16', ['s3', 's4'], 'Máy chà sàn: chuẩn bị & điều khiển'), ('b17', ['s5']),
+        ('b18', ['s6', 's7'], 'Vệ sinh kính'), ('b19', ['s8', 's9'], 'Danh mục dụng cụ, phân loại & trải giường')],
 }

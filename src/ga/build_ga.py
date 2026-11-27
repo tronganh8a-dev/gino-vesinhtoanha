@@ -29,13 +29,13 @@ def esc(s): return html.escape(s or '', quote=False)
 
 # tiếng Việt lấy từ dữ liệu sách: bỏ từ tiếng Anh (giữ tên riêng/từ mượn quen)
 VI_FIX = [(r'\bcheck-?in\b', 'nhận phòng'), (r'\bcheck-?out\b', 'trả phòng'), (r'\bwax\b', 'sáp'), (r'\bpolisher\b', 'máy chà sàn'),
-          (r'\bsqueegee\b', 'cây gạt kính'), (r'\btoilet\b', 'nhà vệ sinh'), (r'\bteamwork\b', 'làm việc nhóm'), (r'\blogic\b', 'trình tự')]
-VI_OK = {'SNS', 'CBT', 'Video', 'Slide', 'Facebook', 'TikTok', 'Wi', 'Fi', 'pH', 'HORENSO', 'axit', 'clo', 'vinyl', 'virus', 'lavabo', 'nilon', 'inox', 'photo', 'photocopy', 'Mai', 'Kei'}
+          (r'\bsqueegee\b', 'cây gạt kính'), (r'\btoilet\b', 'nhà vệ sinh'), (r'\bteamwork\b', 'làm việc nhóm'), (r'\blogic\b', 'trình tự'), (r'\burethane\b', 'uretan'), (r'\bgas\b', 'ga'), (r'\bhandle\b', 'tay cầm'), (r'Ky hốt nước bẩn', 'Hót nước bẩn'), (r'[Kk]y hốt rác', 'hót rác'), (r'cái hốt nước bẩn', 'hót nước bẩn'), (r'cái hốt rác', 'hót rác cán dài'), (r'cây lau nhà dùng khăn \(lau khô\)', 'cây lau khăn khô'), (r'đồ gom rác khô', 'khăn lau khô'), (r'cái gạt nước sàn', 'cây gạt nước sàn'), (r'cái gạt nước kính', 'cây gạt kính')]
+VI_OK = {'SNS', 'CBT', 'Video', 'Slide', 'Facebook', 'TikTok', 'Wi', 'Fi', 'pH', 'HORENSO', 'axit', 'clo', 'vinyl', 'virus', 'lavabo', 'nilon', 'inox', 'photo', 'photocopy', 'linoleum', 'tatami', 'acrylic', 'protein', 'uretan', 'sofa', 'axit', 'clo', 'Mai', 'Kei'}
 def vi(s, where=''):
     s = s or ''
     for a, b in VI_FIX: s = re.sub(a, b, s, flags=re.I)
-    for w in re.findall(r'\b[A-Za-z]{3,}\b', plain(s)):
-        if w not in VI_OK and not VISYL.fullmatch(w.lower()):
+    for w in re.findall(r'\b[A-Za-z]{3,}\b', html.unescape(plain(s))):
+        if w.lower() not in VI_OK and w not in VI_OK and not VISYL.fullmatch(w.lower()):
             WARN.append(f'Tiếng Anh trong phần tiếng Việt ({where}): {w}')
     return s
 VISYL = re.compile(r'(ngh|ng|nh|ch|gh|gi|kh|ph|qu|th|tr|[bcdghklmnprstvx])?(uye|oai|oay|uay|uoi|uou|ieu|yeu|uya|ai|ao|au|ay|eo|eu|ia|ie|iu|oa|oe|oi|oo|ua|ue|ui|uo|uu|uy|ye|[aeiouy])(ch|ng|nh|[cmnpt])?')
@@ -76,7 +76,7 @@ def pages_of(sec):
 CH = {}
 for ch in (1, 2, 3):
     raw, soup, secs = chapter(ch)
-    CH[ch] = dict(raw=raw, secs={s['id']: s for s in secs}, js=jsdata(raw, ['QZ', 'QZ2', 'V1']) if ch == 1 else {})
+    CH[ch] = dict(raw=raw, secs={s['id']: s for s in secs}, js=jsdata(raw, ['QZ', 'QZ2', 'V1'] if ch == 1 else ['QUICK', 'MT', 'VOCAB']))
 
 # ---------- 1 bài: câu sách (atoms) ----------
 def cards_of(ch, sids):
@@ -102,12 +102,19 @@ def vocab_of(cards, ch, d):
         seen.add(k); kk = re.sub('(する|で)$', '', k)
         V.append(dict(w=w, k=k, hv=d.get('hv', {}).get(k) or d.get('hv', {}).get(kk, ''), m=m, x=x))
     for key, dc in cards:
-        for tr in dc.select('table.vtable tr'):
-            td = tr.select('td')
-            if len(td) >= 2: add(td[0].get_text(strip=True) and td[0].decode_contents().replace('<b>', '').replace('</b>', '').strip(), td[1].get_text(strip=True), td[2].get_text(strip=True) if len(td) > 2 else '')
+        for tb in dc.select('table.vtable'):
+            hd = [th.get_text(strip=True) for th in tb.select('th')]
+            im = next((i for i, h in enumerate(hd) if h.startswith('Nghĩa')), 1)
+            ix = next((i for i, h in enumerate(hd) if h.startswith('Ghi chú')), None)
+            for tr in tb.select('tr'):
+                td = tr.select('td')
+                if len(td) > im:
+                    add(td[0].decode_contents().replace('<b>', '').replace('</b>', '').strip(), td[im].get_text(' ', strip=True),
+                        td[ix].get_text(' ', strip=True) if ix is not None and len(td) > ix else '')
     for w, m in d.get('vx', []): add(w, m)
-    for v in CH[ch]['js'].get('V1', []):
-        if v[3] == d.get('vtopic', 'kt'): add(v[0], v[2])
+    tp = d.get('vtopic', 'kt'); tp = [tp] if isinstance(tp, str) else tp
+    for v in CH[ch]['js'].get('V1', []) + CH[ch]['js'].get('VOCAB', []):
+        if v[3] in tp: add(v[0], v[2])
     return V
 
 def img_file(bid, key, k, src):
@@ -132,6 +139,13 @@ def pt_auto(text, V):
             seen.add(k)
             out.append(f'<span><span class="j">{R(v["w"])}</span>{(" · " + esc(v["hv"])) if v["hv"] else ""} · {esc(v["m"])}</span>')
     return out
+def card_unit_html(u, n, i):
+    hl = u.get('hl'); hl = f'<p>{R(hl[0])}</p><p class="ans">→ {R(hl[1])}</p>' if hl else ''
+    pt = ''.join(f'<span>{R(x)}</span>' for x in u.get('ng', []))
+    return (f'<article class="unit"><div class="no">MỤC {i} / {n}</div><div class="layers">'
+            + L('pt-l', 'Từ khó', ('<div class="pt">' + pt + '</div>') if pt else '')
+            + L('lg', 'Lời giảng', R(u.get('lg', ''))) + L('tt', 'Ví dụ thực tế', R(u.get('tt', ''))) + L('ask', 'Hỏi lớp', hl)
+            + L('de', 'Liên hệ đề thi', R(u.get('de', ''))) + L('gv', 'Ghi chú cho giáo viên', R(u.get('gv', ''))) + '</div></article>')
 def unit_html(u, A, V, n, i):
     src = ''.join(line_html(A[k]) for k in u['a'])
     text = ''.join(plain(A[k]['jp']) for k in u['a'])
@@ -143,15 +157,26 @@ def unit_html(u, A, V, n, i):
             + L('de', 'Liên hệ đề thi', R(u.get('de', ''))) + L('gv', 'Ghi chú cho giáo viên', R(u.get('gv', ''))) + '</div></article>')
 
 LETTERS = 'ABCD'
+EXIMG = json.JSONDecoder().raw_decode(S[S.index('const EXIMG = ') + 14:])[0]
+EXF = {}
+def eximg(i):
+    if i is None: return ''
+    if i not in EXF:
+        m = re.match(r'data:image/(\w+);base64,(.*)', EXIMG[i])
+        im = Image.open(io.BytesIO(base64.b64decode(m.group(2)))).convert('RGB')
+        if im.width > 480: im = im.resize((480, int(im.height * 480 / im.width)), Image.LANCZOS)
+        EXF[i] = f'img/ex-{i}.webp'; im.save(OUT + '/' + EXF[i], 'WEBP', quality=78, method=6)
+    return f'<img class="qi" src="{EXF[i]}" alt="" loading="lazy">'
 def exq(ref):
     e, n = ref.split(':')
     q = next((x for x in EXD[e]['questions'] if str(x['n']) == n), None)
     if not q: WARN.append(f'Không thấy câu đề {ref}')
     return e, q
-def qcard(head, jp, vn, opts, ans_idx, expl, tag=''):
-    ops = ''.join(f'<li class="{"ok" if i in ans_idx else ""}"><b>{k}</b><div><div class="j">{R(o[0])}</div>{("<div class=v>" + esc(o[1]) + "</div>") if o[1] else ""}</div></li>' for i, (k, o) in enumerate(opts))
-    return (f'<div class="qq card"><div class="qh">{head}{(" <span class=tg>" + tag + "</span>") if tag else ""}</div><div class="j">{R(jp)}</div>'
-            + (f'<div class="v">{esc(vn)}</div>' if vn else '') + f'<ol>{ops}</ol>'
+def qcard(head, jp, vn, opts, ans_idx, expl, tag='', figs='', order=''):
+    ops = ''.join(f'<li class="{"ok" if i in ans_idx else ""}{" pic" if len(o) > 2 and o[2] else ""}"><b>{k}</b><div>{o[2] if len(o) > 2 else ""}{("<div class=j>" + R(o[0]) + "</div>") if o[0] else ""}{("<div class=v>" + esc(vi(o[1], "phương án")) + "</div>") if o[1] else ""}</div></li>' for i, (k, o) in enumerate(opts))
+    return (f'<div class="qq card"><div class="qh">{head}{(" <span class=tg>" + tag + "</span>") if tag else ""}</div>{figs}<div class="j">{R(jp)}</div>'
+            + (f'<div class="v">{esc(vi(vn, "câu đề"))}</div>' if vn else '') + f'<ol class="{"pics" if any(len(o) > 2 and o[2] for _, o in opts) else ""}">{ops}</ol>'
+            + (f'<div class="ord">Thứ tự đúng: <b>{order}</b></div>' if order else '')
             + (f'<details class="ex"><summary>Giải thích của app</summary><div>{expl}</div></details>' if expl else '') + '</div>')
 def short_q(q):
     if not q: return ''
@@ -165,12 +190,26 @@ def bank_q(ref, no):
     e, q = exq(ref)
     if not q: return ''
     ans = [a.strip().lower() for a in str(q['ans']).split(',')]
-    opts = [(o['k'], (o['jp'], o.get('vn', ''))) for o in q['opts']]
-    idx = [i for i, (k, _) in enumerate(opts) if k.lower() in ans]
+    opts = [(o['k'], (o['jp'], o.get('vn', ''), eximg(o.get('img')))) for o in q['opts']]
+    order = q.get('type') == 'order'
+    idx = [] if order else [i for i, (k, _) in enumerate(opts) if k.lower() in ans]
     tag = q.get('sec') or ''
-    expl = (('<p>' + esc(q.get('vn', '')) + '</p>') if False else '') + '<p>' + clean_expl(q.get('evi', '')) + '</p>'
-    kind = ' · chọn 2' if len(ans) > 1 else ''
-    return qcard(f'{no}. Đề {e} · câu {q["n"]}{kind}', re.sub(r'\*\*', '', q['jp']), q.get('vn', ''), opts, idx, expl, tag)
+    expl = (('<p class="j">' + R(q['ejp']) + '</p>') if q.get('ejp') else '') + '<p>' + clean_expl(q.get('evi', '')) + '</p>'
+    kind = ' · sắp xếp' if order else (' · chọn %d' % len(ans) if len(ans) > 1 else '')
+    figs = ''.join(eximg(f) for f in q.get('figs') or [])
+    return qcard(f'{no}. Đề {e} · câu {q["n"]}{kind}', re.sub(r'\*\*', '', q['jp']), q.get('vn', ''), opts, idx, expl, tag,
+                 f'<div class="figs">{figs}</div>' if figs else '', ' → '.join(a.upper() for a in ans) if order else '')
+def auto_q1(ch, pages):
+    """câu bộ đề có ref thuộc chương + trang của bài; bỏ câu trùng chữ."""
+    lo, hi = pages; out, seen = [], set()
+    for e in sorted(EXD, key=int):
+        for q in EXD[e]['questions']:
+            m = re.match(r'Ch\.(\d)\s*tr\.(\d+)', q.get('ref') or '')
+            if not m or int(m.group(1)) != ch or not lo <= int(m.group(2)) <= hi: continue
+            k = plain(q['jp']) + '|' + '|'.join(plain(o['jp']) + str(o.get('img')) for o in q['opts'])
+            if k in seen: continue
+            seen.add(k); out.append((int(m.group(2)), int(e), int(re.sub(r'\D', '', q['n']) or 0), f'{e}:{q["n"]}'))
+    return [r for *_, r in sorted(out)]
 def app_q(item, head):
     opts = [(LETTERS[i], (o, '')) for i, o in enumerate(item['o'])]
     return qcard(head, item['q'], '', opts, [item['a']], '<p>' + clean_expl(item.get('e', '')) + '</p>')
@@ -184,13 +223,13 @@ for ch, lst in BAI.items():
     cinfo = dict(ch=ch, cat={1: '第[だい]1章[しょう] ビルクリーニングの仕事[しごと]', 2: '第[だい]2章[しょう] 日常清掃[にちじょうせいそう]', 3: '第[だい]3章[しょう] 定期清掃[ていきせいそう]'}[ch],
                  catv={1: 'Quy tắc & tác phong', 2: 'Vệ sinh hằng ngày', 3: 'Vệ sinh định kỳ'}[ch], bai=[])
     CHD[ch] = dict(ch=ch, bai=[])
-    for bid, sids in lst:
+    for bid, sids, *tt in lst:
         num += 1
         h0 = head_of(secs[sids[0]])
         tj = R(h0['jp']) if len(sids) == 1 else R(head_of(secs[sids[0]])['jp'])
         pg = ', '.join(pages_of(secs[s]) for s in sids)
         pg = re.sub(r'tr\.(\d+), tr\.(\d+)', r'tr.\1–\2', pg)
-        tv = h0['vi'] if len(sids) == 1 else 'Vào làm, nghỉ giải lao, tan ca'
+        tv = tt[0] if tt else h0['vi']
         fn = f'{H}/bai/{bid}.json'
         ready = os.path.exists(fn)
         b = dict(id=bid, no=num, tj=tj, tv=tv, pg=pg, ready=ready)
@@ -201,7 +240,9 @@ for ch, lst in BAI.items():
         cards = cards_of(ch, sids); A = atoms_of(cards); V = vocab_of(cards, ch, d)
         cardmap = dict(cards)
         # tự kiểm: câu sách nào chưa có trong giáo án
-        used = [k for u in d['units'] for k in u['a']]
+        used = [k for u in d['units'] for k in u.get('a', [])]
+        for key, dc in cards:
+            if not dc.select('.line') and not any(u.get('c') == key for u in d['units']): WARN.append(f'{bid}: bảng {key} chưa có lời giảng')
         miss = [k for k in range(len(A)) if k not in used]
         for k in miss: WARN.append(f'{bid}: câu sách #{k} chưa có trong giáo án: {plain(A[k]["jp"])[:40]}')
         for k in set(used):
@@ -223,9 +264,17 @@ for ch, lst in BAI.items():
                     cap = dc.select_one('.frame .src').get_text(strip=True).replace('Giáo trình gốc', 'Giáo trình') if dc.select_one('.frame .src') else ''
                     dno = dc.select_one('.dno').get_text(strip=True) if dc.select_one('.dno') else ''
                     h3 = dc.select_one('h3').get_text(strip=True) if dc.select_one('h3') else ''
-                    body += f'<section class="dc"><div class="dch"><span>{esc(dno)}</span> {esc(vi(h3, "tiêu đề đoạn"))}</div><figure>{imgs}<figcaption>{esc(cap)}</figcaption></figure></section>'
+                    extra = ''
+                    if not dc.select('.line') and dc.select_one('.dbody'):
+                        db = BeautifulSoup(str(dc.select_one('.dbody')), 'html.parser')
+                        for x in db.select('.lnav, script'): x.decompose()
+                        extra = f'<div class="dbody">{R(vi(db.decode_contents(), "bảng sách"))}</div>'
+                    body += f'<section class="dc"><div class="dch"><span>{esc(dno)}</span> {esc(vi(h3, "tiêu đề đoạn"))}</div><figure>{imgs}<figcaption>{esc(cap)}</figcaption></figure>{extra}</section>'
                     for u in d['units']:
-                        if A[u['a'][0]]['card'] == key:
+                        if u.get('c') == key:
+                            ui += 1; body += card_unit_html(u, n_units, ui)
+                    for u in d['units']:
+                        if u.get('a') and A[u['a'][0]]['card'] == key:
                             ui += 1; body += unit_html(u, A, V, n_units, ui)
                 pages.append(dict(k=k, t=plain(P['t']), tv=P['tv'], p=P['p'], ph=ph, html=body))
             elif k == 'de':
@@ -236,18 +285,23 @@ for ch, lst in BAI.items():
                 if D.get('gv'): body += f'<article class="unit"><div class="layers">{L("gv", "Ghi chú cho giáo viên", R(D["gv"]))}</div></article>'
                 pages.append(dict(k=k, t='Đề thi sẽ hỏi gì', p=P['p'], ph=ph, html=body))
             elif k == 'q1':
+                if d['q1'] == 'auto' or isinstance(d['q1'], dict):
+                    pp = [int(x) for x in re.findall(r'\d+', pg)]; ex = d['q1'].get('bo', []) if isinstance(d['q1'], dict) else []
+                    d['q1'] = [r for r in auto_q1(ch, (min(pp), max(pp))) if r not in ex] + (d['q1'].get('them', []) if isinstance(d['q1'], dict) else [])
                 body = (f'<h1>Câu trong bộ đề của app · {len(d["q1"])} câu<span class="min">{P["p"]}′</span></h1>'
                         '<div class="sv">Giáo trình không có phần bài tập; đây là các câu của bộ đề trong app thuộc tr. của bài. Bấm “Giải thích của app” để mở lời giải.</div>')
                 body += '<div class="kq">' + ''.join(bank_q(r, i + 1) for i, r in enumerate(d['q1'])) + '</div>'
                 pages.append(dict(k=k, t='Câu trong bộ đề · %d câu' % len(d['q1']), p=P['p'], ph=ph, html=body))
             elif k == 'q2':
-                js = CH[ch]['js']; items = [('QZ2', i) for i in d['q2'].get('QZ2', [])] + [('QZ', i) for i in d['q2'].get('QZ', [])]
-                body = f'<h1>Câu kiểm tra của app · {len(items)} câu<span class="min">{P["p"]}′</span></h1><div class="sv">Lấy từ “28 câu càn quét” và “8 câu chốt” cuối bài Chương {ch} trong app.</div>'
-                body += '<div class="kq">' + ''.join(app_q(js[s][i], f'{j + 1}. {"Trắc nghiệm tổng hợp" if s == "QZ2" else "Câu chốt"} · câu {i + 1}') for j, (s, i) in enumerate(items)) + '</div>'
+                js = CH[ch]['js']; NM = {'QZ2': 'Trắc nghiệm tổng hợp', 'QZ': 'Câu chốt', 'QUICK': 'Ôn nhanh', 'MT': 'Trắc nghiệm tổng hợp'}
+                items = [(s_, i) for s_ in ('QUICK', 'QZ2', 'MT', 'QZ') for i in d['q2'].get(s_, [])]
+                src_ = 'cuối bài Chương 1 (“28 câu càn quét” và “8 câu chốt”)' if ch == 1 else f'cuối bài Chương {ch} (“Ôn nhanh” và “Trắc nghiệm tổng hợp”)'
+                body = f'<h1>Câu kiểm tra của app · {len(items)} câu<span class="min">{P["p"]}′</span></h1><div class="sv">Lấy từ phần ôn tập {src_} trong app.</div>'
+                body += '<div class="kq">' + ''.join(app_q(js[s_][i], f'{j + 1}. {NM[s_]} · câu {i + 1}') for j, (s_, i) in enumerate(items)) + '</div>'
                 pages.append(dict(k=k, t='Câu kiểm tra của app · %d câu' % len(items), p=P['p'], ph=ph, html=body))
             elif k == 'tk':
-                T = d['tk']; body = f'<h1>Tổng kết<span class="min">{P["p"]}′</span></h1>'
-                body += '<article class="unit"><div class="no">CÂU CHÍNH CỦA SÁCH</div><div class="src">' + ''.join(line_html(A[i]) for i in T['src']) + '</div>'
+                T = d['tk']; body = f'<h1>Tổng kết<span class="min">{P["p"]}′</span></h1><article class="unit">'
+                if T['src']: body += '<div class="no">CÂU CHÍNH CỦA SÁCH</div><div class="src">' + ''.join(line_html(A[i]) for i in T['src']) + '</div>'
                 body += f'<div class="layers">{L("lg", "Lời chốt", R(T["lg"]))}</div></article>'
                 pages.append(dict(k=k, t='Tổng kết', p=P['p'], ph=ph, html=body))
             elif k == 'ket':

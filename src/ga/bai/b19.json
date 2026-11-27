@@ -1,0 +1,83 @@
+{
+"id": "b19",
+"mt": [
+"Nhìn ảnh gọi đúng tên khoảng 40 dụng cụ, máy móc trong 資器材[しきざい]リスト (tr.81–82) và nói công dụng; phân biệt được các cặp dễ nhầm.",
+"Nhìn ảnh sàn xếp đúng vào 5 nhóm 床材[ゆかざい], nhìn ảnh vết bẩn xếp đúng vào 5 nhóm 汚[よご]れ (tr.83–84).",
+"Biết 3 nội dung phụ lục trải giường (tr.85): cách cơ bản, kiểu chăn lồng vỏ デュベスタイル, 2 kiểu vỏ gối."
+],
+"cb": [
+"Mở Chương 3 trong app, Phần 9 và Phần 10; mở thêm Đề 3 (Nhận diện thiết bị · 40 ảnh) và Đề 11 (Vật liệu sàn & vết bẩn) để làm ngay trên lớp.",
+"In hoặc chiếu ảnh dụng cụ không kèm tên để chơi “đoán tên” theo nhóm.",
+"Bảng trắng: kẻ 8 cặp dụng cụ dễ nhầm thành 2 cột."
+],
+"vtopic": ["bed"],
+"hv": {
+"作業標示板": "TÁC NGHIỆP TIÊU THỊ BẢN", "自在ぼうき": "TỰ TẠI", "文化ちりとり": "VĂN HOÁ", "湿式モップ": "THẤP THỨC", "乾式モップ": "CAN THỨC", "汚水取り": "Ô THUỶ THỦ",
+"超極細繊維クロス": "SIÊU CỰC TẾ TIÊM DUY", "毛かき": "MAO", "モップ絞り器": "GIẢO KHÍ", "真空掃除機（ポッド型）": "CHÂN KHÔNG TẢO TRỪ CƠ", "自動床洗浄機": "TỰ ĐỘNG SÀNG TẨY TỊNH CƠ",
+"高圧洗浄機": "CAO ÁP TẨY TỊNH CƠ", "送風機": "TỐNG PHONG CƠ", "静電気ほこり取り": "TĨNH ĐIỆN KHÍ", "保護手袋": "BẢO HỘ THỦ ĐẠI", "計量カップ": "KẾ LƯỢNG"
+},
+"vx": [["プランジャー", "dụng cụ thông tắc bồn cầu"], ["手押[てお]し台車[だいしゃ]", "xe đẩy tay"], ["作業[さぎょう]カート", "xe đẩy dụng cụ vệ sinh"]],
+"mo": {
+"p": 3,
+"lg": "<p>Các bạn ơi, bốn trang hôm nay không có truyện, chỉ có ảnh và bảng. Nhưng đây là bốn trang ra đề nhiều nhất cả giáo trình: cả Đề 3 (40 câu nhìn ảnh dụng cụ) và nửa Đề 11 (nhìn ảnh sàn, ảnh vết bẩn) đều lấy từ đây. Phần 実技[じつぎ] của kỳ thi là nhìn ảnh mà phán đoán — nên hôm nay mình học bằng mắt.</p>",
+"hl": "Hỏi lớp: “Ai kể được 5 dụng cụ có chữ スクイジー hoặc モップ trong tên?” — Đáp: フロアスクイジー, ウインドスクイジー; ダストクロス型モップ, 湿式モップ, 乾式モップ, T字型モップ, フラット型モップ… Tên giống nhau nên phải nhìn ảnh mới chắc."
+},
+"pages": [
+{"k": "a1", "ph": 1, "p": 12, "t": "<ruby>資器材<rt>しきざい</rt></ruby>リスト①", "tv": "Tr.81 · Dụng cụ cầm tay, cây lau", "cards": ["s8:0"]},
+{"k": "a2", "ph": 1, "p": 10, "t": "<ruby>資器材<rt>しきざい</rt></ruby>リスト②", "tv": "Tr.82 · Máy móc, thiết bị", "cards": ["s8:1"]},
+{"k": "a3", "ph": 1, "p": 8, "t": "<ruby>床材<rt>ゆかざい</rt></ruby>の<ruby>種類<rt>しゅるい</rt></ruby>・<ruby>汚<rt>よご</rt></ruby>れの<ruby>種類<rt>しゅるい</rt></ruby>", "tv": "Tr.83–84 · Ảnh vật liệu sàn và vết bẩn", "cards": ["s8:2", "s8:3"]},
+{"k": "a4", "ph": 1, "p": 5, "t": "ベッドメイキング", "tv": "Tr.85 · Phụ lục trải giường", "cards": ["s9:0"]},
+{"k": "de", "ph": 2, "p": 4},
+{"k": "q1", "ph": 3, "p": 15},
+{"k": "q2", "ph": 3, "p": 1},
+{"k": "tk", "ph": 4, "p": 2},
+{"k": "ket", "ph": 4, "p": 2}
+],
+"units": [
+{"c": "s8:0",
+"ng": ["自在[じざい]ぼうき: chổi cước", "文化[ぶんか]ちりとり: hót rác cán dài (có hộp đựng và nắp)", "ダストクロス: khăn lau khô (khăn rời)", "ダストクロス型[がた]モップ: cây lau khăn khô", "汚水取[おすいと]り: hót nước bẩn", "毛[け]かき: dụng cụ cào tóc, xơ"],
+"lg": "<p>Trang 81 là dụng cụ cầm tay. Mình chia 4 nhóm để nhớ:</p><p>● <b>Quét, gom rác</b>: 自在[じざい]ぼうき (chổi cước), シダぼうき (chổi xơ cứng), 文化[ぶんか]ちりとり (hót rác cán dài), 毛[け]かき (cào tóc, xơ ở thảm).<br>● <b>Cây lau</b>: ダストクロス型[がた]モップ (cây lau khăn khô, gom bụi), 湿式[しっしき]モップ (lau ướt), 乾式[かんしき]モップ (lau khô), T字型[じがた]モップ, フラット型[がた]モップ (bản dẹt), モップ絞[しぼ]り器[き] (dụng cụ vắt).<br>● <b>Nước</b>: デッキブラシ (bàn chải cán dài), フロアスクイジー (gạt nước sàn), 汚水取[おすいと]り (hót nước bẩn), バケツ.<br>● <b>Kính và khăn</b>: シャンパー, ウインドスクイジー, タオル, 超極細繊維[ちょうごくぼそせんい]クロス (khăn sợi siêu mịn).</p><p>Cặp dễ nhầm nhất: フロアスクイジー (cán dài, lưỡi to, gạt sàn) ↔ ウインドスクイジー (cầm tay, gạt kính); ダストクロス (tấm khăn rời) ↔ ダストクロス型[がた]モップ (cả cây lau gắn khăn); 汚水取[おすいと]り (hót nước) ↔ 文化[ぶんか]ちりとり (hót rác có nắp).</p>",
+"tt": "<p>作業標示板[さぎょうひょうじばん] ở Nhật chính là biển vàng hình chữ A 「清掃中[せいそうちゅう]」 dựng ở lối vào khu đang làm — trong đề có lúc gọi là フロアサイン.</p>",
+"hl": ["フロアスクイジー và ウインドスクイジー khác nhau thế nào?", "フロアスクイジー: cán dài, gạt nước trên sàn. ウインドスクイジー: cầm tay, gạt nước trên kính."],
+"de": "<p>Đề 3 là 40 câu “〜を選[えら]びなさい” với 4 ảnh. Đáp án nhiễu luôn là ảnh của dụng cụ cùng nhóm (4 loại cây lau cho câu hỏi một cây lau). Cho học viên làm Đề 3 ngay trên lớp, câu nào sai thì quay lại bảng này.</p>",
+"gv": "<p>Bảng từ của app ở trang này còn vài nghĩa chưa theo tên lớp đã chốt (文化ちりとり “cái hốt rác”, ダストクロス “đồ gom rác khô”, ダストクロス型モップ “cây lau nhà dùng khăn”, 汚水取り “cái hốt nước bẩn”). Giáo án đã đổi phần hiện ở đây theo tên chốt; bảng trong app chưa sửa.</p>"},
+{"c": "s8:1",
+"ng": ["真空掃除機[しんくうそうじき]（ポッド型[がた]）: máy hút bụi khô dạng thùng", "（アップライト型[がた]）: máy hút bụi thảm dạng đứng", "ハンディバキューム: máy hút bụi cầm tay", "ウエットバキューム: máy hút nước bẩn", "エクストラクター: máy giặt thảm (phun và hút)", "スクレーパー: dao cạo"],
+"lg": "<p>Trang 82 là máy móc và thiết bị. Chia nhóm:</p><p>● <b>Điện, an toàn</b>: 漏電[ろうでん]・過電流防止装置[かでんりゅうぼうしそうち], 保護手袋[ほごてぶくろ] (găng tay bảo hộ).<br>● <b>Hút</b>: 4 loại máy hút bụi — ポッド型[がた], アップライト型[がた], ハンディバキューム, ウエットバキューム (hút nước).<br>● <b>Chà, giặt</b>: ポリッシャー, フロアパッド, ハンドパッド (miếng chà cầm tay), 自動床洗浄機[じどうゆかせんじょうき] (máy chà sàn tự động — vừa chà vừa hút), エクストラクター (giặt thảm), 高圧洗浄機[こうあつせんじょうき].<br>● <b>Khác</b>: 送風機[そうふうき] (quạt sấy sàn), 静電気[せいでんき]ほこり取[と]り, スクレーパー (cạo kẹo cao su, băng dính), 計量[けいりょう]カップ (đong chất tẩy).</p><p>Cặp dễ nhầm: ウエットバキューム (chỉ hút nước) ↔ エクストラクター (phun nước giặt rồi hút, dùng cho thảm); フロアパッド (gắn vào máy) ↔ ハンドパッド (cầm tay).</p>",
+"hl": ["Kẹo cao su dính chặt trên sàn thì dùng dụng cụ gì?", "スクレーパー (dao cạo)."],
+"de": "<p>Phần 実技 Đề 15 hỏi theo công dụng: bóc kẹo cao su, băng dính → スクレーパー; bồn cầu bị tắc → プランジャー. Đề 3 còn có 手押[てお]し台車[だいしゃ], 作業[さぎょう]カート, 廃棄物[はいきぶつ]コレクター — dụng cụ chở đồ, rác.</p>",
+"gv": "<p>Bảng app ghi nghĩa của 漏電[ろうでん]・過電流防止装置[かでんりゅうぼうしそうち] kèm chữ “ổ biến áp an toàn” — thiết bị này không phải biến áp; khi giảng chỉ gọi “thiết bị chống rò điện, quá tải”.</p>"},
+{"c": "s8:2",
+"lg": "<p>Trang 83: ảnh thật của từng loại sàn, xếp theo 5 nhóm đã học ở Phần 1. Lần này học bằng mắt: ビニル系[けい] bóng, phẳng, hay có hoa văn đá giả; リノリウム màu đều, hơi mờ; ゴム系[けい] có hạt nổi chống trơn; 石材[せきざい] có vân tự nhiên; 陶磁器[とうじき] là gạch men có ron; コンクリート xám thô; フローリング vân gỗ dài; コルク lấm tấm như nút chai; タイルカーペット thảm vuông ghép; じゅうたん thảm liền tấm; たたみ chiếu cói.</p>",
+"hl": ["Sàn có vân lấm tấm như nút chai rượu là loại gì, thuộc nhóm nào?", "コルク, thuộc 木質床材 (sàn gỗ)."],
+"de": "<p>Đề 11 câu 1–11: “〜の写真[しゃしん]を1つ選[えら]びなさい” (chọn ảnh); câu 20–24: cho 1 ảnh, hỏi thuộc nhóm nào. Câu dễ sai: コルク (học viên hay xếp vào “khác”), ゴム系 (hay xếp vào sàn cứng).</p>"},
+{"c": "s8:3",
+"lg": "<p>Trang 84: ảnh vết bẩn theo 5 nhóm. Ví dụ trong ảnh: ほこり (đất, sợi bông) và 灰[はい] — tàn thuốc — là vô cơ; vết đồ uống là tan trong nước; ヒールマーク, 皮脂[ひし] là tan trong dầu; カビ là lây nhiễm; サビ, 日焼[ひや]け là loại khác.</p>",
+"hl": ["Ảnh tàn thuốc lá (灰) thuộc loại bẩn nào?", "無機質の汚れ (bẩn vô cơ)."],
+"de": "<p>Đề 11 câu 12–19 chọn ảnh vết bẩn, câu 25–29 cho ảnh hỏi nhóm. Ảnh ヒールマーク và ảnh vết đồ uống trông gần giống (vệt sẫm trên sàn) — phân biệt bằng hình dạng: vết gót giày là vạch đen ngắn, cong; vết đồ uống là vũng loang.</p>",
+"gv": "<p>Bảng trong app có thêm dòng ghi chú “tan trong dầu → chất tẩy gốc dầu”. Sách tr.64 dùng chất tẩy kiềm cho bẩn dầu, không có “chất tẩy gốc dầu”; khi giảng nói theo sách (đang chờ anh quyết có sửa dòng ghi chú trong app không).</p>"},
+{"c": "s9:0",
+"ng": ["アッパーシーツ: ga phủ trên", "ベッドカバー: khăn phủ giường", "デュベカバー: vỏ chăn", "首元[くびもと]: phía đầu giường (chỗ cổ)", "封筒式[ふうとうしき]: kiểu phong bì", "ファスナー式[しき]: kiểu khoá kéo"],
+"lg": "<p>Phụ lục cuối sách: trải giường. Sách nói rõ ベッドメイキングの方法[ほうほう]は、ホテルにより異[こと]なります — mỗi khách sạn một cách; đây chỉ là cách tiêu biểu.</p><p>● Cách cơ bản: trải ga phủ trên (アッパーシーツ) lên nệm đã có ga, gấp lật ở đầu giường → phủ ベッドカバー → gấp lật phần ga trên ở đầu giường.<br>● デュベスタイル: lồng ruột chăn vào vỏ chăn, nhét phần chân giường xuống dưới nệm để không xô lệch.<br>● ピローカバー: kiểu phong bì và kiểu khoá kéo; kiểu phong bì thì mặt gấp quay xuống dưới.</p><p>Nghề vệ sinh toà nhà có khi nhận làm buồng khách sạn, nên sách để phần này ở cuối.</p>",
+"hl": ["Vỏ gối có những kiểu nào?", "封筒式 (kiểu phong bì) và ファスナー式 (kiểu khoá kéo)."],
+"de": "<p>Bộ đề app chưa có câu về trang này; chỉ có 1 câu trong Trắc nghiệm tổng hợp Chương 3 (vỏ gối).</p>"}
+],
+"de": {
+"intro": "<p>Tr.81–84 là nguồn của 74 câu trong bộ đề app — gần như toàn bộ là 実技[じつぎ] nhìn ảnh: “〜を選[えら]びなさい” (4 ảnh chọn 1) và “この写真[しゃしん]の分類[ぶんるい]は” (1 ảnh, chọn nhóm). Theo 実施要領[じっしようりょう], phần 実技 là 判断試験[はんだんしけん] dùng ảnh, hình minh hoạ — chính là dạng này.</p>",
+"items": [
+{"k": "実技", "t": "4 ảnh chọn 1: tên dụng cụ", "lg": "<p>Đáp án nhiễu là dụng cụ cùng nhóm, trông na ná. Học theo cặp dễ nhầm, không học từng cái riêng lẻ.</p>", "q": [["3", "4"], ["3", "33"], ["3", "34"], ["3", "5"], ["3", "18"], ["3", "36"]]},
+{"k": "実技", "t": "Chọn dụng cụ theo công dụng", "lg": "<p>Câu tả việc cần làm (bóc kẹo cao su, thông bồn cầu tắc, làm khô sàn, đong chất tẩy) rồi cho ảnh. Học viên phải nối công dụng ↔ tên ↔ ảnh.</p>", "q": [["15", "22"], ["15", "24"]]},
+{"k": "実技", "t": "Ảnh sàn, ảnh vết bẩn → nhóm", "lg": "<p>Cho 1 ảnh, chọn nhóm trong 3 phương án; hoặc cho tên, chọn ảnh. Phải nhớ cả tên nhóm 漢字 (弾性・硬性・木質・無機質・水溶性・油溶性・感染性).</p>", "q": [["11", "20"], ["11", "7"], ["11", "27"], ["11", "19"]]}
+]
+},
+"q1": "auto",
+"q2": {"MT": [29]},
+"tk": {
+"src": [],
+"lg": "<p>Bốn trang ảnh, không cần học thuộc từng dòng, mà học theo nhóm và theo cặp dễ nhầm: 2 loại スクイジー, ダストクロス và ダストクロス型モップ, 汚水取り và 文化ちりとり, ウエットバキューム và エクストラクター, フロアパッド và ハンドパッド, 4 loại máy hút bụi. Sàn và vết bẩn: nhìn ảnh, gọi tên, xếp nhóm. Về nhà làm hết Đề 3 và Đề 11 đến khi đúng hết.</p>"
+},
+"ket": {
+"lg": "<p>Hết Chương 3. Từ vật liệu sàn, chất tẩy, máy chà, cây gạt kính đến danh mục dụng cụ — các bạn đã có đủ kiến thức cho phần vệ sinh định kỳ. Buổi tổng ôn mình sẽ làm đề thi thử có cả 学科 và 実技.</p>",
+"bt": "<p>1. Làm Đề 3 (40 ảnh dụng cụ) và Đề 11 (vật liệu sàn và vết bẩn) trong app, ghi lại các câu sai.<br>2. Viết bảng 8 cặp dụng cụ dễ nhầm, mỗi cặp 1 dòng công dụng.<br>3. Chụp 3 loại sàn ở nơi mình ở hoặc làm việc, ghi tên nhóm.</p>"
+}
+}
